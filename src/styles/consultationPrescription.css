@@ -1,0 +1,297 @@
+/* Module 2: Consultation & Prescription Management Styles */
+
+.patient-not-found-alert {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #dc2626;
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.not-found-icon {
+  color: #dc2626;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.not-found-title {
+  color: #991b1b;
+  font-weight: 700;
+  font-size: 0.975rem;
+}
+
+.not-found-desc {
+  color: #7f1d1d;
+  font-size: 0.875rem;
+  margin-top: 0.2rem;
+}
+
+/* Patient Selector Grid */
+.patient-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.patient-select-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.patient-select-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.patient-select-card.selected {
+  border-color: var(--primary-color);
+  background-color: var(--primary-subtle);
+  box-shadow: 0 0 0 2px rgba(15, 82, 186, 0.2);
+}
+
+.select-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selected-indicator {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.select-patient-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.select-patient-meta {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Selected Patient Summary Card */
+.selected-patient-summary-card {
+  border-left: 4px solid var(--primary-color);
+  margin-bottom: 1.75rem;
+}
+
+.summary-header {
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #bae6fd;
+}
+
+.selected-patient-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.775rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--primary-color);
+  margin-bottom: 0.2rem;
+}
+
+.summary-patient-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.summary-body {
+  padding: 1.25rem 1.5rem;
+}
+
+.summary-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.meta-val {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Printable Prescription Pad */
+.rx-print-modal-content {
+  max-width: 680px;
+}
+
+.rx-pad-body {
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1e293b;
+  background-color: #ffffff;
+}
+
+.rx-hospital-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.rx-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rx-logo {
+  color: var(--primary-color);
+}
+
+.rx-brand h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+.rx-brand p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.rx-doctor-info {
+  text-align: right;
+}
+
+.rx-doctor-info h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.rx-doctor-info p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.rx-divider {
+  border: none;
+  border-top: 2px solid var(--primary-color);
+  margin: 1rem 0 1.25rem 0;
+}
+
+.rx-patient-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  background-color: #f8fafc;
+  border: 1px solid var(--border-light);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.rx-symbol {
+  font-size: 2.2rem;
+  font-weight: 900;
+  font-family: 'Georgia', serif;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+}
+
+.rx-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.rx-table th {
+  border-bottom: 2px solid var(--border-color);
+  text-align: left;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.rx-table td {
+  padding: 0.85rem 0.5rem;
+  border-bottom: 1px dashed var(--border-light);
+}
+
+.rx-notes-box {
+  background-color: #f1f5f9;
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.1rem;
+  font-size: 0.875rem;
+  margin-bottom: 2.5rem;
+}
+
+.rx-footer-stamp {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2.5rem;
+}
+
+.rx-signature-line {
+  text-align: center;
+  border-top: 1px solid var(--text-primary);
+  padding-top: 0.35rem;
+  min-width: 180px;
+}
+
+.rx-signature-line p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Print CSS */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .rx-pad-body, .rx-pad-body * {
+    visibility: visible;
+  }
+  .rx-pad-body {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
