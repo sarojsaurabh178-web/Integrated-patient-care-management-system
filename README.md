@@ -13,30 +13,7 @@ The project is developed progressively through four major milestones:
 > **Milestone 2 → Treat**  
 > **Milestone 3 → Protect & Connect**  
 > **Milestone 4 → Analyze & Finalize**
->>>>>>> 73f69d08bae58da16d7508183c148e9eba8b7bc6
 
----
-
-## 📌 Table of Contents
-<<<<<<< HEAD
-1. [Problem Statement & Scope](#1-problem-statement--scope)
-2. [Key Features](#2-key-features)
-3. [System Architecture](#3-system-architecture)
-4. [Technology Stack](#4-technology-stack)
-5. [User Roles & Access Control Matrix](#5-user-roles--access-control-matrix)
-6. [Database Foundation](#6-database-foundation)
-7. [Project Structure](#7-project-structure)
-8. [Quick Start Guide](#8-quick-start-guide)
-9. [API Reference](#9-api-reference)
-10. [Testing & Validation](#10-testing--validation)
-11. [Performance Optimizations](#11-performance-optimizations)
-12. [Security Considerations](#12-security-considerations)
-13. [Current System Limitations](#13-current-system-limitations)
-14. [Academic / Project Note](#14-academic--project-note)
-15. [Documentation Index & Project Journey](#15-documentation-index--project-journey)
-16. [Author & Credits](#-author)
-
----
 
 ## 1. Problem Statement & Scope
 
