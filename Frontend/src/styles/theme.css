@@ -1,0 +1,473 @@
+/* MediTrack Global Theme Architecture (Light & Dark Mode) */
+
+:root {
+  /* Light Theme Color Palette (Default) */
+  --bg-primary: #F8F9FA;
+  --bg-secondary: #F1F5F9;
+  --card-bg: #FFFFFF;
+  --navbar-bg: #FFFFFF;
+  --sidebar-bg: #FFFFFF;
+  --modal-bg: #FFFFFF;
+  --dropdown-bg: #FFFFFF;
+  --dropdown-hover: #F8F9FA;
+
+  --primary-color: #0D6EFD;
+  --primary-hover: #0B5ED7;
+  --primary-light: #E7F1FF;
+  --secondary-color: #198754;
+  --secondary-hover: #157347;
+  --secondary-light: #D1E7DD;
+
+  --text-primary: #212529;
+  --text-secondary: #6C757D;
+  --text-muted: #6C757D;
+  --text-inverse: #FFFFFF;
+
+  --border-color: #DEE2E6;
+  --border-subtle: #E9ECEF;
+  --border-focus: #0D6EFD;
+
+  --bg-input: #FFFFFF;
+  --bg-input-readonly: #F1F5F9;
+  --input-border: #CED4DA;
+  --input-text: #212529;
+
+  --table-header-bg: #F8F9FA;
+  --table-row-hover: #F1F5F9;
+  --table-border: #DEE2E6;
+
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.12);
+
+  --chart-grid: #E9ECEF;
+  --chart-text: #6C757D;
+
+  /* Global Theme Transition */
+  --theme-transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme Color Palette */
+  --bg-primary: #121212;
+  --bg-secondary: #181818;
+  --card-bg: #1E1E1E;
+  --navbar-bg: #181818;
+  --sidebar-bg: #181818;
+  --modal-bg: #1E1E1E;
+  --dropdown-bg: #1E1E1E;
+  --dropdown-hover: #2A2A2A;
+
+  --primary-color: #4D9BFF;
+  --primary-hover: #3B82F6;
+  --primary-light: rgba(77, 155, 255, 0.15);
+  --secondary-color: #35B878;
+  --secondary-hover: #2E9D66;
+  --secondary-light: rgba(53, 184, 120, 0.15);
+
+  --text-primary: #F5F5F5;
+  --text-secondary: #B8B8B8;
+  --text-muted: #8E9DAA;
+  --text-inverse: #121212;
+
+  --border-color: #333333;
+  --border-subtle: #262626;
+  --border-focus: #4D9BFF;
+
+  --bg-input: #252525;
+  --bg-input-readonly: #1A1A1A;
+  --input-border: #444444;
+  --input-text: #F5F5F5;
+
+  --table-header-bg: #1A1A1A;
+  --table-row-hover: #282828;
+  --table-border: #333333;
+
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+
+  --chart-grid: #2D2D2D;
+  --chart-text: #B8B8B8;
+}
+
+/* Global Transitions across html, body and themed containers */
+html, body, .app-container, .navbar, .card, .main-content, input, select, textarea, table, modal-content, .nav-tab {
+  transition: var(--theme-transition);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Theme Toggle Button Component Styles */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: var(--theme-transition);
+  outline: none;
+}
+
+.theme-toggle-btn:hover {
+  opacity: 0.9;
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.theme-toggle-track {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  border-radius: 13px;
+  background-color: var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  transition: background-color 0.25s ease;
+  border: 1px solid var(--border-color);
+}
+
+.theme-toggle-track.dark {
+  background-color: #262626;
+  border-color: #444444;
+}
+
+.theme-toggle-track.light {
+  background-color: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.light-icon {
+  color: #f59e0b;
+}
+
+.dark-icon {
+  color: #94a3b8;
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--card-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease;
+  z-index: 2;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .theme-toggle-thumb {
+  transform: translateX(22px);
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.thumb-icon {
+  width: 12px;
+  height: 12px;
+}
+
+/* ==================================================
+   GLOBAL DARK MODE COMPONENT STYLES & OVERRIDES
+   ================================================== */
+
+[data-theme="dark"] {
+  /* Forms & Input Controls */
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea,
+  .form-control,
+  .form-select,
+  .search-input {
+    background-color: var(--bg-input) !important;
+    color: var(--input-text) !important;
+    border-color: var(--input-border) !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder,
+  .form-control::placeholder,
+  .search-input::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 0.8;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus,
+  .form-control:focus,
+  .form-select:focus,
+  .search-input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(77, 155, 255, 0.25) !important;
+  }
+
+  /* Select options */
+  select option {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+  }
+
+  /* Readonly & Disabled Inputs */
+  input[readonly],
+  textarea[readonly],
+  .form-control[readonly],
+  input[disabled],
+  select[disabled] {
+    background-color: var(--bg-input-readonly) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  /* Cards & Containers */
+  .card,
+  .card-rounded,
+  .patient-card,
+  .appointment-card,
+  .consultation-card,
+  .prescription-card,
+  .stat-card,
+  .security-card,
+  .audit-card,
+  .api-card,
+  .diagram-card,
+  .hero-card,
+  .quick-action-card,
+  .patient-select-card {
+    background-color: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+  }
+
+  /* Stat & Accent Card Background Adjustments */
+  .stat-blue { background-color: rgba(77, 155, 255, 0.15) !important; color: #60a5fa !important; }
+  .stat-sky { background-color: rgba(99, 102, 241, 0.15) !important; color: #818cf8 !important; }
+  .stat-indigo { background-color: rgba(168, 85, 247, 0.15) !important; color: #c084fc !important; }
+  .stat-green { background-color: rgba(53, 184, 120, 0.15) !important; color: #4ade80 !important; }
+
+  /* Navbar, Header, Footer & Sidebar */
+  .navbar,
+  .header,
+  .sidebar,
+  .footer {
+    background-color: var(--navbar-bg) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  .nav-tab {
+    color: var(--text-secondary) !important;
+  }
+
+  .nav-tab:hover {
+    background-color: var(--dropdown-hover) !important;
+    color: var(--text-primary) !important;
+  }
+
+  .nav-tab.active {
+    background-color: var(--primary-light) !important;
+    color: var(--primary-color) !important;
+  }
+
+  .user-profile,
+  .role-switcher-btn,
+  .nav-bell-btn {
+    background-color: var(--dropdown-hover) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+  }
+
+  /* Modals & Dialogs */
+  .modal-content,
+  .modal-header,
+  .modal-footer,
+  .modal-body {
+    background-color: var(--modal-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+  }
+
+  .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+  }
+
+  /* Dropdowns */
+  .dropdown-menu,
+  .role-dropdown-menu,
+  .notification-dropdown {
+    background-color: var(--dropdown-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .role-dropdown-header,
+  .notif-dropdown-header,
+  .notif-dropdown-footer {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+  }
+
+  .role-dropdown-item,
+  .notif-dropdown-item {
+    color: var(--text-primary) !important;
+    border-color: var(--border-subtle) !important;
+  }
+
+  .role-dropdown-item:hover,
+  .notif-dropdown-item:hover {
+    background-color: var(--dropdown-hover) !important;
+  }
+
+  .notif-dropdown-item.unread {
+    background-color: rgba(77, 155, 255, 0.12) !important;
+  }
+
+  /* Tables */
+  table,
+  .table,
+  .patient-table,
+  .appointment-table,
+  .audit-table,
+  .security-table {
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  table thead tr,
+  .table thead th {
+    background-color: var(--table-header-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  table tbody tr,
+  .table tbody td {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-subtle) !important;
+  }
+
+  table tbody tr:hover,
+  .table tbody tr:hover td {
+    background-color: var(--table-row-hover) !important;
+  }
+
+  /* Alerts & Notifications */
+  .alert,
+  .toast-notification,
+  .notification-card {
+    background-color: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+  }
+
+  .alert-info {
+    background-color: rgba(77, 155, 255, 0.15) !important;
+    border-color: rgba(77, 155, 255, 0.3) !important;
+    color: #93c5fd !important;
+  }
+
+  .alert-warning {
+    background-color: rgba(245, 158, 11, 0.15) !important;
+    border-color: rgba(245, 158, 11, 0.3) !important;
+    color: #fde047 !important;
+  }
+
+  .alert-danger {
+    background-color: rgba(239, 68, 68, 0.15) !important;
+    border-color: rgba(239, 68, 68, 0.3) !important;
+    color: #fca5a5 !important;
+  }
+
+  .alert-success {
+    background-color: rgba(53, 184, 120, 0.15) !important;
+    border-color: rgba(53, 184, 120, 0.3) !important;
+    color: #86efac !important;
+  }
+
+  /* Diagrams & SVG Charts */
+  svg text {
+    fill: var(--text-primary) !important;
+  }
+
+  svg line,
+  svg path.domain,
+  svg .recharts-cartesian-grid-line line {
+    stroke: var(--chart-grid) !important;
+  }
+
+  .diagram-node,
+  .jwt-step-card,
+  .flow-box {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+  }
+
+  /* Code Blocks & Pre */
+  code,
+  pre,
+  .code-block,
+  .json-viewer {
+    background-color: #1a1a1a !important;
+    color: #e2e8f0 !important;
+    border-color: #333333 !important;
+  }
+
+  /* Badges & Pills */
+  .badge {
+    color: #ffffff;
+  }
+
+  .bg-light,
+  .bg-secondary-subtle {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+  }
+
+  .text-dark {
+    color: var(--text-primary) !important;
+  }
+
+  .text-muted {
+    color: var(--text-muted) !important;
+  }
+
+  /* Print Preview Modal & Prescription Document in Dark Mode */
+  .prescription-print-document {
+    background-color: #1a1a1a !important;
+    color: #f5f5f5 !important;
+    border-color: #333333 !important;
+  }
+}
+
+

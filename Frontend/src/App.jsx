@@ -24,8 +24,12 @@ import { initialNotifications } from './data/mockNotifications';
 import { initialAuditLogs } from './data/mockAuditLogs';
 import { initialSecurityEvents, initialSecurityAlerts } from './data/mockSecurityEvents';
 import { ROLE_DETAILS } from './data/mockAuthUsers';
+import { useTheme } from './hooks/useTheme';
 
 function App() {
+  // Theme Manager State
+  const { theme, toggleTheme } = useTheme();
+
   // Navigation & Role State
   const [activeTab, setActiveTab] = useState('dashboard');
   const [currentRole, setCurrentRole] = useState('DOCTOR'); // 'PATIENT', 'DOCTOR', 'ADMINISTRATOR'
@@ -248,6 +252,8 @@ function App() {
         currentRole={currentRole}
         onSwitchRole={handleSwitchRole}
         onLogout={handleLogout}
+        theme={theme}
+        toggleTheme={toggleTheme}
       />
 
       {/* Main View Router */}

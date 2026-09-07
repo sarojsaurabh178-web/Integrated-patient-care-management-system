@@ -2,27 +2,27 @@
 
 /* --- Primary Theme Variables & Overrides --- */
 :root {
-  --mt-primary: #0D6EFD;
-  --mt-primary-hover: #0b5ed7;
-  --mt-primary-light: #e7f1ff;
-  --mt-secondary: #198754;
-  --mt-secondary-hover: #157347;
-  --mt-secondary-light: #d1e7dd;
+  --mt-primary: var(--primary-color);
+  --mt-primary-hover: var(--primary-hover);
+  --mt-primary-light: var(--primary-light);
+  --mt-secondary: var(--secondary-color);
+  --mt-secondary-hover: var(--secondary-hover);
+  --mt-secondary-light: var(--secondary-light);
   --mt-warning: #ffc107;
   --mt-warning-light: #fff3cd;
   --mt-danger: #dc3545;
   --mt-danger-light: #f8d7da;
   --mt-info: #0dcaf0;
   --mt-info-light: #cff4fc;
-  --mt-bg-main: #F8F9FA;
-  --mt-card-bg: #FFFFFF;
-  --mt-text-dark: #212529;
-  --mt-text-muted: #6C757D;
-  --mt-border: #DEE2E6;
-  --mt-border-subtle: #E9ECEF;
-  --mt-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  --mt-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
-  --mt-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.12);
+  --mt-bg-main: var(--bg-primary);
+  --mt-card-bg: var(--card-bg);
+  --mt-text-dark: var(--text-primary);
+  --mt-text-muted: var(--text-secondary);
+  --mt-border: var(--border-color);
+  --mt-border-subtle: var(--border-subtle);
+  --mt-shadow-sm: var(--shadow-sm);
+  --mt-shadow: var(--shadow-md);
+  --mt-shadow-lg: var(--shadow-lg);
   --mt-radius: 12px;
   --mt-radius-sm: 8px;
   --mt-radius-lg: 16px;

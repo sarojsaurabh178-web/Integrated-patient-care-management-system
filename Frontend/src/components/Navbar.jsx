@@ -20,6 +20,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { ROLE_DETAILS } from '../data/mockAuthUsers';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = ({ 
   activeTab, 
@@ -30,7 +31,9 @@ const Navbar = ({
   notifications = [],
   currentRole = 'DOCTOR',
   onSwitchRole,
-  onLogout
+  onLogout,
+  theme,
+  toggleTheme
 }) => {
   const [showNotifDropdown, setShowNotifDropdown] = useState(false);
   const [showRoleDropdown, setShowRoleDropdown] = useState(false);
@@ -230,6 +233,11 @@ const Navbar = ({
               </button>
             </div>
           )}
+        </div>
+
+        {/* Theme Mode Switcher Toggle Button */}
+        <div className="navbar-theme-toggle ms-2">
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
         </div>
 
         {/* Notification Bell Icon & Dropdown */}
