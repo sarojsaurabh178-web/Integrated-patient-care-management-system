@@ -40,3 +40,12 @@ class NotificationRepository:
             db.commit()
             db.refresh(notif)
         return notif
+
+    @staticmethod
+    def mark_all_read(db: Session, recipient_id: Optional[str] = None) -> int:
+        query = db.query(Notification).filter(Notification.status != "Read")
+        if recipient_id:
+            query = query.filter(Notification.recipient_id == recipient_id)
+        count = query.update({Notification.status: "Read"}, synchronize_session=False)
+        db.commit()
+        return count

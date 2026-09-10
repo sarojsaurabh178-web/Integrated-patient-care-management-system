@@ -1,24 +1,12 @@
 # 🏥 MediTrack — Integrated Patient Care Management System
 
-<<<<<<< HEAD
-MediTrack is a web-based Integrated Patient Care Management System designed to simplify and organize healthcare management by providing a centralized platform for managing patient information, appointments, consultations, prescriptions, notifications, security, analytics, and healthcare-related activities.
-=======
-MediTrack is a web-based Integrated Patient Care Management System designed to make healthcare management more organized, efficient, secure, and accessible.
+MediTrack is a production-style, web-based Integrated Patient Care Management System designed to make healthcare management organized, efficient, secure, and accessible.
 
-The system provides a centralized platform for managing patient information, appointments, consultations, prescriptions, notifications, security activities, analytics, and reports.
-
-The project is developed progressively through four major milestones:
-
-> **Milestone 1 → Manage**  
-> **Milestone 2 → Treat**  
-> **Milestone 3 → Protect & Connect**  
-> **Milestone 4 → Analyze & Finalize**
->>>>>>> 73f69d08bae58da16d7508183c148e9eba8b7bc6
+The system connects a modern React 18 frontend with a high-performance Python FastAPI REST API backend and a PostgreSQL relational database.
 
 ---
 
 ## 📌 Table of Contents
-<<<<<<< HEAD
 1. [Problem Statement & Scope](#1-problem-statement--scope)
 2. [Key Features](#2-key-features)
 3. [System Architecture](#3-system-architecture)

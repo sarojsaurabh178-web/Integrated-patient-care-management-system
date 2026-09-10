@@ -106,8 +106,8 @@ const Appointments = ({
           {filteredAppointments.length === 0 ? (
             <div className="empty-state">
               <Inbox className="empty-state-icon" size={48} />
-              <p className="font-semibold text-lg text-slate-700">No appointments found</p>
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="fw-semibold text-primary" style={{ fontSize: '1.1rem' }}>No appointments found</p>
+              <p className="text-muted" style={{ fontSize: '0.85rem', marginTop: '0.25rem' }}>
                 Try selecting another status tab or book a new appointment.
               </p>
             </div>
@@ -178,8 +178,7 @@ const Appointments = ({
                               </button>
                               <button
                                 type="button"
-                                className="btn btn-icon"
-                                style={{ backgroundColor: '#fef2f2', color: '#dc2626', border: '1px solid #fecaca' }}
+                                className="btn btn-icon btn-secondary text-danger"
                                 onClick={() => onUpdateStatus(apt.id, 'Cancelled')}
                                 title="Cancel Appointment"
                               >

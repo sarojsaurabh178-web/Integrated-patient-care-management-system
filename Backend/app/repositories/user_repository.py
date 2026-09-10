@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import or_
 from app.models.user import User
 import bcrypt
 import time
@@ -27,7 +28,17 @@ pwd_context = _PwdContext()
 class UserRepository:
     @staticmethod
     def get_by_username(db: Session, username: str) -> User:
-        return db.query(User).filter(User.username.ilike(username)).first()
+        return db.query(User).filter(User.username.ilike(username.strip())).first()
+
+    @staticmethod
+    def get_by_identifier(db: Session, identifier: str) -> User:
+        clean = identifier.strip()
+        return db.query(User).filter(
+            or_(
+                User.username.ilike(clean),
+                User.email.ilike(clean)
+            )
+        ).first()
 
     @staticmethod
     def get_by_id(db: Session, user_id: str) -> User:
@@ -50,6 +61,14 @@ class UserRepository:
         return db_user
 
     @staticmethod
+    def update_password(db: Session, user_id: str, new_password: str) -> bool:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            return False
+        user.password_hash = _hash_password(new_password)
+        db.commit()
+        return True
+
+    @staticmethod
     def verify_password(plain_password: str, hashed_password: str) -> bool:
         return _verify_password(plain_password, hashed_password)
-

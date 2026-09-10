@@ -5,6 +5,7 @@ import './styles/theme.css';
 import './styles/patientRegistration.css';
 import './styles/consultationPrescription.css';
 import './styles/milestone3.css';
+import './styles/auth.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

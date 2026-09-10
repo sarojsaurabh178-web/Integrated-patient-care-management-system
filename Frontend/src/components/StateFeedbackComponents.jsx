@@ -18,16 +18,16 @@ export const EmptyState = ({
   actionLabel = 'Refresh Data'
 }) => {
   return (
-    <div className="text-center py-5 px-3 bg-white rounded-3 border">
+    <div className="text-center py-5 px-3 card">
       <div className="d-inline-flex p-3 rounded-circle bg-light text-muted mb-3">
         <Inbox size={36} />
       </div>
-      <h4 className="h6 fw-bold text-dark mb-1">{title}</h4>
+      <h4 className="h6 fw-bold text-primary mb-1">{title}</h4>
       <p className="text-muted mb-3" style={{ fontSize: '0.875rem', maxWidth: '400px', margin: '0 auto' }}>
         {message}
       </p>
       {onAction && (
-        <button type="button" className="btn btn-sm btn-outline-primary" onClick={onAction}>
+        <button type="button" className="btn btn-sm btn-primary" onClick={onAction}>
           <RefreshCw size={14} className="me-1" />
           {actionLabel}
         </button>

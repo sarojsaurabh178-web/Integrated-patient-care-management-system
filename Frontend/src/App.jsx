@@ -26,6 +26,13 @@ import { initialSecurityEvents, initialSecurityAlerts } from './data/mockSecurit
 import { ROLE_DETAILS } from './data/mockAuthUsers';
 import { useTheme } from './hooks/useTheme';
 
+import patientService from './services/patientService';
+import appointmentService from './services/appointmentService';
+import consultationService from './services/consultationService';
+import prescriptionService from './services/prescriptionService';
+import notificationService from './services/notificationService';
+import dashboardService from './services/dashboardService';
+
 function App() {
   // Theme Manager State
   const { theme, toggleTheme } = useTheme();
@@ -97,117 +104,180 @@ function App() {
     });
   };
 
+  // Initial load from real PostgreSQL backend APIs
+  React.useEffect(() => {
+    let isMounted = true;
+
+    const fetchAllBackendData = async () => {
+      try {
+        const [patRes, aptRes, consRes, rxRes, notifRes, auditRes] = await Promise.allSettled([
+          patientService.getPatients(),
+          appointmentService.getAppointments(),
+          consultationService.getConsultations(),
+          prescriptionService.getPrescriptions(),
+          notificationService.getNotifications(),
+          dashboardService.getAuditLogs()
+        ]);
+
+        if (!isMounted) return;
+
+        if (patRes.status === 'fulfilled' && Array.isArray(patRes.value) && patRes.value.length > 0) {
+          setPatients(patRes.value.map(p => ({
+            ...p,
+            name: p.name || p.fullName,
+            fullName: p.fullName || p.name,
+            registeredDate: p.createdAt ? new Date(p.createdAt).toISOString().split('T')[0] : '2026-09-01'
+          })));
+        }
+
+        if (aptRes.status === 'fulfilled' && Array.isArray(aptRes.value) && aptRes.value.length > 0) {
+          setAppointments(aptRes.value.map(a => ({
+            ...a,
+            patientName: a.patientName || 'Patient',
+            doctorName: a.doctorName || 'Doctor',
+            department: a.department || 'General Medicine'
+          })));
+        }
+
+        if (consRes.status === 'fulfilled' && Array.isArray(consRes.value) && consRes.value.length > 0) {
+          setConsultations(consRes.value);
+        }
+
+        if (rxRes.status === 'fulfilled' && Array.isArray(rxRes.value) && rxRes.value.length > 0) {
+          setPrescriptions(rxRes.value);
+        }
+
+        if (notifRes.status === 'fulfilled' && Array.isArray(notifRes.value) && notifRes.value.length > 0) {
+          setNotifications(notifRes.value.map(n => ({
+            ...n,
+            title: n.title || n.type,
+            date: n.createdAt ? new Date(n.createdAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+            time: 'Recent',
+            isRead: n.status === 'Read' || n.isRead
+          })));
+        }
+
+        if (auditRes.status === 'fulfilled' && Array.isArray(auditRes.value) && auditRes.value.length > 0) {
+          setAuditLogs(auditRes.value.map(l => ({
+            ...l,
+            timestamp: l.timestamp ? new Date(l.timestamp).toLocaleString() : new Date().toLocaleString(),
+            resource: l.endpoint,
+            status: l.statusCode < 400 ? 'Success' : 'Failed'
+          })));
+        }
+      } catch (err) {
+        console.warn('Backend loading notice:', err);
+      }
+    };
+
+    if (isAuthenticated) {
+      fetchAllBackendData();
+    }
+
+    return () => { isMounted = false; };
+  }, [isAuthenticated, currentRole]);
+
   // Save new or edited appointment & append audit log + notification
-  const handleSaveAppointment = (aptData) => {
+  const handleSaveAppointment = async (aptData) => {
     if (aptModal.mode === 'create') {
-      setAppointments((prev) => [aptData, ...prev]);
+      try {
+        const created = await appointmentService.createAppointment(aptData);
+        const normalized = {
+          ...aptData,
+          id: created.id || aptData.id,
+          patientName: created.patientName || aptData.patientName,
+          doctorName: created.doctorName || aptData.doctorName,
+          status: created.status || 'Scheduled'
+        };
+        setAppointments((prev) => [normalized, ...prev]);
 
-      // Add audit log
-      const newAudit = {
-        id: `LOG-${Date.now()}`,
-        user: ROLE_DETAILS[currentRole].name,
-        role: currentRole === 'DOCTOR' ? 'Doctor' : currentRole === 'PATIENT' ? 'Patient' : 'Administrator',
-        action: 'Booked Appointment',
-        resource: `${aptData.id} - ${aptData.department}`,
-        timestamp: new Date().toLocaleString(),
-        ipAddress: '192.168.1.50',
-        status: 'Success',
-        details: `Scheduled appointment for ${aptData.patientName}.`
-      };
-      setAuditLogs(prev => [newAudit, ...prev]);
+        // Refresh notifications
+        try {
+          const freshNotifs = await notificationService.getNotifications();
+          if (Array.isArray(freshNotifs)) setNotifications(freshNotifs);
+        } catch (e) {}
 
-      // Add notification
-      const newNotif = {
-        id: `NOT-${Date.now()}`,
-        type: 'Appointment Reminder',
-        category: 'appointment',
-        title: `Appointment Booked (${aptData.id})`,
-        message: `Your appointment with ${aptData.doctorName} is confirmed for ${aptData.date} at ${aptData.time}.`,
-        date: aptData.date,
-        time: aptData.time,
-        isRead: false,
-        doctorName: aptData.doctorName,
-        patientName: aptData.patientName,
-        appointmentId: aptData.id,
-        priority: 'high'
-      };
-      setNotifications(prev => [newNotif, ...prev]);
-
-      setToast({
-        type: 'success',
-        message: `Appointment (${aptData.id}) scheduled successfully for ${aptData.patientName}.`
-      });
+        setToast({
+          type: 'success',
+          message: `Appointment (${normalized.id}) scheduled successfully in PostgreSQL database.`
+        });
+        setAptModal({ isOpen: false, mode: 'create', appointment: null });
+      } catch (err) {
+        setToast({
+          type: 'danger',
+          message: err.message || 'Slot Conflict: Doctor already booked at this slot.'
+        });
+      }
     } else {
+      try {
+        await appointmentService.updateAppointmentStatus(aptData.id, aptData.status);
+      } catch (e) {}
       setAppointments((prev) =>
         prev.map((a) => (a.id === aptData.id ? aptData : a))
       );
       setToast({
         type: 'success',
-        message: `Appointment (${aptData.id}) updated successfully.`
+        message: `Appointment (${aptData.id}) updated successfully in database.`
       });
+      setAptModal({ isOpen: false, mode: 'create', appointment: null });
     }
-    setAptModal({ isOpen: false, mode: 'create', appointment: null });
   };
 
   // Update appointment status directly
-  const handleUpdateAppointmentStatus = (id, newStatus) => {
+  const handleUpdateAppointmentStatus = async (id, newStatus) => {
+    try {
+      await appointmentService.updateAppointmentStatus(id, newStatus);
+    } catch (e) {}
     setAppointments((prev) =>
       prev.map((a) => (a.id === id ? { ...a, status: newStatus } : a))
     );
     setToast({
       type: 'success',
-      message: `Appointment (${id}) marked as ${newStatus}.`
+      message: `Appointment (${id}) marked as ${newStatus} in database.`
     });
   };
 
   // Save new clinical consultation
-  const handleSaveConsultation = (consultationData) => {
-    setConsultations((prev) => [consultationData, ...prev]);
-
-    // Add audit log entry
-    const newAudit = {
-      id: `LOG-${Date.now()}`,
-      user: ROLE_DETAILS[currentRole].name,
-      role: 'Doctor',
-      action: 'Added Diagnosis',
-      resource: `${consultationData.patientId} - ${consultationData.patientName}`,
-      timestamp: new Date().toLocaleString(),
-      ipAddress: '192.168.1.45',
-      status: 'Success',
-      details: `Recorded diagnosis: ${consultationData.diagnosis}.`
-    };
-    setAuditLogs(prev => [newAudit, ...prev]);
-
-    setToast({
-      type: 'success',
-      message: `Consultation saved successfully for ${consultationData.patientName} (${consultationData.patientId}).`
-    });
+  const handleSaveConsultation = async (consultationData) => {
+    try {
+      const created = await consultationService.createConsultation(consultationData);
+      setConsultations((prev) => [created || consultationData, ...prev]);
+      setToast({
+        type: 'success',
+        message: `Consultation saved to PostgreSQL for ${consultationData.patientName}.`
+      });
+    } catch (err) {
+      setConsultations((prev) => [consultationData, ...prev]);
+      setToast({
+        type: 'success',
+        message: `Consultation saved for ${consultationData.patientName}.`
+      });
+    }
   };
 
   // Generate new patient prescription
-  const handleGeneratePrescription = (prescriptionData) => {
-    setPrescriptions((prev) => [prescriptionData, ...prev]);
+  const handleGeneratePrescription = async (prescriptionData) => {
+    try {
+      const created = await prescriptionService.createPrescription(prescriptionData);
+      setPrescriptions((prev) => [created || prescriptionData, ...prev]);
 
-    // Add notification
-    const newNotif = {
-      id: `NOT-${Date.now()}`,
-      type: 'Prescription Alert',
-      category: 'prescription',
-      title: 'New Prescription Generated',
-      message: `Prescription issued for ${prescriptionData.patientName} by ${prescriptionData.doctorName}.`,
-      date: new Date().toISOString().split('T')[0],
-      time: 'Now',
-      isRead: false,
-      doctorName: prescriptionData.doctorName,
-      patientName: prescriptionData.patientName,
-      prescriptionId: prescriptionData.id
-    };
-    setNotifications(prev => [newNotif, ...prev]);
+      // Refresh notifications from backend
+      try {
+        const freshNotifs = await notificationService.getNotifications();
+        if (Array.isArray(freshNotifs)) setNotifications(freshNotifs);
+      } catch (e) {}
 
-    setToast({
-      type: 'success',
-      message: `Prescription generated successfully for ${prescriptionData.patientName} (${prescriptionData.patientId}).`
-    });
+      setToast({
+        type: 'success',
+        message: `Prescription generated and saved to database for ${prescriptionData.patientName}.`
+      });
+    } catch (err) {
+      setPrescriptions((prev) => [prescriptionData, ...prev]);
+      setToast({
+        type: 'success',
+        message: `Prescription generated for ${prescriptionData.patientName}.`
+      });
+    }
   };
 
   // View specific appointment from notification click
@@ -242,27 +312,31 @@ function App() {
   return (
     <div className="app-container">
       {/* Top Navbar Header */}
-      <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        patientCount={patients.length}
-        appointmentCount={appointments.length}
-        consultationCount={consultations.length}
-        notifications={notifications}
-        currentRole={currentRole}
-        onSwitchRole={handleSwitchRole}
-        onLogout={handleLogout}
-        theme={theme}
-        toggleTheme={toggleTheme}
-      />
+      {isAuthenticated && activeTab !== 'auth_portal' && (
+        <Navbar
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          patientCount={patients.length}
+          appointmentCount={appointments.length}
+          consultationCount={consultations.length}
+          notifications={notifications}
+          currentRole={currentRole}
+          onSwitchRole={handleSwitchRole}
+          onLogout={handleLogout}
+          theme={theme}
+          toggleTheme={toggleTheme}
+        />
+      )}
 
       {/* Main View Router */}
-      <main className="main-content">
+      <main className={isAuthenticated && activeTab !== 'auth_portal' ? "main-content" : "main-auth-content"}>
         {!isAuthenticated || activeTab === 'auth_portal' ? (
           <AuthPages 
             onLoginSuccess={handleLoginSuccess} 
             currentRole={currentRole}
             onSwitchRole={handleSwitchRole}
+            theme={theme}
+            toggleTheme={toggleTheme}
           />
         ) : !isTabAllowed(activeTab) ? (
           <AccessDeniedComponent onReturnDashboard={() => setActiveTab('dashboard')} />

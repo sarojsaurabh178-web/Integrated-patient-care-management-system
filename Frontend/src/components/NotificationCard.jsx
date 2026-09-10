@@ -37,7 +37,7 @@ const NotificationCard = ({
     switch (type) {
       case 'Appointment Reminder': return 'bg-primary';
       case 'Prescription Alert': return 'bg-success';
-      case 'Follow-Up Reminder': return 'bg-warning text-dark';
+      case 'Follow-Up Reminder': return 'bg-warning';
       case 'Missed Appointment': return 'bg-danger';
       default: return 'bg-secondary';
     }
@@ -52,16 +52,16 @@ const NotificationCard = ({
       <div className="notification-card-body">
         <div className="notification-card-header">
           <div className="d-flex align-items-center gap-2">
-            <span className={`badge ${getBadgeClass(notification.type)}`} style={{ fontSize: '0.75rem' }}>
+            <span className={`badge ${getBadgeClass(notification.type)}`}>
               {notification.type}
             </span>
             {!notification.isRead && (
-              <span className="badge bg-info text-dark" style={{ fontSize: '0.7rem' }}>
+              <span className="badge bg-primary">
                 Unread
               </span>
             )}
           </div>
-          <span className="text-muted" style={{ fontSize: '0.8rem' }}>
+          <span className="text-muted" style={{ fontSize: '0.775rem' }}>
             {notification.date} • {notification.time}
           </span>
         </div>
@@ -82,7 +82,7 @@ const NotificationCard = ({
           <div className="notification-card-actions">
             <button
               type="button"
-              className="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-1"
+              className="btn btn-sm btn-secondary"
               onClick={() => onViewDetails(notification)}
             >
               <Eye size={14} />
@@ -92,7 +92,7 @@ const NotificationCard = ({
             {notification.isRead ? (
               <button
                 type="button"
-                className="btn btn-sm btn-outline-warning d-inline-flex align-items-center gap-1"
+                className="btn btn-sm btn-secondary"
                 onClick={() => onMarkUnread(notification.id)}
               >
                 Mark Unread
@@ -100,7 +100,7 @@ const NotificationCard = ({
             ) : (
               <button
                 type="button"
-                className="btn btn-sm btn-outline-success d-inline-flex align-items-center gap-1"
+                className="btn btn-sm btn-primary"
                 onClick={() => onMarkRead(notification.id)}
               >
                 <CheckCircle size={14} />
@@ -110,8 +110,9 @@ const NotificationCard = ({
 
             <button
               type="button"
-              className="btn btn-sm btn-outline-danger d-inline-flex align-items-center gap-1"
+              className="btn btn-sm btn-secondary text-danger"
               onClick={() => onDelete(notification.id)}
+              title="Delete Notification"
             >
               <Trash2 size={14} />
             </button>

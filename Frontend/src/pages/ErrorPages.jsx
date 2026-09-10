@@ -40,8 +40,8 @@ const ErrorPages = ({ setActiveTab }) => {
           title: 'Internal Server Error',
           message: 'An unexpected exception occurred on the application server.',
           explanation: 'The Flask REST service or database connection timed out. Telemetry logs have recorded this incident.',
-          icon: <ServerCrash size={48} className="text-dark" />,
-          colorClass: 'text-dark'
+          icon: <ServerCrash size={48} className="text-danger" />,
+          colorClass: 'text-danger'
         };
       default:
         return {
@@ -69,28 +69,28 @@ const ErrorPages = ({ setActiveTab }) => {
         <div className="btn-group">
           <button
             type="button"
-            className={`btn btn-sm ${activeErrorCode === '401' ? 'btn-warning' : 'btn-outline-warning'}`}
+            className={`btn btn-sm ${activeErrorCode === '401' ? 'btn-primary' : ''}`}
             onClick={() => setActiveErrorCode('401')}
           >
             401 Unauthorized
           </button>
           <button
             type="button"
-            className={`btn btn-sm ${activeErrorCode === '403' ? 'btn-danger' : 'btn-outline-danger'}`}
+            className={`btn btn-sm ${activeErrorCode === '403' ? 'btn-primary' : ''}`}
             onClick={() => setActiveErrorCode('403')}
           >
             403 Forbidden
           </button>
           <button
             type="button"
-            className={`btn btn-sm ${activeErrorCode === '404' ? 'btn-primary' : 'btn-outline-primary'}`}
+            className={`btn btn-sm ${activeErrorCode === '404' ? 'btn-primary' : ''}`}
             onClick={() => setActiveErrorCode('404')}
           >
             404 Not Found
           </button>
           <button
             type="button"
-            className={`btn btn-sm ${activeErrorCode === '500' ? 'btn-dark' : 'btn-outline-dark'}`}
+            className={`btn btn-sm ${activeErrorCode === '500' ? 'btn-primary' : ''}`}
             onClick={() => setActiveErrorCode('500')}
           >
             500 Server Error

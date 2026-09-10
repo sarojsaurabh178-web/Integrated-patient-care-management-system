@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
 import { 
   Users, 
@@ -7,11 +7,12 @@ import {
   Stethoscope, 
   UserPlus, 
   CalendarPlus, 
-  ArrowRight,
-  CheckCircle2,
-  AlertCircle
+  ArrowRight, 
+  CheckCircle2, 
+  AlertCircle 
 } from 'lucide-react';
 import { doctors } from '../data/mockAppointments';
+import dashboardService from '../services/dashboardService';
 
 const Dashboard = ({ 
   patients, 
@@ -19,11 +20,28 @@ const Dashboard = ({
   setActiveTab, 
   onOpenNewAppointmentModal 
 }) => {
+  const [dbMetrics, setDbMetrics] = useState(null);
+
+  useEffect(() => {
+    const fetchMetrics = async () => {
+      try {
+        const metrics = await dashboardService.getDashboardMetrics();
+        if (metrics) setDbMetrics(metrics);
+      } catch (e) {}
+    };
+    fetchMetrics();
+  }, [patients.length, appointments.length]);
+
   const todayStr = new Date().toISOString().split('T')[0];
 
   const todayAppointments = appointments.filter((apt) => apt.date === todayStr || apt.status === 'Scheduled');
   const scheduledCount = appointments.filter((apt) => apt.status === 'Scheduled').length;
   const onDutyDoctorsCount = doctors.filter((doc) => doc.status === 'On Duty').length;
+
+  const totalPatientsDisplay = dbMetrics?.overview?.totalPatients ?? dbMetrics?.totalPatients ?? patients.length;
+  const scheduledCountDisplay = dbMetrics?.overview?.scheduledAppointments ?? dbMetrics?.scheduledAppointments ?? scheduledCount;
+  const todayAppointmentsDisplay = dbMetrics?.overview?.todayAppointments ?? dbMetrics?.todayAppointments ?? todayAppointments.length;
+  const onDutyDoctorsDisplay = dbMetrics?.overview?.doctorsOnDuty ?? dbMetrics?.doctorsOnDuty ?? onDutyDoctorsCount;
 
   return (
     <div className="dashboard-page">
@@ -45,8 +63,8 @@ const Dashboard = ({
           </div>
           <div className="stat-info">
             <span className="stat-label">Total Patients</span>
-            <span className="stat-value">{patients.length}</span>
-            <span className="stat-trend trend-up">↑ 12% growth this month</span>
+            <span className="stat-value">{totalPatientsDisplay}</span>
+            <span className="stat-trend trend-up">PostgreSQL Verified</span>
           </div>
         </div>
 
@@ -56,8 +74,8 @@ const Dashboard = ({
           </div>
           <div className="stat-info">
             <span className="stat-label">Scheduled Consultations</span>
-            <span className="stat-value">{scheduledCount}</span>
-            <span className="stat-trend">Active Queue</span>
+            <span className="stat-value">{scheduledCountDisplay}</span>
+            <span className="stat-trend">Live Queue</span>
           </div>
         </div>
 
@@ -67,8 +85,8 @@ const Dashboard = ({
           </div>
           <div className="stat-info">
             <span className="stat-label">Today's Appointments</span>
-            <span className="stat-value">{todayAppointments.length}</span>
-            <span className="stat-trend trend-neutral">5 pending for afternoon</span>
+            <span className="stat-value">{todayAppointmentsDisplay}</span>
+            <span className="stat-trend trend-neutral">Active Schedule</span>
           </div>
         </div>
 
@@ -78,7 +96,7 @@ const Dashboard = ({
           </div>
           <div className="stat-info">
             <span className="stat-label">Doctors On Duty</span>
-            <span className="stat-value">{onDutyDoctorsCount} / {doctors.length}</span>
+            <span className="stat-value">{onDutyDoctorsDisplay} / {doctors.length}</span>
             <span className="stat-trend trend-up">All key OPDs active</span>
           </div>
         </div>

@@ -30,6 +30,15 @@ class AppointmentRepository:
         ).first() is not None
 
     @staticmethod
+    def get_booked_slots(db: Session, doctor_id: str, date: str) -> List[str]:
+        appts = db.query(Appointment.time).filter(
+            Appointment.doctor_id == doctor_id,
+            Appointment.date == date,
+            Appointment.status != "Cancelled"
+        ).all()
+        return [a[0] for a in appts]
+
+    @staticmethod
     def create(db: Session, data: dict) -> Appointment:
         count = db.query(Appointment).count()
         appt_id = data.get("id") or f"A{count + 101}"

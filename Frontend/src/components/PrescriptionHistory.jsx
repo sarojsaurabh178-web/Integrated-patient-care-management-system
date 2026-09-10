@@ -26,8 +26,8 @@ const PrescriptionHistory = ({ prescriptions, patients }) => {
         {prescriptions.length === 0 ? (
           <div className="empty-state">
             <Inbox className="empty-state-icon" size={48} />
-            <p className="font-semibold text-lg text-slate-700">No prescription records found</p>
-            <p className="text-sm text-slate-500 mt-1">
+            <p className="fw-semibold text-primary" style={{ fontSize: '1.1rem' }}>No prescription records found</p>
+            <p className="text-muted" style={{ fontSize: '0.85rem', marginTop: '0.25rem' }}>
               Select a patient above to generate and issue a prescription.
             </p>
           </div>

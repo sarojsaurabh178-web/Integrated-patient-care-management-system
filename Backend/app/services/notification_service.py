@@ -19,3 +19,7 @@ class NotificationService:
         if not notif:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Notification {notif_id} not found.")
         return notif
+
+    @staticmethod
+    def mark_all_read(db: Session, recipient_id: Optional[str] = None):
+        return NotificationRepository.mark_all_read(db, recipient_id)

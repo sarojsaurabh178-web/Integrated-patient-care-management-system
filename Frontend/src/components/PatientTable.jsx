@@ -14,8 +14,8 @@ const PatientTable = ({ patients, onViewPatient, onEditPatient }) => {
         <div className="card-body">
           <div className="empty-state">
             <Inbox className="empty-state-icon" size={48} />
-            <p className="font-semibold text-lg text-slate-700">No patients found</p>
-            <p className="text-sm text-slate-500 mt-1">
+            <p className="fw-semibold text-primary" style={{ fontSize: '1.1rem' }}>No patients found</p>
+            <p className="text-muted" style={{ fontSize: '0.85rem', marginTop: '0.25rem' }}>
               Try adjusting your search criteria or register a new patient above.
             </p>
           </div>

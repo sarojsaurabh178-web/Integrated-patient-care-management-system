@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { UserPlus, RotateCcw, AlertCircle, CheckCircle2 } from 'lucide-react';
 
 const PatientForm = ({ nextPatientId, onRegisterPatient }) => {
@@ -190,8 +190,9 @@ const PatientForm = ({ nextPatientId, onRegisterPatient }) => {
 
       <div className="card-body">
         <form onSubmit={handleSubmit} noValidate>
+          {/* Symmetrical Two-Column Responsive Form Layout */}
           <div className="form-grid">
-            {/* 1. Patient ID (Read-only) */}
+            {/* ROW 1: Patient ID & Full Name */}
             <div className="form-group">
               <label className="form-label" htmlFor="patientId">
                 Patient ID
@@ -206,7 +207,6 @@ const PatientForm = ({ nextPatientId, onRegisterPatient }) => {
               />
             </div>
 
-            {/* 2. Full Name */}
             <div className="form-group">
               <label className="form-label" htmlFor="name">
                 Full Name <span className="required-star">*</span>
@@ -229,7 +229,7 @@ const PatientForm = ({ nextPatientId, onRegisterPatient }) => {
               )}
             </div>
 
-            {/* 3. Age */}
+            {/* ROW 2: Age & Gender */}
             <div className="form-group">
               <label className="form-label" htmlFor="age">
                 Age <span className="required-star">*</span>
@@ -254,7 +254,6 @@ const PatientForm = ({ nextPatientId, onRegisterPatient }) => {
               )}
             </div>
 
-            {/* 4. Gender */}
             <div className="form-group">
               <label className="form-label" htmlFor="gender">
                 Gender <span className="required-star">*</span>
@@ -280,7 +279,7 @@ const PatientForm = ({ nextPatientId, onRegisterPatient }) => {
               )}
             </div>
 
-            {/* 5. Date of Birth */}
+            {/* ROW 3: Date of Birth & Phone Number */}
             <div className="form-group">
               <label className="form-label" htmlFor="dob">
                 Date of Birth <span className="required-star">*</span>
@@ -302,7 +301,6 @@ const PatientForm = ({ nextPatientId, onRegisterPatient }) => {
               )}
             </div>
 
-            {/* 6. Phone Number */}
             <div className="form-group">
               <label className="form-label" htmlFor="phone">
                 Phone Number <span className="required-star">*</span>
@@ -313,7 +311,7 @@ const PatientForm = ({ nextPatientId, onRegisterPatient }) => {
                 name="phone"
                 maxLength="10"
                 className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
-                placeholder="Enter 10-digit phone number"
+                placeholder="Enter 10-digit mobile number"
                 value={formData.phone}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -326,8 +324,8 @@ const PatientForm = ({ nextPatientId, onRegisterPatient }) => {
               )}
             </div>
 
-            {/* 7. Email Address */}
-            <div className="form-group full-width">
+            {/* ROW 4: Email Address & Residential Address */}
+            <div className="form-group">
               <label className="form-label" htmlFor="email">
                 Email Address <span className="required-star">*</span>
               </label>
@@ -349,20 +347,20 @@ const PatientForm = ({ nextPatientId, onRegisterPatient }) => {
               )}
             </div>
 
-            {/* 8. Residential Address */}
-            <div className="form-group full-width">
+            <div className="form-group">
               <label className="form-label" htmlFor="address">
                 Residential Address <span className="required-star">*</span>
               </label>
-              <textarea
+              <input
+                type="text"
                 id="address"
                 name="address"
                 className={`form-control ${errors.address ? 'is-invalid' : ''}`}
-                placeholder="Enter complete residential address"
+                placeholder="Enter complete street & city address"
                 value={formData.address}
                 onChange={handleChange}
                 onBlur={handleBlur}
-              ></textarea>
+              />
               {errors.address && (
                 <div className="error-message">
                   <AlertCircle size={14} />

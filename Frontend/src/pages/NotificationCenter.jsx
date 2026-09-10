@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
 import NotificationCard from '../components/NotificationCard';
 import NotificationDetailsModal from '../components/NotificationDetailsModal';
-import { Bell, CheckCheck, Trash2, Calendar, FileText, Clock, AlertCircle, Search } from 'lucide-react';
+import { Bell, CheckCheck, Trash2, Calendar, FileText, Clock, AlertCircle, Search, Inbox } from 'lucide-react';
+
+import notificationService from '../services/notificationService';
 
 const NotificationCenter = ({ 
   notifications, 
@@ -16,26 +18,32 @@ const NotificationCenter = ({
 
   // Filter calculations
   const totalCount = notifications.length;
-  const unreadCount = notifications.filter(n => !n.isRead).length;
-  const appointmentCount = notifications.filter(n => n.category === 'appointment').length;
-  const prescriptionCount = notifications.filter(n => n.category === 'prescription').length;
-  const followupCount = notifications.filter(n => n.category === 'followup').length;
-  const missedCount = notifications.filter(n => n.category === 'missed').length;
+  const unreadCount = notifications.filter(n => !n.isRead && n.status !== 'Read').length;
+  const appointmentCount = notifications.filter(n => n.category === 'appointment' || (n.type && n.type.includes('Appointment'))).length;
+  const prescriptionCount = notifications.filter(n => n.category === 'prescription' || (n.type && n.type.includes('Prescription'))).length;
+  const followupCount = notifications.filter(n => n.category === 'followup' || (n.type && n.type.includes('Follow'))).length;
+  const missedCount = notifications.filter(n => n.category === 'missed' || (n.type && n.type.includes('Missed'))).length;
 
-  const handleMarkRead = (id) => {
-    setNotifications(prev => prev.map(n => n.id === id ? { ...n, isRead: true } : n));
+  const handleMarkRead = async (id) => {
+    try {
+      await notificationService.markAsRead(id);
+    } catch (e) {}
+    setNotifications(prev => prev.map(n => n.id === id ? { ...n, isRead: true, status: 'Read' } : n));
   };
 
   const handleMarkUnread = (id) => {
-    setNotifications(prev => prev.map(n => n.id === id ? { ...n, isRead: false } : n));
+    setNotifications(prev => prev.map(n => n.id === id ? { ...n, isRead: false, status: 'Sent' } : n));
   };
 
   const handleDelete = (id) => {
     setNotifications(prev => prev.filter(n => n.id !== id));
   };
 
-  const handleMarkAllRead = () => {
-    setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
+  const handleMarkAllRead = async () => {
+    try {
+      await notificationService.markAllAsRead();
+    } catch (e) {}
+    setNotifications(prev => prev.map(n => ({ ...n, isRead: true, status: 'Read' })));
   };
 
   const handleClearAll = () => {
@@ -64,8 +72,8 @@ const NotificationCenter = ({
 
       <div className="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
         <div>
-          <h1 className="h3 fw-bold text-dark mb-1">Notification Center</h1>
-          <p className="text-muted mb-0">
+          <h1 className="page-title">Notification Center</h1>
+          <p className="page-subtitle">
             Real-time appointment alerts, prescription readiness, follow-up reminders, and healthcare notices.
           </p>
         </div>
@@ -73,7 +81,7 @@ const NotificationCenter = ({
         <div className="d-flex align-items-center gap-2">
           <button 
             type="button" 
-            className="btn btn-sm btn-outline-primary d-inline-flex align-items-center gap-1"
+            className="btn btn-sm btn-primary d-inline-flex align-items-center gap-1"
             onClick={handleMarkAllRead}
             disabled={unreadCount === 0}
           >
@@ -83,7 +91,7 @@ const NotificationCenter = ({
 
           <button 
             type="button" 
-            className="btn btn-sm btn-outline-danger d-inline-flex align-items-center gap-1"
+            className="btn btn-sm btn-secondary text-danger d-inline-flex align-items-center gap-1"
             onClick={handleClearAll}
             disabled={totalCount === 0}
           >
@@ -96,31 +104,31 @@ const NotificationCenter = ({
       {/* Summary Cards Grid */}
       <div className="notif-center-stats">
         <div className={`notif-stat-card ${selectedCategory === 'all' ? 'border-primary' : ''}`}
-             onClick={() => setSelectedCategory('all')} style={{ cursor: 'pointer' }}>
+             onClick={() => setSelectedCategory('all')}>
           <div className="notif-icon-circle notif-icon-appointment">
-            <Bell size={20} />
+            <Bell size={18} />
           </div>
           <div>
             <div className="stat-count">{totalCount}</div>
-            <div className="stat-label">Total Notifications</div>
+            <div className="stat-label">Total Notices</div>
           </div>
         </div>
 
         <div className={`notif-stat-card ${selectedCategory === 'unread' ? 'border-primary' : ''}`}
-             onClick={() => setSelectedCategory('unread')} style={{ cursor: 'pointer' }}>
+             onClick={() => setSelectedCategory('unread')}>
           <div className="notif-icon-circle notif-icon-missed">
-            <Bell size={20} />
+            <Bell size={18} />
           </div>
           <div>
             <div className="stat-count">{unreadCount}</div>
-            <div className="stat-label">Unread Notifications</div>
+            <div className="stat-label">Unread</div>
           </div>
         </div>
 
         <div className={`notif-stat-card ${selectedCategory === 'appointment' ? 'border-primary' : ''}`}
-             onClick={() => setSelectedCategory('appointment')} style={{ cursor: 'pointer' }}>
+             onClick={() => setSelectedCategory('appointment')}>
           <div className="notif-icon-circle notif-icon-appointment">
-            <Calendar size={20} />
+            <Calendar size={18} />
           </div>
           <div>
             <div className="stat-count">{appointmentCount}</div>
@@ -129,9 +137,9 @@ const NotificationCenter = ({
         </div>
 
         <div className={`notif-stat-card ${selectedCategory === 'prescription' ? 'border-primary' : ''}`}
-             onClick={() => setSelectedCategory('prescription')} style={{ cursor: 'pointer' }}>
+             onClick={() => setSelectedCategory('prescription')}>
           <div className="notif-icon-circle notif-icon-prescription">
-            <FileText size={20} />
+            <FileText size={18} />
           </div>
           <div>
             <div className="stat-count">{prescriptionCount}</div>
@@ -140,9 +148,9 @@ const NotificationCenter = ({
         </div>
 
         <div className={`notif-stat-card ${selectedCategory === 'followup' ? 'border-primary' : ''}`}
-             onClick={() => setSelectedCategory('followup')} style={{ cursor: 'pointer' }}>
+             onClick={() => setSelectedCategory('followup')}>
           <div className="notif-icon-circle notif-icon-followup">
-            <Clock size={20} />
+            <Clock size={18} />
           </div>
           <div>
             <div className="stat-count">{followupCount}</div>
@@ -151,9 +159,9 @@ const NotificationCenter = ({
         </div>
 
         <div className={`notif-stat-card ${selectedCategory === 'missed' ? 'border-primary' : ''}`}
-             onClick={() => setSelectedCategory('missed')} style={{ cursor: 'pointer' }}>
+             onClick={() => setSelectedCategory('missed')}>
           <div className="notif-icon-circle notif-icon-missed">
-            <AlertCircle size={20} />
+            <AlertCircle size={18} />
           </div>
           <div>
             <div className="stat-count">{missedCount}</div>
@@ -211,7 +219,7 @@ const NotificationCenter = ({
 
         <div style={{ width: '260px' }}>
           <div className="input-group input-group-sm">
-            <span className="input-group-text bg-white">
+            <span className="input-group-text">
               <Search size={14} />
             </span>
             <input
@@ -239,9 +247,10 @@ const NotificationCenter = ({
             />
           ))
         ) : (
-          <div className="text-center py-5 bg-white rounded-3 border">
-            <Bell size={36} className="text-muted mb-2" />
-            <h5 className="h6 text-muted">No notifications matching your filter.</h5>
+          <div className="empty-state card">
+            <Inbox className="empty-state-icon" size={44} />
+            <h4 className="fw-bold text-primary mb-1">No notifications matching your filter</h4>
+            <p className="text-muted" style={{ fontSize: '0.875rem' }}>You are all caught up with your clinical updates.</p>
           </div>
         )}
       </div>

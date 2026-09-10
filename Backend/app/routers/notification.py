@@ -31,3 +31,11 @@ def mark_read(
     current_user: dict = Depends(get_current_user)
 ):
     return NotificationService.mark_read(db, notif_id)
+
+@router.put("/read-all")
+def mark_all_read(
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(get_current_user)
+):
+    count = NotificationService.mark_all_read(db)
+    return {"status": "success", "markedCount": count}

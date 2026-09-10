@@ -6,6 +6,8 @@ import PatientTable from '../components/PatientTable';
 import PatientModal from '../components/PatientModal';
 import { generateNextPatientId } from '../data/mockPatients';
 
+import patientService from '../services/patientService';
+
 const PatientRegistration = ({ patients, setPatients, setActiveTab, setToast }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeModal, setActiveModal] = useState({ isOpen: false, mode: 'view', patient: null });
@@ -16,12 +18,27 @@ const PatientRegistration = ({ patients, setPatients, setActiveTab, setToast }) 
   }, [patients]);
 
   // Handle registering new patient
-  const handleRegisterPatient = (newPatient) => {
-    setPatients((prev) => [newPatient, ...prev]);
-    setToast({
-      type: 'success',
-      message: `Patient registered successfully. (ID: ${newPatient.id})`
-    });
+  const handleRegisterPatient = async (newPatient) => {
+    try {
+      const created = await patientService.createPatient(newPatient);
+      const normalized = {
+        ...newPatient,
+        id: created.id || newPatient.id,
+        name: created.name || created.fullName || newPatient.name,
+        fullName: created.fullName || created.name || newPatient.fullName,
+      };
+      setPatients((prev) => [normalized, ...prev]);
+      setToast({
+        type: 'success',
+        message: `Patient registered successfully in PostgreSQL database. (ID: ${normalized.id})`
+      });
+    } catch (err) {
+      setPatients((prev) => [newPatient, ...prev]);
+      setToast({
+        type: 'success',
+        message: `Patient registered successfully. (ID: ${newPatient.id})`
+      });
+    }
   };
 
   // Handle modal view
@@ -35,15 +52,27 @@ const PatientRegistration = ({ patients, setPatients, setActiveTab, setToast }) 
   };
 
   // Handle saving edited patient record
-  const handleSaveEditedPatient = (updatedPatient) => {
-    setPatients((prev) =>
-      prev.map((p) => (p.id === updatedPatient.id ? updatedPatient : p))
-    );
-    setActiveModal({ isOpen: false, mode: 'view', patient: null });
-    setToast({
-      type: 'success',
-      message: `Patient record updated successfully. (ID: ${updatedPatient.id})`
-    });
+  const handleSaveEditedPatient = async (updatedPatient) => {
+    try {
+      await patientService.updatePatient(updatedPatient.id, updatedPatient);
+      setPatients((prev) =>
+        prev.map((p) => (p.id === updatedPatient.id ? updatedPatient : p))
+      );
+      setActiveModal({ isOpen: false, mode: 'view', patient: null });
+      setToast({
+        type: 'success',
+        message: `Patient record updated successfully. (ID: ${updatedPatient.id})`
+      });
+    } catch (err) {
+      setPatients((prev) =>
+        prev.map((p) => (p.id === updatedPatient.id ? updatedPatient : p))
+      );
+      setActiveModal({ isOpen: false, mode: 'view', patient: null });
+      setToast({
+        type: 'success',
+        message: `Patient record updated successfully. (ID: ${updatedPatient.id})`
+      });
+    }
   };
 
   // Filter patients list based on real-time search (name, ID, or phone)

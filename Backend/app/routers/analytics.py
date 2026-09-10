@@ -11,7 +11,7 @@ router = APIRouter(prefix="/analytics", tags=["Executive Analytics & Reports"])
 @router.get("/dashboard", response_model=DashboardMetricsResponse)
 def get_dashboard_metrics(
     db: Session = Depends(get_db),
-    current_user: dict = Depends(require_roles("Admin", "Doctor"))
+    current_user: dict = Depends(require_roles("Admin", "Doctor", "Patient"))
 ):
     return AnalyticsService.get_dashboard_metrics(db)
 

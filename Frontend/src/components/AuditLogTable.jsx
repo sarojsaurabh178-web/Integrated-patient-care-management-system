@@ -40,7 +40,7 @@ const AuditLogTable = ({ logs }) => {
       <div className="audit-table-filters">
         <div className="flex-grow-1" style={{ minWidth: '220px' }}>
           <div className="input-group input-group-sm">
-            <span className="input-group-text bg-white">
+            <span className="input-group-text">
               <Search size={16} />
             </span>
             <input
@@ -126,7 +126,7 @@ const AuditLogTable = ({ logs }) => {
                 <tr key={log.id}>
                   <td className="fw-semibold">{log.user}</td>
                   <td>
-                    <span className="badge bg-light text-dark border">
+                    <span className="badge bg-secondary">
                       {log.role}
                     </span>
                   </td>

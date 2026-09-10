@@ -19,6 +19,26 @@ def get_appointments(
 ):
     return AppointmentService.get_all_appointments(db, patient_id=patientId, doctor_id=doctorId, status_filter=status, date=date)
 
+@router.get("/availability")
+def check_availability(
+    doctorId: str = Query(..., alias="doctorId"),
+    date: str = Query(..., alias="date"),
+    db: Session = Depends(get_db)
+):
+    from app.repositories.appointment_repository import AppointmentRepository
+    booked_slots = AppointmentRepository.get_booked_slots(db, doctorId, date)
+    all_slots = [
+        "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM",
+        "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"
+    ]
+    available_slots = [s for s in all_slots if s not in booked_slots]
+    return {
+        "doctorId": doctorId,
+        "date": date,
+        "bookedSlots": booked_slots,
+        "availableSlots": available_slots
+    }
+
 @router.post("", response_model=AppointmentResponse, status_code=201)
 def create_appointment(
     data: AppointmentCreate,
