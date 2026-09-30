@@ -1,0 +1,365 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/auth/AuthLayout.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react;
+import { Activity, ShieldCheck, Lock, HeartPulse, UserCheck, CheckCircle2 } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+import ThemeToggle from "/src/components/ThemeToggle.jsx";
+const AuthLayout = ({ children, activeView, theme, toggleTheme, onSelectView }) => {
+  return /* @__PURE__ */ jsxDEV("div", { className: "auth-master-page", children: [
+    /* @__PURE__ */ jsxDEV("header", { className: "auth-top-bar", children: /* @__PURE__ */ jsxDEV("div", { className: "auth-top-inner", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "auth-top-brand", onClick: () => onSelectView("login"), children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "auth-brand-glyph", children: /* @__PURE__ */ jsxDEV(Activity, { size: 22, className: "text-white", strokeWidth: 2.5 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+          lineNumber: 32,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+          lineNumber: 31,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "auth-brand-text", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "auth-brand-title", children: "MediTrack" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+            lineNumber: 35,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "auth-brand-tag", children: "Healthcare Platform" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+            lineNumber: 36,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+          lineNumber: 34,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+        lineNumber: 30,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "auth-top-actions", children: theme && toggleTheme && /* @__PURE__ */ jsxDEV(ThemeToggle, { theme, toggleTheme }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+        lineNumber: 42,
+        columnNumber: 13
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+        lineNumber: 40,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+      lineNumber: 29,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+      lineNumber: 28,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "auth-split-wrapper", children: [
+      /* @__PURE__ */ jsxDEV("aside", { className: "auth-hero-panel", "aria-label": "Healthcare Information", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "hero-panel-decorations", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "decor-blob blob-1" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+            lineNumber: 53,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "decor-blob blob-2" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+            lineNumber: 54,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+          lineNumber: 52,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "hero-content-inner", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "hero-header-badge", children: [
+            /* @__PURE__ */ jsxDEV(HeartPulse, { size: 16, className: "pulse-icon" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+              lineNumber: 59,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Enterprise Clinical Care Portal" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+              lineNumber: 60,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+            lineNumber: 58,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("h1", { className: "hero-headline", children: "Secure, Unified Care Management for Patients & Providers" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+            lineNumber: 63,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "hero-description", children: "MediTrack connects doctors, patients, and healthcare administrators into a high-security, HIPAA-aligned digital ecosystem for appointments, clinical consultations, and records." }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+            lineNumber: 67,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "hero-features-grid", children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "hero-feature-card", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "feature-icon", children: /* @__PURE__ */ jsxDEV(ShieldCheck, { size: 20 }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 76,
+                columnNumber: 19
+              }, this) }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 75,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "feature-title", children: "Role-Based Authorization" }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                  lineNumber: 79,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "feature-desc", children: "Separated workflows for Patients, Doctors, and System Admins." }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                  lineNumber: 80,
+                  columnNumber: 19
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 78,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+              lineNumber: 74,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "hero-feature-card", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "feature-icon", children: /* @__PURE__ */ jsxDEV(Lock, { size: 20 }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 86,
+                columnNumber: 19
+              }, this) }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 85,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "feature-title", children: "Dual Identifier Access" }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                  lineNumber: 89,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "feature-desc", children: "Sign in with verified Email or registered Phone Number with 6-digit OTP recovery." }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                  lineNumber: 90,
+                  columnNumber: 19
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 88,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+              lineNumber: 84,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "hero-feature-card", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "feature-icon", children: /* @__PURE__ */ jsxDEV(UserCheck, { size: 20 }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 96,
+                columnNumber: 19
+              }, this) }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 95,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "feature-title", children: "Credentialed Doctor Approval" }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                  lineNumber: 99,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "feature-desc", children: "Strict medical license verification protecting clinical operations." }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                  lineNumber: 100,
+                  columnNumber: 19
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 98,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+              lineNumber: 94,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+            lineNumber: 73,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "hero-status-footer", children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "status-pill", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: "status-dot-green" }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 108,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: "System Operational • REST API Ready" }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 109,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+              lineNumber: 107,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "compliance-tags", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: "compliance-tag", children: "HIPAA Compliant" }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 112,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { className: "compliance-tag", children: "AES-256" }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 113,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { className: "compliance-tag", children: "ISO 27001" }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+                lineNumber: 114,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+              lineNumber: 111,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+            lineNumber: 106,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+          lineNumber: 57,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+        lineNumber: 51,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("section", { className: "auth-form-panel", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "auth-card-wrapper", children }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+          lineNumber: 122,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("footer", { className: "auth-footer-notice", children: [
+          /* @__PURE__ */ jsxDEV("p", { children: [
+            "© ",
+            (/* @__PURE__ */ new Date()).getFullYear(),
+            " MediTrack Inc. All rights reserved. Hospital Information Management System."
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+            lineNumber: 128,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "auth-footer-links", children: [
+            /* @__PURE__ */ jsxDEV("a", { href: "#privacy", onClick: (e) => {
+              e.preventDefault();
+              alert("MediTrack Privacy Policy: All medical data is stored under HIPAA and local health data governance protocols.");
+            }, children: "Privacy Policy" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+              lineNumber: 130,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { className: "dot-sep", children: "•" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+              lineNumber: 133,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("a", { href: "#terms", onClick: (e) => {
+              e.preventDefault();
+              alert("MediTrack Terms of Service: Intended strictly for authorized healthcare professionals and registered patients.");
+            }, children: "Terms of Service" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+              lineNumber: 134,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { className: "dot-sep", children: "•" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+              lineNumber: 137,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("a", { href: "#support", onClick: (e) => {
+              e.preventDefault();
+              alert("MediTrack Support: Please contact it-support@meditrack.org or your clinical supervisor.");
+            }, children: "IT Helpdesk" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+              lineNumber: 138,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+            lineNumber: 129,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+          lineNumber: 127,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+        lineNumber: 121,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+      lineNumber: 49,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx",
+    lineNumber: 26,
+    columnNumber: 5
+  }, this);
+};
+_c = AuthLayout;
+export default AuthLayout;
+var _c;
+$RefreshReg$(_c, "AuthLayout");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/AuthLayout.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUEsbUJBRUE7QUFBQSxZQUNBLHVCQUFDLFVBQUssV0FBVSxXQUFVLGlCQUExQjtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQUEyQjtBQUFBLFlBQzNCLHVCQUFDLE9BQUUsTUFBSyxVQUFTLFNBQVMsQ0FBQ0YsTUFBTTtBQUFFQSxnQkFBRUMsZUFBZTtBQUFHQyxvQkFBTSxnSEFBZ0g7QUFBQSxZQUFHLEdBQUcsZ0NBQW5MO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBRUE7QUFBQSxZQUNBLHVCQUFDLFVBQUssV0FBVSxXQUFVLGlCQUExQjtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQUEyQjtBQUFBLFlBQzNCLHVCQUFDLE9BQUUsTUFBSyxZQUFXLFNBQVMsQ0FBQ0YsTUFBTTtBQUFFQSxnQkFBRUMsZUFBZTtBQUFHQyxvQkFBTSx5RkFBeUY7QUFBQSxZQUFHLEdBQUcsMkJBQTlKO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBRUE7QUFBQSxlQVhGO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBWUE7QUFBQSxhQWRGO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFlQTtBQUFBLFdBckJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFzQkE7QUFBQSxTQTlGRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBK0ZBO0FBQUEsT0F0SEY7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQXVIQTtBQUVKO0FBQUVDLEtBM0hJWDtBQTZITixlQUFlQTtBQUFXLElBQUFXO0FBQUEsYUFBQUEsSUFBQSIsIm5hbWVzIjpbIlJlYWN0IiwiQWN0aXZpdHkiLCJTaGllbGRDaGVjayIsIkxvY2siLCJIZWFydFB1bHNlIiwiVXNlckNoZWNrIiwiQ2hlY2tDaXJjbGUyIiwiVGhlbWVUb2dnbGUiLCJBdXRoTGF5b3V0IiwiY2hpbGRyZW4iLCJhY3RpdmVWaWV3IiwidGhlbWUiLCJ0b2dnbGVUaGVtZSIsIm9uU2VsZWN0VmlldyIsIkRhdGUiLCJnZXRGdWxsWWVhciIsImUiLCJwcmV2ZW50RGVmYXVsdCIsImFsZXJ0IiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiQXV0aExheW91dC5qc3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcclxuaW1wb3J0IHsgQWN0aXZpdHksIFNoaWVsZENoZWNrLCBMb2NrLCBIZWFydFB1bHNlLCBVc2VyQ2hlY2ssIENoZWNrQ2lyY2xlMiB9IGZyb20gJ2x1Y2lkZS1yZWFjdCc7XHJcbmltcG9ydCBUaGVtZVRvZ2dsZSBmcm9tICcuLi9UaGVtZVRvZ2dsZSc7XHJcblxyXG5jb25zdCBBdXRoTGF5b3V0ID0gKHsgY2hpbGRyZW4sIGFjdGl2ZVZpZXcsIHRoZW1lLCB0b2dnbGVUaGVtZSwgb25TZWxlY3RWaWV3IH0pID0+IHtcclxuICByZXR1cm4gKFxyXG4gICAgPGRpdiBjbGFzc05hbWU9XCJhdXRoLW1hc3Rlci1wYWdlXCI+XHJcbiAgICAgIHsvKiBUb3AgVXRpbGl0eSBCYXIgZm9yIFRoZW1lIFN3aXRjaCAmIFF1aWNrIEFjY2VzcyAqL31cclxuICAgICAgPGhlYWRlciBjbGFzc05hbWU9XCJhdXRoLXRvcC1iYXJcIj5cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImF1dGgtdG9wLWlubmVyXCI+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImF1dGgtdG9wLWJyYW5kXCIgb25DbGljaz17KCkgPT4gb25TZWxlY3RWaWV3KCdsb2dpbicpfT5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhdXRoLWJyYW5kLWdseXBoXCI+XHJcbiAgICAgICAgICAgICAgPEFjdGl2aXR5IHNpemU9ezIyfSBjbGFzc05hbWU9XCJ0ZXh0LXdoaXRlXCIgc3Ryb2tlV2lkdGg9ezIuNX0gLz5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYXV0aC1icmFuZC10ZXh0XCI+XHJcbiAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiYXV0aC1icmFuZC10aXRsZVwiPk1lZGlUcmFjazwvc3Bhbj5cclxuICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJhdXRoLWJyYW5kLXRhZ1wiPkhlYWx0aGNhcmUgUGxhdGZvcm08L3NwYW4+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhdXRoLXRvcC1hY3Rpb25zXCI+XHJcbiAgICAgICAgICAgIHt0aGVtZSAmJiB0b2dnbGVUaGVtZSAmJiAoXHJcbiAgICAgICAgICAgICAgPFRoZW1lVG9nZ2xlIHRoZW1lPXt0aGVtZX0gdG9nZ2xlVGhlbWU9e3RvZ2dsZVRoZW1lfSAvPlxyXG4gICAgICAgICAgICApfVxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgIDwvaGVhZGVyPlxyXG5cclxuICAgICAgey8qIE1haW4gU3BsaXQgQm9keSAqL31cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJhdXRoLXNwbGl0LXdyYXBwZXJcIj5cclxuICAgICAgICB7LyogTGVmdCBTaWRlOiBIZWFsdGhjYXJlIFRydXN0ICYgU3lzdGVtIEluZm9ybWF0aW9uIChEZXNrdG9wKSAqL31cclxuICAgICAgICA8YXNpZGUgY2xhc3NOYW1lPVwiYXV0aC1oZXJvLXBhbmVsXCIgYXJpYS1sYWJlbD1cIkhlYWx0aGNhcmUgSW5mb3JtYXRpb25cIj5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiaGVyby1wYW5lbC1kZWNvcmF0aW9uc1wiPlxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImRlY29yLWJsb2IgYmxvYi0xXCIgLz5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJkZWNvci1ibG9iIGJsb2ItMlwiIC8+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImhlcm8tY29udGVudC1pbm5lclwiPlxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImhlcm8taGVhZGVyLWJhZGdlXCI+XHJcbiAgICAgICAgICAgICAgPEhlYXJ0UHVsc2Ugc2l6ZT17MTZ9IGNsYXNzTmFtZT1cInB1bHNlLWljb25cIiAvPlxyXG4gICAgICAgICAgICAgIDxzcGFuPkVudGVycHJpc2UgQ2xpbmljYWwgQ2FyZSBQb3J0YWw8L3NwYW4+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgICAgPGgxIGNsYXNzTmFtZT1cImhlcm8taGVhZGxpbmVcIj5cclxuICAgICAgICAgICAgICBTZWN1cmUsIFVuaWZpZWQgQ2FyZSBNYW5hZ2VtZW50IGZvciBQYXRpZW50cyAmIFByb3ZpZGVyc1xyXG4gICAgICAgICAgICA8L2gxPlxyXG5cclxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiaGVyby1kZXNjcmlwdGlvblwiPlxyXG4gICAgICAgICAgICAgIE1lZGlUcmFjayBjb25uZWN0cyBkb2N0b3JzLCBwYXRpZW50cywgYW5kIGhlYWx0aGNhcmUgYWRtaW5pc3RyYXRvcnMgaW50byBhIGhpZ2gtc2VjdXJpdHksIFxyXG4gICAgICAgICAgICAgIEhJUEFBLWFsaWduZWQgZGlnaXRhbCBlY29zeXN0ZW0gZm9yIGFwcG9pbnRtZW50cywgY2xpbmljYWwgY29uc3VsdGF0aW9ucywgYW5kIHJlY29yZHMuXHJcbiAgICAgICAgICAgIDwvcD5cclxuXHJcbiAgICAgICAgICAgIHsvKiBGZWF0dXJlIEhpZ2hsaWdodHMgR3JpZCAqL31cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJoZXJvLWZlYXR1cmVzLWdyaWRcIj5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImhlcm8tZmVhdHVyZS1jYXJkXCI+XHJcbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZlYXR1cmUtaWNvblwiPlxyXG4gICAgICAgICAgICAgICAgICA8U2hpZWxkQ2hlY2sgc2l6ZT17MjB9IC8+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgIDxkaXY+XHJcbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmVhdHVyZS10aXRsZVwiPlJvbGUtQmFzZWQgQXV0aG9yaXphdGlvbjwvZGl2PlxyXG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZlYXR1cmUtZGVzY1wiPlNlcGFyYXRlZCB3b3JrZmxvd3MgZm9yIFBhdGllbnRzLCBEb2N0b3JzLCBhbmQgU3lzdGVtIEFkbWlucy48L2Rpdj5cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImhlcm8tZmVhdHVyZS1jYXJkXCI+XHJcbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZlYXR1cmUtaWNvblwiPlxyXG4gICAgICAgICAgICAgICAgICA8TG9jayBzaXplPXsyMH0gLz5cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgICAgPGRpdj5cclxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmZWF0dXJlLXRpdGxlXCI+RHVhbCBJZGVudGlmaWVyIEFjY2VzczwvZGl2PlxyXG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZlYXR1cmUtZGVzY1wiPlNpZ24gaW4gd2l0aCB2ZXJpZmllZCBFbWFpbCBvciByZWdpc3RlcmVkIFBob25lIE51bWJlciB3aXRoIDYtZGlnaXQgT1RQIHJlY292ZXJ5LjwvZGl2PlxyXG4gICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiaGVyby1mZWF0dXJlLWNhcmRcIj5cclxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmVhdHVyZS1pY29uXCI+XHJcbiAgICAgICAgICAgICAgICAgIDxVc2VyQ2hlY2sgc2l6ZT17MjB9IC8+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgIDxkaXY+XHJcbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmVhdHVyZS10aXRsZVwiPkNyZWRlbnRpYWxlZCBEb2N0b3IgQXBwcm92YWw8L2Rpdj5cclxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmZWF0dXJlLWRlc2NcIj5TdHJpY3QgbWVkaWNhbCBsaWNlbnNlIHZlcmlmaWNhdGlvbiBwcm90ZWN0aW5nIGNsaW5pY2FsIG9wZXJhdGlvbnMuPC9kaXY+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICB7LyogQ29tcGxpYW5jZSAmIFN5c3RlbSBTdGF0dXMgQmFkZ2UgKi99XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiaGVyby1zdGF0dXMtZm9vdGVyXCI+XHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzdGF0dXMtcGlsbFwiPlxyXG4gICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwic3RhdHVzLWRvdC1ncmVlblwiIC8+XHJcbiAgICAgICAgICAgICAgICA8c3Bhbj5TeXN0ZW0gT3BlcmF0aW9uYWwg4oCiIFJFU1QgQVBJIFJlYWR5PC9zcGFuPlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29tcGxpYW5jZS10YWdzXCI+XHJcbiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJjb21wbGlhbmNlLXRhZ1wiPkhJUEFBIENvbXBsaWFudDwvc3Bhbj5cclxuICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImNvbXBsaWFuY2UtdGFnXCI+QUVTLTI1Njwvc3Bhbj5cclxuICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImNvbXBsaWFuY2UtdGFnXCI+SVNPIDI3MDAxPC9zcGFuPlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvYXNpZGU+XHJcblxyXG4gICAgICAgIHsvKiBSaWdodCBTaWRlOiBBdXRoIENvbnRhaW5lciBGb3JtIENhcmQgKi99XHJcbiAgICAgICAgPHNlY3Rpb24gY2xhc3NOYW1lPVwiYXV0aC1mb3JtLXBhbmVsXCI+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImF1dGgtY2FyZC13cmFwcGVyXCI+XHJcbiAgICAgICAgICAgIHtjaGlsZHJlbn1cclxuICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgIHsvKiBBY2Nlc3NpYmxlIEZvb3RlciAqL31cclxuICAgICAgICAgIDxmb290ZXIgY2xhc3NOYW1lPVwiYXV0aC1mb290ZXItbm90aWNlXCI+XHJcbiAgICAgICAgICAgIDxwPsKpIHtuZXcgRGF0ZSgpLmdldEZ1bGxZZWFyKCl9IE1lZGlUcmFjayBJbmMuIEFsbCByaWdodHMgcmVzZXJ2ZWQuIEhvc3BpdGFsIEluZm9ybWF0aW9uIE1hbmFnZW1lbnQgU3lzdGVtLjwvcD5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhdXRoLWZvb3Rlci1saW5rc1wiPlxyXG4gICAgICAgICAgICAgIDxhIGhyZWY9XCIjcHJpdmFjeVwiIG9uQ2xpY2s9eyhlKSA9PiB7IGUucHJldmVudERlZmF1bHQoKTsgYWxlcnQoJ01lZGlUcmFjayBQcml2YWN5IFBvbGljeTogQWxsIG1lZGljYWwgZGF0YSBpcyBzdG9yZWQgdW5kZXIgSElQQUEgYW5kIGxvY2FsIGhlYWx0aCBkYXRhIGdvdmVybmFuY2UgcHJvdG9jb2xzLicpOyB9fT5cclxuICAgICAgICAgICAgICAgIFByaXZhY3kgUG9saWN5XHJcbiAgICAgICAgICAgICAgPC9hPlxyXG4gICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImRvdC1zZXBcIj7igKI8L3NwYW4+XHJcbiAgICAgICAgICAgICAgPGEgaHJlZj1cIiN0ZXJtc1wiIG9uQ2xpY2s9eyhlKSA9PiB7IGUucHJldmVudERlZmF1bHQoKTsgYWxlcnQoJ01lZGlUcmFjayBUZXJtcyBvZiBTZXJ2aWNlOiBJbnRlbmRlZCBzdHJpY3RseSBmb3IgYXV0aG9yaXplZCBoZWFsdGhjYXJlIHByb2Zlc3Npb25hbHMgYW5kIHJlZ2lzdGVyZWQgcGF0aWVudHMuJyk7IH19PlxyXG4gICAgICAgICAgICAgICAgVGVybXMgb2YgU2VydmljZVxyXG4gICAgICAgICAgICAgIDwvYT5cclxuICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJkb3Qtc2VwXCI+4oCiPC9zcGFuPlxyXG4gICAgICAgICAgICAgIDxhIGhyZWY9XCIjc3VwcG9ydFwiIG9uQ2xpY2s9eyhlKSA9PiB7IGUucHJldmVudERlZmF1bHQoKTsgYWxlcnQoJ01lZGlUcmFjayBTdXBwb3J0OiBQbGVhc2UgY29udGFjdCBpdC1zdXBwb3J0QG1lZGl0cmFjay5vcmcgb3IgeW91ciBjbGluaWNhbCBzdXBlcnZpc29yLicpOyB9fT5cclxuICAgICAgICAgICAgICAgIElUIEhlbHBkZXNrXHJcbiAgICAgICAgICAgICAgPC9hPlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgIDwvZm9vdGVyPlxyXG4gICAgICAgIDwvc2VjdGlvbj5cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59O1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgQXV0aExheW91dDtcclxuIl0sImZpbGUiOiJDOi9Vc2Vycy9zYXJvai9PbmVEcml2ZS9EZXNrdG9wL01lZGlTeW5jL0Zyb250ZW5kL3NyYy9jb21wb25lbnRzL2F1dGgvQXV0aExheW91dC5qc3gifQ==

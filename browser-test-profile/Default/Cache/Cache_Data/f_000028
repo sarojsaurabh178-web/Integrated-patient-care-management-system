@@ -1,0 +1,419 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/auth/OtpVerificationForm.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const Fragment = __vite__cjsImport0_react_jsxDevRuntime["Fragment"]; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react; const useState = __vite__cjsImport3_react["useState"]; const useEffect = __vite__cjsImport3_react["useEffect"];
+import {
+  KeyRound,
+  ArrowLeft,
+  AlertCircle,
+  CheckCircle2,
+  Clock,
+  RotateCw,
+  ShieldCheck,
+  ArrowRight
+} from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+import OtpInput from "/src/components/auth/OtpInput.jsx";
+import { authService } from "/src/services/authService.js";
+const OtpVerificationForm = ({
+  otpData = {},
+  onNavigate,
+  onOtpVerified
+}) => {
+  _s();
+  const {
+    identifier = "",
+    maskedTarget = "",
+    cooldownSeconds = 30,
+    demoOtpCode = "849201"
+  } = otpData;
+  const [otpValue, setOtpValue] = useState("");
+  const [secondsRemaining, setSecondsRemaining] = useState(cooldownSeconds || 30);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successNotice, setSuccessNotice] = useState(null);
+  useEffect(() => {
+    if (secondsRemaining <= 0) return;
+    const timer = setInterval(() => {
+      setSecondsRemaining((prev) => prev - 1);
+    }, 1e3);
+    return () => clearInterval(timer);
+  }, [secondsRemaining]);
+  useEffect(() => {
+    if (otpValue.length === 6 && !isLoading) {
+      handleVerify(otpValue);
+    }
+  }, [otpValue]);
+  const handleVerify = async (codeToVerify) => {
+    const code = codeToVerify || otpValue;
+    if (code.length !== 6) {
+      setErrorMessage("Please enter the full 6-digit verification code.");
+      return;
+    }
+    setErrorMessage(null);
+    setIsLoading(true);
+    try {
+      const result = await authService.verifyOtp(identifier, code);
+      setSuccessNotice("OTP code verified successfully.");
+      setTimeout(() => {
+        onOtpVerified({
+          identifier,
+          resetToken: result.resetToken
+        });
+        onNavigate("create_new_password");
+      }, 700);
+    } catch (err) {
+      setErrorMessage(err.message || "Invalid verification code.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const handleResend = async () => {
+    if (secondsRemaining > 0 || isLoading) return;
+    setErrorMessage(null);
+    setSuccessNotice(null);
+    setIsLoading(true);
+    try {
+      const result = await authService.sendOtp(identifier || "demo@meditrack.org");
+      setSecondsRemaining(result.cooldownSeconds || 30);
+      setSuccessNotice("A new verification code has been dispatched.");
+      setOtpValue("");
+    } catch (err) {
+      setErrorMessage(err.message || "Failed to resend verification code.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  return /* @__PURE__ */ jsxDEV("div", { className: "auth-card-body", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "auth-card-header", children: [
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          type: "button",
+          className: "btn-back-link",
+          onClick: () => onNavigate("forgot_password"),
+          disabled: isLoading,
+          children: [
+            /* @__PURE__ */ jsxDEV(ArrowLeft, { size: 16 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+              lineNumber: 122,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Change Email/Phone" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+              lineNumber: 123,
+              columnNumber: 11
+            }, this)
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+          lineNumber: 116,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ jsxDEV("div", { className: "auth-badge-header mt-2", children: /* @__PURE__ */ jsxDEV("span", { className: "badge-pill-primary", children: "Two-Factor Security" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 127,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 126,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("h2", { className: "auth-main-title", children: "Verify OTP" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 129,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("p", { className: "auth-main-subtitle", children: [
+        "We've sent a 6-digit verification code to",
+        " ",
+        /* @__PURE__ */ jsxDEV("strong", { className: "text-primary", children: maskedTarget || identifier || "your registered contact" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+          lineNumber: 132,
+          columnNumber: 11
+        }, this),
+        "."
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 130,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+      lineNumber: 115,
+      columnNumber: 7
+    }, this),
+    errorMessage && /* @__PURE__ */ jsxDEV("div", { className: "auth-alert auth-alert-danger", role: "alert", "aria-live": "assertive", children: [
+      /* @__PURE__ */ jsxDEV(AlertCircle, { size: 18, className: "alert-icon flex-shrink-0" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 139,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "alert-content", children: [
+        /* @__PURE__ */ jsxDEV("strong", { children: "Verification Error:" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+          lineNumber: 141,
+          columnNumber: 13
+        }, this),
+        " ",
+        errorMessage
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 140,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+      lineNumber: 138,
+      columnNumber: 7
+    }, this),
+    successNotice && /* @__PURE__ */ jsxDEV("div", { className: "auth-alert auth-alert-success", role: "alert", children: [
+      /* @__PURE__ */ jsxDEV(CheckCircle2, { size: 18, className: "alert-icon flex-shrink-0" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 148,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "alert-content", children: successNotice }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 149,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+      lineNumber: 147,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "otp-section-wrapper my-4", children: [
+      /* @__PURE__ */ jsxDEV("label", { className: "auth-label text-center d-block mb-2", children: "Enter 6-Digit Verification Passcode" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 157,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(
+        OtpInput,
+        {
+          length: 6,
+          value: otpValue,
+          onChange: (val) => {
+            setOtpValue(val);
+            if (errorMessage) setErrorMessage(null);
+          },
+          disabled: isLoading,
+          isInvalid: Boolean(errorMessage)
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+          lineNumber: 161,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ jsxDEV("div", { className: "otp-testing-helper mt-3", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "helper-label", children: "Demo Simulation Passcode:" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+          lineNumber: 174,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            className: "btn-paste-demo-otp",
+            onClick: () => setOtpValue(demoOtpCode || "849201"),
+            title: "Click to auto-fill demo OTP",
+            children: [
+              demoOtpCode || "849201",
+              " (Click to auto-fill)"
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+            lineNumber: 175,
+            columnNumber: 11
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 173,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+      lineNumber: 156,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(
+      "button",
+      {
+        type: "button",
+        id: "btn-verify-otp",
+        className: "btn-auth-primary w-100 mb-3",
+        onClick: () => handleVerify(otpValue),
+        disabled: isLoading || otpValue.length !== 6,
+        children: isLoading ? /* @__PURE__ */ jsxDEV(Fragment, { children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "spinner-border spinner-border-sm me-2", role: "status", "aria-hidden": "true" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+            lineNumber: 196,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { children: "Verifying..." }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+            lineNumber: 197,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+          lineNumber: 195,
+          columnNumber: 9
+        }, this) : /* @__PURE__ */ jsxDEV(Fragment, { children: [
+          /* @__PURE__ */ jsxDEV("span", { children: "Verify & Continue" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+            lineNumber: 201,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV(ArrowRight, { size: 18 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+            lineNumber: 202,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+          lineNumber: 200,
+          columnNumber: 9
+        }, this)
+      },
+      void 0,
+      false,
+      {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 187,
+        columnNumber: 7
+      },
+      this
+    ),
+    /* @__PURE__ */ jsxDEV("div", { className: "otp-resend-row", children: [
+      /* @__PURE__ */ jsxDEV("span", { className: "text-muted text-sm", children: "Didn't receive the code?" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 209,
+        columnNumber: 9
+      }, this),
+      secondsRemaining > 0 ? /* @__PURE__ */ jsxDEV("span", { className: "cooldown-timer", children: [
+        /* @__PURE__ */ jsxDEV(Clock, { size: 14, className: "me-1" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+          lineNumber: 212,
+          columnNumber: 13
+        }, this),
+        "Resend OTP in ",
+        /* @__PURE__ */ jsxDEV("strong", { children: [
+          secondsRemaining,
+          "s"
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+          lineNumber: 213,
+          columnNumber: 27
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 211,
+        columnNumber: 9
+      }, this) : /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          type: "button",
+          className: "btn-resend-otp",
+          onClick: handleResend,
+          disabled: isLoading,
+          children: [
+            /* @__PURE__ */ jsxDEV(RotateCw, { size: 14, className: "me-1" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+              lineNumber: 222,
+              columnNumber: 13
+            }, this),
+            "Resend OTP"
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+          lineNumber: 216,
+          columnNumber: 9
+        },
+        this
+      )
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+      lineNumber: 208,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "auth-card-footer mt-4 text-center", children: /* @__PURE__ */ jsxDEV(
+      "button",
+      {
+        type: "button",
+        className: "btn-link-action-inline",
+        onClick: () => onNavigate("login"),
+        children: "Cancel & Return to Login"
+      },
+      void 0,
+      false,
+      {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+        lineNumber: 229,
+        columnNumber: 9
+      },
+      this
+    ) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+      lineNumber: 228,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx",
+    lineNumber: 114,
+    columnNumber: 5
+  }, this);
+};
+_s(OtpVerificationForm, "+IjO/rqNR+cdeY8oZQtId5YYI78=");
+_c = OtpVerificationForm;
+export default OtpVerificationForm;
+var _c;
+$RefreshReg$(_c, "OtpVerificationForm");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/OtpVerificationForm.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUFBQTtBQUFBO0FBQUEsZUFBaUM7QUFBQSxRQUFHO0FBQUEsUUFDdEIsdUJBQUMsWUFBUUE7QUFBQUE7QUFBQUEsVUFBaUI7QUFBQSxhQUExQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBQTJCO0FBQUEsV0FGM0M7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUdBLElBRUE7QUFBQSxRQUFDO0FBQUE7QUFBQSxVQUNDLE1BQUs7QUFBQSxVQUNMLFdBQVU7QUFBQSxVQUNWLFNBQVNzQjtBQUFBQSxVQUNULFVBQVVwQjtBQUFBQSxVQUVWO0FBQUEsbUNBQUMsWUFBUyxNQUFNLElBQUksV0FBVSxVQUE5QjtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQUFvQztBQUFBLFlBQUc7QUFBQTtBQUFBO0FBQUEsUUFOekM7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE1BUUE7QUFBQSxTQWhCSjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBa0JBO0FBQUEsSUFFQSx1QkFBQyxTQUFJLFdBQVUscUNBQ2I7QUFBQSxNQUFDO0FBQUE7QUFBQSxRQUNDLE1BQUs7QUFBQSxRQUNMLFdBQVU7QUFBQSxRQUNWLFNBQVMsTUFBTVgsV0FBVyxPQUFPO0FBQUEsUUFBRTtBQUFBO0FBQUEsTUFIckM7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLElBTUEsS0FQRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBUUE7QUFBQSxPQTFIRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBMkhBO0FBRUo7QUFBRUUsR0E3TUlKLHFCQUFtQjtBQUFBLEtBQW5CQTtBQStNTixlQUFlQTtBQUFvQixJQUFBcUM7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsiUmVhY3QiLCJ1c2VTdGF0ZSIsInVzZUVmZmVjdCIsIktleVJvdW5kIiwiQXJyb3dMZWZ0IiwiQWxlcnRDaXJjbGUiLCJDaGVja0NpcmNsZTIiLCJDbG9jayIsIlJvdGF0ZUN3IiwiU2hpZWxkQ2hlY2siLCJBcnJvd1JpZ2h0IiwiT3RwSW5wdXQiLCJhdXRoU2VydmljZSIsIk90cFZlcmlmaWNhdGlvbkZvcm0iLCJvdHBEYXRhIiwib25OYXZpZ2F0ZSIsIm9uT3RwVmVyaWZpZWQiLCJfcyIsImlkZW50aWZpZXIiLCJtYXNrZWRUYXJnZXQiLCJjb29sZG93blNlY29uZHMiLCJkZW1vT3RwQ29kZSIsIm90cFZhbHVlIiwic2V0T3RwVmFsdWUiLCJzZWNvbmRzUmVtYWluaW5nIiwic2V0U2Vjb25kc1JlbWFpbmluZyIsImlzTG9hZGluZyIsInNldElzTG9hZGluZyIsImVycm9yTWVzc2FnZSIsInNldEVycm9yTWVzc2FnZSIsInN1Y2Nlc3NOb3RpY2UiLCJzZXRTdWNjZXNzTm90aWNlIiwidGltZXIiLCJzZXRJbnRlcnZhbCIsInByZXYiLCJjbGVhckludGVydmFsIiwibGVuZ3RoIiwiaGFuZGxlVmVyaWZ5IiwiY29kZVRvVmVyaWZ5IiwiY29kZSIsInJlc3VsdCIsInZlcmlmeU90cCIsInNldFRpbWVvdXQiLCJyZXNldFRva2VuIiwiZXJyIiwibWVzc2FnZSIsImhhbmRsZVJlc2VuZCIsInNlbmRPdHAiLCJ2YWwiLCJCb29sZWFuIiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiT3RwVmVyaWZpY2F0aW9uRm9ybS5qc3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlLCB1c2VFZmZlY3QgfSBmcm9tICdyZWFjdCc7XHJcbmltcG9ydCB7IFxyXG4gIEtleVJvdW5kLCBcclxuICBBcnJvd0xlZnQsIFxyXG4gIEFsZXJ0Q2lyY2xlLCBcclxuICBDaGVja0NpcmNsZTIsIFxyXG4gIENsb2NrLCBcclxuICBSb3RhdGVDdywgXHJcbiAgU2hpZWxkQ2hlY2ssIFxyXG4gIEFycm93UmlnaHQgXHJcbn0gZnJvbSAnbHVjaWRlLXJlYWN0JztcclxuaW1wb3J0IE90cElucHV0IGZyb20gJy4vT3RwSW5wdXQnO1xyXG5pbXBvcnQgeyBhdXRoU2VydmljZSB9IGZyb20gJy4uLy4uL3NlcnZpY2VzL2F1dGhTZXJ2aWNlJztcclxuXHJcbmNvbnN0IE90cFZlcmlmaWNhdGlvbkZvcm0gPSAoeyBcclxuICBvdHBEYXRhID0ge30sIFxyXG4gIG9uTmF2aWdhdGUsIFxyXG4gIG9uT3RwVmVyaWZpZWQgXHJcbn0pID0+IHtcclxuICBjb25zdCB7IFxyXG4gICAgaWRlbnRpZmllciA9ICcnLCBcclxuICAgIG1hc2tlZFRhcmdldCA9ICcnLCBcclxuICAgIGNvb2xkb3duU2Vjb25kcyA9IDMwLCBcclxuICAgIGRlbW9PdHBDb2RlID0gJzg0OTIwMScgXHJcbiAgfSA9IG90cERhdGE7XHJcblxyXG4gIGNvbnN0IFtvdHBWYWx1ZSwgc2V0T3RwVmFsdWVdID0gdXNlU3RhdGUoJycpO1xyXG4gIGNvbnN0IFtzZWNvbmRzUmVtYWluaW5nLCBzZXRTZWNvbmRzUmVtYWluaW5nXSA9IHVzZVN0YXRlKGNvb2xkb3duU2Vjb25kcyB8fCAzMCk7XHJcbiAgY29uc3QgW2lzTG9hZGluZywgc2V0SXNMb2FkaW5nXSA9IHVzZVN0YXRlKGZhbHNlKTtcclxuICBjb25zdCBbZXJyb3JNZXNzYWdlLCBzZXRFcnJvck1lc3NhZ2VdID0gdXNlU3RhdGUobnVsbCk7XHJcbiAgY29uc3QgW3N1Y2Nlc3NOb3RpY2UsIHNldFN1Y2Nlc3NOb3RpY2VdID0gdXNlU3RhdGUobnVsbCk7XHJcblxyXG4gIC8vIENvdW50ZG93biB0aW1lciBmb3IgcmVzZW5kXHJcbiAgdXNlRWZmZWN0KCgpID0+IHtcclxuICAgIGlmIChzZWNvbmRzUmVtYWluaW5nIDw9IDApIHJldHVybjtcclxuICAgIGNvbnN0IHRpbWVyID0gc2V0SW50ZXJ2YWwoKCkgPT4ge1xyXG4gICAgICBzZXRTZWNvbmRzUmVtYWluaW5nKChwcmV2KSA9PiBwcmV2IC0gMSk7XHJcbiAgICB9LCAxMDAwKTtcclxuICAgIHJldHVybiAoKSA9PiBjbGVhckludGVydmFsKHRpbWVyKTtcclxuICB9LCBbc2Vjb25kc1JlbWFpbmluZ10pO1xyXG5cclxuICAvLyBBdXRvLXN1Ym1pdCB3aGVuIGFsbCA2IGRpZ2l0cyBhcmUgZW50ZXJlZFxyXG4gIHVzZUVmZmVjdCgoKSA9PiB7XHJcbiAgICBpZiAob3RwVmFsdWUubGVuZ3RoID09PSA2ICYmICFpc0xvYWRpbmcpIHtcclxuICAgICAgaGFuZGxlVmVyaWZ5KG90cFZhbHVlKTtcclxuICAgIH1cclxuICB9LCBbb3RwVmFsdWVdKTtcclxuXHJcbiAgY29uc3QgaGFuZGxlVmVyaWZ5ID0gYXN5bmMgKGNvZGVUb1ZlcmlmeSkgPT4ge1xyXG4gICAgY29uc3QgY29kZSA9IGNvZGVUb1ZlcmlmeSB8fCBvdHBWYWx1ZTtcclxuICAgIGlmIChjb2RlLmxlbmd0aCAhPT0gNikge1xyXG4gICAgICBzZXRFcnJvck1lc3NhZ2UoJ1BsZWFzZSBlbnRlciB0aGUgZnVsbCA2LWRpZ2l0IHZlcmlmaWNhdGlvbiBjb2RlLicpO1xyXG4gICAgICByZXR1cm47XHJcbiAgICB9XHJcblxyXG4gICAgc2V0RXJyb3JNZXNzYWdlKG51bGwpO1xyXG4gICAgc2V0SXNMb2FkaW5nKHRydWUpO1xyXG5cclxuICAgIHRyeSB7XHJcbiAgICAgIGNvbnN0IHJlc3VsdCA9IGF3YWl0IGF1dGhTZXJ2aWNlLnZlcmlmeU90cChpZGVudGlmaWVyLCBjb2RlKTtcclxuICAgICAgc2V0U3VjY2Vzc05vdGljZSgnT1RQIGNvZGUgdmVyaWZpZWQgc3VjY2Vzc2Z1bGx5LicpO1xyXG4gICAgICBzZXRUaW1lb3V0KCgpID0+IHtcclxuICAgICAgICBvbk90cFZlcmlmaWVkKHtcclxuICAgICAgICAgIGlkZW50aWZpZXIsXHJcbiAgICAgICAgICByZXNldFRva2VuOiByZXN1bHQucmVzZXRUb2tlblxyXG4gICAgICAgIH0pO1xyXG4gICAgICAgIG9uTmF2aWdhdGUoJ2NyZWF0ZV9uZXdfcGFzc3dvcmQnKTtcclxuICAgICAgfSwgNzAwKTtcclxuICAgIH0gY2F0Y2ggKGVycikge1xyXG4gICAgICBzZXRFcnJvck1lc3NhZ2UoZXJyLm1lc3NhZ2UgfHwgJ0ludmFsaWQgdmVyaWZpY2F0aW9uIGNvZGUuJyk7XHJcbiAgICB9IGZpbmFsbHkge1xyXG4gICAgICBzZXRJc0xvYWRpbmcoZmFsc2UpO1xyXG4gICAgfVxyXG4gIH07XHJcblxyXG4gIGNvbnN0IGhhbmRsZVJlc2VuZCA9IGFzeW5jICgpID0+IHtcclxuICAgIGlmIChzZWNvbmRzUmVtYWluaW5nID4gMCB8fCBpc0xvYWRpbmcpIHJldHVybjtcclxuICAgIHNldEVycm9yTWVzc2FnZShudWxsKTtcclxuICAgIHNldFN1Y2Nlc3NOb3RpY2UobnVsbCk7XHJcbiAgICBzZXRJc0xvYWRpbmcodHJ1ZSk7XHJcblxyXG4gICAgdHJ5IHtcclxuICAgICAgY29uc3QgcmVzdWx0ID0gYXdhaXQgYXV0aFNlcnZpY2Uuc2VuZE90cChpZGVudGlmaWVyIHx8ICdkZW1vQG1lZGl0cmFjay5vcmcnKTtcclxuICAgICAgc2V0U2Vjb25kc1JlbWFpbmluZyhyZXN1bHQuY29vbGRvd25TZWNvbmRzIHx8IDMwKTtcclxuICAgICAgc2V0U3VjY2Vzc05vdGljZSgnQSBuZXcgdmVyaWZpY2F0aW9uIGNvZGUgaGFzIGJlZW4gZGlzcGF0Y2hlZC4nKTtcclxuICAgICAgc2V0T3RwVmFsdWUoJycpO1xyXG4gICAgfSBjYXRjaCAoZXJyKSB7XHJcbiAgICAgIHNldEVycm9yTWVzc2FnZShlcnIubWVzc2FnZSB8fCAnRmFpbGVkIHRvIHJlc2VuZCB2ZXJpZmljYXRpb24gY29kZS4nKTtcclxuICAgIH0gZmluYWxseSB7XHJcbiAgICAgIHNldElzTG9hZGluZyhmYWxzZSk7XHJcbiAgICB9XHJcbiAgfTtcclxuXHJcbiAgcmV0dXJuIChcclxuICAgIDxkaXYgY2xhc3NOYW1lPVwiYXV0aC1jYXJkLWJvZHlcIj5cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJhdXRoLWNhcmQtaGVhZGVyXCI+XHJcbiAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgdHlwZT1cImJ1dHRvblwiXHJcbiAgICAgICAgICBjbGFzc05hbWU9XCJidG4tYmFjay1saW5rXCJcclxuICAgICAgICAgIG9uQ2xpY2s9eygpID0+IG9uTmF2aWdhdGUoJ2ZvcmdvdF9wYXNzd29yZCcpfVxyXG4gICAgICAgICAgZGlzYWJsZWQ9e2lzTG9hZGluZ31cclxuICAgICAgICA+XHJcbiAgICAgICAgICA8QXJyb3dMZWZ0IHNpemU9ezE2fSAvPlxyXG4gICAgICAgICAgPHNwYW4+Q2hhbmdlIEVtYWlsL1Bob25lPC9zcGFuPlxyXG4gICAgICAgIDwvYnV0dG9uPlxyXG5cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImF1dGgtYmFkZ2UtaGVhZGVyIG10LTJcIj5cclxuICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImJhZGdlLXBpbGwtcHJpbWFyeVwiPlR3by1GYWN0b3IgU2VjdXJpdHk8L3NwYW4+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPGgyIGNsYXNzTmFtZT1cImF1dGgtbWFpbi10aXRsZVwiPlZlcmlmeSBPVFA8L2gyPlxyXG4gICAgICAgIDxwIGNsYXNzTmFtZT1cImF1dGgtbWFpbi1zdWJ0aXRsZVwiPlxyXG4gICAgICAgICAgV2UndmUgc2VudCBhIDYtZGlnaXQgdmVyaWZpY2F0aW9uIGNvZGUgdG97JyAnfVxyXG4gICAgICAgICAgPHN0cm9uZyBjbGFzc05hbWU9XCJ0ZXh0LXByaW1hcnlcIj57bWFza2VkVGFyZ2V0IHx8IGlkZW50aWZpZXIgfHwgJ3lvdXIgcmVnaXN0ZXJlZCBjb250YWN0J308L3N0cm9uZz4uXHJcbiAgICAgICAgPC9wPlxyXG4gICAgICA8L2Rpdj5cclxuXHJcbiAgICAgIHsvKiBFcnJvciAmIFN1Y2Nlc3MgU3RhdGVzICovfVxyXG4gICAgICB7ZXJyb3JNZXNzYWdlICYmIChcclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImF1dGgtYWxlcnQgYXV0aC1hbGVydC1kYW5nZXJcIiByb2xlPVwiYWxlcnRcIiBhcmlhLWxpdmU9XCJhc3NlcnRpdmVcIj5cclxuICAgICAgICAgIDxBbGVydENpcmNsZSBzaXplPXsxOH0gY2xhc3NOYW1lPVwiYWxlcnQtaWNvbiBmbGV4LXNocmluay0wXCIgLz5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYWxlcnQtY29udGVudFwiPlxyXG4gICAgICAgICAgICA8c3Ryb25nPlZlcmlmaWNhdGlvbiBFcnJvcjo8L3N0cm9uZz4ge2Vycm9yTWVzc2FnZX1cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG4gICAgICApfVxyXG5cclxuICAgICAge3N1Y2Nlc3NOb3RpY2UgJiYgKFxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYXV0aC1hbGVydCBhdXRoLWFsZXJ0LXN1Y2Nlc3NcIiByb2xlPVwiYWxlcnRcIj5cclxuICAgICAgICAgIDxDaGVja0NpcmNsZTIgc2l6ZT17MTh9IGNsYXNzTmFtZT1cImFsZXJ0LWljb24gZmxleC1zaHJpbmstMFwiIC8+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImFsZXJ0LWNvbnRlbnRcIj5cclxuICAgICAgICAgICAge3N1Y2Nlc3NOb3RpY2V9XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgKX1cclxuXHJcbiAgICAgIHsvKiA2LURpZ2l0IE9UUCBCb3ggQ29tcG9uZW50ICovfVxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cIm90cC1zZWN0aW9uLXdyYXBwZXIgbXktNFwiPlxyXG4gICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJhdXRoLWxhYmVsIHRleHQtY2VudGVyIGQtYmxvY2sgbWItMlwiPlxyXG4gICAgICAgICAgRW50ZXIgNi1EaWdpdCBWZXJpZmljYXRpb24gUGFzc2NvZGVcclxuICAgICAgICA8L2xhYmVsPlxyXG5cclxuICAgICAgICA8T3RwSW5wdXRcclxuICAgICAgICAgIGxlbmd0aD17Nn1cclxuICAgICAgICAgIHZhbHVlPXtvdHBWYWx1ZX1cclxuICAgICAgICAgIG9uQ2hhbmdlPXsodmFsKSA9PiB7XHJcbiAgICAgICAgICAgIHNldE90cFZhbHVlKHZhbCk7XHJcbiAgICAgICAgICAgIGlmIChlcnJvck1lc3NhZ2UpIHNldEVycm9yTWVzc2FnZShudWxsKTtcclxuICAgICAgICAgIH19XHJcbiAgICAgICAgICBkaXNhYmxlZD17aXNMb2FkaW5nfVxyXG4gICAgICAgICAgaXNJbnZhbGlkPXtCb29sZWFuKGVycm9yTWVzc2FnZSl9XHJcbiAgICAgICAgLz5cclxuXHJcbiAgICAgICAgey8qIERlbW8gQXNzaXN0YW50IGhlbHBlciBmb3IgdGVzdGluZyBjb252ZW5pZW5jZSAqL31cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm90cC10ZXN0aW5nLWhlbHBlciBtdC0zXCI+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJoZWxwZXItbGFiZWxcIj5EZW1vIFNpbXVsYXRpb24gUGFzc2NvZGU6PC9zcGFuPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgY2xhc3NOYW1lPVwiYnRuLXBhc3RlLWRlbW8tb3RwXCJcclxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0T3RwVmFsdWUoZGVtb090cENvZGUgfHwgJzg0OTIwMScpfVxyXG4gICAgICAgICAgICB0aXRsZT1cIkNsaWNrIHRvIGF1dG8tZmlsbCBkZW1vIE9UUFwiXHJcbiAgICAgICAgICA+XHJcbiAgICAgICAgICAgIHtkZW1vT3RwQ29kZSB8fCAnODQ5MjAxJ30gKENsaWNrIHRvIGF1dG8tZmlsbClcclxuICAgICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICAgIDwvZGl2PlxyXG4gICAgICA8L2Rpdj5cclxuXHJcbiAgICAgIHsvKiBTdWJtaXQgVmVyaWZpY2F0aW9uIEJ1dHRvbiAqL31cclxuICAgICAgPGJ1dHRvblxyXG4gICAgICAgIHR5cGU9XCJidXR0b25cIlxyXG4gICAgICAgIGlkPVwiYnRuLXZlcmlmeS1vdHBcIlxyXG4gICAgICAgIGNsYXNzTmFtZT1cImJ0bi1hdXRoLXByaW1hcnkgdy0xMDAgbWItM1wiXHJcbiAgICAgICAgb25DbGljaz17KCkgPT4gaGFuZGxlVmVyaWZ5KG90cFZhbHVlKX1cclxuICAgICAgICBkaXNhYmxlZD17aXNMb2FkaW5nIHx8IG90cFZhbHVlLmxlbmd0aCAhPT0gNn1cclxuICAgICAgPlxyXG4gICAgICAgIHtpc0xvYWRpbmcgPyAoXHJcbiAgICAgICAgICA8PlxyXG4gICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbSBtZS0yXCIgcm9sZT1cInN0YXR1c1wiIGFyaWEtaGlkZGVuPVwidHJ1ZVwiIC8+XHJcbiAgICAgICAgICAgIDxzcGFuPlZlcmlmeWluZy4uLjwvc3Bhbj5cclxuICAgICAgICAgIDwvPlxyXG4gICAgICAgICkgOiAoXHJcbiAgICAgICAgICA8PlxyXG4gICAgICAgICAgICA8c3Bhbj5WZXJpZnkgJiBDb250aW51ZTwvc3Bhbj5cclxuICAgICAgICAgICAgPEFycm93UmlnaHQgc2l6ZT17MTh9IC8+XHJcbiAgICAgICAgICA8Lz5cclxuICAgICAgICApfVxyXG4gICAgICA8L2J1dHRvbj5cclxuXHJcbiAgICAgIHsvKiBSZXNlbmQgQ29vbGRvd24gU2VjdGlvbiAqL31cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJvdHAtcmVzZW5kLXJvd1wiPlxyXG4gICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtbXV0ZWQgdGV4dC1zbVwiPkRpZG4ndCByZWNlaXZlIHRoZSBjb2RlPzwvc3Bhbj5cclxuICAgICAgICB7c2Vjb25kc1JlbWFpbmluZyA+IDAgPyAoXHJcbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJjb29sZG93bi10aW1lclwiPlxyXG4gICAgICAgICAgICA8Q2xvY2sgc2l6ZT17MTR9IGNsYXNzTmFtZT1cIm1lLTFcIiAvPlxyXG4gICAgICAgICAgICBSZXNlbmQgT1RQIGluIDxzdHJvbmc+e3NlY29uZHNSZW1haW5pbmd9czwvc3Ryb25nPlxyXG4gICAgICAgICAgPC9zcGFuPlxyXG4gICAgICAgICkgOiAoXHJcbiAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgIHR5cGU9XCJidXR0b25cIlxyXG4gICAgICAgICAgICBjbGFzc05hbWU9XCJidG4tcmVzZW5kLW90cFwiXHJcbiAgICAgICAgICAgIG9uQ2xpY2s9e2hhbmRsZVJlc2VuZH1cclxuICAgICAgICAgICAgZGlzYWJsZWQ9e2lzTG9hZGluZ31cclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgPFJvdGF0ZUN3IHNpemU9ezE0fSBjbGFzc05hbWU9XCJtZS0xXCIgLz5cclxuICAgICAgICAgICAgUmVzZW5kIE9UUFxyXG4gICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgKX1cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImF1dGgtY2FyZC1mb290ZXIgbXQtNCB0ZXh0LWNlbnRlclwiPlxyXG4gICAgICAgIDxidXR0b25cclxuICAgICAgICAgIHR5cGU9XCJidXR0b25cIlxyXG4gICAgICAgICAgY2xhc3NOYW1lPVwiYnRuLWxpbmstYWN0aW9uLWlubGluZVwiXHJcbiAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvbk5hdmlnYXRlKCdsb2dpbicpfVxyXG4gICAgICAgID5cclxuICAgICAgICAgIENhbmNlbCAmIFJldHVybiB0byBMb2dpblxyXG4gICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICA8L2Rpdj5cclxuICAgIDwvZGl2PlxyXG4gICk7XHJcbn07XHJcblxyXG5leHBvcnQgZGVmYXVsdCBPdHBWZXJpZmljYXRpb25Gb3JtO1xyXG4iXSwiZmlsZSI6IkM6L1VzZXJzL3Nhcm9qL09uZURyaXZlL0Rlc2t0b3AvTWVkaVN5bmMvRnJvbnRlbmQvc3JjL2NvbXBvbmVudHMvYXV0aC9PdHBWZXJpZmljYXRpb25Gb3JtLmpzeCJ9

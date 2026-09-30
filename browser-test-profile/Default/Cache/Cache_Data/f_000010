@@ -1,0 +1,379 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/pages/AuthPages.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react; const useState = __vite__cjsImport3_react["useState"];
+import AuthLayout from "/src/components/auth/AuthLayout.jsx";
+import LoginForm from "/src/components/auth/LoginForm.jsx";
+import PatientSignupForm from "/src/components/auth/PatientSignupForm.jsx";
+import DoctorSignupForm from "/src/components/auth/DoctorSignupForm.jsx";
+import ForgotPasswordForm from "/src/components/auth/ForgotPasswordForm.jsx";
+import OtpVerificationForm from "/src/components/auth/OtpVerificationForm.jsx";
+import CreateNewPasswordForm from "/src/components/auth/CreateNewPasswordForm.jsx";
+import PasswordResetSuccess from "/src/components/auth/PasswordResetSuccess.jsx";
+const AuthPages = ({
+  onLoginSuccess,
+  currentRole = "DOCTOR",
+  onSwitchRole,
+  theme,
+  toggleTheme
+}) => {
+  _s();
+  const [view, setView] = useState("login");
+  const [otpData, setOtpData] = useState({
+    identifier: "",
+    maskedTarget: "",
+    cooldownSeconds: 30,
+    demoOtpCode: "849201"
+  });
+  const [resetSessionData, setResetSessionData] = useState({
+    identifier: "",
+    resetToken: ""
+  });
+  const [simulatedError, setSimulatedError] = useState(null);
+  const handleOtpSent = (data) => {
+    setOtpData(data);
+    setView("verify_otp");
+  };
+  const handleOtpVerified = (data) => {
+    setResetSessionData(data);
+    setView("create_new_password");
+  };
+  const handleResetSuccess = () => {
+    setView("reset_success");
+  };
+  const handleRegistrationSuccess = (registeredUser) => {
+    setView("login");
+  };
+  return /* @__PURE__ */ jsxDEV(
+    AuthLayout,
+    {
+      activeView: view,
+      theme,
+      toggleTheme,
+      onSelectView: setView,
+      children: [
+        view === "login" && /* @__PURE__ */ jsxDEV(
+          LoginForm,
+          {
+            onLoginSuccess,
+            onNavigate: setView,
+            currentRole,
+            onSwitchRole,
+            presetError: simulatedError
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+            lineNumber: 85,
+            columnNumber: 7
+          },
+          this
+        ),
+        view === "signup_patient" && /* @__PURE__ */ jsxDEV(
+          PatientSignupForm,
+          {
+            onNavigate: setView,
+            onRegistrationSuccess: handleRegistrationSuccess
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+            lineNumber: 96,
+            columnNumber: 7
+          },
+          this
+        ),
+        view === "signup_doctor" && /* @__PURE__ */ jsxDEV(
+          DoctorSignupForm,
+          {
+            onNavigate: setView
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+            lineNumber: 104,
+            columnNumber: 7
+          },
+          this
+        ),
+        view === "forgot_password" && /* @__PURE__ */ jsxDEV(
+          ForgotPasswordForm,
+          {
+            onNavigate: setView,
+            onOtpSent: handleOtpSent
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+            lineNumber: 111,
+            columnNumber: 7
+          },
+          this
+        ),
+        view === "verify_otp" && /* @__PURE__ */ jsxDEV(
+          OtpVerificationForm,
+          {
+            otpData,
+            onNavigate: setView,
+            onOtpVerified: handleOtpVerified
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+            lineNumber: 119,
+            columnNumber: 7
+          },
+          this
+        ),
+        view === "create_new_password" && /* @__PURE__ */ jsxDEV(
+          CreateNewPasswordForm,
+          {
+            resetSessionData,
+            onNavigate: setView,
+            onResetSuccess: handleResetSuccess
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+            lineNumber: 128,
+            columnNumber: 7
+          },
+          this
+        ),
+        view === "reset_success" && /* @__PURE__ */ jsxDEV(
+          PasswordResetSuccess,
+          {
+            onReturnToLogin: () => {
+              setSimulatedError(null);
+              setView("login");
+            }
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+            lineNumber: 137,
+            columnNumber: 7
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV("aside", { className: "auth-simulation-toolbar", "aria-label": "Testing Toolbar", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "sim-label", children: "Auth View & Error Simulator:" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+            lineNumber: 147,
+            columnNumber: 9
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "sim-btn-group", children: [
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                type: "button",
+                className: `btn-sim-chip ${view === "login" && !simulatedError ? "active" : ""}`,
+                onClick: () => {
+                  setSimulatedError(null);
+                  setView("login");
+                },
+                title: "Default Login Screen",
+                children: "Login"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+                lineNumber: 149,
+                columnNumber: 11
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                type: "button",
+                className: `btn-sim-chip ${view === "signup_patient" ? "active" : ""}`,
+                onClick: () => setView("signup_patient"),
+                title: "Patient Registration Screen",
+                children: "Patient Sign Up"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+                lineNumber: 157,
+                columnNumber: 11
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                type: "button",
+                className: `btn-sim-chip ${view === "signup_doctor" ? "active" : ""}`,
+                onClick: () => setView("signup_doctor"),
+                title: "Doctor Credentialing Screen",
+                children: "Doctor Access"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+                lineNumber: 165,
+                columnNumber: 11
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                type: "button",
+                className: `btn-sim-chip ${view === "forgot_password" ? "active" : ""}`,
+                onClick: () => setView("forgot_password"),
+                title: "Password Recovery Screen",
+                children: "Forgot Pwd"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+                lineNumber: 173,
+                columnNumber: 11
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                type: "button",
+                className: `btn-sim-chip ${view === "verify_otp" ? "active" : ""}`,
+                onClick: () => setView("verify_otp"),
+                title: "6-digit OTP Screen",
+                children: "OTP (6-Digit)"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+                lineNumber: 181,
+                columnNumber: 11
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                type: "button",
+                className: `btn-sim-chip ${view === "create_new_password" ? "active" : ""}`,
+                onClick: () => setView("create_new_password"),
+                title: "Create New Password Screen",
+                children: "New Pwd"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+                lineNumber: 189,
+                columnNumber: 11
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                type: "button",
+                className: `btn-sim-chip ${view === "reset_success" ? "active" : ""}`,
+                onClick: () => setView("reset_success"),
+                title: "Reset Success Screen",
+                children: "Success Screen"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+                lineNumber: 197,
+                columnNumber: 11
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "button",
+              {
+                type: "button",
+                className: `btn-sim-chip ${simulatedError ? "active" : ""}`,
+                onClick: () => {
+                  setView("login");
+                  setSimulatedError("Simulated Error: Your account has been disabled. Please contact support.");
+                },
+                title: "Test Account Disabled Error",
+                children: "Simulate 401/Disabled"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+                lineNumber: 205,
+                columnNumber: 11
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+            lineNumber: 148,
+            columnNumber: 9
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+          lineNumber: 146,
+          columnNumber: 7
+        }, this)
+      ]
+    },
+    void 0,
+    true,
+    {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx",
+      lineNumber: 77,
+      columnNumber: 5
+    },
+    this
+  );
+};
+_s(AuthPages, "C4M2HsgjtQhcugESOowGQQnULqo=");
+_c = AuthPages;
+export default AuthPages;
+var _c;
+$RefreshReg$(_c, "AuthPages");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/AuthPages.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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O0FBQUE7QUFBQSxjQUo5QjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsWUFPQTtBQUFBLFlBQ0E7QUFBQSxjQUFDO0FBQUE7QUFBQSxnQkFDQyxNQUFLO0FBQUEsZ0JBQ0wsV0FBVyxnQkFBZ0JVLGlCQUFpQixXQUFXLEVBQUU7QUFBQSxnQkFDekQsU0FBUyxNQUFNO0FBQ2JWLDBCQUFRLE9BQU87QUFDZlcsb0NBQWtCLDBFQUEwRTtBQUFBLGdCQUM5RjtBQUFBLGdCQUNBLE9BQU07QUFBQSxnQkFBNkI7QUFBQTtBQUFBLGNBUHJDO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxZQVVBO0FBQUEsZUFuRUY7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFvRUE7QUFBQSxhQXRFRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBdUVBO0FBQUE7QUFBQTtBQUFBLElBNUlGO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxFQTZJQTtBQUVKO0FBQUViLEdBOUxJTixXQUFTO0FBQUEsS0FBVEE7QUFnTU4sZUFBZUE7QUFBVSxJQUFBMEI7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsiUmVhY3QiLCJ1c2VTdGF0ZSIsIkF1dGhMYXlvdXQiLCJMb2dpbkZvcm0iLCJQYXRpZW50U2lnbnVwRm9ybSIsIkRvY3RvclNpZ251cEZvcm0iLCJGb3Jnb3RQYXNzd29yZEZvcm0iLCJPdHBWZXJpZmljYXRpb25Gb3JtIiwiQ3JlYXRlTmV3UGFzc3dvcmRGb3JtIiwiUGFzc3dvcmRSZXNldFN1Y2Nlc3MiLCJBdXRoUGFnZXMiLCJvbkxvZ2luU3VjY2VzcyIsImN1cnJlbnRSb2xlIiwib25Td2l0Y2hSb2xlIiwidGhlbWUiLCJ0b2dnbGVUaGVtZSIsIl9zIiwidmlldyIsInNldFZpZXciLCJvdHBEYXRhIiwic2V0T3RwRGF0YSIsImlkZW50aWZpZXIiLCJtYXNrZWRUYXJnZXQiLCJjb29sZG93blNlY29uZHMiLCJkZW1vT3RwQ29kZSIsInJlc2V0U2Vzc2lvbkRhdGEiLCJzZXRSZXNldFNlc3Npb25EYXRhIiwicmVzZXRUb2tlbiIsInNpbXVsYXRlZEVycm9yIiwic2V0U2ltdWxhdGVkRXJyb3IiLCJoYW5kbGVPdHBTZW50IiwiZGF0YSIsImhhbmRsZU90cFZlcmlmaWVkIiwiaGFuZGxlUmVzZXRTdWNjZXNzIiwiaGFuZGxlUmVnaXN0cmF0aW9uU3VjY2VzcyIsInJlZ2lzdGVyZWRVc2VyIiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiQXV0aFBhZ2VzLmpzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QsIHsgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7XHJcbmltcG9ydCBBdXRoTGF5b3V0IGZyb20gJy4uL2NvbXBvbmVudHMvYXV0aC9BdXRoTGF5b3V0JztcclxuaW1wb3J0IExvZ2luRm9ybSBmcm9tICcuLi9jb21wb25lbnRzL2F1dGgvTG9naW5Gb3JtJztcclxuaW1wb3J0IFBhdGllbnRTaWdudXBGb3JtIGZyb20gJy4uL2NvbXBvbmVudHMvYXV0aC9QYXRpZW50U2lnbnVwRm9ybSc7XHJcbmltcG9ydCBEb2N0b3JTaWdudXBGb3JtIGZyb20gJy4uL2NvbXBvbmVudHMvYXV0aC9Eb2N0b3JTaWdudXBGb3JtJztcclxuaW1wb3J0IEZvcmdvdFBhc3N3b3JkRm9ybSBmcm9tICcuLi9jb21wb25lbnRzL2F1dGgvRm9yZ290UGFzc3dvcmRGb3JtJztcclxuaW1wb3J0IE90cFZlcmlmaWNhdGlvbkZvcm0gZnJvbSAnLi4vY29tcG9uZW50cy9hdXRoL090cFZlcmlmaWNhdGlvbkZvcm0nO1xyXG5pbXBvcnQgQ3JlYXRlTmV3UGFzc3dvcmRGb3JtIGZyb20gJy4uL2NvbXBvbmVudHMvYXV0aC9DcmVhdGVOZXdQYXNzd29yZEZvcm0nO1xyXG5pbXBvcnQgUGFzc3dvcmRSZXNldFN1Y2Nlc3MgZnJvbSAnLi4vY29tcG9uZW50cy9hdXRoL1Bhc3N3b3JkUmVzZXRTdWNjZXNzJztcclxuXHJcbmNvbnN0IEF1dGhQYWdlcyA9ICh7IFxyXG4gIG9uTG9naW5TdWNjZXNzLCBcclxuICBjdXJyZW50Um9sZSA9ICdET0NUT1InLCBcclxuICBvblN3aXRjaFJvbGUsIFxyXG4gIHRoZW1lLCBcclxuICB0b2dnbGVUaGVtZSBcclxufSkgPT4ge1xyXG4gIC8vIE5hdmlnYXRpb24gVmlldyBTdGF0ZVxyXG4gIC8vIE9wdGlvbnM6ICdsb2dpbicsICdzaWdudXBfcGF0aWVudCcsICdzaWdudXBfZG9jdG9yJywgJ2ZvcmdvdF9wYXNzd29yZCcsICd2ZXJpZnlfb3RwJywgJ2NyZWF0ZV9uZXdfcGFzc3dvcmQnLCAncmVzZXRfc3VjY2VzcydcclxuICBjb25zdCBbdmlldywgc2V0Vmlld10gPSB1c2VTdGF0ZSgnbG9naW4nKTtcclxuXHJcbiAgLy8gTXVsdGktc3RlcCBPVFAgcmVjb3Zlcnkgc3RhdGVcclxuICBjb25zdCBbb3RwRGF0YSwgc2V0T3RwRGF0YV0gPSB1c2VTdGF0ZSh7XHJcbiAgICBpZGVudGlmaWVyOiAnJyxcclxuICAgIG1hc2tlZFRhcmdldDogJycsXHJcbiAgICBjb29sZG93blNlY29uZHM6IDMwLFxyXG4gICAgZGVtb090cENvZGU6ICc4NDkyMDEnXHJcbiAgfSk7XHJcblxyXG4gIGNvbnN0IFtyZXNldFNlc3Npb25EYXRhLCBzZXRSZXNldFNlc3Npb25EYXRhXSA9IHVzZVN0YXRlKHtcclxuICAgIGlkZW50aWZpZXI6ICcnLFxyXG4gICAgcmVzZXRUb2tlbjogJydcclxuICB9KTtcclxuXHJcbiAgLy8gU2ltdWxhdGVkIEVycm9yIHN0YXRlcyBmb3IgdGVzdGluZyBjb252ZW5pZW5jZVxyXG4gIGNvbnN0IFtzaW11bGF0ZWRFcnJvciwgc2V0U2ltdWxhdGVkRXJyb3JdID0gdXNlU3RhdGUobnVsbCk7XHJcblxyXG4gIGNvbnN0IGhhbmRsZU90cFNlbnQgPSAoZGF0YSkgPT4ge1xyXG4gICAgc2V0T3RwRGF0YShkYXRhKTtcclxuICAgIHNldFZpZXcoJ3ZlcmlmeV9vdHAnKTtcclxuICB9O1xyXG5cclxuICBjb25zdCBoYW5kbGVPdHBWZXJpZmllZCA9IChkYXRhKSA9PiB7XHJcbiAgICBzZXRSZXNldFNlc3Npb25EYXRhKGRhdGEpO1xyXG4gICAgc2V0VmlldygnY3JlYXRlX25ld19wYXNzd29yZCcpO1xyXG4gIH07XHJcblxyXG4gIGNvbnN0IGhhbmRsZVJlc2V0U3VjY2VzcyA9ICgpID0+IHtcclxuICAgIHNldFZpZXcoJ3Jlc2V0X3N1Y2Nlc3MnKTtcclxuICB9O1xyXG5cclxuICBjb25zdCBoYW5kbGVSZWdpc3RyYXRpb25TdWNjZXNzID0gKHJlZ2lzdGVyZWRVc2VyKSA9PiB7XHJcbiAgICAvLyBOYXZpZ2F0ZSB0byBsb2dpbiB3aXRoIHN1Y2Nlc3MgbWVzc2FnZVxyXG4gICAgc2V0VmlldygnbG9naW4nKTtcclxuICB9O1xyXG5cclxuICByZXR1cm4gKFxyXG4gICAgPEF1dGhMYXlvdXQgXHJcbiAgICAgIGFjdGl2ZVZpZXc9e3ZpZXd9IFxyXG4gICAgICB0aGVtZT17dGhlbWV9IFxyXG4gICAgICB0b2dnbGVUaGVtZT17dG9nZ2xlVGhlbWV9XHJcbiAgICAgIG9uU2VsZWN0Vmlldz17c2V0Vmlld31cclxuICAgID5cclxuICAgICAgey8qIDEuIExvZ2luIFZpZXcgKi99XHJcbiAgICAgIHt2aWV3ID09PSAnbG9naW4nICYmIChcclxuICAgICAgICA8TG9naW5Gb3JtXHJcbiAgICAgICAgICBvbkxvZ2luU3VjY2Vzcz17b25Mb2dpblN1Y2Nlc3N9XHJcbiAgICAgICAgICBvbk5hdmlnYXRlPXtzZXRWaWV3fVxyXG4gICAgICAgICAgY3VycmVudFJvbGU9e2N1cnJlbnRSb2xlfVxyXG4gICAgICAgICAgb25Td2l0Y2hSb2xlPXtvblN3aXRjaFJvbGV9XHJcbiAgICAgICAgICBwcmVzZXRFcnJvcj17c2ltdWxhdGVkRXJyb3J9XHJcbiAgICAgICAgLz5cclxuICAgICAgKX1cclxuXHJcbiAgICAgIHsvKiAyLiBQYXRpZW50IFJlZ2lzdHJhdGlvbiBWaWV3ICovfVxyXG4gICAgICB7dmlldyA9PT0gJ3NpZ251cF9wYXRpZW50JyAmJiAoXHJcbiAgICAgICAgPFBhdGllbnRTaWdudXBGb3JtXHJcbiAgICAgICAgICBvbk5hdmlnYXRlPXtzZXRWaWV3fVxyXG4gICAgICAgICAgb25SZWdpc3RyYXRpb25TdWNjZXNzPXtoYW5kbGVSZWdpc3RyYXRpb25TdWNjZXNzfVxyXG4gICAgICAgIC8+XHJcbiAgICAgICl9XHJcblxyXG4gICAgICB7LyogMy4gRG9jdG9yIEFjY2VzcyAmIFJlZ2lzdHJhdGlvbiBWaWV3ICovfVxyXG4gICAgICB7dmlldyA9PT0gJ3NpZ251cF9kb2N0b3InICYmIChcclxuICAgICAgICA8RG9jdG9yU2lnbnVwRm9ybVxyXG4gICAgICAgICAgb25OYXZpZ2F0ZT17c2V0Vmlld31cclxuICAgICAgICAvPlxyXG4gICAgICApfVxyXG5cclxuICAgICAgey8qIDQuIEZvcmdvdCBQYXNzd29yZCBWaWV3ICovfVxyXG4gICAgICB7dmlldyA9PT0gJ2ZvcmdvdF9wYXNzd29yZCcgJiYgKFxyXG4gICAgICAgIDxGb3Jnb3RQYXNzd29yZEZvcm1cclxuICAgICAgICAgIG9uTmF2aWdhdGU9e3NldFZpZXd9XHJcbiAgICAgICAgICBvbk90cFNlbnQ9e2hhbmRsZU90cFNlbnR9XHJcbiAgICAgICAgLz5cclxuICAgICAgKX1cclxuXHJcbiAgICAgIHsvKiA1LiBPVFAgVmVyaWZpY2F0aW9uIFZpZXcgKi99XHJcbiAgICAgIHt2aWV3ID09PSAndmVyaWZ5X290cCcgJiYgKFxyXG4gICAgICAgIDxPdHBWZXJpZmljYXRpb25Gb3JtXHJcbiAgICAgICAgICBvdHBEYXRhPXtvdHBEYXRhfVxyXG4gICAgICAgICAgb25OYXZpZ2F0ZT17c2V0Vmlld31cclxuICAgICAgICAgIG9uT3RwVmVyaWZpZWQ9e2hhbmRsZU90cFZlcmlmaWVkfVxyXG4gICAgICAgIC8+XHJcbiAgICAgICl9XHJcblxyXG4gICAgICB7LyogNi4gQ3JlYXRlIE5ldyBQYXNzd29yZCBWaWV3ICovfVxyXG4gICAgICB7dmlldyA9PT0gJ2NyZWF0ZV9uZXdfcGFzc3dvcmQnICYmIChcclxuICAgICAgICA8Q3JlYXRlTmV3UGFzc3dvcmRGb3JtXHJcbiAgICAgICAgICByZXNldFNlc3Npb25EYXRhPXtyZXNldFNlc3Npb25EYXRhfVxyXG4gICAgICAgICAgb25OYXZpZ2F0ZT17c2V0Vmlld31cclxuICAgICAgICAgIG9uUmVzZXRTdWNjZXNzPXtoYW5kbGVSZXNldFN1Y2Nlc3N9XHJcbiAgICAgICAgLz5cclxuICAgICAgKX1cclxuXHJcbiAgICAgIHsvKiA3LiBQYXNzd29yZCBSZXNldCBTdWNjZXNzIFZpZXcgKi99XHJcbiAgICAgIHt2aWV3ID09PSAncmVzZXRfc3VjY2VzcycgJiYgKFxyXG4gICAgICAgIDxQYXNzd29yZFJlc2V0U3VjY2Vzc1xyXG4gICAgICAgICAgb25SZXR1cm5Ub0xvZ2luPXsoKSA9PiB7XHJcbiAgICAgICAgICAgIHNldFNpbXVsYXRlZEVycm9yKG51bGwpO1xyXG4gICAgICAgICAgICBzZXRWaWV3KCdsb2dpbicpO1xyXG4gICAgICAgICAgfX1cclxuICAgICAgICAvPlxyXG4gICAgICApfVxyXG5cclxuICAgICAgey8qIEZsb2F0aW5nIFN0YXRlIFNpbXVsYXRvciAoQWxsb3dzIHF1aWNrIGluc3BlY3Rpb24gb2YgYWxsIGVkZ2Ugc3RhdGVzICYgcGFnZXMpICovfVxyXG4gICAgICA8YXNpZGUgY2xhc3NOYW1lPVwiYXV0aC1zaW11bGF0aW9uLXRvb2xiYXJcIiBhcmlhLWxhYmVsPVwiVGVzdGluZyBUb29sYmFyXCI+XHJcbiAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwic2ltLWxhYmVsXCI+QXV0aCBWaWV3ICYgRXJyb3IgU2ltdWxhdG9yOjwvc3Bhbj5cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNpbS1idG4tZ3JvdXBcIj5cclxuICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiXHJcbiAgICAgICAgICAgIGNsYXNzTmFtZT17YGJ0bi1zaW0tY2hpcCAke3ZpZXcgPT09ICdsb2dpbicgJiYgIXNpbXVsYXRlZEVycm9yID8gJ2FjdGl2ZScgOiAnJ31gfVxyXG4gICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiB7IHNldFNpbXVsYXRlZEVycm9yKG51bGwpOyBzZXRWaWV3KCdsb2dpbicpOyB9fVxyXG4gICAgICAgICAgICB0aXRsZT1cIkRlZmF1bHQgTG9naW4gU2NyZWVuXCJcclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgTG9naW5cclxuICAgICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgY2xhc3NOYW1lPXtgYnRuLXNpbS1jaGlwICR7dmlldyA9PT0gJ3NpZ251cF9wYXRpZW50JyA/ICdhY3RpdmUnIDogJyd9YH1cclxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0Vmlldygnc2lnbnVwX3BhdGllbnQnKX1cclxuICAgICAgICAgICAgdGl0bGU9XCJQYXRpZW50IFJlZ2lzdHJhdGlvbiBTY3JlZW5cIlxyXG4gICAgICAgICAgPlxyXG4gICAgICAgICAgICBQYXRpZW50IFNpZ24gVXBcclxuICAgICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgY2xhc3NOYW1lPXtgYnRuLXNpbS1jaGlwICR7dmlldyA9PT0gJ3NpZ251cF9kb2N0b3InID8gJ2FjdGl2ZScgOiAnJ31gfVxyXG4gICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRWaWV3KCdzaWdudXBfZG9jdG9yJyl9XHJcbiAgICAgICAgICAgIHRpdGxlPVwiRG9jdG9yIENyZWRlbnRpYWxpbmcgU2NyZWVuXCJcclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgRG9jdG9yIEFjY2Vzc1xyXG4gICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgIHR5cGU9XCJidXR0b25cIlxyXG4gICAgICAgICAgICBjbGFzc05hbWU9e2BidG4tc2ltLWNoaXAgJHt2aWV3ID09PSAnZm9yZ290X3Bhc3N3b3JkJyA/ICdhY3RpdmUnIDogJyd9YH1cclxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0VmlldygnZm9yZ290X3Bhc3N3b3JkJyl9XHJcbiAgICAgICAgICAgIHRpdGxlPVwiUGFzc3dvcmQgUmVjb3ZlcnkgU2NyZWVuXCJcclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgRm9yZ290IFB3ZFxyXG4gICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgIHR5cGU9XCJidXR0b25cIlxyXG4gICAgICAgICAgICBjbGFzc05hbWU9e2BidG4tc2ltLWNoaXAgJHt2aWV3ID09PSAndmVyaWZ5X290cCcgPyAnYWN0aXZlJyA6ICcnfWB9XHJcbiAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHNldFZpZXcoJ3ZlcmlmeV9vdHAnKX1cclxuICAgICAgICAgICAgdGl0bGU9XCI2LWRpZ2l0IE9UUCBTY3JlZW5cIlxyXG4gICAgICAgICAgPlxyXG4gICAgICAgICAgICBPVFAgKDYtRGlnaXQpXHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiXHJcbiAgICAgICAgICAgIGNsYXNzTmFtZT17YGJ0bi1zaW0tY2hpcCAke3ZpZXcgPT09ICdjcmVhdGVfbmV3X3Bhc3N3b3JkJyA/ICdhY3RpdmUnIDogJyd9YH1cclxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0VmlldygnY3JlYXRlX25ld19wYXNzd29yZCcpfVxyXG4gICAgICAgICAgICB0aXRsZT1cIkNyZWF0ZSBOZXcgUGFzc3dvcmQgU2NyZWVuXCJcclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgTmV3IFB3ZFxyXG4gICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgIHR5cGU9XCJidXR0b25cIlxyXG4gICAgICAgICAgICBjbGFzc05hbWU9e2BidG4tc2ltLWNoaXAgJHt2aWV3ID09PSAncmVzZXRfc3VjY2VzcycgPyAnYWN0aXZlJyA6ICcnfWB9XHJcbiAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHNldFZpZXcoJ3Jlc2V0X3N1Y2Nlc3MnKX1cclxuICAgICAgICAgICAgdGl0bGU9XCJSZXNldCBTdWNjZXNzIFNjcmVlblwiXHJcbiAgICAgICAgICA+XHJcbiAgICAgICAgICAgIFN1Y2Nlc3MgU2NyZWVuXHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiXHJcbiAgICAgICAgICAgIGNsYXNzTmFtZT17YGJ0bi1zaW0tY2hpcCAke3NpbXVsYXRlZEVycm9yID8gJ2FjdGl2ZScgOiAnJ31gfVxyXG4gICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiB7XHJcbiAgICAgICAgICAgICAgc2V0VmlldygnbG9naW4nKTtcclxuICAgICAgICAgICAgICBzZXRTaW11bGF0ZWRFcnJvcignU2ltdWxhdGVkIEVycm9yOiBZb3VyIGFjY291bnQgaGFzIGJlZW4gZGlzYWJsZWQuIFBsZWFzZSBjb250YWN0IHN1cHBvcnQuJyk7XHJcbiAgICAgICAgICAgIH19XHJcbiAgICAgICAgICAgIHRpdGxlPVwiVGVzdCBBY2NvdW50IERpc2FibGVkIEVycm9yXCJcclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgU2ltdWxhdGUgNDAxL0Rpc2FibGVkXHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9hc2lkZT5cclxuICAgIDwvQXV0aExheW91dD5cclxuICApO1xyXG59O1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgQXV0aFBhZ2VzO1xyXG4iXSwiZmlsZSI6IkM6L1VzZXJzL3Nhcm9qL09uZURyaXZlL0Rlc2t0b3AvTWVkaVN5bmMvRnJvbnRlbmQvc3JjL3BhZ2VzL0F1dGhQYWdlcy5qc3gifQ==

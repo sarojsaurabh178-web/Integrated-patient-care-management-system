@@ -1,0 +1,288 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/NotificationDetailsModal.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react;
+import { X, Calendar, User, Stethoscope, CheckCircle2 } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+const NotificationDetailsModal = ({
+  notification,
+  onClose,
+  onViewAppointment
+}) => {
+  if (!notification) return null;
+  return /* @__PURE__ */ jsxDEV("div", { className: "modal-overlay", onClick: onClose, children: /* @__PURE__ */ jsxDEV("div", { className: "modal-content", style: { maxWidth: "540px" }, onClick: (e) => e.stopPropagation(), children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "modal-header", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center gap-2", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "badge bg-primary px-2 py-1", children: notification.type }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+          lineNumber: 36,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: "text-muted", style: { fontSize: "0.825rem" }, children: notification.id }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+          lineNumber: 37,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+        lineNumber: 35,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          type: "button",
+          className: "close-btn",
+          "aria-label": "Close",
+          onClick: onClose,
+          children: /* @__PURE__ */ jsxDEV(X, { size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+            lineNumber: 45,
+            columnNumber: 13
+          }, this)
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+          lineNumber: 39,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+      lineNumber: 34,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "modal-body", children: [
+      /* @__PURE__ */ jsxDEV("h3", { className: "h5 fw-bold mb-2 text-primary", children: notification.title }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+        lineNumber: 51,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-light rounded-3 mb-4 text-secondary", style: { fontSize: "0.9rem", lineHeight: 1.6 }, children: notification.message }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+        lineNumber: 53,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "row g-3 text-sm", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "col-6", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center gap-2 text-muted mb-1", style: { fontSize: "0.8rem" }, children: [
+            /* @__PURE__ */ jsxDEV(Calendar, { size: 14 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+              lineNumber: 60,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Date & Time" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+              lineNumber: 61,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+            lineNumber: 59,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "fw-semibold text-primary mb-0", style: { fontSize: "0.875rem" }, children: [
+            notification.date,
+            " at ",
+            notification.time
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+            lineNumber: 63,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+          lineNumber: 58,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "col-6", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center gap-2 text-muted mb-1", style: { fontSize: "0.8rem" }, children: [
+            /* @__PURE__ */ jsxDEV(CheckCircle2, { size: 14 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+              lineNumber: 70,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Read Status" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+              lineNumber: 71,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+            lineNumber: 69,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: `badge ${notification.isRead ? "bg-success" : "bg-warning"}`, children: notification.isRead ? "Read" : "Unread" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+            lineNumber: 73,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+          lineNumber: 68,
+          columnNumber: 13
+        }, this),
+        notification.doctorName && /* @__PURE__ */ jsxDEV("div", { className: "col-6", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center gap-2 text-muted mb-1", style: { fontSize: "0.8rem" }, children: [
+            /* @__PURE__ */ jsxDEV(Stethoscope, { size: 14 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+              lineNumber: 81,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Related Doctor" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+              lineNumber: 82,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+            lineNumber: 80,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "fw-semibold text-primary mb-0", style: { fontSize: "0.875rem" }, children: notification.doctorName }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+            lineNumber: 84,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+          lineNumber: 79,
+          columnNumber: 13
+        }, this),
+        notification.patientName && /* @__PURE__ */ jsxDEV("div", { className: "col-6", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center gap-2 text-muted mb-1", style: { fontSize: "0.8rem" }, children: [
+            /* @__PURE__ */ jsxDEV(User, { size: 14 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+              lineNumber: 93,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Related Patient" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+              lineNumber: 94,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+            lineNumber: 92,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "fw-semibold text-primary mb-0", style: { fontSize: "0.875rem" }, children: notification.patientName }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+            lineNumber: 96,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+          lineNumber: 91,
+          columnNumber: 13
+        }, this),
+        notification.appointmentId && /* @__PURE__ */ jsxDEV("div", { className: "col-12 mt-2 p-3 bg-primary-subtle rounded-3", children: /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center justify-content-between", children: [
+          /* @__PURE__ */ jsxDEV("div", { children: [
+            /* @__PURE__ */ jsxDEV("span", { className: "text-primary fw-semibold", style: { fontSize: "0.825rem" }, children: "Associated Appointment Reference" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+              lineNumber: 106,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("h5", { className: "mb-0 text-primary fw-bold", children: notification.appointmentId }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+              lineNumber: 109,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+            lineNumber: 105,
+            columnNumber: 19
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              type: "button",
+              className: "btn btn-primary btn-sm px-3",
+              onClick: () => {
+                onClose();
+                onViewAppointment(notification.appointmentId);
+              },
+              children: "View Appointment"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+              lineNumber: 111,
+              columnNumber: 19
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+          lineNumber: 104,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+          lineNumber: 103,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+        lineNumber: 57,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+      lineNumber: 50,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "modal-footer", children: /* @__PURE__ */ jsxDEV("button", { type: "button", className: "btn btn-secondary px-4", onClick: onClose, children: "Close" }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+      lineNumber: 129,
+      columnNumber: 11
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+      lineNumber: 128,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+    lineNumber: 32,
+    columnNumber: 7
+  }, this) }, void 0, false, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx",
+    lineNumber: 31,
+    columnNumber: 5
+  }, this);
+};
+_c = NotificationDetailsModal;
+export default NotificationDetailsModal;
+var _c;
+$RefreshReg$(_c, "NotificationDetailsModal");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationDetailsModal.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUMsVUFBSyxXQUFVLDRCQUEyQixPQUFPLEVBQUVWLFVBQVUsV0FBVyxHQUFHLGdEQUE1RTtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQUVBO0FBQUEsWUFDQSx1QkFBQyxRQUFHLFdBQVUsNkJBQTZCUCx1QkFBYWlCLGlCQUF4RDtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQUFzRTtBQUFBLGVBSnhFO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBS0E7QUFBQSxVQUNBO0FBQUEsWUFBQztBQUFBO0FBQUEsY0FDQyxNQUFLO0FBQUEsY0FDTCxXQUFVO0FBQUEsY0FDVixTQUFTLE1BQU07QUFDYmhCLHdCQUFRO0FBQ1JDLGtDQUFrQkYsYUFBYWlCLGFBQWE7QUFBQSxjQUM5QztBQUFBLGNBQUU7QUFBQTtBQUFBLFlBTko7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFVBU0E7QUFBQSxhQWhCRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBaUJBLEtBbEJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFtQkE7QUFBQSxXQWpFSjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBbUVBO0FBQUEsU0ExRUY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQTJFQTtBQUFBLElBR0EsdUJBQUMsU0FBSSxXQUFVLGdCQUNiLGlDQUFDLFlBQU8sTUFBSyxVQUFTLFdBQVUsMEJBQXlCLFNBQVNoQixTQUFTLHFCQUEzRTtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBRUEsS0FIRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBSUE7QUFBQSxPQXBHRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBcUdBLEtBdEdGO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0F1R0E7QUFFSjtBQUFFaUIsS0FqSEluQjtBQW1ITixlQUFlQTtBQUF5QixJQUFBbUI7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsiUmVhY3QiLCJYIiwiQ2FsZW5kYXIiLCJVc2VyIiwiU3RldGhvc2NvcGUiLCJDaGVja0NpcmNsZTIiLCJOb3RpZmljYXRpb25EZXRhaWxzTW9kYWwiLCJub3RpZmljYXRpb24iLCJvbkNsb3NlIiwib25WaWV3QXBwb2ludG1lbnQiLCJtYXhXaWR0aCIsImUiLCJzdG9wUHJvcGFnYXRpb24iLCJ0eXBlIiwiZm9udFNpemUiLCJpZCIsInRpdGxlIiwibGluZUhlaWdodCIsIm1lc3NhZ2UiLCJkYXRlIiwidGltZSIsImlzUmVhZCIsImRvY3Rvck5hbWUiLCJwYXRpZW50TmFtZSIsImFwcG9pbnRtZW50SWQiLCJfYyJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJOb3RpZmljYXRpb25EZXRhaWxzTW9kYWwuanN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XHJcbmltcG9ydCB7IFgsIENhbGVuZGFyLCBVc2VyLCBTdGV0aG9zY29wZSwgQ2hlY2tDaXJjbGUyIH0gZnJvbSAnbHVjaWRlLXJlYWN0JztcclxuXHJcbmNvbnN0IE5vdGlmaWNhdGlvbkRldGFpbHNNb2RhbCA9ICh7IFxyXG4gIG5vdGlmaWNhdGlvbiwgXHJcbiAgb25DbG9zZSwgXHJcbiAgb25WaWV3QXBwb2ludG1lbnQgXHJcbn0pID0+IHtcclxuICBpZiAoIW5vdGlmaWNhdGlvbikgcmV0dXJuIG51bGw7XHJcblxyXG4gIHJldHVybiAoXHJcbiAgICA8ZGl2IGNsYXNzTmFtZT1cIm1vZGFsLW92ZXJsYXlcIiBvbkNsaWNrPXtvbkNsb3NlfT5cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJtb2RhbC1jb250ZW50XCIgc3R5bGU9e3sgbWF4V2lkdGg6ICc1NDBweCcgfX0gb25DbGljaz17KGUpID0+IGUuc3RvcFByb3BhZ2F0aW9uKCl9PlxyXG4gICAgICAgIHsvKiBIZWFkZXIgKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJtb2RhbC1oZWFkZXJcIj5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZC1mbGV4IGFsaWduLWl0ZW1zLWNlbnRlciBnYXAtMlwiPlxyXG4gICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJiYWRnZSBiZy1wcmltYXJ5IHB4LTIgcHktMVwiPntub3RpZmljYXRpb24udHlwZX08L3NwYW4+XHJcbiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODI1cmVtJyB9fT57bm90aWZpY2F0aW9uLmlkfTwvc3Bhbj5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPGJ1dHRvbiBcclxuICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiIFxyXG4gICAgICAgICAgICBjbGFzc05hbWU9XCJjbG9zZS1idG5cIiBcclxuICAgICAgICAgICAgYXJpYS1sYWJlbD1cIkNsb3NlXCIgXHJcbiAgICAgICAgICAgIG9uQ2xpY2s9e29uQ2xvc2V9XHJcbiAgICAgICAgICA+XHJcbiAgICAgICAgICAgIDxYIHNpemU9ezIwfSAvPlxyXG4gICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgIHsvKiBCb2R5ICovfVxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibW9kYWwtYm9keVwiPlxyXG4gICAgICAgICAgPGgzIGNsYXNzTmFtZT1cImg1IGZ3LWJvbGQgbWItMiB0ZXh0LXByaW1hcnlcIj57bm90aWZpY2F0aW9uLnRpdGxlfTwvaDM+XHJcbiAgICAgICAgICBcclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC0zIGJnLWxpZ2h0IHJvdW5kZWQtMyBtYi00IHRleHQtc2Vjb25kYXJ5XCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjlyZW0nLCBsaW5lSGVpZ2h0OiAxLjYgfX0+XHJcbiAgICAgICAgICAgIHtub3RpZmljYXRpb24ubWVzc2FnZX1cclxuICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicm93IGctMyB0ZXh0LXNtXCI+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sLTZcIj5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImQtZmxleCBhbGlnbi1pdGVtcy1jZW50ZXIgZ2FwLTIgdGV4dC1tdXRlZCBtYi0xXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjhyZW0nIH19PlxyXG4gICAgICAgICAgICAgICAgPENhbGVuZGFyIHNpemU9ezE0fSAvPlxyXG4gICAgICAgICAgICAgICAgPHNwYW4+RGF0ZSAmIFRpbWU8L3NwYW4+XHJcbiAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZnctc2VtaWJvbGQgdGV4dC1wcmltYXJ5IG1iLTBcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODc1cmVtJyB9fT5cclxuICAgICAgICAgICAgICAgIHtub3RpZmljYXRpb24uZGF0ZX0gYXQge25vdGlmaWNhdGlvbi50aW1lfVxyXG4gICAgICAgICAgICAgIDwvcD5cclxuICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNvbC02XCI+XHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJkLWZsZXggYWxpZ24taXRlbXMtY2VudGVyIGdhcC0yIHRleHQtbXV0ZWQgbWItMVwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC44cmVtJyB9fT5cclxuICAgICAgICAgICAgICAgIDxDaGVja0NpcmNsZTIgc2l6ZT17MTR9IC8+XHJcbiAgICAgICAgICAgICAgICA8c3Bhbj5SZWFkIFN0YXR1czwvc3Bhbj5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9e2BiYWRnZSAke25vdGlmaWNhdGlvbi5pc1JlYWQgPyAnYmctc3VjY2VzcycgOiAnYmctd2FybmluZyd9YH0+XHJcbiAgICAgICAgICAgICAgICB7bm90aWZpY2F0aW9uLmlzUmVhZCA/ICdSZWFkJyA6ICdVbnJlYWQnfVxyXG4gICAgICAgICAgICAgIDwvc3Bhbj5cclxuICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICB7bm90aWZpY2F0aW9uLmRvY3Rvck5hbWUgJiYgKFxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sLTZcIj5cclxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZC1mbGV4IGFsaWduLWl0ZW1zLWNlbnRlciBnYXAtMiB0ZXh0LW11dGVkIG1iLTFcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuOHJlbScgfX0+XHJcbiAgICAgICAgICAgICAgICAgIDxTdGV0aG9zY29wZSBzaXplPXsxNH0gLz5cclxuICAgICAgICAgICAgICAgICAgPHNwYW4+UmVsYXRlZCBEb2N0b3I8L3NwYW4+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cImZ3LXNlbWlib2xkIHRleHQtcHJpbWFyeSBtYi0wXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjg3NXJlbScgfX0+XHJcbiAgICAgICAgICAgICAgICAgIHtub3RpZmljYXRpb24uZG9jdG9yTmFtZX1cclxuICAgICAgICAgICAgICAgIDwvcD5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgKX1cclxuXHJcbiAgICAgICAgICAgIHtub3RpZmljYXRpb24ucGF0aWVudE5hbWUgJiYgKFxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sLTZcIj5cclxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZC1mbGV4IGFsaWduLWl0ZW1zLWNlbnRlciBnYXAtMiB0ZXh0LW11dGVkIG1iLTFcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuOHJlbScgfX0+XHJcbiAgICAgICAgICAgICAgICAgIDxVc2VyIHNpemU9ezE0fSAvPlxyXG4gICAgICAgICAgICAgICAgICA8c3Bhbj5SZWxhdGVkIFBhdGllbnQ8L3NwYW4+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cImZ3LXNlbWlib2xkIHRleHQtcHJpbWFyeSBtYi0wXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjg3NXJlbScgfX0+XHJcbiAgICAgICAgICAgICAgICAgIHtub3RpZmljYXRpb24ucGF0aWVudE5hbWV9XHJcbiAgICAgICAgICAgICAgICA8L3A+XHJcbiAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICl9XHJcblxyXG4gICAgICAgICAgICB7bm90aWZpY2F0aW9uLmFwcG9pbnRtZW50SWQgJiYgKFxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY29sLTEyIG10LTIgcC0zIGJnLXByaW1hcnktc3VidGxlIHJvdW5kZWQtM1wiPlxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJkLWZsZXggYWxpZ24taXRlbXMtY2VudGVyIGp1c3RpZnktY29udGVudC1iZXR3ZWVuXCI+XHJcbiAgICAgICAgICAgICAgICAgIDxkaXY+XHJcbiAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1wcmltYXJ5IGZ3LXNlbWlib2xkXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjgyNXJlbScgfX0+XHJcbiAgICAgICAgICAgICAgICAgICAgICBBc3NvY2lhdGVkIEFwcG9pbnRtZW50IFJlZmVyZW5jZVxyXG4gICAgICAgICAgICAgICAgICAgIDwvc3Bhbj5cclxuICAgICAgICAgICAgICAgICAgICA8aDUgY2xhc3NOYW1lPVwibWItMCB0ZXh0LXByaW1hcnkgZnctYm9sZFwiPntub3RpZmljYXRpb24uYXBwb2ludG1lbnRJZH08L2g1PlxyXG4gICAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgICAgPGJ1dHRvbiBcclxuICAgICAgICAgICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCIgXHJcbiAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwiYnRuIGJ0bi1wcmltYXJ5IGJ0bi1zbSBweC0zXCJcclxuICAgICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiB7XHJcbiAgICAgICAgICAgICAgICAgICAgICBvbkNsb3NlKCk7XHJcbiAgICAgICAgICAgICAgICAgICAgICBvblZpZXdBcHBvaW50bWVudChub3RpZmljYXRpb24uYXBwb2ludG1lbnRJZCk7XHJcbiAgICAgICAgICAgICAgICAgICAgfX1cclxuICAgICAgICAgICAgICAgICAgPlxyXG4gICAgICAgICAgICAgICAgICAgIFZpZXcgQXBwb2ludG1lbnRcclxuICAgICAgICAgICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgKX1cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICB7LyogRm9vdGVyICovfVxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibW9kYWwtZm9vdGVyXCI+XHJcbiAgICAgICAgICA8YnV0dG9uIHR5cGU9XCJidXR0b25cIiBjbGFzc05hbWU9XCJidG4gYnRuLXNlY29uZGFyeSBweC00XCIgb25DbGljaz17b25DbG9zZX0+XHJcbiAgICAgICAgICAgIENsb3NlXHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59O1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgTm90aWZpY2F0aW9uRGV0YWlsc01vZGFsO1xyXG4iXSwiZmlsZSI6IkM6L1VzZXJzL3Nhcm9qL09uZURyaXZlL0Rlc2t0b3AvTWVkaVN5bmMvRnJvbnRlbmQvc3JjL2NvbXBvbmVudHMvTm90aWZpY2F0aW9uRGV0YWlsc01vZGFsLmpzeCJ9

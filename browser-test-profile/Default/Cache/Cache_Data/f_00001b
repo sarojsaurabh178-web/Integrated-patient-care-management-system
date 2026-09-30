@@ -1,0 +1,236 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/ConsultationHistory.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react; const useState = __vite__cjsImport3_react["useState"]; const useMemo = __vite__cjsImport3_react["useMemo"];
+import { History, Search, Inbox } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+const ConsultationHistory = ({ consultations }) => {
+  _s();
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredConsultations = useMemo(() => {
+    if (!searchTerm.trim()) return consultations;
+    const q = searchTerm.toLowerCase().trim();
+    return consultations.filter(
+      (c) => c.patientId.toLowerCase().includes(q) || c.patientName && c.patientName.toLowerCase().includes(q) || c.doctor.toLowerCase().includes(q) || c.diagnosis.toLowerCase().includes(q) || c.symptoms.toLowerCase().includes(q)
+    );
+  }, [consultations, searchTerm]);
+  return /* @__PURE__ */ jsxDEV("div", { className: "card", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "card-header", style: { flexWrap: "wrap", gap: "1rem" }, children: [
+      /* @__PURE__ */ jsxDEV("h3", { className: "card-title", children: [
+        /* @__PURE__ */ jsxDEV(History, { className: "card-title-icon", size: 20 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+          lineNumber: 43,
+          columnNumber: 11
+        }, this),
+        "Consultation History (",
+        filteredConsultations.length,
+        ")"
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+        lineNumber: 42,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "search-input-wrapper", style: { maxWidth: "320px" }, children: [
+        /* @__PURE__ */ jsxDEV(Search, { size: 18, className: "search-icon" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+          lineNumber: 49,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          "input",
+          {
+            type: "text",
+            className: "search-input",
+            placeholder: "Search by Patient ID, Name, Doctor, Diagnosis...",
+            value: searchTerm,
+            onChange: (e) => setSearchTerm(e.target.value)
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+            lineNumber: 50,
+            columnNumber: 11
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+        lineNumber: 48,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+      lineNumber: 41,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "card-body", style: { padding: "0.75rem" }, children: filteredConsultations.length === 0 ? /* @__PURE__ */ jsxDEV("div", { className: "empty-state", children: [
+      /* @__PURE__ */ jsxDEV(Inbox, { className: "empty-state-icon", size: 48 }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+        lineNumber: 63,
+        columnNumber: 13
+      }, this),
+      /* @__PURE__ */ jsxDEV("p", { className: "fw-semibold text-primary", style: { fontSize: "1.1rem" }, children: "No consultation records found" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+        lineNumber: 64,
+        columnNumber: 13
+      }, this),
+      /* @__PURE__ */ jsxDEV("p", { className: "text-muted", style: { fontSize: "0.85rem", marginTop: "0.25rem" }, children: "Select a patient above to perform and save a new consultation." }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+        lineNumber: 65,
+        columnNumber: 13
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+      lineNumber: 62,
+      columnNumber: 9
+    }, this) : /* @__PURE__ */ jsxDEV("div", { className: "table-responsive", children: /* @__PURE__ */ jsxDEV("table", { className: "patient-table", children: [
+      /* @__PURE__ */ jsxDEV("thead", { children: /* @__PURE__ */ jsxDEV("tr", { children: [
+        /* @__PURE__ */ jsxDEV("th", { children: "Patient ID" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+          lineNumber: 74,
+          columnNumber: 19
+        }, this),
+        /* @__PURE__ */ jsxDEV("th", { children: "Patient Name" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+          lineNumber: 75,
+          columnNumber: 19
+        }, this),
+        /* @__PURE__ */ jsxDEV("th", { children: "Attending Doctor" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+          lineNumber: 76,
+          columnNumber: 19
+        }, this),
+        /* @__PURE__ */ jsxDEV("th", { children: "Symptoms" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+          lineNumber: 77,
+          columnNumber: 19
+        }, this),
+        /* @__PURE__ */ jsxDEV("th", { children: "Diagnosis" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+          lineNumber: 78,
+          columnNumber: 19
+        }, this),
+        /* @__PURE__ */ jsxDEV("th", { children: "Treatment" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+          lineNumber: 79,
+          columnNumber: 19
+        }, this),
+        /* @__PURE__ */ jsxDEV("th", { children: "Date" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+          lineNumber: 80,
+          columnNumber: 19
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+        lineNumber: 73,
+        columnNumber: 17
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+        lineNumber: 72,
+        columnNumber: 15
+      }, this),
+      /* @__PURE__ */ jsxDEV("tbody", { children: filteredConsultations.map(
+        (c) => /* @__PURE__ */ jsxDEV("tr", { children: [
+          /* @__PURE__ */ jsxDEV("td", { children: /* @__PURE__ */ jsxDEV("span", { className: "patient-id-tag", children: c.patientId }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+            lineNumber: 87,
+            columnNumber: 23
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+            lineNumber: 86,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("td", { style: { fontWeight: "600" }, children: c.patientName || "N/A" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+            lineNumber: 89,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("td", { style: { fontWeight: "500", color: "var(--primary-color)" }, children: c.doctor }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+            lineNumber: 90,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("td", { style: { maxWidth: "200px", fontSize: "0.85rem" }, children: c.symptoms }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+            lineNumber: 91,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("td", { style: { maxWidth: "200px", fontWeight: "600", color: "var(--text-primary)" }, children: c.diagnosis }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+            lineNumber: 92,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("td", { style: { maxWidth: "220px", fontSize: "0.85rem", color: "var(--text-secondary)" }, children: c.treatment }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+            lineNumber: 95,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("td", { style: { whiteSpace: "nowrap", fontSize: "0.825rem", color: "var(--text-muted)" }, children: c.date }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+            lineNumber: 98,
+            columnNumber: 21
+          }, this)
+        ] }, c.id || `${c.patientId}-${c.date}-${Math.random()}`, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+          lineNumber: 85,
+          columnNumber: 15
+        }, this)
+      ) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+        lineNumber: 83,
+        columnNumber: 15
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+      lineNumber: 71,
+      columnNumber: 13
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+      lineNumber: 70,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+      lineNumber: 60,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx",
+    lineNumber: 40,
+    columnNumber: 5
+  }, this);
+};
+_s(ConsultationHistory, "LstyUpOVjCodgAi1/1Ji1ELlfME=");
+_c = ConsultationHistory;
+export default ConsultationHistory;
+var _c;
+$RefreshReg$(_c, "ConsultationHistory");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/ConsultationHistory.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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LE9BQU8sc0JBQXNCLEdBQzdFbkIsWUFBRUssYUFETDtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUVBO0FBQUEsVUFDQSx1QkFBQyxRQUFHLE9BQU8sRUFBRUssVUFBVSxTQUFTSyxVQUFVLFdBQVdJLE9BQU8sd0JBQXdCLEdBQ2pGbkIsWUFBRW9CLGFBREw7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFFQTtBQUFBLFVBQ0EsdUJBQUMsUUFBRyxPQUFPLEVBQUVDLFlBQVksVUFBVU4sVUFBVSxZQUFZSSxPQUFPLG9CQUFvQixHQUNqRm5CLFlBQUVzQixRQURMO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBRUE7QUFBQSxhQWZPdEIsRUFBRXVCLE1BQU0sR0FBR3ZCLEVBQUVDLFNBQVMsSUFBSUQsRUFBRXNCLElBQUksSUFBSUUsS0FBS0MsT0FBTyxDQUFDLElBQTFEO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFnQkE7QUFBQSxNQUNELEtBbkJIO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFvQkE7QUFBQSxTQWhDRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBaUNBLEtBbENGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FtQ0EsS0E3Q0o7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQStDQTtBQUFBLE9BbkVGO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FvRUE7QUFFSjtBQUFFakMsR0F2RklGLHFCQUFtQjtBQUFBLEtBQW5CQTtBQXlGTixlQUFlQTtBQUFvQixJQUFBb0M7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsiUmVhY3QiLCJ1c2VTdGF0ZSIsInVzZU1lbW8iLCJIaXN0b3J5IiwiU2VhcmNoIiwiSW5ib3giLCJDb25zdWx0YXRpb25IaXN0b3J5IiwiY29uc3VsdGF0aW9ucyIsIl9zIiwic2VhcmNoVGVybSIsInNldFNlYXJjaFRlcm0iLCJmaWx0ZXJlZENvbnN1bHRhdGlvbnMiLCJ0cmltIiwicSIsInRvTG93ZXJDYXNlIiwiZmlsdGVyIiwiYyIsInBhdGllbnRJZCIsImluY2x1ZGVzIiwicGF0aWVudE5hbWUiLCJkb2N0b3IiLCJkaWFnbm9zaXMiLCJzeW1wdG9tcyIsImZsZXhXcmFwIiwiZ2FwIiwibGVuZ3RoIiwibWF4V2lkdGgiLCJlIiwidGFyZ2V0IiwidmFsdWUiLCJwYWRkaW5nIiwiZm9udFNpemUiLCJtYXJnaW5Ub3AiLCJtYXAiLCJmb250V2VpZ2h0IiwiY29sb3IiLCJ0cmVhdG1lbnQiLCJ3aGl0ZVNwYWNlIiwiZGF0ZSIsImlkIiwiTWF0aCIsInJhbmRvbSIsIl9jIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIkNvbnN1bHRhdGlvbkhpc3RvcnkuanN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCwgeyB1c2VTdGF0ZSwgdXNlTWVtbyB9IGZyb20gJ3JlYWN0JztcclxuaW1wb3J0IHsgSGlzdG9yeSwgU2VhcmNoLCBJbmJveCB9IGZyb20gJ2x1Y2lkZS1yZWFjdCc7XHJcblxyXG5jb25zdCBDb25zdWx0YXRpb25IaXN0b3J5ID0gKHsgY29uc3VsdGF0aW9ucyB9KSA9PiB7XHJcbiAgY29uc3QgW3NlYXJjaFRlcm0sIHNldFNlYXJjaFRlcm1dID0gdXNlU3RhdGUoJycpO1xyXG5cclxuICBjb25zdCBmaWx0ZXJlZENvbnN1bHRhdGlvbnMgPSB1c2VNZW1vKCgpID0+IHtcclxuICAgIGlmICghc2VhcmNoVGVybS50cmltKCkpIHJldHVybiBjb25zdWx0YXRpb25zO1xyXG4gICAgY29uc3QgcSA9IHNlYXJjaFRlcm0udG9Mb3dlckNhc2UoKS50cmltKCk7XHJcbiAgICByZXR1cm4gY29uc3VsdGF0aW9ucy5maWx0ZXIoXHJcbiAgICAgIChjKSA9PlxyXG4gICAgICAgIGMucGF0aWVudElkLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMocSkgfHxcclxuICAgICAgICAoYy5wYXRpZW50TmFtZSAmJiBjLnBhdGllbnROYW1lLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMocSkpIHx8XHJcbiAgICAgICAgYy5kb2N0b3IudG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhxKSB8fFxyXG4gICAgICAgIGMuZGlhZ25vc2lzLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMocSkgfHxcclxuICAgICAgICBjLnN5bXB0b21zLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMocSlcclxuICAgICk7XHJcbiAgfSwgW2NvbnN1bHRhdGlvbnMsIHNlYXJjaFRlcm1dKTtcclxuXHJcbiAgcmV0dXJuIChcclxuICAgIDxkaXYgY2xhc3NOYW1lPVwiY2FyZFwiPlxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImNhcmQtaGVhZGVyXCIgc3R5bGU9e3sgZmxleFdyYXA6ICd3cmFwJywgZ2FwOiAnMXJlbScgfX0+XHJcbiAgICAgICAgPGgzIGNsYXNzTmFtZT1cImNhcmQtdGl0bGVcIj5cclxuICAgICAgICAgIDxIaXN0b3J5IGNsYXNzTmFtZT1cImNhcmQtdGl0bGUtaWNvblwiIHNpemU9ezIwfSAvPlxyXG4gICAgICAgICAgQ29uc3VsdGF0aW9uIEhpc3RvcnkgKHtmaWx0ZXJlZENvbnN1bHRhdGlvbnMubGVuZ3RofSlcclxuICAgICAgICA8L2gzPlxyXG5cclxuICAgICAgICB7LyogU2VhcmNoIElucHV0IEJveCAqL31cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNlYXJjaC1pbnB1dC13cmFwcGVyXCIgc3R5bGU9e3sgbWF4V2lkdGg6ICczMjBweCcgfX0+XHJcbiAgICAgICAgICA8U2VhcmNoIHNpemU9ezE4fSBjbGFzc05hbWU9XCJzZWFyY2gtaWNvblwiIC8+XHJcbiAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgdHlwZT1cInRleHRcIlxyXG4gICAgICAgICAgICBjbGFzc05hbWU9XCJzZWFyY2gtaW5wdXRcIlxyXG4gICAgICAgICAgICBwbGFjZWhvbGRlcj1cIlNlYXJjaCBieSBQYXRpZW50IElELCBOYW1lLCBEb2N0b3IsIERpYWdub3Npcy4uLlwiXHJcbiAgICAgICAgICAgIHZhbHVlPXtzZWFyY2hUZXJtfVxyXG4gICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IHNldFNlYXJjaFRlcm0oZS50YXJnZXQudmFsdWUpfVxyXG4gICAgICAgICAgLz5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImNhcmQtYm9keVwiIHN0eWxlPXt7IHBhZGRpbmc6ICcwLjc1cmVtJyB9fT5cclxuICAgICAgICB7ZmlsdGVyZWRDb25zdWx0YXRpb25zLmxlbmd0aCA9PT0gMCA/IChcclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZW1wdHktc3RhdGVcIj5cclxuICAgICAgICAgICAgPEluYm94IGNsYXNzTmFtZT1cImVtcHR5LXN0YXRlLWljb25cIiBzaXplPXs0OH0gLz5cclxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZnctc2VtaWJvbGQgdGV4dC1wcmltYXJ5XCIgc3R5bGU9e3sgZm9udFNpemU6ICcxLjFyZW0nIH19Pk5vIGNvbnN1bHRhdGlvbiByZWNvcmRzIGZvdW5kPC9wPlxyXG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjg1cmVtJywgbWFyZ2luVG9wOiAnMC4yNXJlbScgfX0+XHJcbiAgICAgICAgICAgICAgU2VsZWN0IGEgcGF0aWVudCBhYm92ZSB0byBwZXJmb3JtIGFuZCBzYXZlIGEgbmV3IGNvbnN1bHRhdGlvbi5cclxuICAgICAgICAgICAgPC9wPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgKSA6IChcclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGFibGUtcmVzcG9uc2l2ZVwiPlxyXG4gICAgICAgICAgICA8dGFibGUgY2xhc3NOYW1lPVwicGF0aWVudC10YWJsZVwiPlxyXG4gICAgICAgICAgICAgIDx0aGVhZD5cclxuICAgICAgICAgICAgICAgIDx0cj5cclxuICAgICAgICAgICAgICAgICAgPHRoPlBhdGllbnQgSUQ8L3RoPlxyXG4gICAgICAgICAgICAgICAgICA8dGg+UGF0aWVudCBOYW1lPC90aD5cclxuICAgICAgICAgICAgICAgICAgPHRoPkF0dGVuZGluZyBEb2N0b3I8L3RoPlxyXG4gICAgICAgICAgICAgICAgICA8dGg+U3ltcHRvbXM8L3RoPlxyXG4gICAgICAgICAgICAgICAgICA8dGg+RGlhZ25vc2lzPC90aD5cclxuICAgICAgICAgICAgICAgICAgPHRoPlRyZWF0bWVudDwvdGg+XHJcbiAgICAgICAgICAgICAgICAgIDx0aD5EYXRlPC90aD5cclxuICAgICAgICAgICAgICAgIDwvdHI+XHJcbiAgICAgICAgICAgICAgPC90aGVhZD5cclxuICAgICAgICAgICAgICA8dGJvZHk+XHJcbiAgICAgICAgICAgICAgICB7ZmlsdGVyZWRDb25zdWx0YXRpb25zLm1hcCgoYykgPT4gKFxyXG4gICAgICAgICAgICAgICAgICA8dHIga2V5PXtjLmlkIHx8IGAke2MucGF0aWVudElkfS0ke2MuZGF0ZX0tJHtNYXRoLnJhbmRvbSgpfWB9PlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInBhdGllbnQtaWQtdGFnXCI+e2MucGF0aWVudElkfTwvc3Bhbj5cclxuICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17eyBmb250V2VpZ2h0OiAnNjAwJyB9fT57Yy5wYXRpZW50TmFtZSB8fCAnTi9BJ308L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17eyBmb250V2VpZ2h0OiAnNTAwJywgY29sb3I6ICd2YXIoLS1wcmltYXJ5LWNvbG9yKScgfX0+e2MuZG9jdG9yfTwvdGQ+XHJcbiAgICAgICAgICAgICAgICAgICAgPHRkIHN0eWxlPXt7IG1heFdpZHRoOiAnMjAwcHgnLCBmb250U2l6ZTogJzAuODVyZW0nIH19PntjLnN5bXB0b21zfTwvdGQ+XHJcbiAgICAgICAgICAgICAgICAgICAgPHRkIHN0eWxlPXt7IG1heFdpZHRoOiAnMjAwcHgnLCBmb250V2VpZ2h0OiAnNjAwJywgY29sb3I6ICd2YXIoLS10ZXh0LXByaW1hcnkpJyB9fT5cclxuICAgICAgICAgICAgICAgICAgICAgIHtjLmRpYWdub3Npc31cclxuICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17eyBtYXhXaWR0aDogJzIyMHB4JywgZm9udFNpemU6ICcwLjg1cmVtJywgY29sb3I6ICd2YXIoLS10ZXh0LXNlY29uZGFyeSknIH19PlxyXG4gICAgICAgICAgICAgICAgICAgICAge2MudHJlYXRtZW50fVxyXG4gICAgICAgICAgICAgICAgICAgIDwvdGQ+XHJcbiAgICAgICAgICAgICAgICAgICAgPHRkIHN0eWxlPXt7IHdoaXRlU3BhY2U6ICdub3dyYXAnLCBmb250U2l6ZTogJzAuODI1cmVtJywgY29sb3I6ICd2YXIoLS10ZXh0LW11dGVkKScgfX0+XHJcbiAgICAgICAgICAgICAgICAgICAgICB7Yy5kYXRlfVxyXG4gICAgICAgICAgICAgICAgICAgIDwvdGQ+XHJcbiAgICAgICAgICAgICAgICAgIDwvdHI+XHJcbiAgICAgICAgICAgICAgICApKX1cclxuICAgICAgICAgICAgICA8L3Rib2R5PlxyXG4gICAgICAgICAgICA8L3RhYmxlPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgKX1cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59O1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgQ29uc3VsdGF0aW9uSGlzdG9yeTtcclxuIl0sImZpbGUiOiJDOi9Vc2Vycy9zYXJvai9PbmVEcml2ZS9EZXNrdG9wL01lZGlTeW5jL0Zyb250ZW5kL3NyYy9jb21wb25lbnRzL0NvbnN1bHRhdGlvbkhpc3RvcnkuanN4In0=

@@ -1,0 +1,306 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/auth/ForgotPasswordForm.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const Fragment = __vite__cjsImport0_react_jsxDevRuntime["Fragment"]; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react; const useState = __vite__cjsImport3_react["useState"];
+import { Mail, Phone, ArrowRight, ArrowLeft, AlertCircle, KeyRound } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+import { authService, isEmail, isPhone } from "/src/services/authService.js";
+const ForgotPasswordForm = ({ onNavigate, onOtpSent }) => {
+  _s();
+  const [identifier, setIdentifier] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMessage(null);
+    const clean = identifier.trim();
+    if (!clean) {
+      setErrorMessage("Please enter your registered email address or phone number.");
+      return;
+    }
+    if (!isEmail(clean) && !isPhone(clean)) {
+      setErrorMessage("Please enter a valid email address or phone number.");
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const result = await authService.sendOtp(clean);
+      onOtpSent({
+        identifier: clean,
+        maskedTarget: result.maskedTarget,
+        cooldownSeconds: result.cooldownSeconds,
+        demoOtpCode: result.demoOtpCode
+      });
+      onNavigate("verify_otp");
+    } catch (err) {
+      setErrorMessage(err.message || "Unable to dispatch verification code. Please check details.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  return /* @__PURE__ */ jsxDEV("div", { className: "auth-card-body", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "auth-card-header", children: [
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          type: "button",
+          className: "btn-back-link",
+          onClick: () => onNavigate("login"),
+          disabled: isLoading,
+          children: [
+            /* @__PURE__ */ jsxDEV(ArrowLeft, { size: 16 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+              lineNumber: 71,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Back to Sign In" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+              lineNumber: 72,
+              columnNumber: 11
+            }, this)
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+          lineNumber: 65,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ jsxDEV("div", { className: "auth-badge-header mt-2", children: /* @__PURE__ */ jsxDEV("span", { className: "badge-pill-primary", children: "Password Recovery" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+        lineNumber: 76,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+        lineNumber: 75,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("h2", { className: "auth-main-title", children: "Reset Your Password" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+        lineNumber: 78,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("p", { className: "auth-main-subtitle", children: "Enter your registered email or phone number and we'll send you a 6-digit verification code." }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+        lineNumber: 79,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+      lineNumber: 64,
+      columnNumber: 7
+    }, this),
+    errorMessage && /* @__PURE__ */ jsxDEV("div", { className: "auth-alert auth-alert-danger", role: "alert", children: [
+      /* @__PURE__ */ jsxDEV(AlertCircle, { size: 18, className: "alert-icon flex-shrink-0" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+        lineNumber: 86,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "alert-content", children: [
+        /* @__PURE__ */ jsxDEV("strong", { children: "Error:" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+          lineNumber: 88,
+          columnNumber: 13
+        }, this),
+        " ",
+        errorMessage
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+        lineNumber: 87,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+      lineNumber: 85,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("form", { className: "auth-form", onSubmit: handleSubmit, noValidate: true, children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "form-group mb-4", children: [
+        /* @__PURE__ */ jsxDEV("label", { htmlFor: "recovery-identifier", className: "auth-label", children: [
+          "Registered Email or Phone Number ",
+          /* @__PURE__ */ jsxDEV("span", { className: "req-star", children: "*" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+            lineNumber: 96,
+            columnNumber: 46
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+          lineNumber: 95,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "auth-input-wrapper", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "input-prefix-icon", children: isPhone(identifier) ? /* @__PURE__ */ jsxDEV(Phone, { size: 18 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+            lineNumber: 100,
+            columnNumber: 38
+          }, this) : /* @__PURE__ */ jsxDEV(Mail, { size: 18 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+            lineNumber: 100,
+            columnNumber: 60
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+            lineNumber: 99,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              id: "recovery-identifier",
+              type: "text",
+              name: "identifier",
+              className: "form-control auth-input with-prefix",
+              placeholder: "name@example.com or +91 98765 43210",
+              value: identifier,
+              onChange: (e) => setIdentifier(e.target.value),
+              disabled: isLoading,
+              required: true
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+              lineNumber: 102,
+              columnNumber: 13
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+          lineNumber: 98,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("small", { className: "field-hint-text", children: "We will verify your identity with a one-time passcode (OTP) before allowing password reset." }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+          lineNumber: 114,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+        lineNumber: 94,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          type: "submit",
+          id: "btn-send-otp",
+          className: "btn-auth-primary w-100",
+          disabled: isLoading,
+          children: isLoading ? /* @__PURE__ */ jsxDEV(Fragment, { children: [
+            /* @__PURE__ */ jsxDEV("span", { className: "spinner-border spinner-border-sm me-2", role: "status", "aria-hidden": "true" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+              lineNumber: 127,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: "Sending OTP..." }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+              lineNumber: 128,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+            lineNumber: 126,
+            columnNumber: 11
+          }, this) : /* @__PURE__ */ jsxDEV(Fragment, { children: [
+            /* @__PURE__ */ jsxDEV("span", { children: "Send OTP Verification Code" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+              lineNumber: 132,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(ArrowRight, { size: 18 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+              lineNumber: 133,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+            lineNumber: 131,
+            columnNumber: 11
+          }, this)
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+          lineNumber: 119,
+          columnNumber: 9
+        },
+        this
+      )
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+      lineNumber: 93,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "auth-card-footer mt-4 text-center", children: /* @__PURE__ */ jsxDEV("p", { className: "text-muted text-sm mb-0", children: [
+      "Remembered your password?",
+      " ",
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          type: "button",
+          className: "btn-link-action-inline",
+          onClick: () => onNavigate("login"),
+          children: "Back to Login"
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+          lineNumber: 142,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+      lineNumber: 140,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+      lineNumber: 139,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx",
+    lineNumber: 63,
+    columnNumber: 5
+  }, this);
+};
+_s(ForgotPasswordForm, "x1mLMzfrQ0o+cspuUqUZzqVaHZ8=");
+_c = ForgotPasswordForm;
+export default ForgotPasswordForm;
+var _c;
+$RefreshReg$(_c, "ForgotPasswordForm");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/auth/ForgotPasswordForm.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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YUFBQUEsSUFBQSIsIm5hbWVzIjpbIlJlYWN0IiwidXNlU3RhdGUiLCJNYWlsIiwiUGhvbmUiLCJBcnJvd1JpZ2h0IiwiQXJyb3dMZWZ0IiwiQWxlcnRDaXJjbGUiLCJLZXlSb3VuZCIsImF1dGhTZXJ2aWNlIiwiaXNFbWFpbCIsImlzUGhvbmUiLCJGb3Jnb3RQYXNzd29yZEZvcm0iLCJvbk5hdmlnYXRlIiwib25PdHBTZW50IiwiX3MiLCJpZGVudGlmaWVyIiwic2V0SWRlbnRpZmllciIsImlzTG9hZGluZyIsInNldElzTG9hZGluZyIsImVycm9yTWVzc2FnZSIsInNldEVycm9yTWVzc2FnZSIsImhhbmRsZVN1Ym1pdCIsImUiLCJwcmV2ZW50RGVmYXVsdCIsImNsZWFuIiwidHJpbSIsInJlc3VsdCIsInNlbmRPdHAiLCJtYXNrZWRUYXJnZXQiLCJjb29sZG93blNlY29uZHMiLCJkZW1vT3RwQ29kZSIsImVyciIsIm1lc3NhZ2UiLCJ0YXJnZXQiLCJ2YWx1ZSIsIl9jIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIkZvcmdvdFBhc3N3b3JkRm9ybS5qc3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnO1xyXG5pbXBvcnQgeyBNYWlsLCBQaG9uZSwgQXJyb3dSaWdodCwgQXJyb3dMZWZ0LCBBbGVydENpcmNsZSwgS2V5Um91bmQgfSBmcm9tICdsdWNpZGUtcmVhY3QnO1xyXG5pbXBvcnQgeyBhdXRoU2VydmljZSwgaXNFbWFpbCwgaXNQaG9uZSB9IGZyb20gJy4uLy4uL3NlcnZpY2VzL2F1dGhTZXJ2aWNlJztcclxuXHJcbmNvbnN0IEZvcmdvdFBhc3N3b3JkRm9ybSA9ICh7IG9uTmF2aWdhdGUsIG9uT3RwU2VudCB9KSA9PiB7XHJcbiAgY29uc3QgW2lkZW50aWZpZXIsIHNldElkZW50aWZpZXJdID0gdXNlU3RhdGUoJycpO1xyXG4gIGNvbnN0IFtpc0xvYWRpbmcsIHNldElzTG9hZGluZ10gPSB1c2VTdGF0ZShmYWxzZSk7XHJcbiAgY29uc3QgW2Vycm9yTWVzc2FnZSwgc2V0RXJyb3JNZXNzYWdlXSA9IHVzZVN0YXRlKG51bGwpO1xyXG5cclxuICBjb25zdCBoYW5kbGVTdWJtaXQgPSBhc3luYyAoZSkgPT4ge1xyXG4gICAgZS5wcmV2ZW50RGVmYXVsdCgpO1xyXG4gICAgc2V0RXJyb3JNZXNzYWdlKG51bGwpO1xyXG5cclxuICAgIGNvbnN0IGNsZWFuID0gaWRlbnRpZmllci50cmltKCk7XHJcbiAgICBpZiAoIWNsZWFuKSB7XHJcbiAgICAgIHNldEVycm9yTWVzc2FnZSgnUGxlYXNlIGVudGVyIHlvdXIgcmVnaXN0ZXJlZCBlbWFpbCBhZGRyZXNzIG9yIHBob25lIG51bWJlci4nKTtcclxuICAgICAgcmV0dXJuO1xyXG4gICAgfVxyXG5cclxuICAgIGlmICghaXNFbWFpbChjbGVhbikgJiYgIWlzUGhvbmUoY2xlYW4pKSB7XHJcbiAgICAgIHNldEVycm9yTWVzc2FnZSgnUGxlYXNlIGVudGVyIGEgdmFsaWQgZW1haWwgYWRkcmVzcyBvciBwaG9uZSBudW1iZXIuJyk7XHJcbiAgICAgIHJldHVybjtcclxuICAgIH1cclxuXHJcbiAgICBzZXRJc0xvYWRpbmcodHJ1ZSk7XHJcblxyXG4gICAgdHJ5IHtcclxuICAgICAgY29uc3QgcmVzdWx0ID0gYXdhaXQgYXV0aFNlcnZpY2Uuc2VuZE90cChjbGVhbik7XHJcbiAgICAgIG9uT3RwU2VudCh7XHJcbiAgICAgICAgaWRlbnRpZmllcjogY2xlYW4sXHJcbiAgICAgICAgbWFza2VkVGFyZ2V0OiByZXN1bHQubWFza2VkVGFyZ2V0LFxyXG4gICAgICAgIGNvb2xkb3duU2Vjb25kczogcmVzdWx0LmNvb2xkb3duU2Vjb25kcyxcclxuICAgICAgICBkZW1vT3RwQ29kZTogcmVzdWx0LmRlbW9PdHBDb2RlXHJcbiAgICAgIH0pO1xyXG4gICAgICBvbk5hdmlnYXRlKCd2ZXJpZnlfb3RwJyk7XHJcbiAgICB9IGNhdGNoIChlcnIpIHtcclxuICAgICAgc2V0RXJyb3JNZXNzYWdlKGVyci5tZXNzYWdlIHx8ICdVbmFibGUgdG8gZGlzcGF0Y2ggdmVyaWZpY2F0aW9uIGNvZGUuIFBsZWFzZSBjaGVjayBkZXRhaWxzLicpO1xyXG4gICAgfSBmaW5hbGx5IHtcclxuICAgICAgc2V0SXNMb2FkaW5nKGZhbHNlKTtcclxuICAgIH1cclxuICB9O1xyXG5cclxuICByZXR1cm4gKFxyXG4gICAgPGRpdiBjbGFzc05hbWU9XCJhdXRoLWNhcmQtYm9keVwiPlxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImF1dGgtY2FyZC1oZWFkZXJcIj5cclxuICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgIGNsYXNzTmFtZT1cImJ0bi1iYWNrLWxpbmtcIlxyXG4gICAgICAgICAgb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZSgnbG9naW4nKX1cclxuICAgICAgICAgIGRpc2FibGVkPXtpc0xvYWRpbmd9XHJcbiAgICAgICAgPlxyXG4gICAgICAgICAgPEFycm93TGVmdCBzaXplPXsxNn0gLz5cclxuICAgICAgICAgIDxzcGFuPkJhY2sgdG8gU2lnbiBJbjwvc3Bhbj5cclxuICAgICAgICA8L2J1dHRvbj5cclxuXHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhdXRoLWJhZGdlLWhlYWRlciBtdC0yXCI+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJiYWRnZS1waWxsLXByaW1hcnlcIj5QYXNzd29yZCBSZWNvdmVyeTwvc3Bhbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8aDIgY2xhc3NOYW1lPVwiYXV0aC1tYWluLXRpdGxlXCI+UmVzZXQgWW91ciBQYXNzd29yZDwvaDI+XHJcbiAgICAgICAgPHAgY2xhc3NOYW1lPVwiYXV0aC1tYWluLXN1YnRpdGxlXCI+XHJcbiAgICAgICAgICBFbnRlciB5b3VyIHJlZ2lzdGVyZWQgZW1haWwgb3IgcGhvbmUgbnVtYmVyIGFuZCB3ZSdsbCBzZW5kIHlvdSBhIDYtZGlnaXQgdmVyaWZpY2F0aW9uIGNvZGUuXHJcbiAgICAgICAgPC9wPlxyXG4gICAgICA8L2Rpdj5cclxuXHJcbiAgICAgIHtlcnJvck1lc3NhZ2UgJiYgKFxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYXV0aC1hbGVydCBhdXRoLWFsZXJ0LWRhbmdlclwiIHJvbGU9XCJhbGVydFwiPlxyXG4gICAgICAgICAgPEFsZXJ0Q2lyY2xlIHNpemU9ezE4fSBjbGFzc05hbWU9XCJhbGVydC1pY29uIGZsZXgtc2hyaW5rLTBcIiAvPlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhbGVydC1jb250ZW50XCI+XHJcbiAgICAgICAgICAgIDxzdHJvbmc+RXJyb3I6PC9zdHJvbmc+IHtlcnJvck1lc3NhZ2V9XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgKX1cclxuXHJcbiAgICAgIDxmb3JtIGNsYXNzTmFtZT1cImF1dGgtZm9ybVwiIG9uU3VibWl0PXtoYW5kbGVTdWJtaXR9IG5vVmFsaWRhdGU+XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb3JtLWdyb3VwIG1iLTRcIj5cclxuICAgICAgICAgIDxsYWJlbCBodG1sRm9yPVwicmVjb3ZlcnktaWRlbnRpZmllclwiIGNsYXNzTmFtZT1cImF1dGgtbGFiZWxcIj5cclxuICAgICAgICAgICAgUmVnaXN0ZXJlZCBFbWFpbCBvciBQaG9uZSBOdW1iZXIgPHNwYW4gY2xhc3NOYW1lPVwicmVxLXN0YXJcIj4qPC9zcGFuPlxyXG4gICAgICAgICAgPC9sYWJlbD5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYXV0aC1pbnB1dC13cmFwcGVyXCI+XHJcbiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImlucHV0LXByZWZpeC1pY29uXCI+XHJcbiAgICAgICAgICAgICAge2lzUGhvbmUoaWRlbnRpZmllcikgPyA8UGhvbmUgc2l6ZT17MTh9IC8+IDogPE1haWwgc2l6ZT17MTh9IC8+fVxyXG4gICAgICAgICAgICA8L3NwYW4+XHJcbiAgICAgICAgICAgIDxpbnB1dFxyXG4gICAgICAgICAgICAgIGlkPVwicmVjb3ZlcnktaWRlbnRpZmllclwiXHJcbiAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxyXG4gICAgICAgICAgICAgIG5hbWU9XCJpZGVudGlmaWVyXCJcclxuICAgICAgICAgICAgICBjbGFzc05hbWU9XCJmb3JtLWNvbnRyb2wgYXV0aC1pbnB1dCB3aXRoLXByZWZpeFwiXHJcbiAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJuYW1lQGV4YW1wbGUuY29tIG9yICs5MSA5ODc2NSA0MzIxMFwiXHJcbiAgICAgICAgICAgICAgdmFsdWU9e2lkZW50aWZpZXJ9XHJcbiAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXRJZGVudGlmaWVyKGUudGFyZ2V0LnZhbHVlKX1cclxuICAgICAgICAgICAgICBkaXNhYmxlZD17aXNMb2FkaW5nfVxyXG4gICAgICAgICAgICAgIHJlcXVpcmVkXHJcbiAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgIDxzbWFsbCBjbGFzc05hbWU9XCJmaWVsZC1oaW50LXRleHRcIj5cclxuICAgICAgICAgICAgV2Ugd2lsbCB2ZXJpZnkgeW91ciBpZGVudGl0eSB3aXRoIGEgb25lLXRpbWUgcGFzc2NvZGUgKE9UUCkgYmVmb3JlIGFsbG93aW5nIHBhc3N3b3JkIHJlc2V0LlxyXG4gICAgICAgICAgPC9zbWFsbD5cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgdHlwZT1cInN1Ym1pdFwiXHJcbiAgICAgICAgICBpZD1cImJ0bi1zZW5kLW90cFwiXHJcbiAgICAgICAgICBjbGFzc05hbWU9XCJidG4tYXV0aC1wcmltYXJ5IHctMTAwXCJcclxuICAgICAgICAgIGRpc2FibGVkPXtpc0xvYWRpbmd9XHJcbiAgICAgICAgPlxyXG4gICAgICAgICAge2lzTG9hZGluZyA/IChcclxuICAgICAgICAgICAgPD5cclxuICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJzcGlubmVyLWJvcmRlciBzcGlubmVyLWJvcmRlci1zbSBtZS0yXCIgcm9sZT1cInN0YXR1c1wiIGFyaWEtaGlkZGVuPVwidHJ1ZVwiIC8+XHJcbiAgICAgICAgICAgICAgPHNwYW4+U2VuZGluZyBPVFAuLi48L3NwYW4+XHJcbiAgICAgICAgICAgIDwvPlxyXG4gICAgICAgICAgKSA6IChcclxuICAgICAgICAgICAgPD5cclxuICAgICAgICAgICAgICA8c3Bhbj5TZW5kIE9UUCBWZXJpZmljYXRpb24gQ29kZTwvc3Bhbj5cclxuICAgICAgICAgICAgICA8QXJyb3dSaWdodCBzaXplPXsxOH0gLz5cclxuICAgICAgICAgICAgPC8+XHJcbiAgICAgICAgICApfVxyXG4gICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICA8L2Zvcm0+XHJcblxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImF1dGgtY2FyZC1mb290ZXIgbXQtNCB0ZXh0LWNlbnRlclwiPlxyXG4gICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtbXV0ZWQgdGV4dC1zbSBtYi0wXCI+XHJcbiAgICAgICAgICBSZW1lbWJlcmVkIHlvdXIgcGFzc3dvcmQ/eycgJ31cclxuICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiXHJcbiAgICAgICAgICAgIGNsYXNzTmFtZT1cImJ0bi1saW5rLWFjdGlvbi1pbmxpbmVcIlxyXG4gICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvbk5hdmlnYXRlKCdsb2dpbicpfVxyXG4gICAgICAgICAgPlxyXG4gICAgICAgICAgICBCYWNrIHRvIExvZ2luXHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICA8L3A+XHJcbiAgICAgIDwvZGl2PlxyXG4gICAgPC9kaXY+XHJcbiAgKTtcclxufTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IEZvcmdvdFBhc3N3b3JkRm9ybTtcclxuIl0sImZpbGUiOiJDOi9Vc2Vycy9zYXJvai9PbmVEcml2ZS9EZXNrdG9wL01lZGlTeW5jL0Zyb250ZW5kL3NyYy9jb21wb25lbnRzL2F1dGgvRm9yZ290UGFzc3dvcmRGb3JtLmpzeCJ9

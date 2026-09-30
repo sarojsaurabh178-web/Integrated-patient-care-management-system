@@ -1,0 +1,462 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/PrescriptionForm.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react; const useState = __vite__cjsImport3_react["useState"];
+import { Pill, Plus, CheckCircle2, AlertCircle } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+const doctorsList = [
+  "Dr. Priya Sharma",
+  "Dr. Amit Verma",
+  "Dr. Neha Singh",
+  "Dr. Ananya Roy",
+  "Dr. Rajesh Kumar",
+  "Dr. Vikram Malhotra"
+];
+const PrescriptionForm = ({ selectedPatient, onGeneratePrescription }) => {
+  _s();
+  const [formData, setFormData] = useState({
+    doctor: doctorsList[0],
+    medicine: "",
+    dosage: "",
+    duration: "",
+    notes: ""
+  });
+  const [errors, setErrors] = useState({});
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+  const validateForm = () => {
+    const newErrors = {};
+    if (!selectedPatient) {
+      newErrors.patient = "Please select a patient first.";
+    }
+    if (!formData.doctor) {
+      newErrors.doctor = "Please select doctor.";
+    }
+    if (!formData.medicine.trim()) {
+      newErrors.medicine = "Medicine name is required.";
+    }
+    if (!formData.dosage.trim()) {
+      newErrors.dosage = "Dosage is required (e.g. 500 mg).";
+    }
+    if (!formData.duration.trim()) {
+      newErrors.duration = "Duration is required (e.g. 5 days).";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      onGeneratePrescription({
+        patientId: selectedPatient.id,
+        patientName: selectedPatient.name,
+        doctor: formData.doctor,
+        medicine: formData.medicine.trim(),
+        dosage: formData.dosage.trim(),
+        duration: formData.duration.trim(),
+        notes: formData.notes.trim(),
+        date: (/* @__PURE__ */ new Date()).toISOString().split("T")[0]
+      });
+      setFormData((prev) => ({
+        ...prev,
+        medicine: "",
+        dosage: "",
+        duration: "",
+        notes: ""
+      }));
+      setErrors({});
+    }
+  };
+  return /* @__PURE__ */ jsxDEV("div", { className: "card", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "card-header", children: /* @__PURE__ */ jsxDEV("h3", { className: "card-title", children: [
+      /* @__PURE__ */ jsxDEV(Pill, { className: "card-title-icon", size: 20 }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+        lineNumber: 108,
+        columnNumber: 11
+      }, this),
+      "Generate Patient Prescription"
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+      lineNumber: 107,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+      lineNumber: 106,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "card-body", children: [
+      errors.patient && /* @__PURE__ */ jsxDEV("div", { className: "error-message", style: { marginBottom: "1rem", fontSize: "0.9rem" }, children: [
+        /* @__PURE__ */ jsxDEV(AlertCircle, { size: 16 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+          lineNumber: 116,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { children: errors.patient }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+          lineNumber: 117,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+        lineNumber: 115,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("form", { onSubmit: handleSubmit, noValidate: true, children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "form-grid", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+            /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "rxPatientId", children: "Patient ID" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+              lineNumber: 125,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              "input",
+              {
+                type: "text",
+                id: "rxPatientId",
+                className: "form-control",
+                value: selectedPatient ? `${selectedPatient.id} (${selectedPatient.name})` : "No patient selected",
+                readOnly: true
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 128,
+                columnNumber: 15
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+            lineNumber: 124,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+            /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "rxDoctor", children: [
+              "Prescribing Doctor ",
+              /* @__PURE__ */ jsxDEV("span", { className: "required-star", children: "*" }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 140,
+                columnNumber: 36
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+              lineNumber: 139,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              "select",
+              {
+                id: "rxDoctor",
+                name: "doctor",
+                className: `form-control ${errors.doctor ? "is-invalid" : ""}`,
+                value: formData.doctor,
+                onChange: handleChange,
+                children: doctorsList.map(
+                  (doc) => /* @__PURE__ */ jsxDEV("option", { value: doc, children: doc }, doc, false, {
+                    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                    lineNumber: 150,
+                    columnNumber: 17
+                  }, this)
+                )
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 142,
+                columnNumber: 15
+              },
+              this
+            ),
+            errors.doctor && /* @__PURE__ */ jsxDEV("div", { className: "error-message", children: [
+              /* @__PURE__ */ jsxDEV(AlertCircle, { size: 14 }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 157,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: errors.doctor }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 158,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+              lineNumber: 156,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+            lineNumber: 138,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+            /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "medicine", children: [
+              "Medicine Name ",
+              /* @__PURE__ */ jsxDEV("span", { className: "required-star", children: "*" }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 166,
+                columnNumber: 31
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+              lineNumber: 165,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              "input",
+              {
+                type: "text",
+                id: "medicine",
+                name: "medicine",
+                className: `form-control ${errors.medicine ? "is-invalid" : ""}`,
+                placeholder: "Enter medicine name (e.g. Paracetamol 500mg)",
+                value: formData.medicine,
+                onChange: handleChange
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 168,
+                columnNumber: 15
+              },
+              this
+            ),
+            errors.medicine && /* @__PURE__ */ jsxDEV("div", { className: "error-message", children: [
+              /* @__PURE__ */ jsxDEV(AlertCircle, { size: 14 }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 179,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: errors.medicine }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 180,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+              lineNumber: 178,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+            lineNumber: 164,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+            /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "dosage", children: [
+              "Dosage ",
+              /* @__PURE__ */ jsxDEV("span", { className: "required-star", children: "*" }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 188,
+                columnNumber: 24
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+              lineNumber: 187,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              "input",
+              {
+                type: "text",
+                id: "dosage",
+                name: "dosage",
+                className: `form-control ${errors.dosage ? "is-invalid" : ""}`,
+                placeholder: "Example: 500 mg / 1 tablet twice daily",
+                value: formData.dosage,
+                onChange: handleChange
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 190,
+                columnNumber: 15
+              },
+              this
+            ),
+            errors.dosage && /* @__PURE__ */ jsxDEV("div", { className: "error-message", children: [
+              /* @__PURE__ */ jsxDEV(AlertCircle, { size: 14 }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 201,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: errors.dosage }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 202,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+              lineNumber: 200,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+            lineNumber: 186,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+            /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "duration", children: [
+              "Duration ",
+              /* @__PURE__ */ jsxDEV("span", { className: "required-star", children: "*" }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 210,
+                columnNumber: 26
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+              lineNumber: 209,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              "input",
+              {
+                type: "text",
+                id: "duration",
+                name: "duration",
+                className: `form-control ${errors.duration ? "is-invalid" : ""}`,
+                placeholder: "Example: 5 days",
+                value: formData.duration,
+                onChange: handleChange
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 212,
+                columnNumber: 15
+              },
+              this
+            ),
+            errors.duration && /* @__PURE__ */ jsxDEV("div", { className: "error-message", children: [
+              /* @__PURE__ */ jsxDEV(AlertCircle, { size: 14 }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 223,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: errors.duration }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 224,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+              lineNumber: 222,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+            lineNumber: 208,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+            /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "notes", children: "Diet / Special Instructions" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+              lineNumber: 231,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              "input",
+              {
+                type: "text",
+                id: "notes",
+                name: "notes",
+                className: "form-control",
+                placeholder: "Example: Take after food with warm water",
+                value: formData.notes,
+                onChange: handleChange
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+                lineNumber: 234,
+                columnNumber: 15
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+            lineNumber: 230,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+          lineNumber: 122,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "form-actions", children: /* @__PURE__ */ jsxDEV("button", { type: "submit", className: "btn btn-primary", disabled: !selectedPatient, children: [
+          /* @__PURE__ */ jsxDEV(CheckCircle2, { size: 16 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+            lineNumber: 248,
+            columnNumber: 15
+          }, this),
+          "Generate Prescription"
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+          lineNumber: 247,
+          columnNumber: 13
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+          lineNumber: 246,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+        lineNumber: 121,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+      lineNumber: 113,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx",
+    lineNumber: 105,
+    columnNumber: 5
+  }, this);
+};
+_s(PrescriptionForm, "FYbqBfxqmsZyT5DwVdvCqOBi6XU=");
+_c = PrescriptionForm;
+export default PrescriptionForm;
+var _c;
+$RefreshReg$(_c, "PrescriptionForm");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PrescriptionForm.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUEsY0FBQztBQUFBO0FBQUEsZ0JBQ0MsTUFBSztBQUFBLGdCQUNMLElBQUc7QUFBQSxnQkFDSCxNQUFLO0FBQUEsZ0JBQ0wsV0FBVTtBQUFBLGdCQUNWLGFBQVk7QUFBQSxnQkFDWixPQUFPTCxTQUFTTTtBQUFBQSxnQkFDaEIsVUFBVUc7QUFBQUE7QUFBQUEsY0FQWjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsWUFPeUI7QUFBQSxlQVgzQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQWFBO0FBQUEsYUF6SEY7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQTBIQTtBQUFBLFFBRUEsdUJBQUMsU0FBSSxXQUFVLGdCQUNiLGlDQUFDLFlBQU8sTUFBSyxVQUFTLFdBQVUsbUJBQWtCLFVBQVUsQ0FBQ1osaUJBQzNEO0FBQUEsaUNBQUMsZ0JBQWEsTUFBTSxNQUFwQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUF1QjtBQUFBLFVBQUc7QUFBQSxhQUQ1QjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBR0EsS0FKRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBS0E7QUFBQSxXQWxJRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBbUlBO0FBQUEsU0EzSUY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQTRJQTtBQUFBLE9BcEpGO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FxSkE7QUFFSjtBQUFFRSxHQWhPSUgsa0JBQWdCO0FBQUEsS0FBaEJBO0FBa09OLGVBQWVBO0FBQWlCLElBQUF1QztBQUFBLGFBQUFBLElBQUEiLCJuYW1lcyI6WyJSZWFjdCIsInVzZVN0YXRlIiwiUGlsbCIsIlBsdXMiLCJDaGVja0NpcmNsZTIiLCJBbGVydENpcmNsZSIsImRvY3RvcnNMaXN0IiwiUHJlc2NyaXB0aW9uRm9ybSIsInNlbGVjdGVkUGF0aWVudCIsIm9uR2VuZXJhdGVQcmVzY3JpcHRpb24iLCJfcyIsImZvcm1EYXRhIiwic2V0Rm9ybURhdGEiLCJkb2N0b3IiLCJtZWRpY2luZSIsImRvc2FnZSIsImR1cmF0aW9uIiwibm90ZXMiLCJlcnJvcnMiLCJzZXRFcnJvcnMiLCJoYW5kbGVDaGFuZ2UiLCJlIiwibmFtZSIsInZhbHVlIiwidGFyZ2V0IiwicHJldiIsInZhbGlkYXRlRm9ybSIsIm5ld0Vycm9ycyIsInBhdGllbnQiLCJ0cmltIiwiT2JqZWN0Iiwia2V5cyIsImxlbmd0aCIsImhhbmRsZVN1Ym1pdCIsInByZXZlbnREZWZhdWx0IiwicGF0aWVudElkIiwiaWQiLCJwYXRpZW50TmFtZSIsImRhdGUiLCJEYXRlIiwidG9JU09TdHJpbmciLCJzcGxpdCIsIm1hcmdpbkJvdHRvbSIsImZvbnRTaXplIiwibWFwIiwiZG9jIiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiUHJlc2NyaXB0aW9uRm9ybS5qc3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnO1xyXG5pbXBvcnQgeyBQaWxsLCBQbHVzLCBDaGVja0NpcmNsZTIsIEFsZXJ0Q2lyY2xlIH0gZnJvbSAnbHVjaWRlLXJlYWN0JztcclxuXHJcbmNvbnN0IGRvY3RvcnNMaXN0ID0gW1xyXG4gICdEci4gUHJpeWEgU2hhcm1hJyxcclxuICAnRHIuIEFtaXQgVmVybWEnLFxyXG4gICdEci4gTmVoYSBTaW5naCcsXHJcbiAgJ0RyLiBBbmFueWEgUm95JyxcclxuICAnRHIuIFJhamVzaCBLdW1hcicsXHJcbiAgJ0RyLiBWaWtyYW0gTWFsaG90cmEnXHJcbl07XHJcblxyXG5jb25zdCBQcmVzY3JpcHRpb25Gb3JtID0gKHsgc2VsZWN0ZWRQYXRpZW50LCBvbkdlbmVyYXRlUHJlc2NyaXB0aW9uIH0pID0+IHtcclxuICBjb25zdCBbZm9ybURhdGEsIHNldEZvcm1EYXRhXSA9IHVzZVN0YXRlKHtcclxuICAgIGRvY3RvcjogZG9jdG9yc0xpc3RbMF0sXHJcbiAgICBtZWRpY2luZTogJycsXHJcbiAgICBkb3NhZ2U6ICcnLFxyXG4gICAgZHVyYXRpb246ICcnLFxyXG4gICAgbm90ZXM6ICcnXHJcbiAgfSk7XHJcblxyXG4gIGNvbnN0IFtlcnJvcnMsIHNldEVycm9yc10gPSB1c2VTdGF0ZSh7fSk7XHJcblxyXG4gIGNvbnN0IGhhbmRsZUNoYW5nZSA9IChlKSA9PiB7XHJcbiAgICBjb25zdCB7IG5hbWUsIHZhbHVlIH0gPSBlLnRhcmdldDtcclxuICAgIHNldEZvcm1EYXRhKChwcmV2KSA9PiAoeyAuLi5wcmV2LCBbbmFtZV06IHZhbHVlIH0pKTtcclxuICAgIGlmIChlcnJvcnNbbmFtZV0pIHtcclxuICAgICAgc2V0RXJyb3JzKChwcmV2KSA9PiAoeyAuLi5wcmV2LCBbbmFtZV06ICcnIH0pKTtcclxuICAgIH1cclxuICB9O1xyXG5cclxuICBjb25zdCB2YWxpZGF0ZUZvcm0gPSAoKSA9PiB7XHJcbiAgICBjb25zdCBuZXdFcnJvcnMgPSB7fTtcclxuXHJcbiAgICBpZiAoIXNlbGVjdGVkUGF0aWVudCkge1xyXG4gICAgICBuZXdFcnJvcnMucGF0aWVudCA9ICdQbGVhc2Ugc2VsZWN0IGEgcGF0aWVudCBmaXJzdC4nO1xyXG4gICAgfVxyXG5cclxuICAgIGlmICghZm9ybURhdGEuZG9jdG9yKSB7XHJcbiAgICAgIG5ld0Vycm9ycy5kb2N0b3IgPSAnUGxlYXNlIHNlbGVjdCBkb2N0b3IuJztcclxuICAgIH1cclxuXHJcbiAgICBpZiAoIWZvcm1EYXRhLm1lZGljaW5lLnRyaW0oKSkge1xyXG4gICAgICBuZXdFcnJvcnMubWVkaWNpbmUgPSAnTWVkaWNpbmUgbmFtZSBpcyByZXF1aXJlZC4nO1xyXG4gICAgfVxyXG5cclxuICAgIGlmICghZm9ybURhdGEuZG9zYWdlLnRyaW0oKSkge1xyXG4gICAgICBuZXdFcnJvcnMuZG9zYWdlID0gJ0Rvc2FnZSBpcyByZXF1aXJlZCAoZS5nLiA1MDAgbWcpLic7XHJcbiAgICB9XHJcblxyXG4gICAgaWYgKCFmb3JtRGF0YS5kdXJhdGlvbi50cmltKCkpIHtcclxuICAgICAgbmV3RXJyb3JzLmR1cmF0aW9uID0gJ0R1cmF0aW9uIGlzIHJlcXVpcmVkIChlLmcuIDUgZGF5cykuJztcclxuICAgIH1cclxuXHJcbiAgICBzZXRFcnJvcnMobmV3RXJyb3JzKTtcclxuICAgIHJldHVybiBPYmplY3Qua2V5cyhuZXdFcnJvcnMpLmxlbmd0aCA9PT0gMDtcclxuICB9O1xyXG5cclxuICBjb25zdCBoYW5kbGVTdWJtaXQgPSAoZSkgPT4ge1xyXG4gICAgZS5wcmV2ZW50RGVmYXVsdCgpO1xyXG4gICAgaWYgKHZhbGlkYXRlRm9ybSgpKSB7XHJcbiAgICAgIG9uR2VuZXJhdGVQcmVzY3JpcHRpb24oe1xyXG4gICAgICAgIHBhdGllbnRJZDogc2VsZWN0ZWRQYXRpZW50LmlkLFxyXG4gICAgICAgIHBhdGllbnROYW1lOiBzZWxlY3RlZFBhdGllbnQubmFtZSxcclxuICAgICAgICBkb2N0b3I6IGZvcm1EYXRhLmRvY3RvcixcclxuICAgICAgICBtZWRpY2luZTogZm9ybURhdGEubWVkaWNpbmUudHJpbSgpLFxyXG4gICAgICAgIGRvc2FnZTogZm9ybURhdGEuZG9zYWdlLnRyaW0oKSxcclxuICAgICAgICBkdXJhdGlvbjogZm9ybURhdGEuZHVyYXRpb24udHJpbSgpLFxyXG4gICAgICAgIG5vdGVzOiBmb3JtRGF0YS5ub3Rlcy50cmltKCksXHJcbiAgICAgICAgZGF0ZTogbmV3IERhdGUoKS50b0lTT1N0cmluZygpLnNwbGl0KCdUJylbMF1cclxuICAgICAgfSk7XHJcblxyXG4gICAgICAvLyBDbGVhciBpbnB1dCBmaWVsZHNcclxuICAgICAgc2V0Rm9ybURhdGEoKHByZXYpID0+ICh7XHJcbiAgICAgICAgLi4ucHJldixcclxuICAgICAgICBtZWRpY2luZTogJycsXHJcbiAgICAgICAgZG9zYWdlOiAnJyxcclxuICAgICAgICBkdXJhdGlvbjogJycsXHJcbiAgICAgICAgbm90ZXM6ICcnXHJcbiAgICAgIH0pKTtcclxuICAgICAgc2V0RXJyb3JzKHt9KTtcclxuICAgIH1cclxuICB9O1xyXG5cclxuICByZXR1cm4gKFxyXG4gICAgPGRpdiBjbGFzc05hbWU9XCJjYXJkXCI+XHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY2FyZC1oZWFkZXJcIj5cclxuICAgICAgICA8aDMgY2xhc3NOYW1lPVwiY2FyZC10aXRsZVwiPlxyXG4gICAgICAgICAgPFBpbGwgY2xhc3NOYW1lPVwiY2FyZC10aXRsZS1pY29uXCIgc2l6ZT17MjB9IC8+XHJcbiAgICAgICAgICBHZW5lcmF0ZSBQYXRpZW50IFByZXNjcmlwdGlvblxyXG4gICAgICAgIDwvaDM+XHJcbiAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJjYXJkLWJvZHlcIj5cclxuICAgICAgICB7ZXJyb3JzLnBhdGllbnQgJiYgKFxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJlcnJvci1tZXNzYWdlXCIgc3R5bGU9e3sgbWFyZ2luQm90dG9tOiAnMXJlbScsIGZvbnRTaXplOiAnMC45cmVtJyB9fT5cclxuICAgICAgICAgICAgPEFsZXJ0Q2lyY2xlIHNpemU9ezE2fSAvPlxyXG4gICAgICAgICAgICA8c3Bhbj57ZXJyb3JzLnBhdGllbnR9PC9zcGFuPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgKX1cclxuXHJcbiAgICAgICAgPGZvcm0gb25TdWJtaXQ9e2hhbmRsZVN1Ym1pdH0gbm9WYWxpZGF0ZT5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZm9ybS1ncmlkXCI+XHJcbiAgICAgICAgICAgIHsvKiAxLiBQYXRpZW50IElEIChSZWFkLW9ubHkpICovfVxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvcm0tZ3JvdXBcIj5cclxuICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiZm9ybS1sYWJlbFwiIGh0bWxGb3I9XCJyeFBhdGllbnRJZFwiPlxyXG4gICAgICAgICAgICAgICAgUGF0aWVudCBJRFxyXG4gICAgICAgICAgICAgIDwvbGFiZWw+XHJcbiAgICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgICB0eXBlPVwidGV4dFwiXHJcbiAgICAgICAgICAgICAgICBpZD1cInJ4UGF0aWVudElkXCJcclxuICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cImZvcm0tY29udHJvbFwiXHJcbiAgICAgICAgICAgICAgICB2YWx1ZT17c2VsZWN0ZWRQYXRpZW50ID8gYCR7c2VsZWN0ZWRQYXRpZW50LmlkfSAoJHtzZWxlY3RlZFBhdGllbnQubmFtZX0pYCA6ICdObyBwYXRpZW50IHNlbGVjdGVkJ31cclxuICAgICAgICAgICAgICAgIHJlYWRPbmx5XHJcbiAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICB7LyogMi4gRG9jdG9yICovfVxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvcm0tZ3JvdXBcIj5cclxuICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiZm9ybS1sYWJlbFwiIGh0bWxGb3I9XCJyeERvY3RvclwiPlxyXG4gICAgICAgICAgICAgICAgUHJlc2NyaWJpbmcgRG9jdG9yIDxzcGFuIGNsYXNzTmFtZT1cInJlcXVpcmVkLXN0YXJcIj4qPC9zcGFuPlxyXG4gICAgICAgICAgICAgIDwvbGFiZWw+XHJcbiAgICAgICAgICAgICAgPHNlbGVjdFxyXG4gICAgICAgICAgICAgICAgaWQ9XCJyeERvY3RvclwiXHJcbiAgICAgICAgICAgICAgICBuYW1lPVwiZG9jdG9yXCJcclxuICAgICAgICAgICAgICAgIGNsYXNzTmFtZT17YGZvcm0tY29udHJvbCAke2Vycm9ycy5kb2N0b3IgPyAnaXMtaW52YWxpZCcgOiAnJ31gfVxyXG4gICAgICAgICAgICAgICAgdmFsdWU9e2Zvcm1EYXRhLmRvY3Rvcn1cclxuICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXtoYW5kbGVDaGFuZ2V9XHJcbiAgICAgICAgICAgICAgPlxyXG4gICAgICAgICAgICAgICAge2RvY3RvcnNMaXN0Lm1hcCgoZG9jKSA9PiAoXHJcbiAgICAgICAgICAgICAgICAgIDxvcHRpb24ga2V5PXtkb2N9IHZhbHVlPXtkb2N9PlxyXG4gICAgICAgICAgICAgICAgICAgIHtkb2N9XHJcbiAgICAgICAgICAgICAgICAgIDwvb3B0aW9uPlxyXG4gICAgICAgICAgICAgICAgKSl9XHJcbiAgICAgICAgICAgICAgPC9zZWxlY3Q+XHJcbiAgICAgICAgICAgICAge2Vycm9ycy5kb2N0b3IgJiYgKFxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJlcnJvci1tZXNzYWdlXCI+XHJcbiAgICAgICAgICAgICAgICAgIDxBbGVydENpcmNsZSBzaXplPXsxNH0gLz5cclxuICAgICAgICAgICAgICAgICAgPHNwYW4+e2Vycm9ycy5kb2N0b3J9PC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgKX1cclxuICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICB7LyogMy4gTWVkaWNpbmUgTmFtZSAqL31cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb3JtLWdyb3VwXCI+XHJcbiAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImZvcm0tbGFiZWxcIiBodG1sRm9yPVwibWVkaWNpbmVcIj5cclxuICAgICAgICAgICAgICAgIE1lZGljaW5lIE5hbWUgPHNwYW4gY2xhc3NOYW1lPVwicmVxdWlyZWQtc3RhclwiPio8L3NwYW4+XHJcbiAgICAgICAgICAgICAgPC9sYWJlbD5cclxuICAgICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICAgIHR5cGU9XCJ0ZXh0XCJcclxuICAgICAgICAgICAgICAgIGlkPVwibWVkaWNpbmVcIlxyXG4gICAgICAgICAgICAgICAgbmFtZT1cIm1lZGljaW5lXCJcclxuICAgICAgICAgICAgICAgIGNsYXNzTmFtZT17YGZvcm0tY29udHJvbCAke2Vycm9ycy5tZWRpY2luZSA/ICdpcy1pbnZhbGlkJyA6ICcnfWB9XHJcbiAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIkVudGVyIG1lZGljaW5lIG5hbWUgKGUuZy4gUGFyYWNldGFtb2wgNTAwbWcpXCJcclxuICAgICAgICAgICAgICAgIHZhbHVlPXtmb3JtRGF0YS5tZWRpY2luZX1cclxuICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXtoYW5kbGVDaGFuZ2V9XHJcbiAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICB7ZXJyb3JzLm1lZGljaW5lICYmIChcclxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZXJyb3ItbWVzc2FnZVwiPlxyXG4gICAgICAgICAgICAgICAgICA8QWxlcnRDaXJjbGUgc2l6ZT17MTR9IC8+XHJcbiAgICAgICAgICAgICAgICAgIDxzcGFuPntlcnJvcnMubWVkaWNpbmV9PC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgKX1cclxuICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICB7LyogNC4gRG9zYWdlICovfVxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvcm0tZ3JvdXBcIj5cclxuICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiZm9ybS1sYWJlbFwiIGh0bWxGb3I9XCJkb3NhZ2VcIj5cclxuICAgICAgICAgICAgICAgIERvc2FnZSA8c3BhbiBjbGFzc05hbWU9XCJyZXF1aXJlZC1zdGFyXCI+Kjwvc3Bhbj5cclxuICAgICAgICAgICAgICA8L2xhYmVsPlxyXG4gICAgICAgICAgICAgIDxpbnB1dFxyXG4gICAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxyXG4gICAgICAgICAgICAgICAgaWQ9XCJkb3NhZ2VcIlxyXG4gICAgICAgICAgICAgICAgbmFtZT1cImRvc2FnZVwiXHJcbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2Bmb3JtLWNvbnRyb2wgJHtlcnJvcnMuZG9zYWdlID8gJ2lzLWludmFsaWQnIDogJyd9YH1cclxuICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiRXhhbXBsZTogNTAwIG1nIC8gMSB0YWJsZXQgdHdpY2UgZGFpbHlcIlxyXG4gICAgICAgICAgICAgICAgdmFsdWU9e2Zvcm1EYXRhLmRvc2FnZX1cclxuICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXtoYW5kbGVDaGFuZ2V9XHJcbiAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICB7ZXJyb3JzLmRvc2FnZSAmJiAoXHJcbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImVycm9yLW1lc3NhZ2VcIj5cclxuICAgICAgICAgICAgICAgICAgPEFsZXJ0Q2lyY2xlIHNpemU9ezE0fSAvPlxyXG4gICAgICAgICAgICAgICAgICA8c3Bhbj57ZXJyb3JzLmRvc2FnZX08L3NwYW4+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICApfVxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgICAgIHsvKiA1LiBEdXJhdGlvbiAqL31cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb3JtLWdyb3VwXCI+XHJcbiAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImZvcm0tbGFiZWxcIiBodG1sRm9yPVwiZHVyYXRpb25cIj5cclxuICAgICAgICAgICAgICAgIER1cmF0aW9uIDxzcGFuIGNsYXNzTmFtZT1cInJlcXVpcmVkLXN0YXJcIj4qPC9zcGFuPlxyXG4gICAgICAgICAgICAgIDwvbGFiZWw+XHJcbiAgICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgICB0eXBlPVwidGV4dFwiXHJcbiAgICAgICAgICAgICAgICBpZD1cImR1cmF0aW9uXCJcclxuICAgICAgICAgICAgICAgIG5hbWU9XCJkdXJhdGlvblwiXHJcbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2Bmb3JtLWNvbnRyb2wgJHtlcnJvcnMuZHVyYXRpb24gPyAnaXMtaW52YWxpZCcgOiAnJ31gfVxyXG4gICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJFeGFtcGxlOiA1IGRheXNcIlxyXG4gICAgICAgICAgICAgICAgdmFsdWU9e2Zvcm1EYXRhLmR1cmF0aW9ufVxyXG4gICAgICAgICAgICAgICAgb25DaGFuZ2U9e2hhbmRsZUNoYW5nZX1cclxuICAgICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICAgIHtlcnJvcnMuZHVyYXRpb24gJiYgKFxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJlcnJvci1tZXNzYWdlXCI+XHJcbiAgICAgICAgICAgICAgICAgIDxBbGVydENpcmNsZSBzaXplPXsxNH0gLz5cclxuICAgICAgICAgICAgICAgICAgPHNwYW4+e2Vycm9ycy5kdXJhdGlvbn08L3NwYW4+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICApfVxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgICAgIHsvKiA2LiBTcGVjaWFsIEFkdmljZSAvIE5vdGVzICovfVxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvcm0tZ3JvdXBcIj5cclxuICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiZm9ybS1sYWJlbFwiIGh0bWxGb3I9XCJub3Rlc1wiPlxyXG4gICAgICAgICAgICAgICAgRGlldCAvIFNwZWNpYWwgSW5zdHJ1Y3Rpb25zXHJcbiAgICAgICAgICAgICAgPC9sYWJlbD5cclxuICAgICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICAgIHR5cGU9XCJ0ZXh0XCJcclxuICAgICAgICAgICAgICAgIGlkPVwibm90ZXNcIlxyXG4gICAgICAgICAgICAgICAgbmFtZT1cIm5vdGVzXCJcclxuICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cImZvcm0tY29udHJvbFwiXHJcbiAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIkV4YW1wbGU6IFRha2UgYWZ0ZXIgZm9vZCB3aXRoIHdhcm0gd2F0ZXJcIlxyXG4gICAgICAgICAgICAgICAgdmFsdWU9e2Zvcm1EYXRhLm5vdGVzfVxyXG4gICAgICAgICAgICAgICAgb25DaGFuZ2U9e2hhbmRsZUNoYW5nZX1cclxuICAgICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZm9ybS1hY3Rpb25zXCI+XHJcbiAgICAgICAgICAgIDxidXR0b24gdHlwZT1cInN1Ym1pdFwiIGNsYXNzTmFtZT1cImJ0biBidG4tcHJpbWFyeVwiIGRpc2FibGVkPXshc2VsZWN0ZWRQYXRpZW50fT5cclxuICAgICAgICAgICAgICA8Q2hlY2tDaXJjbGUyIHNpemU9ezE2fSAvPlxyXG4gICAgICAgICAgICAgIEdlbmVyYXRlIFByZXNjcmlwdGlvblxyXG4gICAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvZm9ybT5cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59O1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgUHJlc2NyaXB0aW9uRm9ybTtcclxuIl0sImZpbGUiOiJDOi9Vc2Vycy9zYXJvai9PbmVEcml2ZS9EZXNrdG9wL01lZGlTeW5jL0Zyb250ZW5kL3NyYy9jb21wb25lbnRzL1ByZXNjcmlwdGlvbkZvcm0uanN4In0=

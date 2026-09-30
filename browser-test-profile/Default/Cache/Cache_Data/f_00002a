@@ -1,0 +1,475 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/AuditLogTable.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react; const useState = __vite__cjsImport3_react["useState"]; const useMemo = __vite__cjsImport3_react["useMemo"];
+import { Search, Filter, Calendar, ShieldCheck, ChevronLeft, ChevronRight } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+const AuditLogTable = ({ logs }) => {
+  _s();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedRole, setSelectedRole] = useState("ALL");
+  const [selectedStatus, setSelectedStatus] = useState("ALL");
+  const [selectedAction, setSelectedAction] = useState("ALL");
+  const [dateFilter, setDateFilter] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+  const filteredLogs = useMemo(() => {
+    return logs.filter((log) => {
+      const matchesSearch = log.user.toLowerCase().includes(searchTerm.toLowerCase()) || log.resource.toLowerCase().includes(searchTerm.toLowerCase()) || log.action.toLowerCase().includes(searchTerm.toLowerCase()) || log.ipAddress.includes(searchTerm);
+      const matchesRole = selectedRole === "ALL" || log.role === selectedRole;
+      const matchesStatus = selectedStatus === "ALL" || log.status === selectedStatus;
+      const matchesAction = selectedAction === "ALL" || log.action === selectedAction;
+      const matchesDate = !dateFilter || log.timestamp.startsWith(dateFilter);
+      return matchesSearch && matchesRole && matchesStatus && matchesAction && matchesDate;
+    });
+  }, [logs, searchTerm, selectedRole, selectedStatus, selectedAction, dateFilter]);
+  const totalPages = Math.ceil(filteredLogs.length / itemsPerPage) || 1;
+  const currentLogs = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return filteredLogs.slice(start, start + itemsPerPage);
+  }, [filteredLogs, currentPage]);
+  return /* @__PURE__ */ jsxDEV("div", { className: "audit-table-container", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "audit-table-filters", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "flex-grow-1", style: { minWidth: "220px" }, children: /* @__PURE__ */ jsxDEV("div", { className: "input-group input-group-sm", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "input-group-text", children: /* @__PURE__ */ jsxDEV(Search, { size: 16 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 63,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 62,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          "input",
+          {
+            type: "text",
+            className: "form-control",
+            placeholder: "Search user, IP, action, resource...",
+            value: searchTerm,
+            onChange: (e) => setSearchTerm(e.target.value)
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 65,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+        lineNumber: 61,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+        lineNumber: 60,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(
+        "select",
+        {
+          className: "form-select form-select-sm",
+          style: { width: "auto" },
+          value: selectedRole,
+          onChange: (e) => setSelectedRole(e.target.value),
+          children: [
+            /* @__PURE__ */ jsxDEV("option", { value: "ALL", children: "All Roles" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 82,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Doctor", children: "Doctor" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 83,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Administrator", children: "Administrator" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 84,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Patient", children: "Patient" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 85,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Guest", children: "Guest" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 86,
+              columnNumber: 11
+            }, this)
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 76,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ jsxDEV(
+        "select",
+        {
+          className: "form-select form-select-sm",
+          style: { width: "auto" },
+          value: selectedAction,
+          onChange: (e) => setSelectedAction(e.target.value),
+          children: [
+            /* @__PURE__ */ jsxDEV("option", { value: "ALL", children: "All Actions" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 96,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Viewed Patient", children: "Viewed Patient" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 97,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Added Diagnosis", children: "Added Diagnosis" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 98,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Updated Patient", children: "Updated Patient" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 99,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Booked Appointment", children: "Booked Appointment" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 100,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Generated Prescription", children: "Generated Prescription" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 101,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Failed Login Attempt", children: "Failed Login Attempt" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 102,
+              columnNumber: 11
+            }, this)
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 90,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ jsxDEV(
+        "select",
+        {
+          className: "form-select form-select-sm",
+          style: { width: "auto" },
+          value: selectedStatus,
+          onChange: (e) => setSelectedStatus(e.target.value),
+          children: [
+            /* @__PURE__ */ jsxDEV("option", { value: "ALL", children: "All Statuses" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 112,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Success", children: "Success" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 113,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Failed", children: "Failed" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 114,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { value: "Denied", children: "Denied" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 115,
+              columnNumber: 11
+            }, this)
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 106,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ jsxDEV(
+        "input",
+        {
+          type: "date",
+          className: "form-control form-control-sm",
+          style: { width: "auto" },
+          value: dateFilter,
+          onChange: (e) => setDateFilter(e.target.value)
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 119,
+          columnNumber: 9
+        },
+        this
+      )
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+      lineNumber: 59,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "table-responsive", children: /* @__PURE__ */ jsxDEV("table", { className: "audit-table", children: [
+      /* @__PURE__ */ jsxDEV("thead", { children: /* @__PURE__ */ jsxDEV("tr", { children: [
+        /* @__PURE__ */ jsxDEV("th", { children: "User" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 133,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("th", { children: "Role" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 134,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("th", { children: "Action" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 135,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("th", { children: "Resource" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 136,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("th", { children: "Timestamp" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 137,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("th", { children: "IP Address" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 138,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("th", { children: "Status" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 139,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+        lineNumber: 132,
+        columnNumber: 13
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+        lineNumber: 131,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("tbody", { children: currentLogs.length > 0 ? currentLogs.map(
+        (log) => /* @__PURE__ */ jsxDEV("tr", { children: [
+          /* @__PURE__ */ jsxDEV("td", { className: "fw-semibold", children: log.user }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 146,
+            columnNumber: 19
+          }, this),
+          /* @__PURE__ */ jsxDEV("td", { children: /* @__PURE__ */ jsxDEV("span", { className: "badge bg-secondary", children: log.role }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 148,
+            columnNumber: 21
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 147,
+            columnNumber: 19
+          }, this),
+          /* @__PURE__ */ jsxDEV("td", { children: log.action }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 152,
+            columnNumber: 19
+          }, this),
+          /* @__PURE__ */ jsxDEV("td", { children: /* @__PURE__ */ jsxDEV("code", { style: { fontSize: "0.8rem" }, children: log.resource }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 153,
+            columnNumber: 23
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 153,
+            columnNumber: 19
+          }, this),
+          /* @__PURE__ */ jsxDEV("td", { className: "text-muted", children: log.timestamp }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 154,
+            columnNumber: 19
+          }, this),
+          /* @__PURE__ */ jsxDEV("td", { className: "text-muted", children: /* @__PURE__ */ jsxDEV("code", { style: { fontSize: "0.8rem" }, children: log.ipAddress }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 155,
+            columnNumber: 46
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 155,
+            columnNumber: 19
+          }, this),
+          /* @__PURE__ */ jsxDEV("td", { children: /* @__PURE__ */ jsxDEV("span", { className: `status-pill ${log.status === "Success" ? "status-pill-success" : log.status === "Denied" ? "status-pill-danger" : "status-pill-warning"}`, children: [
+            "● ",
+            log.status
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 157,
+            columnNumber: 21
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 156,
+            columnNumber: 19
+          }, this)
+        ] }, log.id, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 145,
+          columnNumber: 13
+        }, this)
+      ) : /* @__PURE__ */ jsxDEV("tr", { children: /* @__PURE__ */ jsxDEV("td", { colSpan: "7", className: "text-center py-4 text-muted", children: "No matching audit logs found." }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+        lineNumber: 168,
+        columnNumber: 17
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+        lineNumber: 167,
+        columnNumber: 13
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+        lineNumber: 142,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+      lineNumber: 130,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+      lineNumber: 129,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-light border-top d-flex align-items-center justify-content-between", children: [
+      /* @__PURE__ */ jsxDEV("span", { className: "text-muted", style: { fontSize: "0.825rem" }, children: [
+        "Showing ",
+        currentLogs.length,
+        " of ",
+        filteredLogs.length,
+        " entries"
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+        lineNumber: 179,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center gap-2", children: [
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            className: "btn btn-sm btn-outline-secondary",
+            disabled: currentPage === 1,
+            onClick: () => setCurrentPage((p) => Math.max(p - 1, 1)),
+            children: /* @__PURE__ */ jsxDEV(ChevronLeft, { size: 16 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 190,
+              columnNumber: 13
+            }, this)
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 184,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV("span", { className: "text-muted", style: { fontSize: "0.85rem" }, children: [
+          "Page ",
+          currentPage,
+          " of ",
+          totalPages
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+          lineNumber: 192,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            className: "btn btn-sm btn-outline-secondary",
+            disabled: currentPage === totalPages,
+            onClick: () => setCurrentPage((p) => Math.min(p + 1, totalPages)),
+            children: /* @__PURE__ */ jsxDEV(ChevronRight, { size: 16 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+              lineNumber: 201,
+              columnNumber: 13
+            }, this)
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+            lineNumber: 195,
+            columnNumber: 11
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+        lineNumber: 183,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+      lineNumber: 178,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx",
+    lineNumber: 57,
+    columnNumber: 5
+  }, this);
+};
+_s(AuditLogTable, "CUw7nUuMyQTk6tipQLVDiM8+PG4=");
+_c = AuditLogTable;
+export default AuditLogTable;
+var _c;
+$RefreshReg$(_c, "AuditLogTable");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/AuditLogTable.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUFBQTtBQUFBO0FBQUEsYUFvQkE7QUFBQSxTQXpCRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBMEJBO0FBQUEsT0FuSkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQW9KQTtBQUVKO0FBQUVoQyxHQXhMSUYsZUFBYTtBQUFBLEtBQWJBO0FBMExOLGVBQWVBO0FBQWMsSUFBQW9EO0FBQUEsYUFBQUEsSUFBQSIsIm5hbWVzIjpbIlJlYWN0IiwidXNlU3RhdGUiLCJ1c2VNZW1vIiwiU2VhcmNoIiwiRmlsdGVyIiwiQ2FsZW5kYXIiLCJTaGllbGRDaGVjayIsIkNoZXZyb25MZWZ0IiwiQ2hldnJvblJpZ2h0IiwiQXVkaXRMb2dUYWJsZSIsImxvZ3MiLCJfcyIsInNlYXJjaFRlcm0iLCJzZXRTZWFyY2hUZXJtIiwic2VsZWN0ZWRSb2xlIiwic2V0U2VsZWN0ZWRSb2xlIiwic2VsZWN0ZWRTdGF0dXMiLCJzZXRTZWxlY3RlZFN0YXR1cyIsInNlbGVjdGVkQWN0aW9uIiwic2V0U2VsZWN0ZWRBY3Rpb24iLCJkYXRlRmlsdGVyIiwic2V0RGF0ZUZpbHRlciIsImN1cnJlbnRQYWdlIiwic2V0Q3VycmVudFBhZ2UiLCJpdGVtc1BlclBhZ2UiLCJmaWx0ZXJlZExvZ3MiLCJmaWx0ZXIiLCJsb2ciLCJtYXRjaGVzU2VhcmNoIiwidXNlciIsInRvTG93ZXJDYXNlIiwiaW5jbHVkZXMiLCJyZXNvdXJjZSIsImFjdGlvbiIsImlwQWRkcmVzcyIsIm1hdGNoZXNSb2xlIiwicm9sZSIsIm1hdGNoZXNTdGF0dXMiLCJzdGF0dXMiLCJtYXRjaGVzQWN0aW9uIiwibWF0Y2hlc0RhdGUiLCJ0aW1lc3RhbXAiLCJzdGFydHNXaXRoIiwidG90YWxQYWdlcyIsIk1hdGgiLCJjZWlsIiwibGVuZ3RoIiwiY3VycmVudExvZ3MiLCJzdGFydCIsInNsaWNlIiwibWluV2lkdGgiLCJlIiwidGFyZ2V0IiwidmFsdWUiLCJ3aWR0aCIsIm1hcCIsImZvbnRTaXplIiwiaWQiLCJwIiwibWF4IiwibWluIiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiQXVkaXRMb2dUYWJsZS5qc3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlLCB1c2VNZW1vIH0gZnJvbSAncmVhY3QnO1xyXG5pbXBvcnQgeyBTZWFyY2gsIEZpbHRlciwgQ2FsZW5kYXIsIFNoaWVsZENoZWNrLCBDaGV2cm9uTGVmdCwgQ2hldnJvblJpZ2h0IH0gZnJvbSAnbHVjaWRlLXJlYWN0JztcclxuXHJcbmNvbnN0IEF1ZGl0TG9nVGFibGUgPSAoeyBsb2dzIH0pID0+IHtcclxuICBjb25zdCBbc2VhcmNoVGVybSwgc2V0U2VhcmNoVGVybV0gPSB1c2VTdGF0ZSgnJyk7XHJcbiAgY29uc3QgW3NlbGVjdGVkUm9sZSwgc2V0U2VsZWN0ZWRSb2xlXSA9IHVzZVN0YXRlKCdBTEwnKTtcclxuICBjb25zdCBbc2VsZWN0ZWRTdGF0dXMsIHNldFNlbGVjdGVkU3RhdHVzXSA9IHVzZVN0YXRlKCdBTEwnKTtcclxuICBjb25zdCBbc2VsZWN0ZWRBY3Rpb24sIHNldFNlbGVjdGVkQWN0aW9uXSA9IHVzZVN0YXRlKCdBTEwnKTtcclxuICBjb25zdCBbZGF0ZUZpbHRlciwgc2V0RGF0ZUZpbHRlcl0gPSB1c2VTdGF0ZSgnJyk7XHJcblxyXG4gIGNvbnN0IFtjdXJyZW50UGFnZSwgc2V0Q3VycmVudFBhZ2VdID0gdXNlU3RhdGUoMSk7XHJcbiAgY29uc3QgaXRlbXNQZXJQYWdlID0gNTtcclxuXHJcbiAgY29uc3QgZmlsdGVyZWRMb2dzID0gdXNlTWVtbygoKSA9PiB7XHJcbiAgICByZXR1cm4gbG9ncy5maWx0ZXIoKGxvZykgPT4ge1xyXG4gICAgICBjb25zdCBtYXRjaGVzU2VhcmNoID0gXHJcbiAgICAgICAgbG9nLnVzZXIudG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhzZWFyY2hUZXJtLnRvTG93ZXJDYXNlKCkpIHx8XHJcbiAgICAgICAgbG9nLnJlc291cmNlLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMoc2VhcmNoVGVybS50b0xvd2VyQ2FzZSgpKSB8fFxyXG4gICAgICAgIGxvZy5hY3Rpb24udG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhzZWFyY2hUZXJtLnRvTG93ZXJDYXNlKCkpIHx8XHJcbiAgICAgICAgbG9nLmlwQWRkcmVzcy5pbmNsdWRlcyhzZWFyY2hUZXJtKTtcclxuXHJcbiAgICAgIGNvbnN0IG1hdGNoZXNSb2xlID0gc2VsZWN0ZWRSb2xlID09PSAnQUxMJyB8fCBsb2cucm9sZSA9PT0gc2VsZWN0ZWRSb2xlO1xyXG4gICAgICBjb25zdCBtYXRjaGVzU3RhdHVzID0gc2VsZWN0ZWRTdGF0dXMgPT09ICdBTEwnIHx8IGxvZy5zdGF0dXMgPT09IHNlbGVjdGVkU3RhdHVzO1xyXG4gICAgICBjb25zdCBtYXRjaGVzQWN0aW9uID0gc2VsZWN0ZWRBY3Rpb24gPT09ICdBTEwnIHx8IGxvZy5hY3Rpb24gPT09IHNlbGVjdGVkQWN0aW9uO1xyXG4gICAgICBjb25zdCBtYXRjaGVzRGF0ZSA9ICFkYXRlRmlsdGVyIHx8IGxvZy50aW1lc3RhbXAuc3RhcnRzV2l0aChkYXRlRmlsdGVyKTtcclxuXHJcbiAgICAgIHJldHVybiBtYXRjaGVzU2VhcmNoICYmIG1hdGNoZXNSb2xlICYmIG1hdGNoZXNTdGF0dXMgJiYgbWF0Y2hlc0FjdGlvbiAmJiBtYXRjaGVzRGF0ZTtcclxuICAgIH0pO1xyXG4gIH0sIFtsb2dzLCBzZWFyY2hUZXJtLCBzZWxlY3RlZFJvbGUsIHNlbGVjdGVkU3RhdHVzLCBzZWxlY3RlZEFjdGlvbiwgZGF0ZUZpbHRlcl0pO1xyXG5cclxuICBjb25zdCB0b3RhbFBhZ2VzID0gTWF0aC5jZWlsKGZpbHRlcmVkTG9ncy5sZW5ndGggLyBpdGVtc1BlclBhZ2UpIHx8IDE7XHJcbiAgY29uc3QgY3VycmVudExvZ3MgPSB1c2VNZW1vKCgpID0+IHtcclxuICAgIGNvbnN0IHN0YXJ0ID0gKGN1cnJlbnRQYWdlIC0gMSkgKiBpdGVtc1BlclBhZ2U7XHJcbiAgICByZXR1cm4gZmlsdGVyZWRMb2dzLnNsaWNlKHN0YXJ0LCBzdGFydCArIGl0ZW1zUGVyUGFnZSk7XHJcbiAgfSwgW2ZpbHRlcmVkTG9ncywgY3VycmVudFBhZ2VdKTtcclxuXHJcbiAgcmV0dXJuIChcclxuICAgIDxkaXYgY2xhc3NOYW1lPVwiYXVkaXQtdGFibGUtY29udGFpbmVyXCI+XHJcbiAgICAgIHsvKiBTZWFyY2ggJiBGaWx0ZXJzIEhlYWRlciAqL31cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJhdWRpdC10YWJsZS1maWx0ZXJzXCI+XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4LWdyb3ctMVwiIHN0eWxlPXt7IG1pbldpZHRoOiAnMjIwcHgnIH19PlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJpbnB1dC1ncm91cCBpbnB1dC1ncm91cC1zbVwiPlxyXG4gICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJpbnB1dC1ncm91cC10ZXh0XCI+XHJcbiAgICAgICAgICAgICAgPFNlYXJjaCBzaXplPXsxNn0gLz5cclxuICAgICAgICAgICAgPC9zcGFuPlxyXG4gICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICB0eXBlPVwidGV4dFwiXHJcbiAgICAgICAgICAgICAgY2xhc3NOYW1lPVwiZm9ybS1jb250cm9sXCJcclxuICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIlNlYXJjaCB1c2VyLCBJUCwgYWN0aW9uLCByZXNvdXJjZS4uLlwiXHJcbiAgICAgICAgICAgICAgdmFsdWU9e3NlYXJjaFRlcm19XHJcbiAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXRTZWFyY2hUZXJtKGUudGFyZ2V0LnZhbHVlKX1cclxuICAgICAgICAgICAgLz5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICB7LyogRmlsdGVyIGJ5IFJvbGUgKi99XHJcbiAgICAgICAgPHNlbGVjdCBcclxuICAgICAgICAgIGNsYXNzTmFtZT1cImZvcm0tc2VsZWN0IGZvcm0tc2VsZWN0LXNtXCIgXHJcbiAgICAgICAgICBzdHlsZT17eyB3aWR0aDogJ2F1dG8nIH19XHJcbiAgICAgICAgICB2YWx1ZT17c2VsZWN0ZWRSb2xlfVxyXG4gICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXRTZWxlY3RlZFJvbGUoZS50YXJnZXQudmFsdWUpfVxyXG4gICAgICAgID5cclxuICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJBTExcIj5BbGwgUm9sZXM8L29wdGlvbj5cclxuICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJEb2N0b3JcIj5Eb2N0b3I8L29wdGlvbj5cclxuICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJBZG1pbmlzdHJhdG9yXCI+QWRtaW5pc3RyYXRvcjwvb3B0aW9uPlxyXG4gICAgICAgICAgPG9wdGlvbiB2YWx1ZT1cIlBhdGllbnRcIj5QYXRpZW50PC9vcHRpb24+XHJcbiAgICAgICAgICA8b3B0aW9uIHZhbHVlPVwiR3Vlc3RcIj5HdWVzdDwvb3B0aW9uPlxyXG4gICAgICAgIDwvc2VsZWN0PlxyXG5cclxuICAgICAgICB7LyogRmlsdGVyIGJ5IEFjdGlvbiAqL31cclxuICAgICAgICA8c2VsZWN0IFxyXG4gICAgICAgICAgY2xhc3NOYW1lPVwiZm9ybS1zZWxlY3QgZm9ybS1zZWxlY3Qtc21cIiBcclxuICAgICAgICAgIHN0eWxlPXt7IHdpZHRoOiAnYXV0bycgfX1cclxuICAgICAgICAgIHZhbHVlPXtzZWxlY3RlZEFjdGlvbn1cclxuICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gc2V0U2VsZWN0ZWRBY3Rpb24oZS50YXJnZXQudmFsdWUpfVxyXG4gICAgICAgID5cclxuICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJBTExcIj5BbGwgQWN0aW9uczwvb3B0aW9uPlxyXG4gICAgICAgICAgPG9wdGlvbiB2YWx1ZT1cIlZpZXdlZCBQYXRpZW50XCI+Vmlld2VkIFBhdGllbnQ8L29wdGlvbj5cclxuICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJBZGRlZCBEaWFnbm9zaXNcIj5BZGRlZCBEaWFnbm9zaXM8L29wdGlvbj5cclxuICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJVcGRhdGVkIFBhdGllbnRcIj5VcGRhdGVkIFBhdGllbnQ8L29wdGlvbj5cclxuICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJCb29rZWQgQXBwb2ludG1lbnRcIj5Cb29rZWQgQXBwb2ludG1lbnQ8L29wdGlvbj5cclxuICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJHZW5lcmF0ZWQgUHJlc2NyaXB0aW9uXCI+R2VuZXJhdGVkIFByZXNjcmlwdGlvbjwvb3B0aW9uPlxyXG4gICAgICAgICAgPG9wdGlvbiB2YWx1ZT1cIkZhaWxlZCBMb2dpbiBBdHRlbXB0XCI+RmFpbGVkIExvZ2luIEF0dGVtcHQ8L29wdGlvbj5cclxuICAgICAgICA8L3NlbGVjdD5cclxuXHJcbiAgICAgICAgey8qIEZpbHRlciBieSBTdGF0dXMgKi99XHJcbiAgICAgICAgPHNlbGVjdCBcclxuICAgICAgICAgIGNsYXNzTmFtZT1cImZvcm0tc2VsZWN0IGZvcm0tc2VsZWN0LXNtXCIgXHJcbiAgICAgICAgICBzdHlsZT17eyB3aWR0aDogJ2F1dG8nIH19XHJcbiAgICAgICAgICB2YWx1ZT17c2VsZWN0ZWRTdGF0dXN9XHJcbiAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IHNldFNlbGVjdGVkU3RhdHVzKGUudGFyZ2V0LnZhbHVlKX1cclxuICAgICAgICA+XHJcbiAgICAgICAgICA8b3B0aW9uIHZhbHVlPVwiQUxMXCI+QWxsIFN0YXR1c2VzPC9vcHRpb24+XHJcbiAgICAgICAgICA8b3B0aW9uIHZhbHVlPVwiU3VjY2Vzc1wiPlN1Y2Nlc3M8L29wdGlvbj5cclxuICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJGYWlsZWRcIj5GYWlsZWQ8L29wdGlvbj5cclxuICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJEZW5pZWRcIj5EZW5pZWQ8L29wdGlvbj5cclxuICAgICAgICA8L3NlbGVjdD5cclxuXHJcbiAgICAgICAgey8qIERhdGUgRmlsdGVyICovfVxyXG4gICAgICAgIDxpbnB1dFxyXG4gICAgICAgICAgdHlwZT1cImRhdGVcIlxyXG4gICAgICAgICAgY2xhc3NOYW1lPVwiZm9ybS1jb250cm9sIGZvcm0tY29udHJvbC1zbVwiXHJcbiAgICAgICAgICBzdHlsZT17eyB3aWR0aDogJ2F1dG8nIH19XHJcbiAgICAgICAgICB2YWx1ZT17ZGF0ZUZpbHRlcn1cclxuICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gc2V0RGF0ZUZpbHRlcihlLnRhcmdldC52YWx1ZSl9XHJcbiAgICAgICAgLz5cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICB7LyogVGFibGUgKi99XHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGFibGUtcmVzcG9uc2l2ZVwiPlxyXG4gICAgICAgIDx0YWJsZSBjbGFzc05hbWU9XCJhdWRpdC10YWJsZVwiPlxyXG4gICAgICAgICAgPHRoZWFkPlxyXG4gICAgICAgICAgICA8dHI+XHJcbiAgICAgICAgICAgICAgPHRoPlVzZXI8L3RoPlxyXG4gICAgICAgICAgICAgIDx0aD5Sb2xlPC90aD5cclxuICAgICAgICAgICAgICA8dGg+QWN0aW9uPC90aD5cclxuICAgICAgICAgICAgICA8dGg+UmVzb3VyY2U8L3RoPlxyXG4gICAgICAgICAgICAgIDx0aD5UaW1lc3RhbXA8L3RoPlxyXG4gICAgICAgICAgICAgIDx0aD5JUCBBZGRyZXNzPC90aD5cclxuICAgICAgICAgICAgICA8dGg+U3RhdHVzPC90aD5cclxuICAgICAgICAgICAgPC90cj5cclxuICAgICAgICAgIDwvdGhlYWQ+XHJcbiAgICAgICAgICA8dGJvZHk+XHJcbiAgICAgICAgICAgIHtjdXJyZW50TG9ncy5sZW5ndGggPiAwID8gKFxyXG4gICAgICAgICAgICAgIGN1cnJlbnRMb2dzLm1hcCgobG9nKSA9PiAoXHJcbiAgICAgICAgICAgICAgICA8dHIga2V5PXtsb2cuaWR9PlxyXG4gICAgICAgICAgICAgICAgICA8dGQgY2xhc3NOYW1lPVwiZnctc2VtaWJvbGRcIj57bG9nLnVzZXJ9PC90ZD5cclxuICAgICAgICAgICAgICAgICAgPHRkPlxyXG4gICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImJhZGdlIGJnLXNlY29uZGFyeVwiPlxyXG4gICAgICAgICAgICAgICAgICAgICAge2xvZy5yb2xlfVxyXG4gICAgICAgICAgICAgICAgICAgIDwvc3Bhbj5cclxuICAgICAgICAgICAgICAgICAgPC90ZD5cclxuICAgICAgICAgICAgICAgICAgPHRkPntsb2cuYWN0aW9ufTwvdGQ+XHJcbiAgICAgICAgICAgICAgICAgIDx0ZD48Y29kZSBzdHlsZT17eyBmb250U2l6ZTogJzAuOHJlbScgfX0+e2xvZy5yZXNvdXJjZX08L2NvZGU+PC90ZD5cclxuICAgICAgICAgICAgICAgICAgPHRkIGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIj57bG9nLnRpbWVzdGFtcH08L3RkPlxyXG4gICAgICAgICAgICAgICAgICA8dGQgY2xhc3NOYW1lPVwidGV4dC1tdXRlZFwiPjxjb2RlIHN0eWxlPXt7IGZvbnRTaXplOiAnMC44cmVtJyB9fT57bG9nLmlwQWRkcmVzc308L2NvZGU+PC90ZD5cclxuICAgICAgICAgICAgICAgICAgPHRkPlxyXG4gICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT17YHN0YXR1cy1waWxsICR7XHJcbiAgICAgICAgICAgICAgICAgICAgICBsb2cuc3RhdHVzID09PSAnU3VjY2VzcycgPyAnc3RhdHVzLXBpbGwtc3VjY2VzcycgOlxyXG4gICAgICAgICAgICAgICAgICAgICAgbG9nLnN0YXR1cyA9PT0gJ0RlbmllZCcgPyAnc3RhdHVzLXBpbGwtZGFuZ2VyJyA6ICdzdGF0dXMtcGlsbC13YXJuaW5nJ1xyXG4gICAgICAgICAgICAgICAgICAgIH1gfT5cclxuICAgICAgICAgICAgICAgICAgICAgIOKXjyB7bG9nLnN0YXR1c31cclxuICAgICAgICAgICAgICAgICAgICA8L3NwYW4+XHJcbiAgICAgICAgICAgICAgICAgIDwvdGQ+XHJcbiAgICAgICAgICAgICAgICA8L3RyPlxyXG4gICAgICAgICAgICAgICkpXHJcbiAgICAgICAgICAgICkgOiAoXHJcbiAgICAgICAgICAgICAgPHRyPlxyXG4gICAgICAgICAgICAgICAgPHRkIGNvbFNwYW49XCI3XCIgY2xhc3NOYW1lPVwidGV4dC1jZW50ZXIgcHktNCB0ZXh0LW11dGVkXCI+XHJcbiAgICAgICAgICAgICAgICAgIE5vIG1hdGNoaW5nIGF1ZGl0IGxvZ3MgZm91bmQuXHJcbiAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgIDwvdHI+XHJcbiAgICAgICAgICAgICl9XHJcbiAgICAgICAgICA8L3Rib2R5PlxyXG4gICAgICAgIDwvdGFibGU+XHJcbiAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgey8qIFBhZ2luYXRpb24gRm9vdGVyICovfVxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtMyBiZy1saWdodCBib3JkZXItdG9wIGQtZmxleCBhbGlnbi1pdGVtcy1jZW50ZXIganVzdGlmeS1jb250ZW50LWJldHdlZW5cIj5cclxuICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjgyNXJlbScgfX0+XHJcbiAgICAgICAgICBTaG93aW5nIHtjdXJyZW50TG9ncy5sZW5ndGh9IG9mIHtmaWx0ZXJlZExvZ3MubGVuZ3RofSBlbnRyaWVzXHJcbiAgICAgICAgPC9zcGFuPlxyXG5cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImQtZmxleCBhbGlnbi1pdGVtcy1jZW50ZXIgZ2FwLTJcIj5cclxuICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiXHJcbiAgICAgICAgICAgIGNsYXNzTmFtZT1cImJ0biBidG4tc20gYnRuLW91dGxpbmUtc2Vjb25kYXJ5XCJcclxuICAgICAgICAgICAgZGlzYWJsZWQ9e2N1cnJlbnRQYWdlID09PSAxfVxyXG4gICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRDdXJyZW50UGFnZSgocCkgPT4gTWF0aC5tYXgocCAtIDEsIDEpKX1cclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgPENoZXZyb25MZWZ0IHNpemU9ezE2fSAvPlxyXG4gICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjg1cmVtJyB9fT5cclxuICAgICAgICAgICAgUGFnZSB7Y3VycmVudFBhZ2V9IG9mIHt0b3RhbFBhZ2VzfVxyXG4gICAgICAgICAgPC9zcGFuPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgY2xhc3NOYW1lPVwiYnRuIGJ0bi1zbSBidG4tb3V0bGluZS1zZWNvbmRhcnlcIlxyXG4gICAgICAgICAgICBkaXNhYmxlZD17Y3VycmVudFBhZ2UgPT09IHRvdGFsUGFnZXN9XHJcbiAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHNldEN1cnJlbnRQYWdlKChwKSA9PiBNYXRoLm1pbihwICsgMSwgdG90YWxQYWdlcykpfVxyXG4gICAgICAgICAgPlxyXG4gICAgICAgICAgICA8Q2hldnJvblJpZ2h0IHNpemU9ezE2fSAvPlxyXG4gICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgIDwvZGl2PlxyXG4gICAgPC9kaXY+XHJcbiAgKTtcclxufTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IEF1ZGl0TG9nVGFibGU7XHJcbiJdLCJmaWxlIjoiQzovVXNlcnMvc2Fyb2ovT25lRHJpdmUvRGVza3RvcC9NZWRpU3luYy9Gcm9udGVuZC9zcmMvY29tcG9uZW50cy9BdWRpdExvZ1RhYmxlLmpzeCJ9

@@ -1,0 +1,217 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/pages/ApiDocumentationPage.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react; const useState = __vite__cjsImport3_react["useState"];
+import Breadcrumb from "/src/components/Breadcrumb.jsx";
+import ApiDemoCard from "/src/components/ApiDemoCard.jsx";
+import { apiEndpoints } from "/src/data/mockApiEndpoints.js";
+import { Code, Terminal, Server, ShieldCheck } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+const ApiDocumentationPage = ({ setActiveTab }) => {
+  _s();
+  const [activeCategory, setActiveCategory] = useState("ALL");
+  const filteredEndpoints = apiEndpoints.filter((api) => {
+    if (activeCategory === "ALL") return true;
+    return api.category === activeCategory;
+  });
+  return /* @__PURE__ */ jsxDEV("div", { className: "api-docs-page pb-5", children: [
+    /* @__PURE__ */ jsxDEV(Breadcrumb, { activeTab: "api_docs", setActiveTab }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+      lineNumber: 36,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4", children: [
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("h1", { className: "h3 fw-bold text-dark mb-1", children: "REST API Documentation & Interactive Tester" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+          lineNumber: 40,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-muted mb-0", children: "Developer reference specification for Python Flask REST API backend endpoints and JSON response schemas." }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+          lineNumber: 41,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+        lineNumber: 39,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "btn-group btn-group-sm", children: [
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            className: `btn ${activeCategory === "ALL" ? "btn-primary" : "btn-outline-primary"}`,
+            onClick: () => setActiveCategory("ALL"),
+            children: [
+              "All Endpoints (",
+              apiEndpoints.length,
+              ")"
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+            lineNumber: 47,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            className: `btn ${activeCategory === "Patients Management" ? "btn-primary" : "btn-outline-primary"}`,
+            onClick: () => setActiveCategory("Patients Management"),
+            children: "Patients"
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+            lineNumber: 54,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            className: `btn ${activeCategory === "Appointments Scheduling" ? "btn-primary" : "btn-outline-primary"}`,
+            onClick: () => setActiveCategory("Appointments Scheduling"),
+            children: "Appointments"
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+            lineNumber: 61,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            className: `btn ${activeCategory === "Clinical OPD" ? "btn-primary" : "btn-outline-primary"}`,
+            onClick: () => setActiveCategory("Clinical OPD"),
+            children: "Clinical"
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+            lineNumber: 68,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            className: `btn ${activeCategory === "Pharmacy & Prescriptions" ? "btn-primary" : "btn-outline-primary"}`,
+            onClick: () => setActiveCategory("Pharmacy & Prescriptions"),
+            children: "Prescriptions"
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+            lineNumber: 75,
+            columnNumber: 11
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+        lineNumber: 46,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+      lineNumber: 38,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "alert alert-info d-flex align-items-start gap-3 mb-4", role: "alert", children: [
+      /* @__PURE__ */ jsxDEV(Server, { className: "text-info flex-shrink-0 mt-1", size: 22 }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+        lineNumber: 87,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("h5", { className: "alert-heading fw-bold mb-1", style: { fontSize: "0.95rem" }, children: "Flask REST API Architectural Readiness" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+          lineNumber: 89,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "mb-0 text-secondary", style: { fontSize: "0.85rem" }, children: "All requests shown below are prepared to accept JSON payloads and returns structured HTTP status codes (200 OK, 201 Created, 401 Unauthorized, 403 Forbidden, 404 Not Found, 500 Server Error). Use the interactive buttons on any card to test frontend handling of each API status state." }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+          lineNumber: 92,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+        lineNumber: 88,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+      lineNumber: 86,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "api-cards-container", children: filteredEndpoints.map(
+      (api) => /* @__PURE__ */ jsxDEV(ApiDemoCard, { api }, api.id, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+        lineNumber: 101,
+        columnNumber: 9
+      }, this)
+    ) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+      lineNumber: 99,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx",
+    lineNumber: 35,
+    columnNumber: 5
+  }, this);
+};
+_s(ApiDocumentationPage, "Q6spbdmoEY24ljqmoQit7pOALnk=");
+_c = ApiDocumentationPage;
+export default ApiDocumentationPage;
+var _c;
+$RefreshReg$(_c, "ApiDocumentationPage");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/ApiDocumentationPage.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUdBLHVCQUFDLFNBQUksV0FBVSx3REFBdUQsTUFBSyxTQUN6RTtBQUFBLDZCQUFDLFVBQU8sV0FBVSxnQ0FBK0IsTUFBTSxNQUF2RDtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBQTBEO0FBQUEsTUFDMUQsdUJBQUMsU0FDQztBQUFBLCtCQUFDLFFBQUcsV0FBVSw4QkFBNkIsT0FBTyxFQUFFTSxVQUFVLFVBQVUsR0FBRyxzREFBM0U7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUVBO0FBQUEsUUFDQSx1QkFBQyxPQUFFLFdBQVUsdUJBQXNCLE9BQU8sRUFBRUEsVUFBVSxVQUFVLEdBQUcsMlNBQW5FO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFFQTtBQUFBLFdBTkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQU9BO0FBQUEsU0FURjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBVUE7QUFBQSxJQUdBLHVCQUFDLFNBQUksV0FBVSx1QkFDWkwsNEJBQWtCTTtBQUFBQSxNQUFJLENBQUFKLFFBQ3JCLHVCQUFDLGVBQXlCLE9BQVJBLElBQUlLLElBQXRCO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFBbUM7QUFBQSxJQUNwQyxLQUhIO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FJQTtBQUFBLE9BcEVGO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FxRUE7QUFFSjtBQUFFVixHQWhGSUYsc0JBQW9CO0FBQUEsS0FBcEJBO0FBa0ZOLGVBQWVBO0FBQXFCLElBQUFhO0FBQUEsYUFBQUEsSUFBQSIsIm5hbWVzIjpbIlJlYWN0IiwidXNlU3RhdGUiLCJCcmVhZGNydW1iIiwiQXBpRGVtb0NhcmQiLCJhcGlFbmRwb2ludHMiLCJDb2RlIiwiVGVybWluYWwiLCJTZXJ2ZXIiLCJTaGllbGRDaGVjayIsIkFwaURvY3VtZW50YXRpb25QYWdlIiwic2V0QWN0aXZlVGFiIiwiX3MiLCJhY3RpdmVDYXRlZ29yeSIsInNldEFjdGl2ZUNhdGVnb3J5IiwiZmlsdGVyZWRFbmRwb2ludHMiLCJmaWx0ZXIiLCJhcGkiLCJjYXRlZ29yeSIsImxlbmd0aCIsImZvbnRTaXplIiwibWFwIiwiaWQiLCJfYyJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJBcGlEb2N1bWVudGF0aW9uUGFnZS5qc3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnO1xyXG5pbXBvcnQgQnJlYWRjcnVtYiBmcm9tICcuLi9jb21wb25lbnRzL0JyZWFkY3J1bWInO1xyXG5pbXBvcnQgQXBpRGVtb0NhcmQgZnJvbSAnLi4vY29tcG9uZW50cy9BcGlEZW1vQ2FyZCc7XHJcbmltcG9ydCB7IGFwaUVuZHBvaW50cyB9IGZyb20gJy4uL2RhdGEvbW9ja0FwaUVuZHBvaW50cyc7XHJcbmltcG9ydCB7IENvZGUsIFRlcm1pbmFsLCBTZXJ2ZXIsIFNoaWVsZENoZWNrIH0gZnJvbSAnbHVjaWRlLXJlYWN0JztcclxuXHJcbmNvbnN0IEFwaURvY3VtZW50YXRpb25QYWdlID0gKHsgc2V0QWN0aXZlVGFiIH0pID0+IHtcclxuICBjb25zdCBbYWN0aXZlQ2F0ZWdvcnksIHNldEFjdGl2ZUNhdGVnb3J5XSA9IHVzZVN0YXRlKCdBTEwnKTtcclxuXHJcbiAgY29uc3QgZmlsdGVyZWRFbmRwb2ludHMgPSBhcGlFbmRwb2ludHMuZmlsdGVyKGFwaSA9PiB7XHJcbiAgICBpZiAoYWN0aXZlQ2F0ZWdvcnkgPT09ICdBTEwnKSByZXR1cm4gdHJ1ZTtcclxuICAgIHJldHVybiBhcGkuY2F0ZWdvcnkgPT09IGFjdGl2ZUNhdGVnb3J5O1xyXG4gIH0pO1xyXG5cclxuICByZXR1cm4gKFxyXG4gICAgPGRpdiBjbGFzc05hbWU9XCJhcGktZG9jcy1wYWdlIHBiLTVcIj5cclxuICAgICAgPEJyZWFkY3J1bWIgYWN0aXZlVGFiPVwiYXBpX2RvY3NcIiBzZXRBY3RpdmVUYWI9e3NldEFjdGl2ZVRhYn0gLz5cclxuXHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZC1mbGV4IGFsaWduLWl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNvbnRlbnQtYmV0d2VlbiBmbGV4LXdyYXAgZ2FwLTMgbWItNFwiPlxyXG4gICAgICAgIDxkaXY+XHJcbiAgICAgICAgICA8aDEgY2xhc3NOYW1lPVwiaDMgZnctYm9sZCB0ZXh0LWRhcmsgbWItMVwiPlJFU1QgQVBJIERvY3VtZW50YXRpb24gJiBJbnRlcmFjdGl2ZSBUZXN0ZXI8L2gxPlxyXG4gICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1tdXRlZCBtYi0wXCI+XHJcbiAgICAgICAgICAgIERldmVsb3BlciByZWZlcmVuY2Ugc3BlY2lmaWNhdGlvbiBmb3IgUHl0aG9uIEZsYXNrIFJFU1QgQVBJIGJhY2tlbmQgZW5kcG9pbnRzIGFuZCBKU09OIHJlc3BvbnNlIHNjaGVtYXMuXHJcbiAgICAgICAgICA8L3A+XHJcbiAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYnRuLWdyb3VwIGJ0bi1ncm91cC1zbVwiPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgY2xhc3NOYW1lPXtgYnRuICR7YWN0aXZlQ2F0ZWdvcnkgPT09ICdBTEwnID8gJ2J0bi1wcmltYXJ5JyA6ICdidG4tb3V0bGluZS1wcmltYXJ5J31gfVxyXG4gICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRBY3RpdmVDYXRlZ29yeSgnQUxMJyl9XHJcbiAgICAgICAgICA+XHJcbiAgICAgICAgICAgIEFsbCBFbmRwb2ludHMgKHthcGlFbmRwb2ludHMubGVuZ3RofSlcclxuICAgICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgY2xhc3NOYW1lPXtgYnRuICR7YWN0aXZlQ2F0ZWdvcnkgPT09ICdQYXRpZW50cyBNYW5hZ2VtZW50JyA/ICdidG4tcHJpbWFyeScgOiAnYnRuLW91dGxpbmUtcHJpbWFyeSd9YH1cclxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0QWN0aXZlQ2F0ZWdvcnkoJ1BhdGllbnRzIE1hbmFnZW1lbnQnKX1cclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgUGF0aWVudHNcclxuICAgICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgY2xhc3NOYW1lPXtgYnRuICR7YWN0aXZlQ2F0ZWdvcnkgPT09ICdBcHBvaW50bWVudHMgU2NoZWR1bGluZycgPyAnYnRuLXByaW1hcnknIDogJ2J0bi1vdXRsaW5lLXByaW1hcnknfWB9XHJcbiAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHNldEFjdGl2ZUNhdGVnb3J5KCdBcHBvaW50bWVudHMgU2NoZWR1bGluZycpfVxyXG4gICAgICAgICAgPlxyXG4gICAgICAgICAgICBBcHBvaW50bWVudHNcclxuICAgICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgY2xhc3NOYW1lPXtgYnRuICR7YWN0aXZlQ2F0ZWdvcnkgPT09ICdDbGluaWNhbCBPUEQnID8gJ2J0bi1wcmltYXJ5JyA6ICdidG4tb3V0bGluZS1wcmltYXJ5J31gfVxyXG4gICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRBY3RpdmVDYXRlZ29yeSgnQ2xpbmljYWwgT1BEJyl9XHJcbiAgICAgICAgICA+XHJcbiAgICAgICAgICAgIENsaW5pY2FsXHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiXHJcbiAgICAgICAgICAgIGNsYXNzTmFtZT17YGJ0biAke2FjdGl2ZUNhdGVnb3J5ID09PSAnUGhhcm1hY3kgJiBQcmVzY3JpcHRpb25zJyA/ICdidG4tcHJpbWFyeScgOiAnYnRuLW91dGxpbmUtcHJpbWFyeSd9YH1cclxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0QWN0aXZlQ2F0ZWdvcnkoJ1BoYXJtYWN5ICYgUHJlc2NyaXB0aW9ucycpfVxyXG4gICAgICAgICAgPlxyXG4gICAgICAgICAgICBQcmVzY3JpcHRpb25zXHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICB7LyogQmFja2VuZCBJbnRlZ3JhdGlvbiBOb3RlIEJhbm5lciAqL31cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJhbGVydCBhbGVydC1pbmZvIGQtZmxleCBhbGlnbi1pdGVtcy1zdGFydCBnYXAtMyBtYi00XCIgcm9sZT1cImFsZXJ0XCI+XHJcbiAgICAgICAgPFNlcnZlciBjbGFzc05hbWU9XCJ0ZXh0LWluZm8gZmxleC1zaHJpbmstMCBtdC0xXCIgc2l6ZT17MjJ9IC8+XHJcbiAgICAgICAgPGRpdj5cclxuICAgICAgICAgIDxoNSBjbGFzc05hbWU9XCJhbGVydC1oZWFkaW5nIGZ3LWJvbGQgbWItMVwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC45NXJlbScgfX0+XHJcbiAgICAgICAgICAgIEZsYXNrIFJFU1QgQVBJIEFyY2hpdGVjdHVyYWwgUmVhZGluZXNzXHJcbiAgICAgICAgICA8L2g1PlxyXG4gICAgICAgICAgPHAgY2xhc3NOYW1lPVwibWItMCB0ZXh0LXNlY29uZGFyeVwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC44NXJlbScgfX0+XHJcbiAgICAgICAgICAgIEFsbCByZXF1ZXN0cyBzaG93biBiZWxvdyBhcmUgcHJlcGFyZWQgdG8gYWNjZXB0IEpTT04gcGF5bG9hZHMgYW5kIHJldHVybnMgc3RydWN0dXJlZCBIVFRQIHN0YXR1cyBjb2RlcyAoMjAwIE9LLCAyMDEgQ3JlYXRlZCwgNDAxIFVuYXV0aG9yaXplZCwgNDAzIEZvcmJpZGRlbiwgNDA0IE5vdCBGb3VuZCwgNTAwIFNlcnZlciBFcnJvcikuIFVzZSB0aGUgaW50ZXJhY3RpdmUgYnV0dG9ucyBvbiBhbnkgY2FyZCB0byB0ZXN0IGZyb250ZW5kIGhhbmRsaW5nIG9mIGVhY2ggQVBJIHN0YXR1cyBzdGF0ZS5cclxuICAgICAgICAgIDwvcD5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICB7LyogQ2FyZHMgTGlzdCAqL31cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJhcGktY2FyZHMtY29udGFpbmVyXCI+XHJcbiAgICAgICAge2ZpbHRlcmVkRW5kcG9pbnRzLm1hcChhcGkgPT4gKFxyXG4gICAgICAgICAgPEFwaURlbW9DYXJkIGtleT17YXBpLmlkfSBhcGk9e2FwaX0gLz5cclxuICAgICAgICApKX1cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59O1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgQXBpRG9jdW1lbnRhdGlvblBhZ2U7XHJcbiJdLCJmaWxlIjoiQzovVXNlcnMvc2Fyb2ovT25lRHJpdmUvRGVza3RvcC9NZWRpU3luYy9Gcm9udGVuZC9zcmMvcGFnZXMvQXBpRG9jdW1lbnRhdGlvblBhZ2UuanN4In0=

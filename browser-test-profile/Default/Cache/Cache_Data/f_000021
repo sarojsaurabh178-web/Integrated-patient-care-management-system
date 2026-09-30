@@ -1,0 +1,304 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/NotificationCard.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react;
+import { Calendar, AlertCircle, Clock, CheckCircle, Trash2, Eye, Bell } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+const NotificationCard = ({
+  notification,
+  onMarkRead,
+  onMarkUnread,
+  onDelete,
+  onViewDetails
+}) => {
+  const getIcon = (type) => {
+    switch (type) {
+      case "Appointment Reminder":
+        return /* @__PURE__ */ jsxDEV(Calendar, { size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+          lineNumber: 33,
+          columnNumber: 16
+        }, this);
+      case "Prescription Alert":
+        return /* @__PURE__ */ jsxDEV(CheckCircle, { size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+          lineNumber: 35,
+          columnNumber: 16
+        }, this);
+      case "Follow-Up Reminder":
+        return /* @__PURE__ */ jsxDEV(Clock, { size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+          lineNumber: 37,
+          columnNumber: 16
+        }, this);
+      case "Missed Appointment":
+        return /* @__PURE__ */ jsxDEV(AlertCircle, { size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+          lineNumber: 39,
+          columnNumber: 16
+        }, this);
+      default:
+        return /* @__PURE__ */ jsxDEV(Bell, { size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+          lineNumber: 41,
+          columnNumber: 16
+        }, this);
+    }
+  };
+  const getIconClass = (type) => {
+    switch (type) {
+      case "Appointment Reminder":
+        return "notif-icon-appointment";
+      case "Prescription Alert":
+        return "notif-icon-prescription";
+      case "Follow-Up Reminder":
+        return "notif-icon-followup";
+      case "Missed Appointment":
+        return "notif-icon-missed";
+      default:
+        return "notif-icon-appointment";
+    }
+  };
+  const getBadgeClass = (type) => {
+    switch (type) {
+      case "Appointment Reminder":
+        return "bg-primary";
+      case "Prescription Alert":
+        return "bg-success";
+      case "Follow-Up Reminder":
+        return "bg-warning";
+      case "Missed Appointment":
+        return "bg-danger";
+      default:
+        return "bg-secondary";
+    }
+  };
+  return /* @__PURE__ */ jsxDEV("div", { className: `notification-card ${!notification.isRead ? "unread-card" : ""}`, children: [
+    /* @__PURE__ */ jsxDEV("div", { className: `notif-icon-circle ${getIconClass(notification.type)}`, children: getIcon(notification.type) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+      lineNumber: 67,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "notification-card-body", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "notification-card-header", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center gap-2", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: `badge ${getBadgeClass(notification.type)}`, children: notification.type }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+            lineNumber: 74,
+            columnNumber: 13
+          }, this),
+          !notification.isRead && /* @__PURE__ */ jsxDEV("span", { className: "badge bg-primary", children: "Unread" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+            lineNumber: 78,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+          lineNumber: 73,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: "text-muted", style: { fontSize: "0.775rem" }, children: [
+          notification.date,
+          " • ",
+          notification.time
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+          lineNumber: 83,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+        lineNumber: 72,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("h4", { className: "notification-card-title", children: notification.title }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+        lineNumber: 88,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("p", { className: "notification-card-msg", children: notification.message }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+        lineNumber: 89,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center justify-content-between flex-wrap gap-2 pt-2 border-top", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "notification-card-meta", children: [
+          notification.doctorName && /* @__PURE__ */ jsxDEV("span", { children: [
+            /* @__PURE__ */ jsxDEV("strong", { children: "Doctor:" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+              lineNumber: 94,
+              columnNumber: 19
+            }, this),
+            " ",
+            notification.doctorName
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+            lineNumber: 94,
+            columnNumber: 13
+          }, this),
+          notification.patientName && /* @__PURE__ */ jsxDEV("span", { children: [
+            /* @__PURE__ */ jsxDEV("strong", { children: "Patient:" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+              lineNumber: 97,
+              columnNumber: 19
+            }, this),
+            " ",
+            notification.patientName
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+            lineNumber: 97,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+          lineNumber: 92,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "notification-card-actions", children: [
+          /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              type: "button",
+              className: "btn btn-sm btn-secondary",
+              onClick: () => onViewDetails(notification),
+              children: [
+                /* @__PURE__ */ jsxDEV(Eye, { size: 14 }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+                  lineNumber: 107,
+                  columnNumber: 15
+                }, this),
+                /* @__PURE__ */ jsxDEV("span", { children: "Details" }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+                  lineNumber: 108,
+                  columnNumber: 15
+                }, this)
+              ]
+            },
+            void 0,
+            true,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+              lineNumber: 102,
+              columnNumber: 13
+            },
+            this
+          ),
+          notification.isRead ? /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              type: "button",
+              className: "btn btn-sm btn-secondary",
+              onClick: () => onMarkUnread(notification.id),
+              children: "Mark Unread"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+              lineNumber: 112,
+              columnNumber: 13
+            },
+            this
+          ) : /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              type: "button",
+              className: "btn btn-sm btn-primary",
+              onClick: () => onMarkRead(notification.id),
+              children: [
+                /* @__PURE__ */ jsxDEV(CheckCircle, { size: 14 }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+                  lineNumber: 125,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ jsxDEV("span", { children: "Mark Read" }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+                  lineNumber: 126,
+                  columnNumber: 17
+                }, this)
+              ]
+            },
+            void 0,
+            true,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+              lineNumber: 120,
+              columnNumber: 13
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              type: "button",
+              className: "btn btn-sm btn-secondary text-danger",
+              onClick: () => onDelete(notification.id),
+              title: "Delete Notification",
+              children: /* @__PURE__ */ jsxDEV(Trash2, { size: 14 }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+                lineNumber: 136,
+                columnNumber: 15
+              }, this)
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+              lineNumber: 130,
+              columnNumber: 13
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+          lineNumber: 101,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+        lineNumber: 91,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+      lineNumber: 71,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx",
+    lineNumber: 66,
+    columnNumber: 5
+  }, this);
+};
+_c = NotificationCard;
+export default NotificationCard;
+var _c;
+$RefreshReg$(_c, "NotificationCard");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/NotificationCard.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUFBO0FBQUEsY0FDQyxNQUFLO0FBQUEsY0FDTCxXQUFVO0FBQUEsY0FDVixTQUFTLE1BQU1oQixXQUFXRCxhQUFhaUIsRUFBRTtBQUFBLGNBRXpDO0FBQUEsdUNBQUMsZUFBWSxNQUFNLE1BQW5CO0FBQUE7QUFBQTtBQUFBO0FBQUEsdUJBQXNCO0FBQUEsZ0JBQ3RCLHVCQUFDLFVBQUsseUJBQU47QUFBQTtBQUFBO0FBQUE7QUFBQSx1QkFBZTtBQUFBO0FBQUE7QUFBQSxZQU5qQjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsVUFPQTtBQUFBLFVBR0Y7QUFBQSxZQUFDO0FBQUE7QUFBQSxjQUNDLE1BQUs7QUFBQSxjQUNMLFdBQVU7QUFBQSxjQUNWLFNBQVMsTUFBTWQsU0FBU0gsYUFBYWlCLEVBQUU7QUFBQSxjQUN2QyxPQUFNO0FBQUEsY0FFTixpQ0FBQyxVQUFPLE1BQU0sTUFBZDtBQUFBO0FBQUE7QUFBQTtBQUFBLHFCQUFpQjtBQUFBO0FBQUEsWUFObkI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFVBT0E7QUFBQSxhQXBDRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBcUNBO0FBQUEsV0EvQ0Y7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQWdEQTtBQUFBLFNBcEVGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FxRUE7QUFBQSxPQTFFRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBMkVBO0FBRUo7QUFBRUMsS0F4SEluQjtBQTBITixlQUFlQTtBQUFpQixJQUFBbUI7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsiUmVhY3QiLCJDYWxlbmRhciIsIkFsZXJ0Q2lyY2xlIiwiQ2xvY2siLCJDaGVja0NpcmNsZSIsIlRyYXNoMiIsIkV5ZSIsIkJlbGwiLCJOb3RpZmljYXRpb25DYXJkIiwibm90aWZpY2F0aW9uIiwib25NYXJrUmVhZCIsIm9uTWFya1VucmVhZCIsIm9uRGVsZXRlIiwib25WaWV3RGV0YWlscyIsImdldEljb24iLCJ0eXBlIiwiZ2V0SWNvbkNsYXNzIiwiZ2V0QmFkZ2VDbGFzcyIsImlzUmVhZCIsImZvbnRTaXplIiwiZGF0ZSIsInRpbWUiLCJ0aXRsZSIsIm1lc3NhZ2UiLCJkb2N0b3JOYW1lIiwicGF0aWVudE5hbWUiLCJpZCIsIl9jIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIk5vdGlmaWNhdGlvbkNhcmQuanN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XHJcbmltcG9ydCB7IENhbGVuZGFyLCBBbGVydENpcmNsZSwgQ2xvY2ssIENoZWNrQ2lyY2xlLCBUcmFzaDIsIEV5ZSwgQmVsbCB9IGZyb20gJ2x1Y2lkZS1yZWFjdCc7XHJcblxyXG5jb25zdCBOb3RpZmljYXRpb25DYXJkID0gKHsgXHJcbiAgbm90aWZpY2F0aW9uLCBcclxuICBvbk1hcmtSZWFkLCBcclxuICBvbk1hcmtVbnJlYWQsIFxyXG4gIG9uRGVsZXRlLCBcclxuICBvblZpZXdEZXRhaWxzIFxyXG59KSA9PiB7XHJcbiAgY29uc3QgZ2V0SWNvbiA9ICh0eXBlKSA9PiB7XHJcbiAgICBzd2l0Y2ggKHR5cGUpIHtcclxuICAgICAgY2FzZSAnQXBwb2ludG1lbnQgUmVtaW5kZXInOlxyXG4gICAgICAgIHJldHVybiA8Q2FsZW5kYXIgc2l6ZT17MTh9IC8+O1xyXG4gICAgICBjYXNlICdQcmVzY3JpcHRpb24gQWxlcnQnOlxyXG4gICAgICAgIHJldHVybiA8Q2hlY2tDaXJjbGUgc2l6ZT17MTh9IC8+O1xyXG4gICAgICBjYXNlICdGb2xsb3ctVXAgUmVtaW5kZXInOlxyXG4gICAgICAgIHJldHVybiA8Q2xvY2sgc2l6ZT17MTh9IC8+O1xyXG4gICAgICBjYXNlICdNaXNzZWQgQXBwb2ludG1lbnQnOlxyXG4gICAgICAgIHJldHVybiA8QWxlcnRDaXJjbGUgc2l6ZT17MTh9IC8+O1xyXG4gICAgICBkZWZhdWx0OlxyXG4gICAgICAgIHJldHVybiA8QmVsbCBzaXplPXsxOH0gLz47XHJcbiAgICB9XHJcbiAgfTtcclxuXHJcbiAgY29uc3QgZ2V0SWNvbkNsYXNzID0gKHR5cGUpID0+IHtcclxuICAgIHN3aXRjaCAodHlwZSkge1xyXG4gICAgICBjYXNlICdBcHBvaW50bWVudCBSZW1pbmRlcic6IHJldHVybiAnbm90aWYtaWNvbi1hcHBvaW50bWVudCc7XHJcbiAgICAgIGNhc2UgJ1ByZXNjcmlwdGlvbiBBbGVydCc6IHJldHVybiAnbm90aWYtaWNvbi1wcmVzY3JpcHRpb24nO1xyXG4gICAgICBjYXNlICdGb2xsb3ctVXAgUmVtaW5kZXInOiByZXR1cm4gJ25vdGlmLWljb24tZm9sbG93dXAnO1xyXG4gICAgICBjYXNlICdNaXNzZWQgQXBwb2ludG1lbnQnOiByZXR1cm4gJ25vdGlmLWljb24tbWlzc2VkJztcclxuICAgICAgZGVmYXVsdDogcmV0dXJuICdub3RpZi1pY29uLWFwcG9pbnRtZW50JztcclxuICAgIH1cclxuICB9O1xyXG5cclxuICBjb25zdCBnZXRCYWRnZUNsYXNzID0gKHR5cGUpID0+IHtcclxuICAgIHN3aXRjaCAodHlwZSkge1xyXG4gICAgICBjYXNlICdBcHBvaW50bWVudCBSZW1pbmRlcic6IHJldHVybiAnYmctcHJpbWFyeSc7XHJcbiAgICAgIGNhc2UgJ1ByZXNjcmlwdGlvbiBBbGVydCc6IHJldHVybiAnYmctc3VjY2Vzcyc7XHJcbiAgICAgIGNhc2UgJ0ZvbGxvdy1VcCBSZW1pbmRlcic6IHJldHVybiAnYmctd2FybmluZyc7XHJcbiAgICAgIGNhc2UgJ01pc3NlZCBBcHBvaW50bWVudCc6IHJldHVybiAnYmctZGFuZ2VyJztcclxuICAgICAgZGVmYXVsdDogcmV0dXJuICdiZy1zZWNvbmRhcnknO1xyXG4gICAgfVxyXG4gIH07XHJcblxyXG4gIHJldHVybiAoXHJcbiAgICA8ZGl2IGNsYXNzTmFtZT17YG5vdGlmaWNhdGlvbi1jYXJkICR7IW5vdGlmaWNhdGlvbi5pc1JlYWQgPyAndW5yZWFkLWNhcmQnIDogJyd9YH0+XHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPXtgbm90aWYtaWNvbi1jaXJjbGUgJHtnZXRJY29uQ2xhc3Mobm90aWZpY2F0aW9uLnR5cGUpfWB9PlxyXG4gICAgICAgIHtnZXRJY29uKG5vdGlmaWNhdGlvbi50eXBlKX1cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cIm5vdGlmaWNhdGlvbi1jYXJkLWJvZHlcIj5cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm5vdGlmaWNhdGlvbi1jYXJkLWhlYWRlclwiPlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJkLWZsZXggYWxpZ24taXRlbXMtY2VudGVyIGdhcC0yXCI+XHJcbiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT17YGJhZGdlICR7Z2V0QmFkZ2VDbGFzcyhub3RpZmljYXRpb24udHlwZSl9YH0+XHJcbiAgICAgICAgICAgICAge25vdGlmaWNhdGlvbi50eXBlfVxyXG4gICAgICAgICAgICA8L3NwYW4+XHJcbiAgICAgICAgICAgIHshbm90aWZpY2F0aW9uLmlzUmVhZCAmJiAoXHJcbiAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiYmFkZ2UgYmctcHJpbWFyeVwiPlxyXG4gICAgICAgICAgICAgICAgVW5yZWFkXHJcbiAgICAgICAgICAgICAgPC9zcGFuPlxyXG4gICAgICAgICAgICApfVxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjc3NXJlbScgfX0+XHJcbiAgICAgICAgICAgIHtub3RpZmljYXRpb24uZGF0ZX0g4oCiIHtub3RpZmljYXRpb24udGltZX1cclxuICAgICAgICAgIDwvc3Bhbj5cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgPGg0IGNsYXNzTmFtZT1cIm5vdGlmaWNhdGlvbi1jYXJkLXRpdGxlXCI+e25vdGlmaWNhdGlvbi50aXRsZX08L2g0PlxyXG4gICAgICAgIDxwIGNsYXNzTmFtZT1cIm5vdGlmaWNhdGlvbi1jYXJkLW1zZ1wiPntub3RpZmljYXRpb24ubWVzc2FnZX08L3A+XHJcblxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZC1mbGV4IGFsaWduLWl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNvbnRlbnQtYmV0d2VlbiBmbGV4LXdyYXAgZ2FwLTIgcHQtMiBib3JkZXItdG9wXCI+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm5vdGlmaWNhdGlvbi1jYXJkLW1ldGFcIj5cclxuICAgICAgICAgICAge25vdGlmaWNhdGlvbi5kb2N0b3JOYW1lICYmIChcclxuICAgICAgICAgICAgICA8c3Bhbj48c3Ryb25nPkRvY3Rvcjo8L3N0cm9uZz4ge25vdGlmaWNhdGlvbi5kb2N0b3JOYW1lfTwvc3Bhbj5cclxuICAgICAgICAgICAgKX1cclxuICAgICAgICAgICAge25vdGlmaWNhdGlvbi5wYXRpZW50TmFtZSAmJiAoXHJcbiAgICAgICAgICAgICAgPHNwYW4+PHN0cm9uZz5QYXRpZW50Ojwvc3Ryb25nPiB7bm90aWZpY2F0aW9uLnBhdGllbnROYW1lfTwvc3Bhbj5cclxuICAgICAgICAgICAgKX1cclxuICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibm90aWZpY2F0aW9uLWNhcmQtYWN0aW9uc1wiPlxyXG4gICAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiXHJcbiAgICAgICAgICAgICAgY2xhc3NOYW1lPVwiYnRuIGJ0bi1zbSBidG4tc2Vjb25kYXJ5XCJcclxuICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvblZpZXdEZXRhaWxzKG5vdGlmaWNhdGlvbil9XHJcbiAgICAgICAgICAgID5cclxuICAgICAgICAgICAgICA8RXllIHNpemU9ezE0fSAvPlxyXG4gICAgICAgICAgICAgIDxzcGFuPkRldGFpbHM8L3NwYW4+XHJcbiAgICAgICAgICAgIDwvYnV0dG9uPlxyXG5cclxuICAgICAgICAgICAge25vdGlmaWNhdGlvbi5pc1JlYWQgPyAoXHJcbiAgICAgICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiXHJcbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJidG4gYnRuLXNtIGJ0bi1zZWNvbmRhcnlcIlxyXG4gICAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25NYXJrVW5yZWFkKG5vdGlmaWNhdGlvbi5pZCl9XHJcbiAgICAgICAgICAgICAgPlxyXG4gICAgICAgICAgICAgICAgTWFyayBVbnJlYWRcclxuICAgICAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgICAgKSA6IChcclxuICAgICAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cImJ0biBidG4tc20gYnRuLXByaW1hcnlcIlxyXG4gICAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25NYXJrUmVhZChub3RpZmljYXRpb24uaWQpfVxyXG4gICAgICAgICAgICAgID5cclxuICAgICAgICAgICAgICAgIDxDaGVja0NpcmNsZSBzaXplPXsxNH0gLz5cclxuICAgICAgICAgICAgICAgIDxzcGFuPk1hcmsgUmVhZDwvc3Bhbj5cclxuICAgICAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgICAgKX1cclxuXHJcbiAgICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgICBjbGFzc05hbWU9XCJidG4gYnRuLXNtIGJ0bi1zZWNvbmRhcnkgdGV4dC1kYW5nZXJcIlxyXG4gICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IG9uRGVsZXRlKG5vdGlmaWNhdGlvbi5pZCl9XHJcbiAgICAgICAgICAgICAgdGl0bGU9XCJEZWxldGUgTm90aWZpY2F0aW9uXCJcclxuICAgICAgICAgICAgPlxyXG4gICAgICAgICAgICAgIDxUcmFzaDIgc2l6ZT17MTR9IC8+XHJcbiAgICAgICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgIDwvZGl2PlxyXG4gICAgPC9kaXY+XHJcbiAgKTtcclxufTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IE5vdGlmaWNhdGlvbkNhcmQ7XHJcbiJdLCJmaWxlIjoiQzovVXNlcnMvc2Fyb2ovT25lRHJpdmUvRGVza3RvcC9NZWRpU3luYy9Gcm9udGVuZC9zcmMvY29tcG9uZW50cy9Ob3RpZmljYXRpb25DYXJkLmpzeCJ9

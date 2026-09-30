@@ -1,0 +1,360 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/JwtFlowDiagram.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react; const useState = __vite__cjsImport3_react["useState"];
+import { ArrowRight, ArrowDown, ShieldCheck, Key, Lock, CheckCircle, XCircle, RefreshCw } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+const JwtFlowDiagram = () => {
+  _s();
+  const [authStatus, setAuthStatus] = useState("Authenticated");
+  const [tokenStatus, setTokenStatus] = useState("Valid");
+  const [sessionStatus, setSessionStatus] = useState("Active");
+  const toggleAuth = () => {
+    if (authStatus === "Authenticated") {
+      setAuthStatus("Unauthenticated");
+      setTokenStatus("Expired");
+      setSessionStatus("Terminated");
+    } else {
+      setAuthStatus("Authenticated");
+      setTokenStatus("Valid");
+      setSessionStatus("Active");
+    }
+  };
+  const renderArrow = () => /* @__PURE__ */ jsxDEV("div", { className: "jwt-step-arrow", children: [
+    /* @__PURE__ */ jsxDEV(ArrowRight, { size: 20, className: "jwt-arrow-desktop" }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+      lineNumber: 42,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(ArrowDown, { size: 20, className: "jwt-arrow-mobile" }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+      lineNumber: 43,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+    lineNumber: 41,
+    columnNumber: 3
+  }, this);
+  return /* @__PURE__ */ jsxDEV("div", { className: "jwt-flow-container", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center justify-content-between flex-wrap gap-3 pb-3 border-bottom", children: [
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("h3", { className: "h5 fw-bold text-primary mb-1", children: "JWT Authentication Flow Architecture" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 51,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-muted mb-0", style: { fontSize: "0.875rem" }, children: "Visual representation of token issuance, verification, and role header protection for Python Flask REST integration." }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 52,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+        lineNumber: 50,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          type: "button",
+          className: "btn btn-sm btn-primary d-inline-flex align-items-center gap-1",
+          onClick: toggleAuth,
+          children: [
+            /* @__PURE__ */ jsxDEV(RefreshCw, { size: 14 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+              lineNumber: 61,
+              columnNumber: 11
+            }, this),
+            "Toggle Live Demo State"
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 56,
+          columnNumber: 9
+        },
+        this
+      )
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+      lineNumber: 49,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "d-flex flex-wrap gap-4 my-3 p-3 bg-light rounded-3 align-items-center justify-content-around", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center gap-2", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "text-muted", style: { fontSize: "0.85rem", fontWeight: 500 }, children: "Authentication Status:" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 69,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: `status-pill ${authStatus === "Authenticated" ? "status-pill-success" : "status-pill-danger"}`, children: [
+          "● ",
+          authStatus
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 72,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+        lineNumber: 68,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center gap-2", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "text-muted", style: { fontSize: "0.85rem", fontWeight: 500 }, children: "Token Status:" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 78,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: `status-pill ${tokenStatus === "Valid" ? "status-pill-success" : "status-pill-warning"}`, children: [
+          "● ",
+          tokenStatus
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 81,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+        lineNumber: 77,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center gap-2", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "text-muted", style: { fontSize: "0.85rem", fontWeight: 500 }, children: "Session:" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 87,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: `status-pill ${sessionStatus === "Active" ? "status-pill-success" : "status-pill-danger"}`, children: [
+          "● ",
+          sessionStatus
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 90,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+        lineNumber: 86,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+      lineNumber: 67,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "jwt-flow-steps", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "jwt-step-box", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-primary mb-1", style: { fontSize: "0.85rem" }, children: "STEP 1" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 99,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "fw-semibold text-primary", style: { fontSize: "0.9rem" }, children: "Username + Password" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 100,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "POST /api/v1/auth/login" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 101,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+        lineNumber: 98,
+        columnNumber: 9
+      }, this),
+      renderArrow(),
+      /* @__PURE__ */ jsxDEV("div", { className: "jwt-step-box", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-primary mb-1", style: { fontSize: "0.85rem" }, children: "STEP 2" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 107,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "fw-semibold text-primary", style: { fontSize: "0.9rem" }, children: "Backend Verification" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 108,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Password hash match check" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 109,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+        lineNumber: 106,
+        columnNumber: 9
+      }, this),
+      renderArrow(),
+      /* @__PURE__ */ jsxDEV("div", { className: "jwt-step-box", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-primary mb-1", style: { fontSize: "0.85rem" }, children: "STEP 3" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 115,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "fw-semibold text-primary", style: { fontSize: "0.9rem" }, children: "Login Successful" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 116,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "HTTP 200 Response" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 117,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+        lineNumber: 114,
+        columnNumber: 9
+      }, this),
+      renderArrow(),
+      /* @__PURE__ */ jsxDEV("div", { className: "jwt-step-box active-step", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "fw-bold mb-1", style: { fontSize: "0.85rem" }, children: "STEP 4" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 123,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "fw-semibold", style: { fontSize: "0.9rem" }, children: "JWT Token Issued" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 124,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { style: { fontSize: "0.75rem" }, children: "HMAC-SHA256 Bearer Token" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 125,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+        lineNumber: 122,
+        columnNumber: 9
+      }, this),
+      renderArrow(),
+      /* @__PURE__ */ jsxDEV("div", { className: "jwt-step-box", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-primary mb-1", style: { fontSize: "0.85rem" }, children: "STEP 5" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 131,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "fw-semibold text-primary", style: { fontSize: "0.9rem" }, children: "Protected Request" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 132,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Authorization: Bearer <jwt>" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 133,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+        lineNumber: 130,
+        columnNumber: 9
+      }, this),
+      renderArrow(),
+      /* @__PURE__ */ jsxDEV("div", { className: "jwt-step-box", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-primary mb-1", style: { fontSize: "0.85rem" }, children: "STEP 6" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 139,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "fw-semibold text-primary", style: { fontSize: "0.9rem" }, children: "Token Verification" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 140,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Role & Scope Check" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 141,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+        lineNumber: 138,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+      lineNumber: 97,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "mt-4 p-3 bg-light rounded-3", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center justify-content-between mb-2", children: [
+        /* @__PURE__ */ jsxDEV("span", { className: "fw-bold text-primary", style: { fontSize: "0.85rem" }, children: "Simulated Decoded JWT Payload:" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 148,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: "badge bg-secondary", style: { fontSize: "0.75rem" }, children: "Algorithm: HS256" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+          lineNumber: 151,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+        lineNumber: 147,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "api-code-block", children: `{
+  "sub": "USR-88219",
+  "name": "Dr. Sarah Jenkins",
+  "role": "DOCTOR",
+  "permissions": ["read:patient", "write:consultation", "create:prescription"],
+  "iat": ${Math.floor(Date.now() / 1e3)},
+  "exp": ${Math.floor(Date.now() / 1e3) + 3600},
+  "iss": "https://api.meditrack.org/auth"
+}` }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+        lineNumber: 155,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+      lineNumber: 146,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx",
+    lineNumber: 48,
+    columnNumber: 5
+  }, this);
+};
+_s(JwtFlowDiagram, "vHqUfawb9P3P8pc2aUHTStHqVrA=");
+_c = JwtFlowDiagram;
+export default JwtFlowDiagram;
+var _c;
+$RefreshReg$(_c, "JwtFlowDiagram");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/JwtFlowDiagram.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUFBO0FBQUE7QUFBQTtBQUFBLGVBRUE7QUFBQSxXQU5GO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFPQTtBQUFBLE1BQ0EsdUJBQUMsU0FBSSxXQUFVLGtCQUN0QjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FLVUUsS0FBS0MsTUFBTUMsS0FBS0MsSUFBSSxJQUFJLEdBQUksQ0FBQztBQUFBLFdBQzdCSCxLQUFLQyxNQUFNQyxLQUFLQyxJQUFJLElBQUksR0FBSSxJQUFJLElBQUk7QUFBQTtBQUFBLE1BUHZDO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFVQTtBQUFBLFNBbkJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FvQkE7QUFBQSxPQXRIRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBdUhBO0FBRUo7QUFBRWQsR0FsSklELGdCQUFjO0FBQUEsS0FBZEE7QUFvSk4sZUFBZUE7QUFBZSxJQUFBZ0I7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsiUmVhY3QiLCJ1c2VTdGF0ZSIsIkFycm93UmlnaHQiLCJBcnJvd0Rvd24iLCJTaGllbGRDaGVjayIsIktleSIsIkxvY2siLCJDaGVja0NpcmNsZSIsIlhDaXJjbGUiLCJSZWZyZXNoQ3ciLCJKd3RGbG93RGlhZ3JhbSIsIl9zIiwiYXV0aFN0YXR1cyIsInNldEF1dGhTdGF0dXMiLCJ0b2tlblN0YXR1cyIsInNldFRva2VuU3RhdHVzIiwic2Vzc2lvblN0YXR1cyIsInNldFNlc3Npb25TdGF0dXMiLCJ0b2dnbGVBdXRoIiwicmVuZGVyQXJyb3ciLCJmb250U2l6ZSIsImZvbnRXZWlnaHQiLCJNYXRoIiwiZmxvb3IiLCJEYXRlIiwibm93IiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiSnd0Rmxvd0RpYWdyYW0uanN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCwgeyB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0JztcclxuaW1wb3J0IHsgQXJyb3dSaWdodCwgQXJyb3dEb3duLCBTaGllbGRDaGVjaywgS2V5LCBMb2NrLCBDaGVja0NpcmNsZSwgWENpcmNsZSwgUmVmcmVzaEN3IH0gZnJvbSAnbHVjaWRlLXJlYWN0JztcclxuXHJcbmNvbnN0IEp3dEZsb3dEaWFncmFtID0gKCkgPT4ge1xyXG4gIGNvbnN0IFthdXRoU3RhdHVzLCBzZXRBdXRoU3RhdHVzXSA9IHVzZVN0YXRlKCdBdXRoZW50aWNhdGVkJyk7IC8vICdBdXRoZW50aWNhdGVkJywgJ1VuYXV0aGVudGljYXRlZCdcclxuICBjb25zdCBbdG9rZW5TdGF0dXMsIHNldFRva2VuU3RhdHVzXSA9IHVzZVN0YXRlKCdWYWxpZCcpOyAvLyAnVmFsaWQnLCAnRXhwaXJlZCcsICdUYW1wZXJlZCdcclxuICBjb25zdCBbc2Vzc2lvblN0YXR1cywgc2V0U2Vzc2lvblN0YXR1c10gPSB1c2VTdGF0ZSgnQWN0aXZlJyk7IC8vICdBY3RpdmUnLCAnVGVybWluYXRlZCdcclxuXHJcbiAgY29uc3QgdG9nZ2xlQXV0aCA9ICgpID0+IHtcclxuICAgIGlmIChhdXRoU3RhdHVzID09PSAnQXV0aGVudGljYXRlZCcpIHtcclxuICAgICAgc2V0QXV0aFN0YXR1cygnVW5hdXRoZW50aWNhdGVkJyk7XHJcbiAgICAgIHNldFRva2VuU3RhdHVzKCdFeHBpcmVkJyk7XHJcbiAgICAgIHNldFNlc3Npb25TdGF0dXMoJ1Rlcm1pbmF0ZWQnKTtcclxuICAgIH0gZWxzZSB7XHJcbiAgICAgIHNldEF1dGhTdGF0dXMoJ0F1dGhlbnRpY2F0ZWQnKTtcclxuICAgICAgc2V0VG9rZW5TdGF0dXMoJ1ZhbGlkJyk7XHJcbiAgICAgIHNldFNlc3Npb25TdGF0dXMoJ0FjdGl2ZScpO1xyXG4gICAgfVxyXG4gIH07XHJcblxyXG4gIGNvbnN0IHJlbmRlckFycm93ID0gKCkgPT4gKFxyXG4gICAgPGRpdiBjbGFzc05hbWU9XCJqd3Qtc3RlcC1hcnJvd1wiPlxyXG4gICAgICA8QXJyb3dSaWdodCBzaXplPXsyMH0gY2xhc3NOYW1lPVwiand0LWFycm93LWRlc2t0b3BcIiAvPlxyXG4gICAgICA8QXJyb3dEb3duIHNpemU9ezIwfSBjbGFzc05hbWU9XCJqd3QtYXJyb3ctbW9iaWxlXCIgLz5cclxuICAgIDwvZGl2PlxyXG4gICk7XHJcblxyXG4gIHJldHVybiAoXHJcbiAgICA8ZGl2IGNsYXNzTmFtZT1cImp3dC1mbG93LWNvbnRhaW5lclwiPlxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImQtZmxleCBhbGlnbi1pdGVtcy1jZW50ZXIganVzdGlmeS1jb250ZW50LWJldHdlZW4gZmxleC13cmFwIGdhcC0zIHBiLTMgYm9yZGVyLWJvdHRvbVwiPlxyXG4gICAgICAgIDxkaXY+XHJcbiAgICAgICAgICA8aDMgY2xhc3NOYW1lPVwiaDUgZnctYm9sZCB0ZXh0LXByaW1hcnkgbWItMVwiPkpXVCBBdXRoZW50aWNhdGlvbiBGbG93IEFyY2hpdGVjdHVyZTwvaDM+XHJcbiAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkIG1iLTBcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODc1cmVtJyB9fT5cclxuICAgICAgICAgICAgVmlzdWFsIHJlcHJlc2VudGF0aW9uIG9mIHRva2VuIGlzc3VhbmNlLCB2ZXJpZmljYXRpb24sIGFuZCByb2xlIGhlYWRlciBwcm90ZWN0aW9uIGZvciBQeXRob24gRmxhc2sgUkVTVCBpbnRlZ3JhdGlvbi5cclxuICAgICAgICAgIDwvcD5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8YnV0dG9uIFxyXG4gICAgICAgICAgdHlwZT1cImJ1dHRvblwiIFxyXG4gICAgICAgICAgY2xhc3NOYW1lPVwiYnRuIGJ0bi1zbSBidG4tcHJpbWFyeSBkLWlubGluZS1mbGV4IGFsaWduLWl0ZW1zLWNlbnRlciBnYXAtMVwiXHJcbiAgICAgICAgICBvbkNsaWNrPXt0b2dnbGVBdXRofVxyXG4gICAgICAgID5cclxuICAgICAgICAgIDxSZWZyZXNoQ3cgc2l6ZT17MTR9IC8+XHJcbiAgICAgICAgICBUb2dnbGUgTGl2ZSBEZW1vIFN0YXRlXHJcbiAgICAgICAgPC9idXR0b24+XHJcbiAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgey8qIExpdmUgU3lzdGVtIFN0YXR1cyBCYW5uZXIgKi99XHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZC1mbGV4IGZsZXgtd3JhcCBnYXAtNCBteS0zIHAtMyBiZy1saWdodCByb3VuZGVkLTMgYWxpZ24taXRlbXMtY2VudGVyIGp1c3RpZnktY29udGVudC1hcm91bmRcIj5cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImQtZmxleCBhbGlnbi1pdGVtcy1jZW50ZXIgZ2FwLTJcIj5cclxuICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODVyZW0nLCBmb250V2VpZ2h0OiA1MDAgfX0+XHJcbiAgICAgICAgICAgIEF1dGhlbnRpY2F0aW9uIFN0YXR1czpcclxuICAgICAgICAgIDwvc3Bhbj5cclxuICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT17YHN0YXR1cy1waWxsICR7YXV0aFN0YXR1cyA9PT0gJ0F1dGhlbnRpY2F0ZWQnID8gJ3N0YXR1cy1waWxsLXN1Y2Nlc3MnIDogJ3N0YXR1cy1waWxsLWRhbmdlcid9YH0+XHJcbiAgICAgICAgICAgIOKXjyB7YXV0aFN0YXR1c31cclxuICAgICAgICAgIDwvc3Bhbj5cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJkLWZsZXggYWxpZ24taXRlbXMtY2VudGVyIGdhcC0yXCI+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjg1cmVtJywgZm9udFdlaWdodDogNTAwIH19PlxyXG4gICAgICAgICAgICBUb2tlbiBTdGF0dXM6XHJcbiAgICAgICAgICA8L3NwYW4+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9e2BzdGF0dXMtcGlsbCAke3Rva2VuU3RhdHVzID09PSAnVmFsaWQnID8gJ3N0YXR1cy1waWxsLXN1Y2Nlc3MnIDogJ3N0YXR1cy1waWxsLXdhcm5pbmcnfWB9PlxyXG4gICAgICAgICAgICDil48ge3Rva2VuU3RhdHVzfVxyXG4gICAgICAgICAgPC9zcGFuPlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImQtZmxleCBhbGlnbi1pdGVtcy1jZW50ZXIgZ2FwLTJcIj5cclxuICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODVyZW0nLCBmb250V2VpZ2h0OiA1MDAgfX0+XHJcbiAgICAgICAgICAgIFNlc3Npb246XHJcbiAgICAgICAgICA8L3NwYW4+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9e2BzdGF0dXMtcGlsbCAke3Nlc3Npb25TdGF0dXMgPT09ICdBY3RpdmUnID8gJ3N0YXR1cy1waWxsLXN1Y2Nlc3MnIDogJ3N0YXR1cy1waWxsLWRhbmdlcid9YH0+XHJcbiAgICAgICAgICAgIOKXjyB7c2Vzc2lvblN0YXR1c31cclxuICAgICAgICAgIDwvc3Bhbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICB7LyogU3RlcCBGbG93IE5vZGVzICovfVxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImp3dC1mbG93LXN0ZXBzXCI+XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJqd3Qtc3RlcC1ib3hcIj5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZnctYm9sZCB0ZXh0LXByaW1hcnkgbWItMVwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC44NXJlbScgfX0+U1RFUCAxPC9kaXY+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZ3LXNlbWlib2xkIHRleHQtcHJpbWFyeVwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC45cmVtJyB9fT5Vc2VybmFtZSArIFBhc3N3b3JkPC9kaXY+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuNzVyZW0nIH19PlBPU1QgL2FwaS92MS9hdXRoL2xvZ2luPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgIHtyZW5kZXJBcnJvdygpfVxyXG5cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImp3dC1zdGVwLWJveFwiPlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmdy1ib2xkIHRleHQtcHJpbWFyeSBtYi0xXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjg1cmVtJyB9fT5TVEVQIDI8L2Rpdj5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZnctc2VtaWJvbGQgdGV4dC1wcmltYXJ5XCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjlyZW0nIH19PkJhY2tlbmQgVmVyaWZpY2F0aW9uPC9kaXY+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuNzVyZW0nIH19PlBhc3N3b3JkIGhhc2ggbWF0Y2ggY2hlY2s8L2Rpdj5cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAge3JlbmRlckFycm93KCl9XHJcblxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiand0LXN0ZXAtYm94XCI+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZ3LWJvbGQgdGV4dC1wcmltYXJ5IG1iLTFcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODVyZW0nIH19PlNURVAgMzwvZGl2PlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmdy1zZW1pYm9sZCB0ZXh0LXByaW1hcnlcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuOXJlbScgfX0+TG9naW4gU3VjY2Vzc2Z1bDwvZGl2PlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjc1cmVtJyB9fT5IVFRQIDIwMCBSZXNwb25zZTwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICB7cmVuZGVyQXJyb3coKX1cclxuXHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJqd3Qtc3RlcC1ib3ggYWN0aXZlLXN0ZXBcIj5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZnctYm9sZCBtYi0xXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjg1cmVtJyB9fT5TVEVQIDQ8L2Rpdj5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZnctc2VtaWJvbGRcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuOXJlbScgfX0+SldUIFRva2VuIElzc3VlZDwvZGl2PlxyXG4gICAgICAgICAgPGRpdiBzdHlsZT17eyBmb250U2l6ZTogJzAuNzVyZW0nIH19PkhNQUMtU0hBMjU2IEJlYXJlciBUb2tlbjwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICB7cmVuZGVyQXJyb3coKX1cclxuXHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJqd3Qtc3RlcC1ib3hcIj5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZnctYm9sZCB0ZXh0LXByaW1hcnkgbWItMVwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC44NXJlbScgfX0+U1RFUCA1PC9kaXY+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZ3LXNlbWlib2xkIHRleHQtcHJpbWFyeVwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC45cmVtJyB9fT5Qcm90ZWN0ZWQgUmVxdWVzdDwvZGl2PlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjc1cmVtJyB9fT5BdXRob3JpemF0aW9uOiBCZWFyZXIgJmx0O2p3dCZndDs8L2Rpdj5cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAge3JlbmRlckFycm93KCl9XHJcblxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiand0LXN0ZXAtYm94XCI+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZ3LWJvbGQgdGV4dC1wcmltYXJ5IG1iLTFcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODVyZW0nIH19PlNURVAgNjwvZGl2PlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmdy1zZW1pYm9sZCB0ZXh0LXByaW1hcnlcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuOXJlbScgfX0+VG9rZW4gVmVyaWZpY2F0aW9uPC9kaXY+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuNzVyZW0nIH19PlJvbGUgJiBTY29wZSBDaGVjazwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG4gICAgICA8L2Rpdj5cclxuXHJcbiAgICAgIHsvKiBDb2RlIFNuaXBwZXQgVG9rZW4gUHJldmlldyAqL31cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJtdC00IHAtMyBiZy1saWdodCByb3VuZGVkLTNcIj5cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImQtZmxleCBhbGlnbi1pdGVtcy1jZW50ZXIganVzdGlmeS1jb250ZW50LWJldHdlZW4gbWItMlwiPlxyXG4gICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZnctYm9sZCB0ZXh0LXByaW1hcnlcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODVyZW0nIH19PlxyXG4gICAgICAgICAgICBTaW11bGF0ZWQgRGVjb2RlZCBKV1QgUGF5bG9hZDpcclxuICAgICAgICAgIDwvc3Bhbj5cclxuICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImJhZGdlIGJnLXNlY29uZGFyeVwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC43NXJlbScgfX0+XHJcbiAgICAgICAgICAgIEFsZ29yaXRobTogSFMyNTZcclxuICAgICAgICAgIDwvc3Bhbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImFwaS1jb2RlLWJsb2NrXCI+XHJcbntge1xyXG4gIFwic3ViXCI6IFwiVVNSLTg4MjE5XCIsXHJcbiAgXCJuYW1lXCI6IFwiRHIuIFNhcmFoIEplbmtpbnNcIixcclxuICBcInJvbGVcIjogXCJET0NUT1JcIixcclxuICBcInBlcm1pc3Npb25zXCI6IFtcInJlYWQ6cGF0aWVudFwiLCBcIndyaXRlOmNvbnN1bHRhdGlvblwiLCBcImNyZWF0ZTpwcmVzY3JpcHRpb25cIl0sXHJcbiAgXCJpYXRcIjogJHtNYXRoLmZsb29yKERhdGUubm93KCkgLyAxMDAwKX0sXHJcbiAgXCJleHBcIjogJHtNYXRoLmZsb29yKERhdGUubm93KCkgLyAxMDAwKSArIDM2MDB9LFxyXG4gIFwiaXNzXCI6IFwiaHR0cHM6Ly9hcGkubWVkaXRyYWNrLm9yZy9hdXRoXCJcclxufWB9XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgIDwvZGl2PlxyXG4gICAgPC9kaXY+XHJcbiAgKTtcclxufTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IEp3dEZsb3dEaWFncmFtO1xyXG4iXSwiZmlsZSI6IkM6L1VzZXJzL3Nhcm9qL09uZURyaXZlL0Rlc2t0b3AvTWVkaVN5bmMvRnJvbnRlbmQvc3JjL2NvbXBvbmVudHMvSnd0Rmxvd0RpYWdyYW0uanN4In0=

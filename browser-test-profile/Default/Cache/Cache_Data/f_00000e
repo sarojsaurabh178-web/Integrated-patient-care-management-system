@@ -1,0 +1,475 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/pages/Appointments.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const Fragment = __vite__cjsImport0_react_jsxDevRuntime["Fragment"]; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react; const useState = __vite__cjsImport3_react["useState"]; const useMemo = __vite__cjsImport3_react["useMemo"];
+import Breadcrumb from "/src/components/Breadcrumb.jsx";
+import {
+  Calendar,
+  Search,
+  CalendarPlus,
+  Filter,
+  Edit3,
+  CheckCircle2,
+  XCircle,
+  Clock,
+  User,
+  Inbox
+} from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+const Appointments = ({
+  appointments,
+  setActiveTab,
+  onOpenNewAppointmentModal,
+  onEditAppointment,
+  onUpdateStatus
+}) => {
+  _s();
+  const [filterStatus, setFilterStatus] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredAppointments = useMemo(() => {
+    return appointments.filter((apt) => {
+      const matchesStatus = filterStatus === "All" || apt.status === filterStatus;
+      const query = searchTerm.toLowerCase().trim();
+      const matchesQuery = !query || apt.id.toLowerCase().includes(query) || apt.patientName.toLowerCase().includes(query) || apt.doctorName.toLowerCase().includes(query) || apt.department.toLowerCase().includes(query);
+      return matchesStatus && matchesQuery;
+    });
+  }, [appointments, filterStatus, searchTerm]);
+  return /* @__PURE__ */ jsxDEV("div", { className: "appointments-page", children: [
+    /* @__PURE__ */ jsxDEV(Breadcrumb, { activeTab: "appointments", setActiveTab }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+      lineNumber: 62,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "page-header", style: { display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }, children: [
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("h1", { className: "page-title", children: "Appointment Scheduling" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+          lineNumber: 67,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "page-subtitle", children: "Schedule, track, and manage patient consultations and specialist OPD appointments." }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+          lineNumber: 68,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+        lineNumber: 66,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          type: "button",
+          className: "btn btn-primary",
+          onClick: onOpenNewAppointmentModal,
+          children: [
+            /* @__PURE__ */ jsxDEV(CalendarPlus, { size: 18 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+              lineNumber: 78,
+              columnNumber: 11
+            }, this),
+            "Book New Appointment"
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+          lineNumber: 73,
+          columnNumber: 9
+        },
+        this
+      )
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+      lineNumber: 65,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "card", style: { marginBottom: "1.5rem" }, children: /* @__PURE__ */ jsxDEV("div", { className: "card-body", style: { padding: "1rem 1.25rem" }, children: /* @__PURE__ */ jsxDEV("div", { className: "appointment-controls-row", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "status-tab-group", children: ["All", "Scheduled", "Completed", "Cancelled"].map(
+        (status) => /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            className: `status-tab-btn ${filterStatus === status ? "active" : ""}`,
+            onClick: () => setFilterStatus(status),
+            children: status
+          },
+          status,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+            lineNumber: 90,
+            columnNumber: 15
+          },
+          this
+        )
+      ) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+        lineNumber: 88,
+        columnNumber: 13
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "search-input-wrapper", style: { maxWidth: "320px" }, children: [
+        /* @__PURE__ */ jsxDEV(Search, { size: 18, className: "search-icon" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+          lineNumber: 103,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          "input",
+          {
+            type: "text",
+            className: "search-input",
+            placeholder: "Search patient, doctor, or ID...",
+            value: searchTerm,
+            onChange: (e) => setSearchTerm(e.target.value)
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+            lineNumber: 104,
+            columnNumber: 15
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+        lineNumber: 102,
+        columnNumber: 13
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+      lineNumber: 86,
+      columnNumber: 11
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+      lineNumber: 85,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+      lineNumber: 84,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "card", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "card-header", children: /* @__PURE__ */ jsxDEV("h3", { className: "card-title", children: [
+        /* @__PURE__ */ jsxDEV(Calendar, { className: "card-title-icon", size: 20 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+          lineNumber: 120,
+          columnNumber: 13
+        }, this),
+        "Appointment Directory (",
+        filteredAppointments.length,
+        ")"
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+        lineNumber: 119,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+        lineNumber: 118,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "card-body", style: { padding: "0.75rem" }, children: filteredAppointments.length === 0 ? /* @__PURE__ */ jsxDEV("div", { className: "empty-state", children: [
+        /* @__PURE__ */ jsxDEV(Inbox, { className: "empty-state-icon", size: 48 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+          lineNumber: 127,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "fw-semibold text-primary", style: { fontSize: "1.1rem" }, children: "No appointments found" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+          lineNumber: 128,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-muted", style: { fontSize: "0.85rem", marginTop: "0.25rem" }, children: "Try selecting another status tab or book a new appointment." }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+          lineNumber: 129,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+        lineNumber: 126,
+        columnNumber: 11
+      }, this) : /* @__PURE__ */ jsxDEV("div", { className: "table-responsive", children: /* @__PURE__ */ jsxDEV("table", { className: "patient-table", children: [
+        /* @__PURE__ */ jsxDEV("thead", { children: /* @__PURE__ */ jsxDEV("tr", { children: [
+          /* @__PURE__ */ jsxDEV("th", { children: "Appt ID" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+            lineNumber: 138,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("th", { children: "Patient Name" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+            lineNumber: 139,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("th", { children: "Specialist & Dept" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+            lineNumber: 140,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("th", { children: "Date & Time" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+            lineNumber: 141,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("th", { children: "Type" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+            lineNumber: 142,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("th", { children: "Status" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+            lineNumber: 143,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("th", { children: "Action" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+            lineNumber: 144,
+            columnNumber: 21
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+          lineNumber: 137,
+          columnNumber: 19
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+          lineNumber: 136,
+          columnNumber: 17
+        }, this),
+        /* @__PURE__ */ jsxDEV("tbody", { children: filteredAppointments.map(
+          (apt) => /* @__PURE__ */ jsxDEV("tr", { children: [
+            /* @__PURE__ */ jsxDEV("td", { children: /* @__PURE__ */ jsxDEV("span", { className: "patient-id-tag", children: apt.id }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+              lineNumber: 151,
+              columnNumber: 25
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+              lineNumber: 150,
+              columnNumber: 23
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: [
+              /* @__PURE__ */ jsxDEV("div", { style: { fontWeight: 600 }, children: apt.patientName }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                lineNumber: 154,
+                columnNumber: 25
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { style: { fontSize: "0.75rem", color: "var(--text-muted)" }, children: apt.patientId }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                lineNumber: 155,
+                columnNumber: 25
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+              lineNumber: 153,
+              columnNumber: 23
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: [
+              /* @__PURE__ */ jsxDEV("div", { style: { fontWeight: 600 }, children: apt.doctorName }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                lineNumber: 158,
+                columnNumber: 25
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { style: { fontSize: "0.75rem", color: "var(--accent-color)" }, children: apt.department }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                lineNumber: 159,
+                columnNumber: 25
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+              lineNumber: 157,
+              columnNumber: 23
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: [
+              /* @__PURE__ */ jsxDEV("div", { style: { fontWeight: 500 }, children: apt.date }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                lineNumber: 162,
+                columnNumber: 25
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { style: { fontSize: "0.8rem", color: "var(--text-muted)" }, children: apt.time }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                lineNumber: 163,
+                columnNumber: 25
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+              lineNumber: 161,
+              columnNumber: 23
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: /* @__PURE__ */ jsxDEV("span", { className: "apt-type-badge", children: apt.type }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+              lineNumber: 166,
+              columnNumber: 25
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+              lineNumber: 165,
+              columnNumber: 23
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: /* @__PURE__ */ jsxDEV("span", { className: `status-badge ${apt.status === "Completed" ? "status-active" : apt.status === "Cancelled" ? "status-cancelled" : "status-pending"}`, children: [
+              "● ",
+              apt.status
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+              lineNumber: 169,
+              columnNumber: 25
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+              lineNumber: 168,
+              columnNumber: 23
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: /* @__PURE__ */ jsxDEV("div", { className: "table-actions", children: [
+              /* @__PURE__ */ jsxDEV(
+                "button",
+                {
+                  type: "button",
+                  className: "btn btn-icon btn-edit",
+                  onClick: () => onEditAppointment(apt),
+                  title: "Edit Appointment",
+                  children: [
+                    /* @__PURE__ */ jsxDEV(Edit3, { size: 14 }, void 0, false, {
+                      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                      lineNumber: 184,
+                      columnNumber: 29
+                    }, this),
+                    "Edit"
+                  ]
+                },
+                void 0,
+                true,
+                {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                  lineNumber: 178,
+                  columnNumber: 27
+                },
+                this
+              ),
+              apt.status === "Scheduled" && /* @__PURE__ */ jsxDEV(Fragment, { children: [
+                /* @__PURE__ */ jsxDEV(
+                  "button",
+                  {
+                    type: "button",
+                    className: "btn btn-icon btn-view",
+                    onClick: () => onUpdateStatus(apt.id, "Completed"),
+                    title: "Mark as Completed",
+                    children: [
+                      /* @__PURE__ */ jsxDEV(CheckCircle2, { size: 14 }, void 0, false, {
+                        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                        lineNumber: 195,
+                        columnNumber: 33
+                      }, this),
+                      "Complete"
+                    ]
+                  },
+                  void 0,
+                  true,
+                  {
+                    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                    lineNumber: 189,
+                    columnNumber: 31
+                  },
+                  this
+                ),
+                /* @__PURE__ */ jsxDEV(
+                  "button",
+                  {
+                    type: "button",
+                    className: "btn btn-icon btn-secondary text-danger",
+                    onClick: () => onUpdateStatus(apt.id, "Cancelled"),
+                    title: "Cancel Appointment",
+                    children: /* @__PURE__ */ jsxDEV(XCircle, { size: 14 }, void 0, false, {
+                      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                      lineNumber: 204,
+                      columnNumber: 33
+                    }, this)
+                  },
+                  void 0,
+                  false,
+                  {
+                    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                    lineNumber: 198,
+                    columnNumber: 31
+                  },
+                  this
+                )
+              ] }, void 0, true, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+                lineNumber: 188,
+                columnNumber: 23
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+              lineNumber: 177,
+              columnNumber: 25
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+              lineNumber: 176,
+              columnNumber: 23
+            }, this)
+          ] }, apt.id, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+            lineNumber: 149,
+            columnNumber: 17
+          }, this)
+        ) }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+          lineNumber: 147,
+          columnNumber: 17
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+        lineNumber: 135,
+        columnNumber: 15
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+        lineNumber: 134,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+        lineNumber: 124,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+      lineNumber: 117,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx",
+    lineNumber: 61,
+    columnNumber: 5
+  }, this);
+};
+_s(Appointments, "lNIKhpUclzB58d+YbJsN/mSOZes=");
+_c = Appointments;
+export default Appointments;
+var _c;
+$RefreshReg$(_c, "Appointments");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/pages/Appointments.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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TUFBSztBQUFBLG9CQUNMLFdBQVU7QUFBQSxvQkFDVixTQUFTLE1BQU1mLGVBQWVRLElBQUlPLElBQUksV0FBVztBQUFBLG9CQUNqRCxPQUFNO0FBQUEsb0JBRU4saUNBQUMsV0FBUSxNQUFNLE1BQWY7QUFBQTtBQUFBO0FBQUE7QUFBQSwyQkFBa0I7QUFBQTtBQUFBLGtCQU5wQjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsZ0JBT0E7QUFBQSxtQkFqQkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxxQkFrQkE7QUFBQSxpQkE3Qko7QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkErQkEsS0FoQ0Y7QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkFpQ0E7QUFBQSxlQTVET1AsSUFBSU8sSUFBYjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQTZEQTtBQUFBLFFBQ0QsS0FoRUg7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQWlFQTtBQUFBLFdBN0VGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUE4RUEsS0EvRUY7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQWdGQSxLQTFGSjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBNEZBO0FBQUEsU0FuR0Y7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQW9HQTtBQUFBLE9BNUpGO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0E2SkE7QUFFSjtBQUFFZCxHQXpMSU4sY0FBWTtBQUFBLEtBQVpBO0FBMkxOLGVBQWVBO0FBQWEsSUFBQThDO0FBQUEsYUFBQUEsSUFBQSIsIm5hbWVzIjpbIlJlYWN0IiwidXNlU3RhdGUiLCJ1c2VNZW1vIiwiQnJlYWRjcnVtYiIsIkNhbGVuZGFyIiwiU2VhcmNoIiwiQ2FsZW5kYXJQbHVzIiwiRmlsdGVyIiwiRWRpdDMiLCJDaGVja0NpcmNsZTIiLCJYQ2lyY2xlIiwiQ2xvY2siLCJVc2VyIiwiSW5ib3giLCJBcHBvaW50bWVudHMiLCJhcHBvaW50bWVudHMiLCJzZXRBY3RpdmVUYWIiLCJvbk9wZW5OZXdBcHBvaW50bWVudE1vZGFsIiwib25FZGl0QXBwb2ludG1lbnQiLCJvblVwZGF0ZVN0YXR1cyIsIl9zIiwiZmlsdGVyU3RhdHVzIiwic2V0RmlsdGVyU3RhdHVzIiwic2VhcmNoVGVybSIsInNldFNlYXJjaFRlcm0iLCJmaWx0ZXJlZEFwcG9pbnRtZW50cyIsImZpbHRlciIsImFwdCIsIm1hdGNoZXNTdGF0dXMiLCJzdGF0dXMiLCJxdWVyeSIsInRvTG93ZXJDYXNlIiwidHJpbSIsIm1hdGNoZXNRdWVyeSIsImlkIiwiaW5jbHVkZXMiLCJwYXRpZW50TmFtZSIsImRvY3Rvck5hbWUiLCJkZXBhcnRtZW50IiwiZGlzcGxheSIsImFsaWduSXRlbXMiLCJqdXN0aWZ5Q29udGVudCIsImZsZXhXcmFwIiwiZ2FwIiwibWFyZ2luQm90dG9tIiwicGFkZGluZyIsIm1hcCIsIm1heFdpZHRoIiwiZSIsInRhcmdldCIsInZhbHVlIiwibGVuZ3RoIiwiZm9udFNpemUiLCJtYXJnaW5Ub3AiLCJmb250V2VpZ2h0IiwiY29sb3IiLCJwYXRpZW50SWQiLCJkYXRlIiwidGltZSIsInR5cGUiLCJfYyJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJBcHBvaW50bWVudHMuanN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCwgeyB1c2VTdGF0ZSwgdXNlTWVtbyB9IGZyb20gJ3JlYWN0JztcclxuaW1wb3J0IEJyZWFkY3J1bWIgZnJvbSAnLi4vY29tcG9uZW50cy9CcmVhZGNydW1iJztcclxuaW1wb3J0IHsgXHJcbiAgQ2FsZW5kYXIsIFxyXG4gIFNlYXJjaCwgXHJcbiAgQ2FsZW5kYXJQbHVzLCBcclxuICBGaWx0ZXIsIFxyXG4gIEVkaXQzLCBcclxuICBDaGVja0NpcmNsZTIsIFxyXG4gIFhDaXJjbGUsIFxyXG4gIENsb2NrLCBcclxuICBVc2VyLCBcclxuICBJbmJveCBcclxufSBmcm9tICdsdWNpZGUtcmVhY3QnO1xyXG5cclxuY29uc3QgQXBwb2ludG1lbnRzID0gKHsgXHJcbiAgYXBwb2ludG1lbnRzLCBcclxuICBzZXRBY3RpdmVUYWIsIFxyXG4gIG9uT3Blbk5ld0FwcG9pbnRtZW50TW9kYWwsIFxyXG4gIG9uRWRpdEFwcG9pbnRtZW50LFxyXG4gIG9uVXBkYXRlU3RhdHVzIFxyXG59KSA9PiB7XHJcbiAgY29uc3QgW2ZpbHRlclN0YXR1cywgc2V0RmlsdGVyU3RhdHVzXSA9IHVzZVN0YXRlKCdBbGwnKTtcclxuICBjb25zdCBbc2VhcmNoVGVybSwgc2V0U2VhcmNoVGVybV0gPSB1c2VTdGF0ZSgnJyk7XHJcblxyXG4gIGNvbnN0IGZpbHRlcmVkQXBwb2ludG1lbnRzID0gdXNlTWVtbygoKSA9PiB7XHJcbiAgICByZXR1cm4gYXBwb2ludG1lbnRzLmZpbHRlcigoYXB0KSA9PiB7XHJcbiAgICAgIGNvbnN0IG1hdGNoZXNTdGF0dXMgPSBmaWx0ZXJTdGF0dXMgPT09ICdBbGwnIHx8IGFwdC5zdGF0dXMgPT09IGZpbHRlclN0YXR1cztcclxuICAgICAgY29uc3QgcXVlcnkgPSBzZWFyY2hUZXJtLnRvTG93ZXJDYXNlKCkudHJpbSgpO1xyXG4gICAgICBjb25zdCBtYXRjaGVzUXVlcnkgPVxyXG4gICAgICAgICFxdWVyeSB8fFxyXG4gICAgICAgIGFwdC5pZC50b0xvd2VyQ2FzZSgpLmluY2x1ZGVzKHF1ZXJ5KSB8fFxyXG4gICAgICAgIGFwdC5wYXRpZW50TmFtZS50b0xvd2VyQ2FzZSgpLmluY2x1ZGVzKHF1ZXJ5KSB8fFxyXG4gICAgICAgIGFwdC5kb2N0b3JOYW1lLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMocXVlcnkpIHx8XHJcbiAgICAgICAgYXB0LmRlcGFydG1lbnQudG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhxdWVyeSk7XHJcblxyXG4gICAgICByZXR1cm4gbWF0Y2hlc1N0YXR1cyAmJiBtYXRjaGVzUXVlcnk7XHJcbiAgICB9KTtcclxuICB9LCBbYXBwb2ludG1lbnRzLCBmaWx0ZXJTdGF0dXMsIHNlYXJjaFRlcm1dKTtcclxuXHJcbiAgcmV0dXJuIChcclxuICAgIDxkaXYgY2xhc3NOYW1lPVwiYXBwb2ludG1lbnRzLXBhZ2VcIj5cclxuICAgICAgPEJyZWFkY3J1bWIgYWN0aXZlVGFiPVwiYXBwb2ludG1lbnRzXCIgc2V0QWN0aXZlVGFiPXtzZXRBY3RpdmVUYWJ9IC8+XHJcblxyXG4gICAgICB7LyogUGFnZSBIZWFkZXIgKi99XHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwicGFnZS1oZWFkZXJcIiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGFsaWduSXRlbXM6ICdjZW50ZXInLCBqdXN0aWZ5Q29udGVudDogJ3NwYWNlLWJldHdlZW4nLCBmbGV4V3JhcDogJ3dyYXAnLCBnYXA6ICcxcmVtJyB9fT5cclxuICAgICAgICA8ZGl2PlxyXG4gICAgICAgICAgPGgxIGNsYXNzTmFtZT1cInBhZ2UtdGl0bGVcIj5BcHBvaW50bWVudCBTY2hlZHVsaW5nPC9oMT5cclxuICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInBhZ2Utc3VidGl0bGVcIj5cclxuICAgICAgICAgICAgU2NoZWR1bGUsIHRyYWNrLCBhbmQgbWFuYWdlIHBhdGllbnQgY29uc3VsdGF0aW9ucyBhbmQgc3BlY2lhbGlzdCBPUEQgYXBwb2ludG1lbnRzLlxyXG4gICAgICAgICAgPC9wPlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICA8YnV0dG9uIFxyXG4gICAgICAgICAgdHlwZT1cImJ1dHRvblwiIFxyXG4gICAgICAgICAgY2xhc3NOYW1lPVwiYnRuIGJ0bi1wcmltYXJ5XCJcclxuICAgICAgICAgIG9uQ2xpY2s9e29uT3Blbk5ld0FwcG9pbnRtZW50TW9kYWx9XHJcbiAgICAgICAgPlxyXG4gICAgICAgICAgPENhbGVuZGFyUGx1cyBzaXplPXsxOH0gLz5cclxuICAgICAgICAgIEJvb2sgTmV3IEFwcG9pbnRtZW50XHJcbiAgICAgICAgPC9idXR0b24+XHJcbiAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgey8qIFNlYXJjaCAmIEZpbHRlciBDb250cm9scyAqL31cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJjYXJkXCIgc3R5bGU9e3sgbWFyZ2luQm90dG9tOiAnMS41cmVtJyB9fT5cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImNhcmQtYm9keVwiIHN0eWxlPXt7IHBhZGRpbmc6ICcxcmVtIDEuMjVyZW0nIH19PlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhcHBvaW50bWVudC1jb250cm9scy1yb3dcIj5cclxuICAgICAgICAgICAgey8qIEZpbHRlciBTdGF0dXMgVGFicyAqL31cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzdGF0dXMtdGFiLWdyb3VwXCI+XHJcbiAgICAgICAgICAgICAge1snQWxsJywgJ1NjaGVkdWxlZCcsICdDb21wbGV0ZWQnLCAnQ2FuY2VsbGVkJ10ubWFwKChzdGF0dXMpID0+IChcclxuICAgICAgICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgICAgICAga2V5PXtzdGF0dXN9XHJcbiAgICAgICAgICAgICAgICAgIHR5cGU9XCJidXR0b25cIlxyXG4gICAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2BzdGF0dXMtdGFiLWJ0biAke2ZpbHRlclN0YXR1cyA9PT0gc3RhdHVzID8gJ2FjdGl2ZScgOiAnJ31gfVxyXG4gICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRGaWx0ZXJTdGF0dXMoc3RhdHVzKX1cclxuICAgICAgICAgICAgICAgID5cclxuICAgICAgICAgICAgICAgICAge3N0YXR1c31cclxuICAgICAgICAgICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICAgICAgICAgICkpfVxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgICAgIHsvKiBTZWFyY2ggSW5wdXQgKi99XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic2VhcmNoLWlucHV0LXdyYXBwZXJcIiBzdHlsZT17eyBtYXhXaWR0aDogJzMyMHB4JyB9fT5cclxuICAgICAgICAgICAgICA8U2VhcmNoIHNpemU9ezE4fSBjbGFzc05hbWU9XCJzZWFyY2gtaWNvblwiIC8+XHJcbiAgICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgICB0eXBlPVwidGV4dFwiXHJcbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJzZWFyY2gtaW5wdXRcIlxyXG4gICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJTZWFyY2ggcGF0aWVudCwgZG9jdG9yLCBvciBJRC4uLlwiXHJcbiAgICAgICAgICAgICAgICB2YWx1ZT17c2VhcmNoVGVybX1cclxuICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gc2V0U2VhcmNoVGVybShlLnRhcmdldC52YWx1ZSl9XHJcbiAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICB7LyogQXBwb2ludG1lbnRzIERhdGEgVGFibGUgKi99XHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY2FyZFwiPlxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY2FyZC1oZWFkZXJcIj5cclxuICAgICAgICAgIDxoMyBjbGFzc05hbWU9XCJjYXJkLXRpdGxlXCI+XHJcbiAgICAgICAgICAgIDxDYWxlbmRhciBjbGFzc05hbWU9XCJjYXJkLXRpdGxlLWljb25cIiBzaXplPXsyMH0gLz5cclxuICAgICAgICAgICAgQXBwb2ludG1lbnQgRGlyZWN0b3J5ICh7ZmlsdGVyZWRBcHBvaW50bWVudHMubGVuZ3RofSlcclxuICAgICAgICAgIDwvaDM+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJjYXJkLWJvZHlcIiBzdHlsZT17eyBwYWRkaW5nOiAnMC43NXJlbScgfX0+XHJcbiAgICAgICAgICB7ZmlsdGVyZWRBcHBvaW50bWVudHMubGVuZ3RoID09PSAwID8gKFxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImVtcHR5LXN0YXRlXCI+XHJcbiAgICAgICAgICAgICAgPEluYm94IGNsYXNzTmFtZT1cImVtcHR5LXN0YXRlLWljb25cIiBzaXplPXs0OH0gLz5cclxuICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJmdy1zZW1pYm9sZCB0ZXh0LXByaW1hcnlcIiBzdHlsZT17eyBmb250U2l6ZTogJzEuMXJlbScgfX0+Tm8gYXBwb2ludG1lbnRzIGZvdW5kPC9wPlxyXG4gICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODVyZW0nLCBtYXJnaW5Ub3A6ICcwLjI1cmVtJyB9fT5cclxuICAgICAgICAgICAgICAgIFRyeSBzZWxlY3RpbmcgYW5vdGhlciBzdGF0dXMgdGFiIG9yIGJvb2sgYSBuZXcgYXBwb2ludG1lbnQuXHJcbiAgICAgICAgICAgICAgPC9wPlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICkgOiAoXHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGFibGUtcmVzcG9uc2l2ZVwiPlxyXG4gICAgICAgICAgICAgIDx0YWJsZSBjbGFzc05hbWU9XCJwYXRpZW50LXRhYmxlXCI+XHJcbiAgICAgICAgICAgICAgICA8dGhlYWQ+XHJcbiAgICAgICAgICAgICAgICAgIDx0cj5cclxuICAgICAgICAgICAgICAgICAgICA8dGg+QXBwdCBJRDwvdGg+XHJcbiAgICAgICAgICAgICAgICAgICAgPHRoPlBhdGllbnQgTmFtZTwvdGg+XHJcbiAgICAgICAgICAgICAgICAgICAgPHRoPlNwZWNpYWxpc3QgJiBEZXB0PC90aD5cclxuICAgICAgICAgICAgICAgICAgICA8dGg+RGF0ZSAmIFRpbWU8L3RoPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0aD5UeXBlPC90aD5cclxuICAgICAgICAgICAgICAgICAgICA8dGg+U3RhdHVzPC90aD5cclxuICAgICAgICAgICAgICAgICAgICA8dGg+QWN0aW9uPC90aD5cclxuICAgICAgICAgICAgICAgICAgPC90cj5cclxuICAgICAgICAgICAgICAgIDwvdGhlYWQ+XHJcbiAgICAgICAgICAgICAgICA8dGJvZHk+XHJcbiAgICAgICAgICAgICAgICAgIHtmaWx0ZXJlZEFwcG9pbnRtZW50cy5tYXAoKGFwdCkgPT4gKFxyXG4gICAgICAgICAgICAgICAgICAgIDx0ciBrZXk9e2FwdC5pZH0+XHJcbiAgICAgICAgICAgICAgICAgICAgICA8dGQ+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInBhdGllbnQtaWQtdGFnXCI+e2FwdC5pZH08L3NwYW4+XHJcbiAgICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgICAgPHRkPlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IHN0eWxlPXt7IGZvbnRXZWlnaHQ6IDYwMCB9fT57YXB0LnBhdGllbnROYW1lfTwvZGl2PlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IHN0eWxlPXt7IGZvbnRTaXplOiAnMC43NXJlbScsIGNvbG9yOiAndmFyKC0tdGV4dC1tdXRlZCknIH19PnthcHQucGF0aWVudElkfTwvZGl2PlxyXG4gICAgICAgICAgICAgICAgICAgICAgPC90ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBzdHlsZT17eyBmb250V2VpZ2h0OiA2MDAgfX0+e2FwdC5kb2N0b3JOYW1lfTwvZGl2PlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IHN0eWxlPXt7IGZvbnRTaXplOiAnMC43NXJlbScsIGNvbG9yOiAndmFyKC0tYWNjZW50LWNvbG9yKScgfX0+e2FwdC5kZXBhcnRtZW50fTwvZGl2PlxyXG4gICAgICAgICAgICAgICAgICAgICAgPC90ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBzdHlsZT17eyBmb250V2VpZ2h0OiA1MDAgfX0+e2FwdC5kYXRlfTwvZGl2PlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IHN0eWxlPXt7IGZvbnRTaXplOiAnMC44cmVtJywgY29sb3I6ICd2YXIoLS10ZXh0LW11dGVkKScgfX0+e2FwdC50aW1lfTwvZGl2PlxyXG4gICAgICAgICAgICAgICAgICAgICAgPC90ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiYXB0LXR5cGUtYmFkZ2VcIj57YXB0LnR5cGV9PC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgICAgICAgPC90ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPXtgc3RhdHVzLWJhZGdlICR7XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgYXB0LnN0YXR1cyA9PT0gJ0NvbXBsZXRlZCcgPyAnc3RhdHVzLWFjdGl2ZScgOlxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgIGFwdC5zdGF0dXMgPT09ICdDYW5jZWxsZWQnID8gJ3N0YXR1cy1jYW5jZWxsZWQnIDogJ3N0YXR1cy1wZW5kaW5nJ1xyXG4gICAgICAgICAgICAgICAgICAgICAgICB9YH0+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAg4pePIHthcHQuc3RhdHVzfVxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8L3NwYW4+XHJcbiAgICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgICAgPHRkPlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRhYmxlLWFjdGlvbnNcIj5cclxuICAgICAgICAgICAgICAgICAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cImJ0biBidG4taWNvbiBidG4tZWRpdFwiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvbkVkaXRBcHBvaW50bWVudChhcHQpfVxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgdGl0bGU9XCJFZGl0IEFwcG9pbnRtZW50XCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgICA+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8RWRpdDMgc2l6ZT17MTR9IC8+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBFZGl0XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAge2FwdC5zdGF0dXMgPT09ICdTY2hlZHVsZWQnICYmIChcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDw+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJidG4gYnRuLWljb24gYnRuLXZpZXdcIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IG9uVXBkYXRlU3RhdHVzKGFwdC5pZCwgJ0NvbXBsZXRlZCcpfVxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRpdGxlPVwiTWFyayBhcyBDb21wbGV0ZWRcIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICA+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPENoZWNrQ2lyY2xlMiBzaXplPXsxNH0gLz5cclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDb21wbGV0ZVxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU9XCJidXR0b25cIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cImJ0biBidG4taWNvbiBidG4tc2Vjb25kYXJ5IHRleHQtZGFuZ2VyXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvblVwZGF0ZVN0YXR1cyhhcHQuaWQsICdDYW5jZWxsZWQnKX1cclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0aXRsZT1cIkNhbmNlbCBBcHBvaW50bWVudFwiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgID5cclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8WENpcmNsZSBzaXplPXsxNH0gLz5cclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8Lz5cclxuICAgICAgICAgICAgICAgICAgICAgICAgICApfVxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgICAgICAgIDwvdGQ+XHJcbiAgICAgICAgICAgICAgICAgICAgPC90cj5cclxuICAgICAgICAgICAgICAgICAgKSl9XHJcbiAgICAgICAgICAgICAgICA8L3Rib2R5PlxyXG4gICAgICAgICAgICAgIDwvdGFibGU+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgKX1cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59O1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgQXBwb2ludG1lbnRzO1xyXG4iXSwiZmlsZSI6IkM6L1VzZXJzL3Nhcm9qL09uZURyaXZlL0Rlc2t0b3AvTWVkaVN5bmMvRnJvbnRlbmQvc3JjL3BhZ2VzL0FwcG9pbnRtZW50cy5qc3gifQ==

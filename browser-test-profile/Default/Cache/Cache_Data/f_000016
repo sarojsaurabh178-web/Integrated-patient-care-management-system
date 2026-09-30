@@ -1,0 +1,196 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/StateFeedbackComponents.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react;
+import { ShieldX, AlertCircle, Inbox, RefreshCw, Home } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+export const LoadingSkeleton = ({ count = 3, height = "60px" }) => {
+  return /* @__PURE__ */ jsxDEV("div", { className: "d-flex flex-column gap-3 w-100", children: Array.from({ length: count }).map(
+    (_, index) => /* @__PURE__ */ jsxDEV("div", { className: "skeleton-box", style: { height, width: "100%" } }, index, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 27,
+      columnNumber: 7
+    }, this)
+  ) }, void 0, false, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+    lineNumber: 25,
+    columnNumber: 5
+  }, this);
+};
+_c = LoadingSkeleton;
+export const EmptyState = ({
+  title = "No Records Found",
+  message = "There are currently no items to display.",
+  onAction,
+  actionLabel = "Refresh Data"
+}) => {
+  return /* @__PURE__ */ jsxDEV("div", { className: "text-center py-5 px-3 card", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "d-inline-flex p-3 rounded-circle bg-light text-muted mb-3", children: /* @__PURE__ */ jsxDEV(Inbox, { size: 36 }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 42,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 41,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("h4", { className: "h6 fw-bold text-primary mb-1", children: title }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 44,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("p", { className: "text-muted mb-3", style: { fontSize: "0.875rem", maxWidth: "400px", margin: "0 auto" }, children: message }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 45,
+      columnNumber: 7
+    }, this),
+    onAction && /* @__PURE__ */ jsxDEV("button", { type: "button", className: "btn btn-sm btn-primary", onClick: onAction, children: [
+      /* @__PURE__ */ jsxDEV(RefreshCw, { size: 14, className: "me-1" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+        lineNumber: 50,
+        columnNumber: 11
+      }, this),
+      actionLabel
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 49,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+    lineNumber: 40,
+    columnNumber: 5
+  }, this);
+};
+_c2 = EmptyState;
+export const ErrorState = ({
+  title = "Something Went Wrong",
+  message = "An unexpected error occurred while communicating with the server.",
+  onRetry
+}) => {
+  return /* @__PURE__ */ jsxDEV("div", { className: "text-center py-5 px-3 bg-danger-subtle rounded-3 border border-danger-subtle", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "d-inline-flex p-3 rounded-circle bg-danger text-white mb-3", children: /* @__PURE__ */ jsxDEV(AlertCircle, { size: 36 }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 66,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 65,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("h4", { className: "h5 fw-bold text-danger mb-1", children: title }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 68,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("p", { className: "text-danger-emphasis mb-3", style: { fontSize: "0.9rem", maxWidth: "450px", margin: "0 auto" }, children: message }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 69,
+      columnNumber: 7
+    }, this),
+    onRetry && /* @__PURE__ */ jsxDEV("button", { type: "button", className: "btn btn-danger btn-sm px-4", onClick: onRetry, children: "Try Again" }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 73,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+    lineNumber: 64,
+    columnNumber: 5
+  }, this);
+};
+_c3 = ErrorState;
+export const AccessDeniedComponent = ({ onReturnDashboard }) => {
+  return /* @__PURE__ */ jsxDEV("div", { className: "error-page-container", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "d-inline-flex p-3 rounded-circle bg-danger-subtle text-danger mb-3", children: /* @__PURE__ */ jsxDEV(ShieldX, { size: 48 }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 85,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 84,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "error-code-badge text-danger", children: "403" }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 87,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("h2", { className: "error-page-title", children: "Access Denied" }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 88,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("p", { className: "error-page-desc", children: "You do not have permission to access this resource. Your role does not possess the required scopes for this feature." }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+      lineNumber: 89,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(
+      "button",
+      {
+        type: "button",
+        className: "btn btn-primary px-4 py-2 d-inline-flex align-items-center gap-2",
+        onClick: onReturnDashboard,
+        children: [
+          /* @__PURE__ */ jsxDEV(Home, { size: 18 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+            lineNumber: 97,
+            columnNumber: 9
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { children: "Return to Dashboard" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+            lineNumber: 98,
+            columnNumber: 9
+          }, this)
+        ]
+      },
+      void 0,
+      true,
+      {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+        lineNumber: 92,
+        columnNumber: 7
+      },
+      this
+    )
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx",
+    lineNumber: 83,
+    columnNumber: 5
+  }, this);
+};
+_c4 = AccessDeniedComponent;
+var _c, _c2, _c3, _c4;
+$RefreshReg$(_c, "LoadingSkeleton");
+$RefreshReg$(_c2, "EmptyState");
+$RefreshReg$(_c3, "ErrorState");
+$RefreshReg$(_c4, "AccessDeniedComponent");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/StateFeedbackComponents.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QixtQkFBOUM7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUFpRDtBQUFBLElBQ2pELHVCQUFDLFFBQUcsV0FBVSxvQkFBbUIsNkJBQWpDO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FBOEM7QUFBQSxJQUM5Qyx1QkFBQyxPQUFFLFdBQVUsbUJBQWtCLG9JQUEvQjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBRUE7QUFBQSxJQUNBO0FBQUEsTUFBQztBQUFBO0FBQUEsUUFDQyxNQUFLO0FBQUEsUUFDTCxXQUFVO0FBQUEsUUFDVixTQUFTQTtBQUFBQSxRQUVUO0FBQUEsaUNBQUMsUUFBSyxNQUFNLE1BQVo7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFBZTtBQUFBLFVBQ2YsdUJBQUMsVUFBSyxtQ0FBTjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUF5QjtBQUFBO0FBQUE7QUFBQSxNQU4zQjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsSUFPQTtBQUFBLE9BaEJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FpQkE7QUFFSjtBQUFFQyxNQXJCV0Y7QUFBcUIsSUFBQWIsSUFBQVMsS0FBQUcsS0FBQUc7QUFBQSxhQUFBZixJQUFBO0FBQUEsYUFBQVMsS0FBQTtBQUFBLGFBQUFHLEtBQUE7QUFBQSxhQUFBRyxLQUFBIiwibmFtZXMiOlsiUmVhY3QiLCJTaGllbGRYIiwiQWxlcnRDaXJjbGUiLCJJbmJveCIsIlJlZnJlc2hDdyIsIkhvbWUiLCJMb2FkaW5nU2tlbGV0b24iLCJjb3VudCIsImhlaWdodCIsIkFycmF5IiwiZnJvbSIsImxlbmd0aCIsIm1hcCIsIl8iLCJpbmRleCIsIndpZHRoIiwiX2MiLCJFbXB0eVN0YXRlIiwidGl0bGUiLCJtZXNzYWdlIiwib25BY3Rpb24iLCJhY3Rpb25MYWJlbCIsImZvbnRTaXplIiwibWF4V2lkdGgiLCJtYXJnaW4iLCJfYzIiLCJFcnJvclN0YXRlIiwib25SZXRyeSIsIl9jMyIsIkFjY2Vzc0RlbmllZENvbXBvbmVudCIsIm9uUmV0dXJuRGFzaGJvYXJkIiwiX2M0Il0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIlN0YXRlRmVlZGJhY2tDb21wb25lbnRzLmpzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xyXG5pbXBvcnQgeyBTaGllbGRYLCBBbGVydENpcmNsZSwgSW5ib3gsIFJlZnJlc2hDdywgSG9tZSB9IGZyb20gJ2x1Y2lkZS1yZWFjdCc7XHJcblxyXG5leHBvcnQgY29uc3QgTG9hZGluZ1NrZWxldG9uID0gKHsgY291bnQgPSAzLCBoZWlnaHQgPSAnNjBweCcgfSkgPT4ge1xyXG4gIHJldHVybiAoXHJcbiAgICA8ZGl2IGNsYXNzTmFtZT1cImQtZmxleCBmbGV4LWNvbHVtbiBnYXAtMyB3LTEwMFwiPlxyXG4gICAgICB7QXJyYXkuZnJvbSh7IGxlbmd0aDogY291bnQgfSkubWFwKChfLCBpbmRleCkgPT4gKFxyXG4gICAgICAgIDxkaXYga2V5PXtpbmRleH0gY2xhc3NOYW1lPVwic2tlbGV0b24tYm94XCIgc3R5bGU9e3sgaGVpZ2h0LCB3aWR0aDogJzEwMCUnIH19IC8+XHJcbiAgICAgICkpfVxyXG4gICAgPC9kaXY+XHJcbiAgKTtcclxufTtcclxuXHJcbmV4cG9ydCBjb25zdCBFbXB0eVN0YXRlID0gKHsgXHJcbiAgdGl0bGUgPSAnTm8gUmVjb3JkcyBGb3VuZCcsIFxyXG4gIG1lc3NhZ2UgPSAnVGhlcmUgYXJlIGN1cnJlbnRseSBubyBpdGVtcyB0byBkaXNwbGF5LicsXHJcbiAgb25BY3Rpb24sXHJcbiAgYWN0aW9uTGFiZWwgPSAnUmVmcmVzaCBEYXRhJ1xyXG59KSA9PiB7XHJcbiAgcmV0dXJuIChcclxuICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1jZW50ZXIgcHktNSBweC0zIGNhcmRcIj5cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJkLWlubGluZS1mbGV4IHAtMyByb3VuZGVkLWNpcmNsZSBiZy1saWdodCB0ZXh0LW11dGVkIG1iLTNcIj5cclxuICAgICAgICA8SW5ib3ggc2l6ZT17MzZ9IC8+XHJcbiAgICAgIDwvZGl2PlxyXG4gICAgICA8aDQgY2xhc3NOYW1lPVwiaDYgZnctYm9sZCB0ZXh0LXByaW1hcnkgbWItMVwiPnt0aXRsZX08L2g0PlxyXG4gICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkIG1iLTNcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODc1cmVtJywgbWF4V2lkdGg6ICc0MDBweCcsIG1hcmdpbjogJzAgYXV0bycgfX0+XHJcbiAgICAgICAge21lc3NhZ2V9XHJcbiAgICAgIDwvcD5cclxuICAgICAge29uQWN0aW9uICYmIChcclxuICAgICAgICA8YnV0dG9uIHR5cGU9XCJidXR0b25cIiBjbGFzc05hbWU9XCJidG4gYnRuLXNtIGJ0bi1wcmltYXJ5XCIgb25DbGljaz17b25BY3Rpb259PlxyXG4gICAgICAgICAgPFJlZnJlc2hDdyBzaXplPXsxNH0gY2xhc3NOYW1lPVwibWUtMVwiIC8+XHJcbiAgICAgICAgICB7YWN0aW9uTGFiZWx9XHJcbiAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICl9XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59O1xyXG5cclxuZXhwb3J0IGNvbnN0IEVycm9yU3RhdGUgPSAoeyBcclxuICB0aXRsZSA9ICdTb21ldGhpbmcgV2VudCBXcm9uZycsIFxyXG4gIG1lc3NhZ2UgPSAnQW4gdW5leHBlY3RlZCBlcnJvciBvY2N1cnJlZCB3aGlsZSBjb21tdW5pY2F0aW5nIHdpdGggdGhlIHNlcnZlci4nLFxyXG4gIG9uUmV0cnlcclxufSkgPT4ge1xyXG4gIHJldHVybiAoXHJcbiAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtY2VudGVyIHB5LTUgcHgtMyBiZy1kYW5nZXItc3VidGxlIHJvdW5kZWQtMyBib3JkZXIgYm9yZGVyLWRhbmdlci1zdWJ0bGVcIj5cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJkLWlubGluZS1mbGV4IHAtMyByb3VuZGVkLWNpcmNsZSBiZy1kYW5nZXIgdGV4dC13aGl0ZSBtYi0zXCI+XHJcbiAgICAgICAgPEFsZXJ0Q2lyY2xlIHNpemU9ezM2fSAvPlxyXG4gICAgICA8L2Rpdj5cclxuICAgICAgPGg0IGNsYXNzTmFtZT1cImg1IGZ3LWJvbGQgdGV4dC1kYW5nZXIgbWItMVwiPnt0aXRsZX08L2g0PlxyXG4gICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LWRhbmdlci1lbXBoYXNpcyBtYi0zXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjlyZW0nLCBtYXhXaWR0aDogJzQ1MHB4JywgbWFyZ2luOiAnMCBhdXRvJyB9fT5cclxuICAgICAgICB7bWVzc2FnZX1cclxuICAgICAgPC9wPlxyXG4gICAgICB7b25SZXRyeSAmJiAoXHJcbiAgICAgICAgPGJ1dHRvbiB0eXBlPVwiYnV0dG9uXCIgY2xhc3NOYW1lPVwiYnRuIGJ0bi1kYW5nZXIgYnRuLXNtIHB4LTRcIiBvbkNsaWNrPXtvblJldHJ5fT5cclxuICAgICAgICAgIFRyeSBBZ2FpblxyXG4gICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICApfVxyXG4gICAgPC9kaXY+XHJcbiAgKTtcclxufTtcclxuXHJcbmV4cG9ydCBjb25zdCBBY2Nlc3NEZW5pZWRDb21wb25lbnQgPSAoeyBvblJldHVybkRhc2hib2FyZCB9KSA9PiB7XHJcbiAgcmV0dXJuIChcclxuICAgIDxkaXYgY2xhc3NOYW1lPVwiZXJyb3ItcGFnZS1jb250YWluZXJcIj5cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJkLWlubGluZS1mbGV4IHAtMyByb3VuZGVkLWNpcmNsZSBiZy1kYW5nZXItc3VidGxlIHRleHQtZGFuZ2VyIG1iLTNcIj5cclxuICAgICAgICA8U2hpZWxkWCBzaXplPXs0OH0gLz5cclxuICAgICAgPC9kaXY+XHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZXJyb3ItY29kZS1iYWRnZSB0ZXh0LWRhbmdlclwiPjQwMzwvZGl2PlxyXG4gICAgICA8aDIgY2xhc3NOYW1lPVwiZXJyb3ItcGFnZS10aXRsZVwiPkFjY2VzcyBEZW5pZWQ8L2gyPlxyXG4gICAgICA8cCBjbGFzc05hbWU9XCJlcnJvci1wYWdlLWRlc2NcIj5cclxuICAgICAgICBZb3UgZG8gbm90IGhhdmUgcGVybWlzc2lvbiB0byBhY2Nlc3MgdGhpcyByZXNvdXJjZS4gWW91ciByb2xlIGRvZXMgbm90IHBvc3Nlc3MgdGhlIHJlcXVpcmVkIHNjb3BlcyBmb3IgdGhpcyBmZWF0dXJlLlxyXG4gICAgICA8L3A+XHJcbiAgICAgIDxidXR0b24gXHJcbiAgICAgICAgdHlwZT1cImJ1dHRvblwiIFxyXG4gICAgICAgIGNsYXNzTmFtZT1cImJ0biBidG4tcHJpbWFyeSBweC00IHB5LTIgZC1pbmxpbmUtZmxleCBhbGlnbi1pdGVtcy1jZW50ZXIgZ2FwLTJcIlxyXG4gICAgICAgIG9uQ2xpY2s9e29uUmV0dXJuRGFzaGJvYXJkfVxyXG4gICAgICA+XHJcbiAgICAgICAgPEhvbWUgc2l6ZT17MTh9IC8+XHJcbiAgICAgICAgPHNwYW4+UmV0dXJuIHRvIERhc2hib2FyZDwvc3Bhbj5cclxuICAgICAgPC9idXR0b24+XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59O1xyXG4iXSwiZmlsZSI6IkM6L1VzZXJzL3Nhcm9qL09uZURyaXZlL0Rlc2t0b3AvTWVkaVN5bmMvRnJvbnRlbmQvc3JjL2NvbXBvbmVudHMvU3RhdGVGZWVkYmFja0NvbXBvbmVudHMuanN4In0=

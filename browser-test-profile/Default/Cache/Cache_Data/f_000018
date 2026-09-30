@@ -1,0 +1,242 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/PatientSelector.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react; const useState = __vite__cjsImport3_react["useState"]; const useMemo = __vite__cjsImport3_react["useMemo"];
+import { Search, UserCheck, AlertTriangle, UserX, CheckCircle } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+const PatientSelector = ({ patients, selectedPatient, onSelectPatient }) => {
+  _s();
+  const [searchQuery, setSearchQuery] = useState("");
+  const filteredPatients = useMemo(() => {
+    if (!searchQuery.trim()) return patients;
+    const q = searchQuery.toLowerCase().trim();
+    return patients.filter(
+      (p) => p.id.toLowerCase().includes(q) || p.name.toLowerCase().includes(q) || p.phone.includes(q)
+    );
+  }, [patients, searchQuery]);
+  const isSearchActive = searchQuery.trim().length > 0;
+  const isNotFound = isSearchActive && filteredPatients.length === 0;
+  return /* @__PURE__ */ jsxDEV("div", { className: "card", style: { marginBottom: "1.75rem" }, children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "card-header", children: [
+      /* @__PURE__ */ jsxDEV("h3", { className: "card-title", children: [
+        /* @__PURE__ */ jsxDEV(UserCheck, { className: "card-title-icon", size: 20 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+          lineNumber: 44,
+          columnNumber: 11
+        }, this),
+        "Select Patient for Consultation"
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+        lineNumber: 43,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("span", { className: "patient-count-badge", children: [
+        patients.length,
+        " Registered Patients"
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+        lineNumber: 47,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+      lineNumber: 42,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "card-body", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "form-group", style: { marginBottom: "1.25rem" }, children: [
+        /* @__PURE__ */ jsxDEV("label", { className: "form-label", children: "Search Registered Patient" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+          lineNumber: 55,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "search-input-wrapper", style: { maxWidth: "100%" }, children: [
+          /* @__PURE__ */ jsxDEV(Search, { size: 18, className: "search-icon" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+            lineNumber: 57,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              type: "text",
+              className: "search-input",
+              placeholder: "Search by Patient ID or patient name...",
+              value: searchQuery,
+              onChange: (e) => setSearchQuery(e.target.value)
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+              lineNumber: 58,
+              columnNumber: 13
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+          lineNumber: 56,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+        lineNumber: 54,
+        columnNumber: 9
+      }, this),
+      isNotFound && /* @__PURE__ */ jsxDEV("div", { className: "patient-not-found-alert", children: [
+        /* @__PURE__ */ jsxDEV(UserX, { size: 20, className: "not-found-icon" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+          lineNumber: 71,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("h4", { className: "not-found-title", children: "Patient Not Found" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+            lineNumber: 73,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "not-found-desc", children: [
+            'No patient record matches "',
+            /* @__PURE__ */ jsxDEV("strong", { children: searchQuery }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+              lineNumber: 75,
+              columnNumber: 44
+            }, this),
+            '". A patient must be registered in Module 1 before initiating consultation or issuing a prescription.'
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+            lineNumber: 74,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+          lineNumber: 72,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+        lineNumber: 70,
+        columnNumber: 9
+      }, this),
+      !isNotFound && /* @__PURE__ */ jsxDEV("div", { className: "patient-selector-grid", children: filteredPatients.slice(0, 6).map((patient) => {
+        const isSelected = selectedPatient && selectedPatient.id === patient.id;
+        return /* @__PURE__ */ jsxDEV(
+          "div",
+          {
+            className: `patient-select-card ${isSelected ? "selected" : ""}`,
+            onClick: () => onSelectPatient(patient),
+            children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "select-card-header", children: [
+                /* @__PURE__ */ jsxDEV("span", { className: "patient-id-tag", children: patient.id }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+                  lineNumber: 93,
+                  columnNumber: 21
+                }, this),
+                isSelected && /* @__PURE__ */ jsxDEV("span", { className: "selected-indicator", children: [
+                  /* @__PURE__ */ jsxDEV(CheckCircle, { size: 14 }, void 0, false, {
+                    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+                    lineNumber: 96,
+                    columnNumber: 25
+                  }, this),
+                  " Selected"
+                ] }, void 0, true, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+                  lineNumber: 95,
+                  columnNumber: 19
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+                lineNumber: 92,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("h4", { className: "select-patient-name", children: patient.name }, void 0, false, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+                lineNumber: 100,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "select-patient-meta", children: [
+                /* @__PURE__ */ jsxDEV("span", { children: [
+                  patient.gender,
+                  ", ",
+                  patient.age,
+                  " yrs"
+                ] }, void 0, true, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+                  lineNumber: 102,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("span", { children: [
+                  "📞 ",
+                  patient.phone
+                ] }, void 0, true, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+                  lineNumber: 103,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+                lineNumber: 101,
+                columnNumber: 19
+              }, this)
+            ]
+          },
+          patient.id,
+          true,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+            lineNumber: 87,
+            columnNumber: 15
+          },
+          this
+        );
+      }) }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+        lineNumber: 83,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+      lineNumber: 52,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx",
+    lineNumber: 41,
+    columnNumber: 5
+  }, this);
+};
+_s(PatientSelector, "6WNZSsuDcNjX7wKZNe/viAyk4WM=");
+_c = PatientSelector;
+export default PatientSelector;
+var _c;
+$RefreshReg$(_c, "PatientSelector");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientSelector.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUEscUJBQWxCO0FBQUE7QUFBQTtBQUFBO0FBQUEsdUJBQXdCO0FBQUEsbUJBRjFCO0FBQUE7QUFBQTtBQUFBO0FBQUEscUJBR0E7QUFBQTtBQUFBO0FBQUEsVUFoQktXLFFBQVFkO0FBQUFBLFVBRGY7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxRQWtCQTtBQUFBLE1BRUosQ0FBQyxLQXhCSDtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBeUJBO0FBQUEsU0F4REo7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQTBEQTtBQUFBLE9BckVGO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FzRUE7QUFFSjtBQUFFVCxHQTFGSUosaUJBQWU7QUFBQSxLQUFmQTtBQTRGTixlQUFlQTtBQUFnQixJQUFBK0I7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsiUmVhY3QiLCJ1c2VTdGF0ZSIsInVzZU1lbW8iLCJTZWFyY2giLCJVc2VyQ2hlY2siLCJBbGVydFRyaWFuZ2xlIiwiVXNlclgiLCJDaGVja0NpcmNsZSIsIlBhdGllbnRTZWxlY3RvciIsInBhdGllbnRzIiwic2VsZWN0ZWRQYXRpZW50Iiwib25TZWxlY3RQYXRpZW50IiwiX3MiLCJzZWFyY2hRdWVyeSIsInNldFNlYXJjaFF1ZXJ5IiwiZmlsdGVyZWRQYXRpZW50cyIsInRyaW0iLCJxIiwidG9Mb3dlckNhc2UiLCJmaWx0ZXIiLCJwIiwiaWQiLCJpbmNsdWRlcyIsIm5hbWUiLCJwaG9uZSIsImlzU2VhcmNoQWN0aXZlIiwibGVuZ3RoIiwiaXNOb3RGb3VuZCIsIm1hcmdpbkJvdHRvbSIsIm1heFdpZHRoIiwiZSIsInRhcmdldCIsInZhbHVlIiwic2xpY2UiLCJtYXAiLCJwYXRpZW50IiwiaXNTZWxlY3RlZCIsImdlbmRlciIsImFnZSIsIl9jIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIlBhdGllbnRTZWxlY3Rvci5qc3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlLCB1c2VNZW1vIH0gZnJvbSAncmVhY3QnO1xyXG5pbXBvcnQgeyBTZWFyY2gsIFVzZXJDaGVjaywgQWxlcnRUcmlhbmdsZSwgVXNlclgsIENoZWNrQ2lyY2xlIH0gZnJvbSAnbHVjaWRlLXJlYWN0JztcclxuXHJcbmNvbnN0IFBhdGllbnRTZWxlY3RvciA9ICh7IHBhdGllbnRzLCBzZWxlY3RlZFBhdGllbnQsIG9uU2VsZWN0UGF0aWVudCB9KSA9PiB7XHJcbiAgY29uc3QgW3NlYXJjaFF1ZXJ5LCBzZXRTZWFyY2hRdWVyeV0gPSB1c2VTdGF0ZSgnJyk7XHJcblxyXG4gIGNvbnN0IGZpbHRlcmVkUGF0aWVudHMgPSB1c2VNZW1vKCgpID0+IHtcclxuICAgIGlmICghc2VhcmNoUXVlcnkudHJpbSgpKSByZXR1cm4gcGF0aWVudHM7XHJcbiAgICBjb25zdCBxID0gc2VhcmNoUXVlcnkudG9Mb3dlckNhc2UoKS50cmltKCk7XHJcbiAgICByZXR1cm4gcGF0aWVudHMuZmlsdGVyKFxyXG4gICAgICAocCkgPT5cclxuICAgICAgICBwLmlkLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMocSkgfHxcclxuICAgICAgICBwLm5hbWUudG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhxKSB8fFxyXG4gICAgICAgIHAucGhvbmUuaW5jbHVkZXMocSlcclxuICAgICk7XHJcbiAgfSwgW3BhdGllbnRzLCBzZWFyY2hRdWVyeV0pO1xyXG5cclxuICBjb25zdCBpc1NlYXJjaEFjdGl2ZSA9IHNlYXJjaFF1ZXJ5LnRyaW0oKS5sZW5ndGggPiAwO1xyXG4gIGNvbnN0IGlzTm90Rm91bmQgPSBpc1NlYXJjaEFjdGl2ZSAmJiBmaWx0ZXJlZFBhdGllbnRzLmxlbmd0aCA9PT0gMDtcclxuXHJcbiAgcmV0dXJuIChcclxuICAgIDxkaXYgY2xhc3NOYW1lPVwiY2FyZFwiIHN0eWxlPXt7IG1hcmdpbkJvdHRvbTogJzEuNzVyZW0nIH19PlxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImNhcmQtaGVhZGVyXCI+XHJcbiAgICAgICAgPGgzIGNsYXNzTmFtZT1cImNhcmQtdGl0bGVcIj5cclxuICAgICAgICAgIDxVc2VyQ2hlY2sgY2xhc3NOYW1lPVwiY2FyZC10aXRsZS1pY29uXCIgc2l6ZT17MjB9IC8+XHJcbiAgICAgICAgICBTZWxlY3QgUGF0aWVudCBmb3IgQ29uc3VsdGF0aW9uXHJcbiAgICAgICAgPC9oMz5cclxuICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJwYXRpZW50LWNvdW50LWJhZGdlXCI+XHJcbiAgICAgICAgICB7cGF0aWVudHMubGVuZ3RofSBSZWdpc3RlcmVkIFBhdGllbnRzXHJcbiAgICAgICAgPC9zcGFuPlxyXG4gICAgICA8L2Rpdj5cclxuXHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiY2FyZC1ib2R5XCI+XHJcbiAgICAgICAgey8qIFNlYXJjaCBJbnB1dCBCb3ggKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb3JtLWdyb3VwXCIgc3R5bGU9e3sgbWFyZ2luQm90dG9tOiAnMS4yNXJlbScgfX0+XHJcbiAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiZm9ybS1sYWJlbFwiPlNlYXJjaCBSZWdpc3RlcmVkIFBhdGllbnQ8L2xhYmVsPlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzZWFyY2gtaW5wdXQtd3JhcHBlclwiIHN0eWxlPXt7IG1heFdpZHRoOiAnMTAwJScgfX0+XHJcbiAgICAgICAgICAgIDxTZWFyY2ggc2l6ZT17MTh9IGNsYXNzTmFtZT1cInNlYXJjaC1pY29uXCIgLz5cclxuICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxyXG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cInNlYXJjaC1pbnB1dFwiXHJcbiAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJTZWFyY2ggYnkgUGF0aWVudCBJRCBvciBwYXRpZW50IG5hbWUuLi5cIlxyXG4gICAgICAgICAgICAgIHZhbHVlPXtzZWFyY2hRdWVyeX1cclxuICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IHNldFNlYXJjaFF1ZXJ5KGUudGFyZ2V0LnZhbHVlKX1cclxuICAgICAgICAgICAgLz5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICB7LyogUGF0aWVudCBOb3QgRm91bmQgV2FybmluZyBCYW5uZXIgKi99XHJcbiAgICAgICAge2lzTm90Rm91bmQgJiYgKFxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwYXRpZW50LW5vdC1mb3VuZC1hbGVydFwiPlxyXG4gICAgICAgICAgICA8VXNlclggc2l6ZT17MjB9IGNsYXNzTmFtZT1cIm5vdC1mb3VuZC1pY29uXCIgLz5cclxuICAgICAgICAgICAgPGRpdj5cclxuICAgICAgICAgICAgICA8aDQgY2xhc3NOYW1lPVwibm90LWZvdW5kLXRpdGxlXCI+UGF0aWVudCBOb3QgRm91bmQ8L2g0PlxyXG4gICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cIm5vdC1mb3VuZC1kZXNjXCI+XHJcbiAgICAgICAgICAgICAgICBObyBwYXRpZW50IHJlY29yZCBtYXRjaGVzIFwiPHN0cm9uZz57c2VhcmNoUXVlcnl9PC9zdHJvbmc+XCIuIEEgcGF0aWVudCBtdXN0IGJlIHJlZ2lzdGVyZWQgaW4gTW9kdWxlIDEgYmVmb3JlIGluaXRpYXRpbmcgY29uc3VsdGF0aW9uIG9yIGlzc3VpbmcgYSBwcmVzY3JpcHRpb24uXHJcbiAgICAgICAgICAgICAgPC9wPlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICl9XHJcblxyXG4gICAgICAgIHsvKiBQYXRpZW50IFF1aWNrIFNlbGVjdG9yIENhcmRzIEdyaWQgKi99XHJcbiAgICAgICAgeyFpc05vdEZvdW5kICYmIChcclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicGF0aWVudC1zZWxlY3Rvci1ncmlkXCI+XHJcbiAgICAgICAgICAgIHtmaWx0ZXJlZFBhdGllbnRzLnNsaWNlKDAsIDYpLm1hcCgocGF0aWVudCkgPT4ge1xyXG4gICAgICAgICAgICAgIGNvbnN0IGlzU2VsZWN0ZWQgPSBzZWxlY3RlZFBhdGllbnQgJiYgc2VsZWN0ZWRQYXRpZW50LmlkID09PSBwYXRpZW50LmlkO1xyXG4gICAgICAgICAgICAgIHJldHVybiAoXHJcbiAgICAgICAgICAgICAgICA8ZGl2XHJcbiAgICAgICAgICAgICAgICAgIGtleT17cGF0aWVudC5pZH1cclxuICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtgcGF0aWVudC1zZWxlY3QtY2FyZCAke2lzU2VsZWN0ZWQgPyAnc2VsZWN0ZWQnIDogJyd9YH1cclxuICAgICAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25TZWxlY3RQYXRpZW50KHBhdGllbnQpfVxyXG4gICAgICAgICAgICAgICAgPlxyXG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNlbGVjdC1jYXJkLWhlYWRlclwiPlxyXG4gICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInBhdGllbnQtaWQtdGFnXCI+e3BhdGllbnQuaWR9PC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgICAgIHtpc1NlbGVjdGVkICYmIChcclxuICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInNlbGVjdGVkLWluZGljYXRvclwiPlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8Q2hlY2tDaXJjbGUgc2l6ZT17MTR9IC8+IFNlbGVjdGVkXHJcbiAgICAgICAgICAgICAgICAgICAgICA8L3NwYW4+XHJcbiAgICAgICAgICAgICAgICAgICAgKX1cclxuICAgICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgICAgIDxoNCBjbGFzc05hbWU9XCJzZWxlY3QtcGF0aWVudC1uYW1lXCI+e3BhdGllbnQubmFtZX08L2g0PlxyXG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNlbGVjdC1wYXRpZW50LW1ldGFcIj5cclxuICAgICAgICAgICAgICAgICAgICA8c3Bhbj57cGF0aWVudC5nZW5kZXJ9LCB7cGF0aWVudC5hZ2V9IHlyczwvc3Bhbj5cclxuICAgICAgICAgICAgICAgICAgICA8c3Bhbj7wn5OeIHtwYXRpZW50LnBob25lfTwvc3Bhbj5cclxuICAgICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICApO1xyXG4gICAgICAgICAgICB9KX1cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICl9XHJcbiAgICAgIDwvZGl2PlxyXG4gICAgPC9kaXY+XHJcbiAgKTtcclxufTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IFBhdGllbnRTZWxlY3RvcjtcclxuIl0sImZpbGUiOiJDOi9Vc2Vycy9zYXJvai9PbmVEcml2ZS9EZXNrdG9wL01lZGlTeW5jL0Zyb250ZW5kL3NyYy9jb21wb25lbnRzL1BhdGllbnRTZWxlY3Rvci5qc3gifQ==

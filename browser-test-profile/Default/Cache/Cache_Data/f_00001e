@@ -1,0 +1,700 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/PatientForm.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react; const useState = __vite__cjsImport3_react["useState"];
+import { UserPlus, RotateCcw, AlertCircle, CheckCircle2 } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+const PatientForm = ({ nextPatientId, onRegisterPatient }) => {
+  _s();
+  const initialFormState = {
+    name: "",
+    age: "",
+    gender: "",
+    dob: "",
+    phone: "",
+    email: "",
+    address: ""
+  };
+  const [formData, setFormData] = useState(initialFormState);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+  const handleReset = () => {
+    setFormData(initialFormState);
+    setErrors({});
+    setTouched({});
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+  const handleBlur = (e) => {
+    const { name } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    validateField(name, formData[name]);
+  };
+  const validateField = (fieldName, value) => {
+    let errorMsg = "";
+    const trimmedVal = typeof value === "string" ? value.trim() : value;
+    switch (fieldName) {
+      case "name":
+        if (!trimmedVal) {
+          errorMsg = "Full name is required.";
+        } else if (trimmedVal.length < 2) {
+          errorMsg = "Name must be at least 2 characters.";
+        }
+        break;
+      case "age":
+        if (!trimmedVal && trimmedVal !== 0) {
+          errorMsg = "Please enter a valid age.";
+        } else {
+          const ageNum = Number(trimmedVal);
+          if (isNaN(ageNum) || ageNum <= 0 || ageNum > 120) {
+            errorMsg = "Please enter a valid age (1-120).";
+          }
+        }
+        break;
+      case "gender":
+        if (!trimmedVal || trimmedVal === "Select Gender") {
+          errorMsg = "Please select gender.";
+        }
+        break;
+      case "dob":
+        if (!trimmedVal) {
+          errorMsg = "Date of birth is required.";
+        }
+        break;
+      case "phone":
+        if (!trimmedVal) {
+          errorMsg = "Please enter a valid phone number.";
+        } else {
+          const phoneRegex = /^[6-9]\d{9}$/;
+          if (!phoneRegex.test(trimmedVal)) {
+            errorMsg = "Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).";
+          }
+        }
+        break;
+      case "email":
+        if (!trimmedVal) {
+          errorMsg = "Please enter a valid email address.";
+        } else {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(trimmedVal)) {
+            errorMsg = "Please enter a valid email address.";
+          }
+        }
+        break;
+      case "address":
+        if (!trimmedVal) {
+          errorMsg = "Address is required.";
+        } else if (trimmedVal.length < 5) {
+          errorMsg = "Address must be at least 5 characters long.";
+        }
+        break;
+      default:
+        break;
+    }
+    setErrors((prev) => ({ ...prev, [fieldName]: errorMsg }));
+    return !errorMsg;
+  };
+  const validateAll = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Full name is required.";
+    else if (formData.name.trim().length < 2) newErrors.name = "Name must be at least 2 characters.";
+    if (!formData.age && formData.age !== 0) newErrors.age = "Please enter a valid age.";
+    else {
+      const ageNum = Number(formData.age);
+      if (isNaN(ageNum) || ageNum <= 0 || ageNum > 120) newErrors.age = "Please enter a valid age (1-120).";
+    }
+    if (!formData.gender || formData.gender === "Select Gender") newErrors.gender = "Please select gender.";
+    if (!formData.dob) newErrors.dob = "Date of birth is required.";
+    if (!formData.phone.trim()) newErrors.phone = "Please enter a valid phone number.";
+    else if (!/^[6-9]\d{9}$/.test(formData.phone.trim())) {
+      newErrors.phone = "Please enter a valid 10-digit Indian mobile number.";
+    }
+    if (!formData.email.trim()) newErrors.email = "Please enter a valid email address.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = "Please enter a valid email address.";
+    }
+    if (!formData.address.trim()) newErrors.address = "Address is required.";
+    setErrors(newErrors);
+    setTouched({
+      name: true,
+      age: true,
+      gender: true,
+      dob: true,
+      phone: true,
+      email: true,
+      address: true
+    });
+    return Object.keys(newErrors).length === 0;
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isValid = validateAll();
+    if (isValid) {
+      const newPatientRecord = {
+        id: nextPatientId,
+        name: formData.name.trim(),
+        age: parseInt(formData.age, 10),
+        gender: formData.gender,
+        dob: formData.dob,
+        phone: formData.phone.trim(),
+        email: formData.email.trim(),
+        address: formData.address.trim(),
+        status: "Active",
+        registeredAt: (/* @__PURE__ */ new Date()).toISOString().split("T")[0]
+      };
+      onRegisterPatient(newPatientRecord);
+      handleReset();
+    }
+  };
+  return /* @__PURE__ */ jsxDEV("div", { className: "card", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "card-header", children: [
+      /* @__PURE__ */ jsxDEV("h2", { className: "card-title", children: [
+        /* @__PURE__ */ jsxDEV(UserPlus, { className: "card-title-icon", size: 20 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+          lineNumber: 204,
+          columnNumber: 11
+        }, this),
+        "New Patient Details"
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+        lineNumber: 203,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("span", { className: "patient-count-badge", children: "System Auto-ID Enabled" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+        lineNumber: 207,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+      lineNumber: 202,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "card-body", children: /* @__PURE__ */ jsxDEV("form", { onSubmit: handleSubmit, noValidate: true, children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "form-grid", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "patientId", children: "Patient ID" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 216,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              type: "text",
+              id: "patientId",
+              name: "patientId",
+              className: "form-control",
+              value: nextPatientId,
+              readOnly: true
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 219,
+              columnNumber: 15
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+          lineNumber: 215,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "name", children: [
+            "Full Name ",
+            /* @__PURE__ */ jsxDEV("span", { className: "required-star", children: "*" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 231,
+              columnNumber: 27
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 230,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              type: "text",
+              id: "name",
+              name: "name",
+              className: `form-control ${errors.name ? "is-invalid" : ""}`,
+              placeholder: "Enter patient's full name",
+              value: formData.name,
+              onChange: handleChange,
+              onBlur: handleBlur
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 233,
+              columnNumber: 15
+            },
+            this
+          ),
+          errors.name && /* @__PURE__ */ jsxDEV("div", { className: "error-message", children: [
+            /* @__PURE__ */ jsxDEV(AlertCircle, { size: 14 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 245,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: errors.name }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 246,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 244,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+          lineNumber: 229,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "age", children: [
+            "Age ",
+            /* @__PURE__ */ jsxDEV("span", { className: "required-star", children: "*" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 254,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 253,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              type: "number",
+              id: "age",
+              name: "age",
+              min: "1",
+              max: "120",
+              className: `form-control ${errors.age ? "is-invalid" : ""}`,
+              placeholder: "Enter age",
+              value: formData.age,
+              onChange: handleChange,
+              onBlur: handleBlur
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 256,
+              columnNumber: 15
+            },
+            this
+          ),
+          errors.age && /* @__PURE__ */ jsxDEV("div", { className: "error-message", children: [
+            /* @__PURE__ */ jsxDEV(AlertCircle, { size: 14 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 270,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: errors.age }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 271,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 269,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+          lineNumber: 252,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "gender", children: [
+            "Gender ",
+            /* @__PURE__ */ jsxDEV("span", { className: "required-star", children: "*" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 278,
+              columnNumber: 24
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 277,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "select",
+            {
+              id: "gender",
+              name: "gender",
+              className: `form-control ${errors.gender ? "is-invalid" : ""}`,
+              value: formData.gender,
+              onChange: handleChange,
+              onBlur: handleBlur,
+              children: [
+                /* @__PURE__ */ jsxDEV("option", { value: "", children: "Select Gender" }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+                  lineNumber: 288,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ jsxDEV("option", { value: "Male", children: "Male" }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+                  lineNumber: 289,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ jsxDEV("option", { value: "Female", children: "Female" }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+                  lineNumber: 290,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ jsxDEV("option", { value: "Other", children: "Other" }, void 0, false, {
+                  fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+                  lineNumber: 291,
+                  columnNumber: 17
+                }, this)
+              ]
+            },
+            void 0,
+            true,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 280,
+              columnNumber: 15
+            },
+            this
+          ),
+          errors.gender && /* @__PURE__ */ jsxDEV("div", { className: "error-message", children: [
+            /* @__PURE__ */ jsxDEV(AlertCircle, { size: 14 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 295,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: errors.gender }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 296,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 294,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+          lineNumber: 276,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "dob", children: [
+            "Date of Birth ",
+            /* @__PURE__ */ jsxDEV("span", { className: "required-star", children: "*" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 304,
+              columnNumber: 31
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 303,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              type: "date",
+              id: "dob",
+              name: "dob",
+              className: `form-control ${errors.dob ? "is-invalid" : ""}`,
+              value: formData.dob,
+              onChange: handleChange,
+              onBlur: handleBlur
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 306,
+              columnNumber: 15
+            },
+            this
+          ),
+          errors.dob && /* @__PURE__ */ jsxDEV("div", { className: "error-message", children: [
+            /* @__PURE__ */ jsxDEV(AlertCircle, { size: 14 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 317,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: errors.dob }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 318,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 316,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+          lineNumber: 302,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "phone", children: [
+            "Phone Number ",
+            /* @__PURE__ */ jsxDEV("span", { className: "required-star", children: "*" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 325,
+              columnNumber: 30
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 324,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              type: "tel",
+              id: "phone",
+              name: "phone",
+              maxLength: "10",
+              className: `form-control ${errors.phone ? "is-invalid" : ""}`,
+              placeholder: "Enter 10-digit mobile number",
+              value: formData.phone,
+              onChange: handleChange,
+              onBlur: handleBlur
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 327,
+              columnNumber: 15
+            },
+            this
+          ),
+          errors.phone && /* @__PURE__ */ jsxDEV("div", { className: "error-message", children: [
+            /* @__PURE__ */ jsxDEV(AlertCircle, { size: 14 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 340,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: errors.phone }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 341,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 339,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+          lineNumber: 323,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "email", children: [
+            "Email Address ",
+            /* @__PURE__ */ jsxDEV("span", { className: "required-star", children: "*" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 349,
+              columnNumber: 31
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 348,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              type: "email",
+              id: "email",
+              name: "email",
+              className: `form-control ${errors.email ? "is-invalid" : ""}`,
+              placeholder: "Enter email address",
+              value: formData.email,
+              onChange: handleChange,
+              onBlur: handleBlur
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 351,
+              columnNumber: 15
+            },
+            this
+          ),
+          errors.email && /* @__PURE__ */ jsxDEV("div", { className: "error-message", children: [
+            /* @__PURE__ */ jsxDEV(AlertCircle, { size: 14 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 363,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: errors.email }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 364,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 362,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+          lineNumber: 347,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "form-group", children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "form-label", htmlFor: "address", children: [
+            "Residential Address ",
+            /* @__PURE__ */ jsxDEV("span", { className: "required-star", children: "*" }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 371,
+              columnNumber: 37
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 370,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              type: "text",
+              id: "address",
+              name: "address",
+              className: `form-control ${errors.address ? "is-invalid" : ""}`,
+              placeholder: "Enter complete street & city address",
+              value: formData.address,
+              onChange: handleChange,
+              onBlur: handleBlur
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 373,
+              columnNumber: 15
+            },
+            this
+          ),
+          errors.address && /* @__PURE__ */ jsxDEV("div", { className: "error-message", children: [
+            /* @__PURE__ */ jsxDEV(AlertCircle, { size: 14 }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 385,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { children: errors.address }, void 0, false, {
+              fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+              lineNumber: 386,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 384,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+          lineNumber: 369,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+        lineNumber: 213,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "form-actions", children: [
+        /* @__PURE__ */ jsxDEV("button", { type: "button", className: "btn btn-secondary", onClick: handleReset, children: [
+          /* @__PURE__ */ jsxDEV(RotateCcw, { size: 16 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 395,
+            columnNumber: 15
+          }, this),
+          "Reset"
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+          lineNumber: 394,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("button", { type: "submit", className: "btn btn-primary", children: [
+          /* @__PURE__ */ jsxDEV(CheckCircle2, { size: 16 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+            lineNumber: 399,
+            columnNumber: 15
+          }, this),
+          "Register Patient"
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+          lineNumber: 398,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+        lineNumber: 393,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+      lineNumber: 211,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+      lineNumber: 210,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx",
+    lineNumber: 201,
+    columnNumber: 5
+  }, this);
+};
+_s(PatientForm, "BQIlEp2IHNO7WnH4UuLjodQMcyY=");
+_c = PatientForm;
+export default PatientForm;
+var _c;
+$RefreshReg$(_c, "PatientForm");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/PatientForm.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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YjtBQUFBLG1DQUFDLGVBQVksTUFBTSxNQUFuQjtBQUFBO0FBQUE7QUFBQTtBQUFBLG1CQUFzQjtBQUFBLFlBQ3RCLHVCQUFDLFVBQU1HLGlCQUFPSCxXQUFkO0FBQUE7QUFBQTtBQUFBO0FBQUEsbUJBQXNCO0FBQUEsZUFGeEI7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFHQTtBQUFBLGFBbEJKO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFvQkE7QUFBQSxXQWhMRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBaUxBO0FBQUEsTUFHQSx1QkFBQyxTQUFJLFdBQVUsZ0JBQ2I7QUFBQSwrQkFBQyxZQUFPLE1BQUssVUFBUyxXQUFVLHFCQUFvQixTQUFTTyxhQUMzRDtBQUFBLGlDQUFDLGFBQVUsTUFBTSxNQUFqQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUFvQjtBQUFBLFVBQUc7QUFBQSxhQUR6QjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBR0E7QUFBQSxRQUNBLHVCQUFDLFlBQU8sTUFBSyxVQUFTLFdBQVUsbUJBQzlCO0FBQUEsaUNBQUMsZ0JBQWEsTUFBTSxNQUFwQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUF1QjtBQUFBLFVBQUc7QUFBQSxhQUQ1QjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBR0E7QUFBQSxXQVJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFTQTtBQUFBLFNBL0xGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FnTUEsS0FqTUY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQWtNQTtBQUFBLE9BM01GO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0E0TUE7QUFFSjtBQUFFZixHQWhZSUgsYUFBVztBQUFBLEtBQVhBO0FBa1lOLGVBQWVBO0FBQVksSUFBQW9EO0FBQUEsYUFBQUEsSUFBQSIsIm5hbWVzIjpbIlJlYWN0IiwidXNlU3RhdGUiLCJVc2VyUGx1cyIsIlJvdGF0ZUNjdyIsIkFsZXJ0Q2lyY2xlIiwiQ2hlY2tDaXJjbGUyIiwiUGF0aWVudEZvcm0iLCJuZXh0UGF0aWVudElkIiwib25SZWdpc3RlclBhdGllbnQiLCJfcyIsImluaXRpYWxGb3JtU3RhdGUiLCJuYW1lIiwiYWdlIiwiZ2VuZGVyIiwiZG9iIiwicGhvbmUiLCJlbWFpbCIsImFkZHJlc3MiLCJmb3JtRGF0YSIsInNldEZvcm1EYXRhIiwiZXJyb3JzIiwic2V0RXJyb3JzIiwidG91Y2hlZCIsInNldFRvdWNoZWQiLCJoYW5kbGVSZXNldCIsImhhbmRsZUNoYW5nZSIsImUiLCJ2YWx1ZSIsInRhcmdldCIsInByZXYiLCJoYW5kbGVCbHVyIiwidmFsaWRhdGVGaWVsZCIsImZpZWxkTmFtZSIsImVycm9yTXNnIiwidHJpbW1lZFZhbCIsInRyaW0iLCJsZW5ndGgiLCJhZ2VOdW0iLCJOdW1iZXIiLCJpc05hTiIsInBob25lUmVnZXgiLCJ0ZXN0IiwiZW1haWxSZWdleCIsInZhbGlkYXRlQWxsIiwibmV3RXJyb3JzIiwiT2JqZWN0Iiwia2V5cyIsImhhbmRsZVN1Ym1pdCIsInByZXZlbnREZWZhdWx0IiwiaXNWYWxpZCIsIm5ld1BhdGllbnRSZWNvcmQiLCJpZCIsInBhcnNlSW50Iiwic3RhdHVzIiwicmVnaXN0ZXJlZEF0IiwiRGF0ZSIsInRvSVNPU3RyaW5nIiwic3BsaXQiLCJfYyJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJQYXRpZW50Rm9ybS5qc3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnO1xyXG5pbXBvcnQgeyBVc2VyUGx1cywgUm90YXRlQ2N3LCBBbGVydENpcmNsZSwgQ2hlY2tDaXJjbGUyIH0gZnJvbSAnbHVjaWRlLXJlYWN0JztcclxuXHJcbmNvbnN0IFBhdGllbnRGb3JtID0gKHsgbmV4dFBhdGllbnRJZCwgb25SZWdpc3RlclBhdGllbnQgfSkgPT4ge1xyXG4gIGNvbnN0IGluaXRpYWxGb3JtU3RhdGUgPSB7XHJcbiAgICBuYW1lOiAnJyxcclxuICAgIGFnZTogJycsXHJcbiAgICBnZW5kZXI6ICcnLFxyXG4gICAgZG9iOiAnJyxcclxuICAgIHBob25lOiAnJyxcclxuICAgIGVtYWlsOiAnJyxcclxuICAgIGFkZHJlc3M6ICcnXHJcbiAgfTtcclxuXHJcbiAgY29uc3QgW2Zvcm1EYXRhLCBzZXRGb3JtRGF0YV0gPSB1c2VTdGF0ZShpbml0aWFsRm9ybVN0YXRlKTtcclxuICBjb25zdCBbZXJyb3JzLCBzZXRFcnJvcnNdID0gdXNlU3RhdGUoe30pO1xyXG4gIGNvbnN0IFt0b3VjaGVkLCBzZXRUb3VjaGVkXSA9IHVzZVN0YXRlKHt9KTtcclxuXHJcbiAgLy8gUmVzZXQgZm9ybSB3aGVuIG5leHRQYXRpZW50SWQgdXBkYXRlcyBhZnRlciBzdWNjZXNzZnVsIHJlZ2lzdHJhdGlvblxyXG4gIGNvbnN0IGhhbmRsZVJlc2V0ID0gKCkgPT4ge1xyXG4gICAgc2V0Rm9ybURhdGEoaW5pdGlhbEZvcm1TdGF0ZSk7XHJcbiAgICBzZXRFcnJvcnMoe30pO1xyXG4gICAgc2V0VG91Y2hlZCh7fSk7XHJcbiAgfTtcclxuXHJcbiAgY29uc3QgaGFuZGxlQ2hhbmdlID0gKGUpID0+IHtcclxuICAgIGNvbnN0IHsgbmFtZSwgdmFsdWUgfSA9IGUudGFyZ2V0O1xyXG4gICAgc2V0Rm9ybURhdGEoKHByZXYpID0+ICh7IC4uLnByZXYsIFtuYW1lXTogdmFsdWUgfSkpO1xyXG5cclxuICAgIC8vIENsZWFyIGVycm9yIGR5bmFtaWNhbGx5IGFzIHVzZXIgdHlwZXMgaWYgZmllbGQgd2FzIHByZXZpb3VzbHkgZXJyb3JlZFxyXG4gICAgaWYgKGVycm9yc1tuYW1lXSkge1xyXG4gICAgICBzZXRFcnJvcnMoKHByZXYpID0+ICh7IC4uLnByZXYsIFtuYW1lXTogJycgfSkpO1xyXG4gICAgfVxyXG4gIH07XHJcblxyXG4gIGNvbnN0IGhhbmRsZUJsdXIgPSAoZSkgPT4ge1xyXG4gICAgY29uc3QgeyBuYW1lIH0gPSBlLnRhcmdldDtcclxuICAgIHNldFRvdWNoZWQoKHByZXYpID0+ICh7IC4uLnByZXYsIFtuYW1lXTogdHJ1ZSB9KSk7XHJcbiAgICB2YWxpZGF0ZUZpZWxkKG5hbWUsIGZvcm1EYXRhW25hbWVdKTtcclxuICB9O1xyXG5cclxuICBjb25zdCB2YWxpZGF0ZUZpZWxkID0gKGZpZWxkTmFtZSwgdmFsdWUpID0+IHtcclxuICAgIGxldCBlcnJvck1zZyA9ICcnO1xyXG4gICAgY29uc3QgdHJpbW1lZFZhbCA9IHR5cGVvZiB2YWx1ZSA9PT0gJ3N0cmluZycgPyB2YWx1ZS50cmltKCkgOiB2YWx1ZTtcclxuXHJcbiAgICBzd2l0Y2ggKGZpZWxkTmFtZSkge1xyXG4gICAgICBjYXNlICduYW1lJzpcclxuICAgICAgICBpZiAoIXRyaW1tZWRWYWwpIHtcclxuICAgICAgICAgIGVycm9yTXNnID0gJ0Z1bGwgbmFtZSBpcyByZXF1aXJlZC4nO1xyXG4gICAgICAgIH0gZWxzZSBpZiAodHJpbW1lZFZhbC5sZW5ndGggPCAyKSB7XHJcbiAgICAgICAgICBlcnJvck1zZyA9ICdOYW1lIG11c3QgYmUgYXQgbGVhc3QgMiBjaGFyYWN0ZXJzLic7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIGJyZWFrO1xyXG5cclxuICAgICAgY2FzZSAnYWdlJzpcclxuICAgICAgICBpZiAoIXRyaW1tZWRWYWwgJiYgdHJpbW1lZFZhbCAhPT0gMCkge1xyXG4gICAgICAgICAgZXJyb3JNc2cgPSAnUGxlYXNlIGVudGVyIGEgdmFsaWQgYWdlLic7XHJcbiAgICAgICAgfSBlbHNlIHtcclxuICAgICAgICAgIGNvbnN0IGFnZU51bSA9IE51bWJlcih0cmltbWVkVmFsKTtcclxuICAgICAgICAgIGlmIChpc05hTihhZ2VOdW0pIHx8IGFnZU51bSA8PSAwIHx8IGFnZU51bSA+IDEyMCkge1xyXG4gICAgICAgICAgICBlcnJvck1zZyA9ICdQbGVhc2UgZW50ZXIgYSB2YWxpZCBhZ2UgKDEtMTIwKS4nO1xyXG4gICAgICAgICAgfVxyXG4gICAgICAgIH1cclxuICAgICAgICBicmVhaztcclxuXHJcbiAgICAgIGNhc2UgJ2dlbmRlcic6XHJcbiAgICAgICAgaWYgKCF0cmltbWVkVmFsIHx8IHRyaW1tZWRWYWwgPT09ICdTZWxlY3QgR2VuZGVyJykge1xyXG4gICAgICAgICAgZXJyb3JNc2cgPSAnUGxlYXNlIHNlbGVjdCBnZW5kZXIuJztcclxuICAgICAgICB9XHJcbiAgICAgICAgYnJlYWs7XHJcblxyXG4gICAgICBjYXNlICdkb2InOlxyXG4gICAgICAgIGlmICghdHJpbW1lZFZhbCkge1xyXG4gICAgICAgICAgZXJyb3JNc2cgPSAnRGF0ZSBvZiBiaXJ0aCBpcyByZXF1aXJlZC4nO1xyXG4gICAgICAgIH1cclxuICAgICAgICBicmVhaztcclxuXHJcbiAgICAgIGNhc2UgJ3Bob25lJzpcclxuICAgICAgICBpZiAoIXRyaW1tZWRWYWwpIHtcclxuICAgICAgICAgIGVycm9yTXNnID0gJ1BsZWFzZSBlbnRlciBhIHZhbGlkIHBob25lIG51bWJlci4nO1xyXG4gICAgICAgIH0gZWxzZSB7XHJcbiAgICAgICAgICBjb25zdCBwaG9uZVJlZ2V4ID0gL15bNi05XVxcZHs5fSQvO1xyXG4gICAgICAgICAgaWYgKCFwaG9uZVJlZ2V4LnRlc3QodHJpbW1lZFZhbCkpIHtcclxuICAgICAgICAgICAgZXJyb3JNc2cgPSAnUGxlYXNlIGVudGVyIGEgdmFsaWQgMTAtZGlnaXQgSW5kaWFuIG1vYmlsZSBudW1iZXIgKGUuZy4gOTg3NjU0MzIxMCkuJztcclxuICAgICAgICAgIH1cclxuICAgICAgICB9XHJcbiAgICAgICAgYnJlYWs7XHJcblxyXG4gICAgICBjYXNlICdlbWFpbCc6XHJcbiAgICAgICAgaWYgKCF0cmltbWVkVmFsKSB7XHJcbiAgICAgICAgICBlcnJvck1zZyA9ICdQbGVhc2UgZW50ZXIgYSB2YWxpZCBlbWFpbCBhZGRyZXNzLic7XHJcbiAgICAgICAgfSBlbHNlIHtcclxuICAgICAgICAgIGNvbnN0IGVtYWlsUmVnZXggPSAvXlteXFxzQF0rQFteXFxzQF0rXFwuW15cXHNAXSskLztcclxuICAgICAgICAgIGlmICghZW1haWxSZWdleC50ZXN0KHRyaW1tZWRWYWwpKSB7XHJcbiAgICAgICAgICAgIGVycm9yTXNnID0gJ1BsZWFzZSBlbnRlciBhIHZhbGlkIGVtYWlsIGFkZHJlc3MuJztcclxuICAgICAgICAgIH1cclxuICAgICAgICB9XHJcbiAgICAgICAgYnJlYWs7XHJcblxyXG4gICAgICBjYXNlICdhZGRyZXNzJzpcclxuICAgICAgICBpZiAoIXRyaW1tZWRWYWwpIHtcclxuICAgICAgICAgIGVycm9yTXNnID0gJ0FkZHJlc3MgaXMgcmVxdWlyZWQuJztcclxuICAgICAgICB9IGVsc2UgaWYgKHRyaW1tZWRWYWwubGVuZ3RoIDwgNSkge1xyXG4gICAgICAgICAgZXJyb3JNc2cgPSAnQWRkcmVzcyBtdXN0IGJlIGF0IGxlYXN0IDUgY2hhcmFjdGVycyBsb25nLic7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIGJyZWFrO1xyXG5cclxuICAgICAgZGVmYXVsdDpcclxuICAgICAgICBicmVhaztcclxuICAgIH1cclxuXHJcbiAgICBzZXRFcnJvcnMoKHByZXYpID0+ICh7IC4uLnByZXYsIFtmaWVsZE5hbWVdOiBlcnJvck1zZyB9KSk7XHJcbiAgICByZXR1cm4gIWVycm9yTXNnO1xyXG4gIH07XHJcblxyXG4gIGNvbnN0IHZhbGlkYXRlQWxsID0gKCkgPT4ge1xyXG4gICAgY29uc3QgbmV3RXJyb3JzID0ge307XHJcbiAgICBcclxuICAgIGlmICghZm9ybURhdGEubmFtZS50cmltKCkpIG5ld0Vycm9ycy5uYW1lID0gJ0Z1bGwgbmFtZSBpcyByZXF1aXJlZC4nO1xyXG4gICAgZWxzZSBpZiAoZm9ybURhdGEubmFtZS50cmltKCkubGVuZ3RoIDwgMikgbmV3RXJyb3JzLm5hbWUgPSAnTmFtZSBtdXN0IGJlIGF0IGxlYXN0IDIgY2hhcmFjdGVycy4nO1xyXG5cclxuICAgIGlmICghZm9ybURhdGEuYWdlICYmIGZvcm1EYXRhLmFnZSAhPT0gMCkgbmV3RXJyb3JzLmFnZSA9ICdQbGVhc2UgZW50ZXIgYSB2YWxpZCBhZ2UuJztcclxuICAgIGVsc2Uge1xyXG4gICAgICBjb25zdCBhZ2VOdW0gPSBOdW1iZXIoZm9ybURhdGEuYWdlKTtcclxuICAgICAgaWYgKGlzTmFOKGFnZU51bSkgfHwgYWdlTnVtIDw9IDAgfHwgYWdlTnVtID4gMTIwKSBuZXdFcnJvcnMuYWdlID0gJ1BsZWFzZSBlbnRlciBhIHZhbGlkIGFnZSAoMS0xMjApLic7XHJcbiAgICB9XHJcblxyXG4gICAgaWYgKCFmb3JtRGF0YS5nZW5kZXIgfHwgZm9ybURhdGEuZ2VuZGVyID09PSAnU2VsZWN0IEdlbmRlcicpIG5ld0Vycm9ycy5nZW5kZXIgPSAnUGxlYXNlIHNlbGVjdCBnZW5kZXIuJztcclxuXHJcbiAgICBpZiAoIWZvcm1EYXRhLmRvYikgbmV3RXJyb3JzLmRvYiA9ICdEYXRlIG9mIGJpcnRoIGlzIHJlcXVpcmVkLic7XHJcblxyXG4gICAgaWYgKCFmb3JtRGF0YS5waG9uZS50cmltKCkpIG5ld0Vycm9ycy5waG9uZSA9ICdQbGVhc2UgZW50ZXIgYSB2YWxpZCBwaG9uZSBudW1iZXIuJztcclxuICAgIGVsc2UgaWYgKCEvXls2LTldXFxkezl9JC8udGVzdChmb3JtRGF0YS5waG9uZS50cmltKCkpKSB7XHJcbiAgICAgIG5ld0Vycm9ycy5waG9uZSA9ICdQbGVhc2UgZW50ZXIgYSB2YWxpZCAxMC1kaWdpdCBJbmRpYW4gbW9iaWxlIG51bWJlci4nO1xyXG4gICAgfVxyXG5cclxuICAgIGlmICghZm9ybURhdGEuZW1haWwudHJpbSgpKSBuZXdFcnJvcnMuZW1haWwgPSAnUGxlYXNlIGVudGVyIGEgdmFsaWQgZW1haWwgYWRkcmVzcy4nO1xyXG4gICAgZWxzZSBpZiAoIS9eW15cXHNAXStAW15cXHNAXStcXC5bXlxcc0BdKyQvLnRlc3QoZm9ybURhdGEuZW1haWwudHJpbSgpKSkge1xyXG4gICAgICBuZXdFcnJvcnMuZW1haWwgPSAnUGxlYXNlIGVudGVyIGEgdmFsaWQgZW1haWwgYWRkcmVzcy4nO1xyXG4gICAgfVxyXG5cclxuICAgIGlmICghZm9ybURhdGEuYWRkcmVzcy50cmltKCkpIG5ld0Vycm9ycy5hZGRyZXNzID0gJ0FkZHJlc3MgaXMgcmVxdWlyZWQuJztcclxuXHJcbiAgICBzZXRFcnJvcnMobmV3RXJyb3JzKTtcclxuICAgIHNldFRvdWNoZWQoe1xyXG4gICAgICBuYW1lOiB0cnVlLFxyXG4gICAgICBhZ2U6IHRydWUsXHJcbiAgICAgIGdlbmRlcjogdHJ1ZSxcclxuICAgICAgZG9iOiB0cnVlLFxyXG4gICAgICBwaG9uZTogdHJ1ZSxcclxuICAgICAgZW1haWw6IHRydWUsXHJcbiAgICAgIGFkZHJlc3M6IHRydWVcclxuICAgIH0pO1xyXG5cclxuICAgIHJldHVybiBPYmplY3Qua2V5cyhuZXdFcnJvcnMpLmxlbmd0aCA9PT0gMDtcclxuICB9O1xyXG5cclxuICBjb25zdCBoYW5kbGVTdWJtaXQgPSAoZSkgPT4ge1xyXG4gICAgZS5wcmV2ZW50RGVmYXVsdCgpO1xyXG4gICAgY29uc3QgaXNWYWxpZCA9IHZhbGlkYXRlQWxsKCk7XHJcblxyXG4gICAgaWYgKGlzVmFsaWQpIHtcclxuICAgICAgY29uc3QgbmV3UGF0aWVudFJlY29yZCA9IHtcclxuICAgICAgICBpZDogbmV4dFBhdGllbnRJZCxcclxuICAgICAgICBuYW1lOiBmb3JtRGF0YS5uYW1lLnRyaW0oKSxcclxuICAgICAgICBhZ2U6IHBhcnNlSW50KGZvcm1EYXRhLmFnZSwgMTApLFxyXG4gICAgICAgIGdlbmRlcjogZm9ybURhdGEuZ2VuZGVyLFxyXG4gICAgICAgIGRvYjogZm9ybURhdGEuZG9iLFxyXG4gICAgICAgIHBob25lOiBmb3JtRGF0YS5waG9uZS50cmltKCksXHJcbiAgICAgICAgZW1haWw6IGZvcm1EYXRhLmVtYWlsLnRyaW0oKSxcclxuICAgICAgICBhZGRyZXNzOiBmb3JtRGF0YS5hZGRyZXNzLnRyaW0oKSxcclxuICAgICAgICBzdGF0dXM6ICdBY3RpdmUnLFxyXG4gICAgICAgIHJlZ2lzdGVyZWRBdDogbmV3IERhdGUoKS50b0lTT1N0cmluZygpLnNwbGl0KCdUJylbMF1cclxuICAgICAgfTtcclxuXHJcbiAgICAgIG9uUmVnaXN0ZXJQYXRpZW50KG5ld1BhdGllbnRSZWNvcmQpO1xyXG4gICAgICBoYW5kbGVSZXNldCgpO1xyXG4gICAgfVxyXG4gIH07XHJcblxyXG4gIHJldHVybiAoXHJcbiAgICA8ZGl2IGNsYXNzTmFtZT1cImNhcmRcIj5cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJjYXJkLWhlYWRlclwiPlxyXG4gICAgICAgIDxoMiBjbGFzc05hbWU9XCJjYXJkLXRpdGxlXCI+XHJcbiAgICAgICAgICA8VXNlclBsdXMgY2xhc3NOYW1lPVwiY2FyZC10aXRsZS1pY29uXCIgc2l6ZT17MjB9IC8+XHJcbiAgICAgICAgICBOZXcgUGF0aWVudCBEZXRhaWxzXHJcbiAgICAgICAgPC9oMj5cclxuICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJwYXRpZW50LWNvdW50LWJhZGdlXCI+U3lzdGVtIEF1dG8tSUQgRW5hYmxlZDwvc3Bhbj5cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImNhcmQtYm9keVwiPlxyXG4gICAgICAgIDxmb3JtIG9uU3VibWl0PXtoYW5kbGVTdWJtaXR9IG5vVmFsaWRhdGU+XHJcbiAgICAgICAgICB7LyogU3ltbWV0cmljYWwgVHdvLUNvbHVtbiBSZXNwb25zaXZlIEZvcm0gTGF5b3V0ICovfVxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb3JtLWdyaWRcIj5cclxuICAgICAgICAgICAgey8qIFJPVyAxOiBQYXRpZW50IElEICYgRnVsbCBOYW1lICovfVxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvcm0tZ3JvdXBcIj5cclxuICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiZm9ybS1sYWJlbFwiIGh0bWxGb3I9XCJwYXRpZW50SWRcIj5cclxuICAgICAgICAgICAgICAgIFBhdGllbnQgSURcclxuICAgICAgICAgICAgICA8L2xhYmVsPlxyXG4gICAgICAgICAgICAgIDxpbnB1dFxyXG4gICAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxyXG4gICAgICAgICAgICAgICAgaWQ9XCJwYXRpZW50SWRcIlxyXG4gICAgICAgICAgICAgICAgbmFtZT1cInBhdGllbnRJZFwiXHJcbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJmb3JtLWNvbnRyb2xcIlxyXG4gICAgICAgICAgICAgICAgdmFsdWU9e25leHRQYXRpZW50SWR9XHJcbiAgICAgICAgICAgICAgICByZWFkT25seVxyXG4gICAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb3JtLWdyb3VwXCI+XHJcbiAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImZvcm0tbGFiZWxcIiBodG1sRm9yPVwibmFtZVwiPlxyXG4gICAgICAgICAgICAgICAgRnVsbCBOYW1lIDxzcGFuIGNsYXNzTmFtZT1cInJlcXVpcmVkLXN0YXJcIj4qPC9zcGFuPlxyXG4gICAgICAgICAgICAgIDwvbGFiZWw+XHJcbiAgICAgICAgICAgICAgPGlucHV0XHJcbiAgICAgICAgICAgICAgICB0eXBlPVwidGV4dFwiXHJcbiAgICAgICAgICAgICAgICBpZD1cIm5hbWVcIlxyXG4gICAgICAgICAgICAgICAgbmFtZT1cIm5hbWVcIlxyXG4gICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtgZm9ybS1jb250cm9sICR7ZXJyb3JzLm5hbWUgPyAnaXMtaW52YWxpZCcgOiAnJ31gfVxyXG4gICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJFbnRlciBwYXRpZW50J3MgZnVsbCBuYW1lXCJcclxuICAgICAgICAgICAgICAgIHZhbHVlPXtmb3JtRGF0YS5uYW1lfVxyXG4gICAgICAgICAgICAgICAgb25DaGFuZ2U9e2hhbmRsZUNoYW5nZX1cclxuICAgICAgICAgICAgICAgIG9uQmx1cj17aGFuZGxlQmx1cn1cclxuICAgICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICAgIHtlcnJvcnMubmFtZSAmJiAoXHJcbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImVycm9yLW1lc3NhZ2VcIj5cclxuICAgICAgICAgICAgICAgICAgPEFsZXJ0Q2lyY2xlIHNpemU9ezE0fSAvPlxyXG4gICAgICAgICAgICAgICAgICA8c3Bhbj57ZXJyb3JzLm5hbWV9PC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgKX1cclxuICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICB7LyogUk9XIDI6IEFnZSAmIEdlbmRlciAqL31cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb3JtLWdyb3VwXCI+XHJcbiAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImZvcm0tbGFiZWxcIiBodG1sRm9yPVwiYWdlXCI+XHJcbiAgICAgICAgICAgICAgICBBZ2UgPHNwYW4gY2xhc3NOYW1lPVwicmVxdWlyZWQtc3RhclwiPio8L3NwYW4+XHJcbiAgICAgICAgICAgICAgPC9sYWJlbD5cclxuICAgICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICAgIHR5cGU9XCJudW1iZXJcIlxyXG4gICAgICAgICAgICAgICAgaWQ9XCJhZ2VcIlxyXG4gICAgICAgICAgICAgICAgbmFtZT1cImFnZVwiXHJcbiAgICAgICAgICAgICAgICBtaW49XCIxXCJcclxuICAgICAgICAgICAgICAgIG1heD1cIjEyMFwiXHJcbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2Bmb3JtLWNvbnRyb2wgJHtlcnJvcnMuYWdlID8gJ2lzLWludmFsaWQnIDogJyd9YH1cclxuICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiRW50ZXIgYWdlXCJcclxuICAgICAgICAgICAgICAgIHZhbHVlPXtmb3JtRGF0YS5hZ2V9XHJcbiAgICAgICAgICAgICAgICBvbkNoYW5nZT17aGFuZGxlQ2hhbmdlfVxyXG4gICAgICAgICAgICAgICAgb25CbHVyPXtoYW5kbGVCbHVyfVxyXG4gICAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICAgICAge2Vycm9ycy5hZ2UgJiYgKFxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJlcnJvci1tZXNzYWdlXCI+XHJcbiAgICAgICAgICAgICAgICAgIDxBbGVydENpcmNsZSBzaXplPXsxNH0gLz5cclxuICAgICAgICAgICAgICAgICAgPHNwYW4+e2Vycm9ycy5hZ2V9PC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgKX1cclxuICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvcm0tZ3JvdXBcIj5cclxuICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiZm9ybS1sYWJlbFwiIGh0bWxGb3I9XCJnZW5kZXJcIj5cclxuICAgICAgICAgICAgICAgIEdlbmRlciA8c3BhbiBjbGFzc05hbWU9XCJyZXF1aXJlZC1zdGFyXCI+Kjwvc3Bhbj5cclxuICAgICAgICAgICAgICA8L2xhYmVsPlxyXG4gICAgICAgICAgICAgIDxzZWxlY3RcclxuICAgICAgICAgICAgICAgIGlkPVwiZ2VuZGVyXCJcclxuICAgICAgICAgICAgICAgIG5hbWU9XCJnZW5kZXJcIlxyXG4gICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtgZm9ybS1jb250cm9sICR7ZXJyb3JzLmdlbmRlciA/ICdpcy1pbnZhbGlkJyA6ICcnfWB9XHJcbiAgICAgICAgICAgICAgICB2YWx1ZT17Zm9ybURhdGEuZ2VuZGVyfVxyXG4gICAgICAgICAgICAgICAgb25DaGFuZ2U9e2hhbmRsZUNoYW5nZX1cclxuICAgICAgICAgICAgICAgIG9uQmx1cj17aGFuZGxlQmx1cn1cclxuICAgICAgICAgICAgICA+XHJcbiAgICAgICAgICAgICAgICA8b3B0aW9uIHZhbHVlPVwiXCI+U2VsZWN0IEdlbmRlcjwvb3B0aW9uPlxyXG4gICAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT1cIk1hbGVcIj5NYWxlPC9vcHRpb24+XHJcbiAgICAgICAgICAgICAgICA8b3B0aW9uIHZhbHVlPVwiRmVtYWxlXCI+RmVtYWxlPC9vcHRpb24+XHJcbiAgICAgICAgICAgICAgICA8b3B0aW9uIHZhbHVlPVwiT3RoZXJcIj5PdGhlcjwvb3B0aW9uPlxyXG4gICAgICAgICAgICAgIDwvc2VsZWN0PlxyXG4gICAgICAgICAgICAgIHtlcnJvcnMuZ2VuZGVyICYmIChcclxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZXJyb3ItbWVzc2FnZVwiPlxyXG4gICAgICAgICAgICAgICAgICA8QWxlcnRDaXJjbGUgc2l6ZT17MTR9IC8+XHJcbiAgICAgICAgICAgICAgICAgIDxzcGFuPntlcnJvcnMuZ2VuZGVyfTwvc3Bhbj5cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgICl9XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgICAgey8qIFJPVyAzOiBEYXRlIG9mIEJpcnRoICYgUGhvbmUgTnVtYmVyICovfVxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvcm0tZ3JvdXBcIj5cclxuICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiZm9ybS1sYWJlbFwiIGh0bWxGb3I9XCJkb2JcIj5cclxuICAgICAgICAgICAgICAgIERhdGUgb2YgQmlydGggPHNwYW4gY2xhc3NOYW1lPVwicmVxdWlyZWQtc3RhclwiPio8L3NwYW4+XHJcbiAgICAgICAgICAgICAgPC9sYWJlbD5cclxuICAgICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICAgIHR5cGU9XCJkYXRlXCJcclxuICAgICAgICAgICAgICAgIGlkPVwiZG9iXCJcclxuICAgICAgICAgICAgICAgIG5hbWU9XCJkb2JcIlxyXG4gICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtgZm9ybS1jb250cm9sICR7ZXJyb3JzLmRvYiA/ICdpcy1pbnZhbGlkJyA6ICcnfWB9XHJcbiAgICAgICAgICAgICAgICB2YWx1ZT17Zm9ybURhdGEuZG9ifVxyXG4gICAgICAgICAgICAgICAgb25DaGFuZ2U9e2hhbmRsZUNoYW5nZX1cclxuICAgICAgICAgICAgICAgIG9uQmx1cj17aGFuZGxlQmx1cn1cclxuICAgICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICAgIHtlcnJvcnMuZG9iICYmIChcclxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZXJyb3ItbWVzc2FnZVwiPlxyXG4gICAgICAgICAgICAgICAgICA8QWxlcnRDaXJjbGUgc2l6ZT17MTR9IC8+XHJcbiAgICAgICAgICAgICAgICAgIDxzcGFuPntlcnJvcnMuZG9ifTwvc3Bhbj5cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgICl9XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb3JtLWdyb3VwXCI+XHJcbiAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImZvcm0tbGFiZWxcIiBodG1sRm9yPVwicGhvbmVcIj5cclxuICAgICAgICAgICAgICAgIFBob25lIE51bWJlciA8c3BhbiBjbGFzc05hbWU9XCJyZXF1aXJlZC1zdGFyXCI+Kjwvc3Bhbj5cclxuICAgICAgICAgICAgICA8L2xhYmVsPlxyXG4gICAgICAgICAgICAgIDxpbnB1dFxyXG4gICAgICAgICAgICAgICAgdHlwZT1cInRlbFwiXHJcbiAgICAgICAgICAgICAgICBpZD1cInBob25lXCJcclxuICAgICAgICAgICAgICAgIG5hbWU9XCJwaG9uZVwiXHJcbiAgICAgICAgICAgICAgICBtYXhMZW5ndGg9XCIxMFwiXHJcbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2Bmb3JtLWNvbnRyb2wgJHtlcnJvcnMucGhvbmUgPyAnaXMtaW52YWxpZCcgOiAnJ31gfVxyXG4gICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJFbnRlciAxMC1kaWdpdCBtb2JpbGUgbnVtYmVyXCJcclxuICAgICAgICAgICAgICAgIHZhbHVlPXtmb3JtRGF0YS5waG9uZX1cclxuICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXtoYW5kbGVDaGFuZ2V9XHJcbiAgICAgICAgICAgICAgICBvbkJsdXI9e2hhbmRsZUJsdXJ9XHJcbiAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICB7ZXJyb3JzLnBob25lICYmIChcclxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZXJyb3ItbWVzc2FnZVwiPlxyXG4gICAgICAgICAgICAgICAgICA8QWxlcnRDaXJjbGUgc2l6ZT17MTR9IC8+XHJcbiAgICAgICAgICAgICAgICAgIDxzcGFuPntlcnJvcnMucGhvbmV9PC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgKX1cclxuICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICB7LyogUk9XIDQ6IEVtYWlsIEFkZHJlc3MgJiBSZXNpZGVudGlhbCBBZGRyZXNzICovfVxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvcm0tZ3JvdXBcIj5cclxuICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiZm9ybS1sYWJlbFwiIGh0bWxGb3I9XCJlbWFpbFwiPlxyXG4gICAgICAgICAgICAgICAgRW1haWwgQWRkcmVzcyA8c3BhbiBjbGFzc05hbWU9XCJyZXF1aXJlZC1zdGFyXCI+Kjwvc3Bhbj5cclxuICAgICAgICAgICAgICA8L2xhYmVsPlxyXG4gICAgICAgICAgICAgIDxpbnB1dFxyXG4gICAgICAgICAgICAgICAgdHlwZT1cImVtYWlsXCJcclxuICAgICAgICAgICAgICAgIGlkPVwiZW1haWxcIlxyXG4gICAgICAgICAgICAgICAgbmFtZT1cImVtYWlsXCJcclxuICAgICAgICAgICAgICAgIGNsYXNzTmFtZT17YGZvcm0tY29udHJvbCAke2Vycm9ycy5lbWFpbCA/ICdpcy1pbnZhbGlkJyA6ICcnfWB9XHJcbiAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIkVudGVyIGVtYWlsIGFkZHJlc3NcIlxyXG4gICAgICAgICAgICAgICAgdmFsdWU9e2Zvcm1EYXRhLmVtYWlsfVxyXG4gICAgICAgICAgICAgICAgb25DaGFuZ2U9e2hhbmRsZUNoYW5nZX1cclxuICAgICAgICAgICAgICAgIG9uQmx1cj17aGFuZGxlQmx1cn1cclxuICAgICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICAgIHtlcnJvcnMuZW1haWwgJiYgKFxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJlcnJvci1tZXNzYWdlXCI+XHJcbiAgICAgICAgICAgICAgICAgIDxBbGVydENpcmNsZSBzaXplPXsxNH0gLz5cclxuICAgICAgICAgICAgICAgICAgPHNwYW4+e2Vycm9ycy5lbWFpbH08L3NwYW4+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICApfVxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZm9ybS1ncm91cFwiPlxyXG4gICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJmb3JtLWxhYmVsXCIgaHRtbEZvcj1cImFkZHJlc3NcIj5cclxuICAgICAgICAgICAgICAgIFJlc2lkZW50aWFsIEFkZHJlc3MgPHNwYW4gY2xhc3NOYW1lPVwicmVxdWlyZWQtc3RhclwiPio8L3NwYW4+XHJcbiAgICAgICAgICAgICAgPC9sYWJlbD5cclxuICAgICAgICAgICAgICA8aW5wdXRcclxuICAgICAgICAgICAgICAgIHR5cGU9XCJ0ZXh0XCJcclxuICAgICAgICAgICAgICAgIGlkPVwiYWRkcmVzc1wiXHJcbiAgICAgICAgICAgICAgICBuYW1lPVwiYWRkcmVzc1wiXHJcbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2Bmb3JtLWNvbnRyb2wgJHtlcnJvcnMuYWRkcmVzcyA/ICdpcy1pbnZhbGlkJyA6ICcnfWB9XHJcbiAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIkVudGVyIGNvbXBsZXRlIHN0cmVldCAmIGNpdHkgYWRkcmVzc1wiXHJcbiAgICAgICAgICAgICAgICB2YWx1ZT17Zm9ybURhdGEuYWRkcmVzc31cclxuICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXtoYW5kbGVDaGFuZ2V9XHJcbiAgICAgICAgICAgICAgICBvbkJsdXI9e2hhbmRsZUJsdXJ9XHJcbiAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICB7ZXJyb3JzLmFkZHJlc3MgJiYgKFxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJlcnJvci1tZXNzYWdlXCI+XHJcbiAgICAgICAgICAgICAgICAgIDxBbGVydENpcmNsZSBzaXplPXsxNH0gLz5cclxuICAgICAgICAgICAgICAgICAgPHNwYW4+e2Vycm9ycy5hZGRyZXNzfTwvc3Bhbj5cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgICl9XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgey8qIEZvcm0gQWN0aW9ucyAqL31cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZm9ybS1hY3Rpb25zXCI+XHJcbiAgICAgICAgICAgIDxidXR0b24gdHlwZT1cImJ1dHRvblwiIGNsYXNzTmFtZT1cImJ0biBidG4tc2Vjb25kYXJ5XCIgb25DbGljaz17aGFuZGxlUmVzZXR9PlxyXG4gICAgICAgICAgICAgIDxSb3RhdGVDY3cgc2l6ZT17MTZ9IC8+XHJcbiAgICAgICAgICAgICAgUmVzZXRcclxuICAgICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICAgIDxidXR0b24gdHlwZT1cInN1Ym1pdFwiIGNsYXNzTmFtZT1cImJ0biBidG4tcHJpbWFyeVwiPlxyXG4gICAgICAgICAgICAgIDxDaGVja0NpcmNsZTIgc2l6ZT17MTZ9IC8+XHJcbiAgICAgICAgICAgICAgUmVnaXN0ZXIgUGF0aWVudFxyXG4gICAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvZm9ybT5cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59O1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgUGF0aWVudEZvcm07XHJcbiJdLCJmaWxlIjoiQzovVXNlcnMvc2Fyb2ovT25lRHJpdmUvRGVza3RvcC9NZWRpU3luYy9Gcm9udGVuZC9zcmMvY29tcG9uZW50cy9QYXRpZW50Rm9ybS5qc3gifQ==

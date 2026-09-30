@@ -1,0 +1,1344 @@
+/* ==========================================================================
+   CareHub / MediTrack – Nearby Hospitals & Map Locator Styling
+   Responsive Split View (Map + Cards), Custom Leaflet Markers & SaaS Aesthetics
+   ========================================================================== */
+
+.nearby-hospitals-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   1. Header Section & Emergency Dial Bar
+   -------------------------------------------------------------------------- */
+.page-header-card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 14px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.1);
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.header-badge .pulse-icon {
+  animation: pulse-ring 2s infinite ease-in-out;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.page-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--heading-color, var(--text-primary));
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+  font-size: 0.93rem;
+  color: var(--text-secondary, #64748b);
+  margin: 0;
+  line-height: 1.5;
+  max-width: 850px;
+}
+
+/* Emergency Hotlines Strip */
+.emergency-hotlines-strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px dashed rgba(239, 68, 68, 0.35);
+  border-radius: 10px;
+}
+
+.hotline-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #dc2626;
+  white-space: nowrap;
+}
+
+.hotlines-pills {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hotline-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  background: var(--card-bg, #ffffff);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--text-primary, #0f172a);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.hotline-pill:hover {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(220, 38, 38, 0.25);
+}
+
+.hotline-pill .hl-num {
+  font-weight: 700;
+  color: #dc2626;
+}
+
+.hotline-pill:hover .hl-num {
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   2. Locator Controls Card (Detect + Search + Radius)
+   -------------------------------------------------------------------------- */
+.locator-controls-card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 14px;
+  padding: 1.35rem 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.controls-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Geolocation Block */
+.geolocate-action-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 0 0 auto;
+  max-width: 320px;
+}
+
+.btn-detect-location {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.72rem 1.25rem;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(2, 132, 199, 0.28);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.btn-detect-location:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+  transform: translateY(-1.5px);
+  box-shadow: 0 5px 16px rgba(2, 132, 199, 0.38);
+}
+
+.btn-detect-location:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.privacy-disclosure-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-size: 0.74rem;
+  color: var(--text-secondary, #64748b);
+  line-height: 1.4;
+}
+
+.privacy-disclosure-note .privacy-icon {
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Manual Location Search Form */
+.manual-search-form {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1 1 360px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.search-input-wrapper .search-icon {
+  position: absolute;
+  left: 0.9rem;
+  color: var(--text-secondary, #94a3b8);
+  pointer-events: none;
+}
+
+.hospital-search-input {
+  width: 100%;
+  padding: 0.72rem 2.4rem 0.72rem 2.5rem;
+  border: 1px solid var(--border-color, #cbd5e1);
+  border-radius: 10px;
+  background: var(--input-bg, #f8fafc);
+  color: var(--text-primary, #0f172a);
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.hospital-search-input:focus {
+  outline: none;
+  border-color: #0284c7;
+  background: var(--card-bg, #ffffff);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary, #94a3b8);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.clear-search-btn:hover {
+  color: var(--text-primary, #0f172a);
+}
+
+.btn-search-submit {
+  padding: 0.72rem 1.35rem;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-search-submit:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+}
+
+/* Radius & Filters Row */
+.filters-and-radius-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color, #f1f5f9);
+}
+
+.radius-selector-group,
+.facility-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary, #64748b);
+  white-space: nowrap;
+}
+
+.radius-pills,
+.facility-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.radius-pill {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #e2e8f0);
+  background: var(--input-bg, #f8fafc);
+  color: var(--text-primary, #475569);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.radius-pill:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.radius-pill.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+}
+
+.filter-chip {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #e2e8f0);
+  background: var(--card-bg, #ffffff);
+  color: var(--text-primary, #475569);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.filter-chip:hover {
+  border-color: #0ea5e9;
+  color: #0ea5e9;
+}
+
+.filter-chip.active {
+  background: rgba(14, 165, 233, 0.12);
+  color: #0284c7;
+  border-color: #0284c7;
+  font-weight: 600;
+}
+
+/* Location Status Banner */
+.location-status-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 0.95rem;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.location-status-banner.granted {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #065f46;
+}
+
+.location-status-banner.denied,
+.location-status-banner.unavailable {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: #92400e;
+}
+
+.location-status-banner.requesting {
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  color: #0369a1;
+}
+
+/* --------------------------------------------------------------------------
+   3. Main Split View Grid (Map Column + Cards Column)
+   -------------------------------------------------------------------------- */
+.hospital-locator-content-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 1080px) {
+  .hospital-locator-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Map Column & Card */
+.map-view-column {
+  position: sticky;
+  top: 85px;
+  z-index: 10;
+}
+
+.map-card-wrapper {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.map-card-header {
+  padding: 0.95rem 1.25rem;
+  background: var(--card-bg, #ffffff);
+  border-bottom: 1px solid var(--border-color, #f1f5f9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.map-header-info {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.map-header-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary, #0f172a);
+}
+
+.map-current-zone {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #64748b);
+  background: var(--input-bg, #f1f5f9);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.map-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-map-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color, #cbd5e1);
+  background: var(--card-bg, #ffffff);
+  color: var(--text-primary, #334155);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.btn-map-control:hover {
+  background: var(--input-bg, #f8fafc);
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.interactive-map-container {
+  width: 100%;
+  height: 520px;
+  min-height: 480px;
+  background: #e2e8f0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Map Legend Footer */
+.map-legend-footer {
+  padding: 0.75rem 1.15rem;
+  background: var(--card-bg, #ffffff);
+  border-top: 1px solid var(--border-color, #f1f5f9);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  font-size: 0.78rem;
+}
+
+.legend-label {
+  font-weight: 700;
+  color: var(--text-secondary, #64748b);
+}
+
+.legend-items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-primary, #334155);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot.user-dot {
+  background: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25);
+}
+
+.legend-dot.carehub-dot {
+  background: #7c3aed;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.25);
+}
+
+.legend-dot.emergency-dot {
+  background: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25);
+}
+
+.legend-dot.clinic-dot {
+  background: #0d9488;
+  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   4. Custom Leaflet Marker Styling
+   -------------------------------------------------------------------------- */
+/* User Location Pulsing Dot */
+.user-location-marker {
+  position: relative;
+}
+
+.user-marker-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(2, 132, 199, 0.35);
+  animation: user-pulse 2s infinite ease-out;
+}
+
+@keyframes user-pulse {
+  0% { transform: translate(-50%, -50%) scale(0.6); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+}
+
+.user-marker-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0284c7;
+  border: 2.5px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Hospital Map Markers */
+.custom-hospital-marker {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.custom-hospital-marker:hover {
+  transform: scale(1.12);
+  z-index: 1000 !important;
+}
+
+.hosp-marker-pin {
+  width: 34px;
+  height: 38px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  border: 2px solid #ffffff;
+  transition: all 0.2s ease;
+}
+
+.hosp-marker-pin svg {
+  transform: rotate(45deg);
+  stroke: #ffffff;
+}
+
+.hosp-marker-pin.hosp-marker-carehub {
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+}
+
+.hosp-marker-pin.hosp-marker-emergency {
+  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+}
+
+.hosp-marker-pin.hosp-marker-clinic {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+}
+
+.hosp-marker-pin.hosp-marker-selected {
+  border: 3px solid #facc15;
+  box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.4), 0 4px 12px rgba(0,0,0,0.3);
+  transform: rotate(-45deg) scale(1.15);
+}
+
+/* Leaflet Map Popup Styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color, #e2e8f0);
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.map-popup-card {
+  padding: 0.95rem 1rem;
+  max-width: 270px;
+}
+
+.map-popup-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 0.45rem;
+}
+
+.popup-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.popup-distance {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #0284c7;
+}
+
+.popup-address {
+  font-size: 0.78rem;
+  color: #475569;
+  margin: 0 0 0.55rem 0;
+  line-height: 1.35;
+}
+
+.popup-bed-stat {
+  font-size: 0.76rem;
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.popup-bed-stat.verified {
+  background: rgba(16, 185, 129, 0.12);
+  color: #065f46;
+}
+
+.popup-bed-stat.unverified {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.popup-bed-stat .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.popup-bed-stat .dot.green { background: #10b981; }
+.popup-bed-stat .dot.gray { background: #94a3b8; }
+
+.popup-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.popup-btn-nav {
+  flex: 1;
+  padding: 0.35rem 0.6rem;
+  background: #0284c7;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-align: center;
+  transition: background 0.18s ease;
+}
+
+.popup-btn-nav:hover {
+  background: #0369a1;
+}
+
+.popup-btn-call {
+  padding: 0.35rem 0.6rem;
+  background: #10b981;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Right Column: Hospital Results Cards List
+   -------------------------------------------------------------------------- */
+.results-list-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.results-summary-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.4rem 0.25rem;
+}
+
+.summary-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.results-count {
+  font-size: 0.95rem;
+  color: var(--text-primary, #0f172a);
+}
+
+.results-radius {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #64748b);
+  background: var(--input-bg, #f1f5f9);
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+}
+
+.sort-indicator {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #64748b);
+  font-weight: 500;
+}
+
+/* Loading & Empty States */
+.hospitals-loading-container,
+.hospitals-error-state,
+.hospitals-empty-state {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 14px;
+  padding: 2.75rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.spin-animation {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.empty-icon-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.btn-expand-radius {
+  padding: 0.55rem 1.15rem;
+  background: #0284c7;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-reset-search {
+  padding: 0.55rem 1.15rem;
+  background: var(--input-bg, #f1f5f9);
+  color: var(--text-primary, #334155);
+  border: 1px solid var(--border-color, #cbd5e1);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+/* Hospital Cards Stack */
+.hospitals-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hospital-card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 14px;
+  padding: 1.25rem 1.35rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.hospital-card:hover {
+  transform: translateY(-2px);
+  border-color: #0284c7;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.1);
+}
+
+.hospital-card.selected {
+  border-color: #0284c7;
+  background: var(--card-selected-bg, #f0f9ff);
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.35), 0 6px 20px rgba(2, 132, 199, 0.12);
+}
+
+/* Card Top: Badges & Distance */
+.hospital-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.hospital-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.badge-carehub-network {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.badge-hospital-type {
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.badge-hospital-type.gov {
+  background: rgba(13, 148, 136, 0.1);
+  color: #0f766e;
+  border: 1px solid rgba(13, 148, 136, 0.2);
+}
+
+.badge-hospital-type.pvt {
+  background: rgba(2, 132, 199, 0.1);
+  color: #0369a1;
+  border: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+.badge-emergency-24x7 {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #dc2626;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.hospital-distance-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--text-primary, #0f172a);
+  background: var(--input-bg, #f1f5f9);
+  padding: 0.25rem 0.65rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* Card Body */
+.hospital-card-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.hospital-media-box {
+  width: 96px;
+  height: 96px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #e2e8f0;
+}
+
+.hospital-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.hospital-card:hover .hospital-thumbnail {
+  transform: scale(1.06);
+}
+
+.hospital-info-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.hospital-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary, #0f172a);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.hospital-address,
+.hospital-hours {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary, #475569);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.hospital-address .address-icon {
+  color: #0284c7;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.hospital-hours .clock-icon {
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.hospital-services-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.service-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-secondary, #475569);
+  background: var(--input-bg, #f1f5f9);
+  border: 1px solid var(--border-color, #e2e8f0);
+  padding: 0.15rem 0.45rem;
+  border-radius: 5px;
+}
+
+.service-tag.more {
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.2);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   6. Bed Availability Section (Verified vs Unverified)
+   -------------------------------------------------------------------------- */
+.hospital-bed-section {
+  border-top: 1px solid var(--border-color, #f1f5f9);
+  padding-top: 0.85rem;
+}
+
+/* Verified Telemetry Block */
+.verified-beds-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  border-radius: 10px;
+  padding: 0.75rem 0.95rem;
+}
+
+.beds-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.beds-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.beds-status-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #065f46;
+}
+
+.verified-pill {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+.beds-last-updated {
+  font-size: 0.72rem;
+  color: var(--text-secondary, #64748b);
+}
+
+.beds-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .beds-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.bed-metric-card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  border-radius: 7px;
+  padding: 0.45rem 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-val {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary, #0f172a);
+}
+
+.metric-val.available-glow {
+  color: #10b981;
+}
+
+.metric-val.icu-glow {
+  color: #0284c7;
+}
+
+.metric-lbl {
+  font-size: 0.7rem;
+  color: var(--text-secondary, #64748b);
+  margin-top: 1px;
+}
+
+/* Unverified Notice */
+.unverified-beds-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.65rem 0.85rem;
+  background: var(--input-bg, #f8fafc);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 8px;
+}
+
+.unverified-beds-block .info-icon {
+  color: var(--text-secondary, #94a3b8);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.unverified-text strong {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #475569);
+  display: block;
+}
+
+.unverified-text p {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #64748b);
+  margin: 2px 0 0 0;
+  line-height: 1.35;
+}
+
+/* --------------------------------------------------------------------------
+   7. Hospital Card Action Buttons
+   -------------------------------------------------------------------------- */
+.hospital-card-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  border-top: 1px solid var(--border-color, #f1f5f9);
+  padding-top: 0.85rem;
+}
+
+.btn-action-directions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.95rem;
+  background: #0284c7;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.18s ease;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.2);
+}
+
+.btn-action-directions:hover {
+  background: #0369a1;
+  transform: translateY(-1px);
+}
+
+.btn-action-directions .ext-icon {
+  opacity: 0.8;
+}
+
+.btn-action-mapview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #cbd5e1);
+  color: var(--text-primary, #334155);
+  font-size: 0.84rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.btn-action-mapview:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+  background: var(--input-bg, #f8fafc);
+}
+
+.btn-action-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.85rem;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  color: #065f46 !important;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.18s ease;
+}
+
+.btn-action-call:hover {
+  background: #10b981;
+  color: #ffffff !important;
+  border-color: #10b981;
+  transform: translateY(-1px);
+}
+
+.btn-action-call.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--input-bg, #f1f5f9);
+  border-color: var(--border-color, #e2e8f0);
+  color: var(--text-secondary, #94a3b8) !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. Dark Theme Support
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] .page-header-card,
+[data-theme="dark"] .locator-controls-card,
+[data-theme="dark"] .map-card-wrapper,
+[data-theme="dark"] .hospital-card,
+[data-theme="dark"] .hospitals-loading-container,
+[data-theme="dark"] .hospitals-error-state,
+[data-theme="dark"] .hospitals-empty-state {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .page-title,
+[data-theme="dark"] .map-header-title,
+[data-theme="dark"] .hospital-name,
+[data-theme="dark"] .results-count,
+[data-theme="dark"] .metric-val {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .hospital-card.selected {
+  background: rgba(2, 132, 199, 0.12);
+  border-color: #38bdf8;
+}
+
+[data-theme="dark"] .hospital-search-input {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .radius-pill,
+[data-theme="dark"] .filter-chip,
+[data-theme="dark"] .btn-action-mapview,
+[data-theme="dark"] .btn-map-control {
+  background: #0f172a;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .unverified-beds-block {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .bed-metric-card {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .map-card-header,
+[data-theme="dark"] .map-legend-footer {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .map-current-zone,
+[data-theme="dark"] .results-radius,
+[data-theme="dark"] .hospital-distance-pill {
+  background: #0f172a;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .leaflet-popup-content-wrapper {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .popup-title {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .popup-address {
+  color: #94a3b8;
+}

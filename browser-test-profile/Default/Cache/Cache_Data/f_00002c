@@ -1,0 +1,477 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/WorkflowIntegrationDiagram.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f8ff7608"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=f8ff7608"; const React = __vite__cjsImport3_react.__esModule ? __vite__cjsImport3_react.default : __vite__cjsImport3_react; const useState = __vite__cjsImport3_react["useState"];
+import { ArrowRight, CheckCircle2, ShieldAlert, Lock, BellRing, FileText } from "/node_modules/.vite/deps/lucide-react.js?v=f8ff7608";
+const WorkflowIntegrationDiagram = () => {
+  _s();
+  const [activeWorkflow, setActiveWorkflow] = useState("appointment");
+  return /* @__PURE__ */ jsxDEV("div", { className: "card-rounded p-4 mb-4", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3 pb-2 border-bottom", children: [
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("h4", { className: "h6 fw-bold text-dark mb-1", children: "Notification & Security System Integration Workflows" }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 30,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-muted mb-0", style: { fontSize: "0.825rem" }, children: "Interactive demonstration showing how notification, authentication, audit logs, and security monitoring interlink." }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 33,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+        lineNumber: 29,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "btn-group btn-group-sm", children: [
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            className: `btn ${activeWorkflow === "appointment" ? "btn-primary" : "btn-outline-primary"}`,
+            onClick: () => setActiveWorkflow("appointment"),
+            children: "1. Appointment Creation Flow"
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 39,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            className: `btn ${activeWorkflow === "failed_login" ? "btn-primary" : "btn-outline-primary"}`,
+            onClick: () => setActiveWorkflow("failed_login"),
+            children: "2. Failed Login Security Flow"
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 46,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            type: "button",
+            className: `btn ${activeWorkflow === "unauthorized" ? "btn-primary" : "btn-outline-primary"}`,
+            onClick: () => setActiveWorkflow("unauthorized"),
+            children: "3. Unauthorized Access Flow"
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 53,
+            columnNumber: 11
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+        lineNumber: 38,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+      lineNumber: 28,
+      columnNumber: 7
+    }, this),
+    activeWorkflow === "appointment" && /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-light rounded-3", children: [
+      /* @__PURE__ */ jsxDEV("h5", { className: "fw-bold text-success mb-3", style: { fontSize: "0.925rem" }, children: "Workflow 1: Appointment Scheduling & Notification Dispatch" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+        lineNumber: 65,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "d-flex flex-wrap align-items-center justify-content-between gap-2 text-center", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-white border rounded shadow-sm flex-fill", children: [
+          /* @__PURE__ */ jsxDEV(FileText, { className: "text-primary mb-1", size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 70,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-dark", style: { fontSize: "0.85rem" }, children: "Appointment Created" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 71,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "OPD Booking #A101" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 72,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 69,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(ArrowRight, { className: "text-muted", size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 74,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-white border rounded shadow-sm flex-fill", children: [
+          /* @__PURE__ */ jsxDEV(BellRing, { className: "text-warning mb-1", size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 76,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-dark", style: { fontSize: "0.85rem" }, children: "Notification Generated" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 77,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Queued in System" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 78,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 75,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(ArrowRight, { className: "text-muted", size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 80,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-white border rounded shadow-sm flex-fill", children: [
+          /* @__PURE__ */ jsxDEV(CheckCircle2, { className: "text-success mb-1", size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 82,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-dark", style: { fontSize: "0.85rem" }, children: "Patient Reminder Sent" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 83,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Navbar Bell & SMS" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 84,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 81,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(ArrowRight, { className: "text-muted", size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 86,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-white border rounded shadow-sm flex-fill", children: [
+          /* @__PURE__ */ jsxDEV(FileText, { className: "text-info mb-1", size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 88,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-dark", style: { fontSize: "0.85rem" }, children: "User Activity Logged" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 89,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Audit Log Entry Created" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 90,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 87,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+        lineNumber: 68,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+      lineNumber: 64,
+      columnNumber: 7
+    }, this),
+    activeWorkflow === "failed_login" && /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-light rounded-3", children: [
+      /* @__PURE__ */ jsxDEV("h5", { className: "fw-bold text-danger mb-3", style: { fontSize: "0.925rem" }, children: "Workflow 2: Failed Login & Security Alert Audit Generation" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+        lineNumber: 98,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "d-flex flex-wrap align-items-center justify-content-between gap-2 text-center", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-white border rounded shadow-sm flex-fill", children: [
+          /* @__PURE__ */ jsxDEV(Lock, { className: "text-danger mb-1", size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 103,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-dark", style: { fontSize: "0.85rem" }, children: "Wrong Password Entered" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 104,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Invalid Password Input" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 105,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 102,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(ArrowRight, { className: "text-muted", size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 107,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-white border rounded shadow-sm flex-fill", children: [
+          /* @__PURE__ */ jsxDEV(ShieldAlert, { className: "text-danger mb-1", size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 109,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-dark", style: { fontSize: "0.85rem" }, children: "Login Failed (401)" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 110,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Authentication Rejected" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 111,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 108,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(ArrowRight, { className: "text-muted", size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 113,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-white border rounded shadow-sm flex-fill", children: [
+          /* @__PURE__ */ jsxDEV(ShieldAlert, { className: "text-warning mb-1", size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 115,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-dark", style: { fontSize: "0.85rem" }, children: "Security Event Created" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 116,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Severity: Warning" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 117,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 114,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(ArrowRight, { className: "text-muted", size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 119,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-white border rounded shadow-sm flex-fill", children: [
+          /* @__PURE__ */ jsxDEV(FileText, { className: "text-dark mb-1", size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 121,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-dark", style: { fontSize: "0.85rem" }, children: "Audit Log Updated" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 122,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Logged in Admin Audit" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 123,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 120,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+        lineNumber: 101,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+      lineNumber: 97,
+      columnNumber: 7
+    }, this),
+    activeWorkflow === "unauthorized" && /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-light rounded-3", children: [
+      /* @__PURE__ */ jsxDEV("h5", { className: "fw-bold text-warning mb-3", style: { fontSize: "0.925rem" }, children: "Workflow 3: Patient Cross-Record Access Denial & Security Escalation" }, void 0, false, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+        lineNumber: 131,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "d-flex flex-wrap align-items-center justify-content-between gap-2 text-center", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-white border rounded shadow-sm flex-fill", children: [
+          /* @__PURE__ */ jsxDEV(FileText, { className: "text-warning mb-1", size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 136,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-dark", style: { fontSize: "0.85rem" }, children: "Patient Access Request" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 137,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Target: Patient P102" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 138,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 135,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(ArrowRight, { className: "text-muted", size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 140,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-white border rounded shadow-sm flex-fill", children: [
+          /* @__PURE__ */ jsxDEV(Lock, { className: "text-danger mb-1", size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 142,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-dark", style: { fontSize: "0.85rem" }, children: "Authorization Failed" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 143,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Tenant Ownership Check" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 144,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 141,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(ArrowRight, { className: "text-muted", size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 146,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-white border rounded shadow-sm flex-fill", children: [
+          /* @__PURE__ */ jsxDEV(ShieldAlert, { className: "text-danger mb-1", size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 148,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-dark", style: { fontSize: "0.85rem" }, children: "Access Denied (403)" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 149,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "403 Error Rendered" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 150,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 147,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(ArrowRight, { className: "text-muted", size: 18 }, void 0, false, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 152,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-white border rounded shadow-sm flex-fill", children: [
+          /* @__PURE__ */ jsxDEV(ShieldAlert, { className: "text-dark mb-1", size: 20 }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 154,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "fw-bold text-dark", style: { fontSize: "0.85rem" }, children: "Security Event Logged" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 155,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-muted", style: { fontSize: "0.75rem" }, children: "Admin Dashboard Alert" }, void 0, false, {
+            fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+            lineNumber: 156,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+          lineNumber: 153,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+        lineNumber: 134,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+      lineNumber: 130,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx",
+    lineNumber: 27,
+    columnNumber: 5
+  }, this);
+};
+_s(WorkflowIntegrationDiagram, "utksztpwBPzyzOkzKAB+1EPiI/g=");
+_c = WorkflowIntegrationDiagram;
+export default WorkflowIntegrationDiagram;
+var _c;
+$RefreshReg$(_c, "WorkflowIntegrationDiagram");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/saroj/OneDrive/Desktop/MediSync/Frontend/src/components/WorkflowIntegrationDiagram.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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O0FBQUEsV0E2QkE7QUFBQSxPQXBJSjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBc0lBO0FBRUo7QUFBRUgsR0E1SUlELDRCQUEwQjtBQUFBLEtBQTFCQTtBQThJTixlQUFlQTtBQUEyQixJQUFBSztBQUFBLGFBQUFBLElBQUEiLCJuYW1lcyI6WyJSZWFjdCIsInVzZVN0YXRlIiwiQXJyb3dSaWdodCIsIkNoZWNrQ2lyY2xlMiIsIlNoaWVsZEFsZXJ0IiwiTG9jayIsIkJlbGxSaW5nIiwiRmlsZVRleHQiLCJXb3JrZmxvd0ludGVncmF0aW9uRGlhZ3JhbSIsIl9zIiwiYWN0aXZlV29ya2Zsb3ciLCJzZXRBY3RpdmVXb3JrZmxvdyIsImZvbnRTaXplIiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiV29ya2Zsb3dJbnRlZ3JhdGlvbkRpYWdyYW0uanN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCwgeyB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0JztcclxuaW1wb3J0IHsgQXJyb3dSaWdodCwgQ2hlY2tDaXJjbGUyLCBTaGllbGRBbGVydCwgTG9jaywgQmVsbFJpbmcsIEZpbGVUZXh0IH0gZnJvbSAnbHVjaWRlLXJlYWN0JztcclxuXHJcbmNvbnN0IFdvcmtmbG93SW50ZWdyYXRpb25EaWFncmFtID0gKCkgPT4ge1xyXG4gIGNvbnN0IFthY3RpdmVXb3JrZmxvdywgc2V0QWN0aXZlV29ya2Zsb3ddID0gdXNlU3RhdGUoJ2FwcG9pbnRtZW50Jyk7XHJcblxyXG4gIHJldHVybiAoXHJcbiAgICA8ZGl2IGNsYXNzTmFtZT1cImNhcmQtcm91bmRlZCBwLTQgbWItNFwiPlxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImQtZmxleCBhbGlnbi1pdGVtcy1jZW50ZXIganVzdGlmeS1jb250ZW50LWJldHdlZW4gZmxleC13cmFwIGdhcC0yIG1iLTMgcGItMiBib3JkZXItYm90dG9tXCI+XHJcbiAgICAgICAgPGRpdj5cclxuICAgICAgICAgIDxoNCBjbGFzc05hbWU9XCJoNiBmdy1ib2xkIHRleHQtZGFyayBtYi0xXCI+XHJcbiAgICAgICAgICAgIE5vdGlmaWNhdGlvbiAmIFNlY3VyaXR5IFN5c3RlbSBJbnRlZ3JhdGlvbiBXb3JrZmxvd3NcclxuICAgICAgICAgIDwvaDQ+XHJcbiAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkIG1iLTBcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODI1cmVtJyB9fT5cclxuICAgICAgICAgICAgSW50ZXJhY3RpdmUgZGVtb25zdHJhdGlvbiBzaG93aW5nIGhvdyBub3RpZmljYXRpb24sIGF1dGhlbnRpY2F0aW9uLCBhdWRpdCBsb2dzLCBhbmQgc2VjdXJpdHkgbW9uaXRvcmluZyBpbnRlcmxpbmsuXHJcbiAgICAgICAgICA8L3A+XHJcbiAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYnRuLWdyb3VwIGJ0bi1ncm91cC1zbVwiPlxyXG4gICAgICAgICAgPGJ1dHRvblxyXG4gICAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcclxuICAgICAgICAgICAgY2xhc3NOYW1lPXtgYnRuICR7YWN0aXZlV29ya2Zsb3cgPT09ICdhcHBvaW50bWVudCcgPyAnYnRuLXByaW1hcnknIDogJ2J0bi1vdXRsaW5lLXByaW1hcnknfWB9XHJcbiAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHNldEFjdGl2ZVdvcmtmbG93KCdhcHBvaW50bWVudCcpfVxyXG4gICAgICAgICAgPlxyXG4gICAgICAgICAgICAxLiBBcHBvaW50bWVudCBDcmVhdGlvbiBGbG93XHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgIDxidXR0b25cclxuICAgICAgICAgICAgdHlwZT1cImJ1dHRvblwiXHJcbiAgICAgICAgICAgIGNsYXNzTmFtZT17YGJ0biAke2FjdGl2ZVdvcmtmbG93ID09PSAnZmFpbGVkX2xvZ2luJyA/ICdidG4tcHJpbWFyeScgOiAnYnRuLW91dGxpbmUtcHJpbWFyeSd9YH1cclxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0QWN0aXZlV29ya2Zsb3coJ2ZhaWxlZF9sb2dpbicpfVxyXG4gICAgICAgICAgPlxyXG4gICAgICAgICAgICAyLiBGYWlsZWQgTG9naW4gU2VjdXJpdHkgRmxvd1xyXG4gICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICA8YnV0dG9uXHJcbiAgICAgICAgICAgIHR5cGU9XCJidXR0b25cIlxyXG4gICAgICAgICAgICBjbGFzc05hbWU9e2BidG4gJHthY3RpdmVXb3JrZmxvdyA9PT0gJ3VuYXV0aG9yaXplZCcgPyAnYnRuLXByaW1hcnknIDogJ2J0bi1vdXRsaW5lLXByaW1hcnknfWB9XHJcbiAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHNldEFjdGl2ZVdvcmtmbG93KCd1bmF1dGhvcml6ZWQnKX1cclxuICAgICAgICAgID5cclxuICAgICAgICAgICAgMy4gVW5hdXRob3JpemVkIEFjY2VzcyBGbG93XHJcbiAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICB7YWN0aXZlV29ya2Zsb3cgPT09ICdhcHBvaW50bWVudCcgJiYgKFxyXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC0zIGJnLWxpZ2h0IHJvdW5kZWQtM1wiPlxyXG4gICAgICAgICAgPGg1IGNsYXNzTmFtZT1cImZ3LWJvbGQgdGV4dC1zdWNjZXNzIG1iLTNcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuOTI1cmVtJyB9fT5cclxuICAgICAgICAgICAgV29ya2Zsb3cgMTogQXBwb2ludG1lbnQgU2NoZWR1bGluZyAmIE5vdGlmaWNhdGlvbiBEaXNwYXRjaFxyXG4gICAgICAgICAgPC9oNT5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZC1mbGV4IGZsZXgtd3JhcCBhbGlnbi1pdGVtcy1jZW50ZXIganVzdGlmeS1jb250ZW50LWJldHdlZW4gZ2FwLTIgdGV4dC1jZW50ZXJcIj5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTMgYmctd2hpdGUgYm9yZGVyIHJvdW5kZWQgc2hhZG93LXNtIGZsZXgtZmlsbFwiPlxyXG4gICAgICAgICAgICAgIDxGaWxlVGV4dCBjbGFzc05hbWU9XCJ0ZXh0LXByaW1hcnkgbWItMVwiIHNpemU9ezIwfSAvPlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZnctYm9sZCB0ZXh0LWRhcmtcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODVyZW0nIH19PkFwcG9pbnRtZW50IENyZWF0ZWQ8L2Rpdj5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuNzVyZW0nIH19Pk9QRCBCb29raW5nICNBMTAxPC9kaXY+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICA8QXJyb3dSaWdodCBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc2l6ZT17MTh9IC8+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC0zIGJnLXdoaXRlIGJvcmRlciByb3VuZGVkIHNoYWRvdy1zbSBmbGV4LWZpbGxcIj5cclxuICAgICAgICAgICAgICA8QmVsbFJpbmcgY2xhc3NOYW1lPVwidGV4dC13YXJuaW5nIG1iLTFcIiBzaXplPXsyMH0gLz5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZ3LWJvbGQgdGV4dC1kYXJrXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjg1cmVtJyB9fT5Ob3RpZmljYXRpb24gR2VuZXJhdGVkPC9kaXY+XHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjc1cmVtJyB9fT5RdWV1ZWQgaW4gU3lzdGVtPC9kaXY+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICA8QXJyb3dSaWdodCBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc2l6ZT17MTh9IC8+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC0zIGJnLXdoaXRlIGJvcmRlciByb3VuZGVkIHNoYWRvdy1zbSBmbGV4LWZpbGxcIj5cclxuICAgICAgICAgICAgICA8Q2hlY2tDaXJjbGUyIGNsYXNzTmFtZT1cInRleHQtc3VjY2VzcyBtYi0xXCIgc2l6ZT17MjB9IC8+XHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmdy1ib2xkIHRleHQtZGFya1wiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC44NXJlbScgfX0+UGF0aWVudCBSZW1pbmRlciBTZW50PC9kaXY+XHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjc1cmVtJyB9fT5OYXZiYXIgQmVsbCAmIFNNUzwvZGl2PlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgPEFycm93UmlnaHQgY2xhc3NOYW1lPVwidGV4dC1tdXRlZFwiIHNpemU9ezE4fSAvPlxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtMyBiZy13aGl0ZSBib3JkZXIgcm91bmRlZCBzaGFkb3ctc20gZmxleC1maWxsXCI+XHJcbiAgICAgICAgICAgICAgPEZpbGVUZXh0IGNsYXNzTmFtZT1cInRleHQtaW5mbyBtYi0xXCIgc2l6ZT17MjB9IC8+XHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmdy1ib2xkIHRleHQtZGFya1wiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC44NXJlbScgfX0+VXNlciBBY3Rpdml0eSBMb2dnZWQ8L2Rpdj5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuNzVyZW0nIH19PkF1ZGl0IExvZyBFbnRyeSBDcmVhdGVkPC9kaXY+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgICl9XHJcblxyXG4gICAgICB7YWN0aXZlV29ya2Zsb3cgPT09ICdmYWlsZWRfbG9naW4nICYmIChcclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtMyBiZy1saWdodCByb3VuZGVkLTNcIj5cclxuICAgICAgICAgIDxoNSBjbGFzc05hbWU9XCJmdy1ib2xkIHRleHQtZGFuZ2VyIG1iLTNcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuOTI1cmVtJyB9fT5cclxuICAgICAgICAgICAgV29ya2Zsb3cgMjogRmFpbGVkIExvZ2luICYgU2VjdXJpdHkgQWxlcnQgQXVkaXQgR2VuZXJhdGlvblxyXG4gICAgICAgICAgPC9oNT5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZC1mbGV4IGZsZXgtd3JhcCBhbGlnbi1pdGVtcy1jZW50ZXIganVzdGlmeS1jb250ZW50LWJldHdlZW4gZ2FwLTIgdGV4dC1jZW50ZXJcIj5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTMgYmctd2hpdGUgYm9yZGVyIHJvdW5kZWQgc2hhZG93LXNtIGZsZXgtZmlsbFwiPlxyXG4gICAgICAgICAgICAgIDxMb2NrIGNsYXNzTmFtZT1cInRleHQtZGFuZ2VyIG1iLTFcIiBzaXplPXsyMH0gLz5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZ3LWJvbGQgdGV4dC1kYXJrXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjg1cmVtJyB9fT5Xcm9uZyBQYXNzd29yZCBFbnRlcmVkPC9kaXY+XHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjc1cmVtJyB9fT5JbnZhbGlkIFBhc3N3b3JkIElucHV0PC9kaXY+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICA8QXJyb3dSaWdodCBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc2l6ZT17MTh9IC8+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC0zIGJnLXdoaXRlIGJvcmRlciByb3VuZGVkIHNoYWRvdy1zbSBmbGV4LWZpbGxcIj5cclxuICAgICAgICAgICAgICA8U2hpZWxkQWxlcnQgY2xhc3NOYW1lPVwidGV4dC1kYW5nZXIgbWItMVwiIHNpemU9ezIwfSAvPlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZnctYm9sZCB0ZXh0LWRhcmtcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODVyZW0nIH19PkxvZ2luIEZhaWxlZCAoNDAxKTwvZGl2PlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1tdXRlZFwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC43NXJlbScgfX0+QXV0aGVudGljYXRpb24gUmVqZWN0ZWQ8L2Rpdj5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgIDxBcnJvd1JpZ2h0IGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzaXplPXsxOH0gLz5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTMgYmctd2hpdGUgYm9yZGVyIHJvdW5kZWQgc2hhZG93LXNtIGZsZXgtZmlsbFwiPlxyXG4gICAgICAgICAgICAgIDxTaGllbGRBbGVydCBjbGFzc05hbWU9XCJ0ZXh0LXdhcm5pbmcgbWItMVwiIHNpemU9ezIwfSAvPlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZnctYm9sZCB0ZXh0LWRhcmtcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODVyZW0nIH19PlNlY3VyaXR5IEV2ZW50IENyZWF0ZWQ8L2Rpdj5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuNzVyZW0nIH19PlNldmVyaXR5OiBXYXJuaW5nPC9kaXY+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICA8QXJyb3dSaWdodCBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc2l6ZT17MTh9IC8+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC0zIGJnLXdoaXRlIGJvcmRlciByb3VuZGVkIHNoYWRvdy1zbSBmbGV4LWZpbGxcIj5cclxuICAgICAgICAgICAgICA8RmlsZVRleHQgY2xhc3NOYW1lPVwidGV4dC1kYXJrIG1iLTFcIiBzaXplPXsyMH0gLz5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZ3LWJvbGQgdGV4dC1kYXJrXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjg1cmVtJyB9fT5BdWRpdCBMb2cgVXBkYXRlZDwvZGl2PlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1tdXRlZFwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC43NXJlbScgfX0+TG9nZ2VkIGluIEFkbWluIEF1ZGl0PC9kaXY+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgICl9XHJcblxyXG4gICAgICB7YWN0aXZlV29ya2Zsb3cgPT09ICd1bmF1dGhvcml6ZWQnICYmIChcclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtMyBiZy1saWdodCByb3VuZGVkLTNcIj5cclxuICAgICAgICAgIDxoNSBjbGFzc05hbWU9XCJmdy1ib2xkIHRleHQtd2FybmluZyBtYi0zXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjkyNXJlbScgfX0+XHJcbiAgICAgICAgICAgIFdvcmtmbG93IDM6IFBhdGllbnQgQ3Jvc3MtUmVjb3JkIEFjY2VzcyBEZW5pYWwgJiBTZWN1cml0eSBFc2NhbGF0aW9uXHJcbiAgICAgICAgICA8L2g1PlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJkLWZsZXggZmxleC13cmFwIGFsaWduLWl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNvbnRlbnQtYmV0d2VlbiBnYXAtMiB0ZXh0LWNlbnRlclwiPlxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtMyBiZy13aGl0ZSBib3JkZXIgcm91bmRlZCBzaGFkb3ctc20gZmxleC1maWxsXCI+XHJcbiAgICAgICAgICAgICAgPEZpbGVUZXh0IGNsYXNzTmFtZT1cInRleHQtd2FybmluZyBtYi0xXCIgc2l6ZT17MjB9IC8+XHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmdy1ib2xkIHRleHQtZGFya1wiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC44NXJlbScgfX0+UGF0aWVudCBBY2Nlc3MgUmVxdWVzdDwvZGl2PlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1tdXRlZFwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC43NXJlbScgfX0+VGFyZ2V0OiBQYXRpZW50IFAxMDI8L2Rpdj5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgIDxBcnJvd1JpZ2h0IGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzaXplPXsxOH0gLz5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTMgYmctd2hpdGUgYm9yZGVyIHJvdW5kZWQgc2hhZG93LXNtIGZsZXgtZmlsbFwiPlxyXG4gICAgICAgICAgICAgIDxMb2NrIGNsYXNzTmFtZT1cInRleHQtZGFuZ2VyIG1iLTFcIiBzaXplPXsyMH0gLz5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZ3LWJvbGQgdGV4dC1kYXJrXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjg1cmVtJyB9fT5BdXRob3JpemF0aW9uIEZhaWxlZDwvZGl2PlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1tdXRlZFwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC43NXJlbScgfX0+VGVuYW50IE93bmVyc2hpcCBDaGVjazwvZGl2PlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgPEFycm93UmlnaHQgY2xhc3NOYW1lPVwidGV4dC1tdXRlZFwiIHNpemU9ezE4fSAvPlxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtMyBiZy13aGl0ZSBib3JkZXIgcm91bmRlZCBzaGFkb3ctc20gZmxleC1maWxsXCI+XHJcbiAgICAgICAgICAgICAgPFNoaWVsZEFsZXJ0IGNsYXNzTmFtZT1cInRleHQtZGFuZ2VyIG1iLTFcIiBzaXplPXsyMH0gLz5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZ3LWJvbGQgdGV4dC1kYXJrXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjg1cmVtJyB9fT5BY2Nlc3MgRGVuaWVkICg0MDMpPC9kaXY+XHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LW11dGVkXCIgc3R5bGU9e3sgZm9udFNpemU6ICcwLjc1cmVtJyB9fT40MDMgRXJyb3IgUmVuZGVyZWQ8L2Rpdj5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgIDxBcnJvd1JpZ2h0IGNsYXNzTmFtZT1cInRleHQtbXV0ZWRcIiBzaXplPXsxOH0gLz5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTMgYmctd2hpdGUgYm9yZGVyIHJvdW5kZWQgc2hhZG93LXNtIGZsZXgtZmlsbFwiPlxyXG4gICAgICAgICAgICAgIDxTaGllbGRBbGVydCBjbGFzc05hbWU9XCJ0ZXh0LWRhcmsgbWItMVwiIHNpemU9ezIwfSAvPlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZnctYm9sZCB0ZXh0LWRhcmtcIiBzdHlsZT17eyBmb250U2l6ZTogJzAuODVyZW0nIH19PlNlY3VyaXR5IEV2ZW50IExvZ2dlZDwvZGl2PlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1tdXRlZFwiIHN0eWxlPXt7IGZvbnRTaXplOiAnMC43NXJlbScgfX0+QWRtaW4gRGFzaGJvYXJkIEFsZXJ0PC9kaXY+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgICl9XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59O1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgV29ya2Zsb3dJbnRlZ3JhdGlvbkRpYWdyYW07XHJcbiJdLCJmaWxlIjoiQzovVXNlcnMvc2Fyb2ovT25lRHJpdmUvRGVza3RvcC9NZWRpU3luYy9Gcm9udGVuZC9zcmMvY29tcG9uZW50cy9Xb3JrZmxvd0ludGVncmF0aW9uRGlhZ3JhbS5qc3gifQ==
